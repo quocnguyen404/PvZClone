@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{A27F86AD-976E-3091-BEA5-B04F7220C31B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -59,6 +60,7 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.0.4\Editor\PlasticSCM\Toolbar\ToolbarButton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@2.0.4\Editor\PlasticSCM\Toolbar\Unity.CollabProxy.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{B3E70473-4280-CB5A-C823-B1BE8FD54E1B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -325,6 +326,7 @@
     <Compile Include="Library\PackageCache\com.unity.timeline@1.6.5\Editor\Manipulators\Move\MoveItemModeRipple.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Library\PackageCache\com.unity.timeline@1.6.5\Editor\Unity.Timeline.Editor.asmdef" />
     <None Include="Library\PackageCache\com.unity.timeline@1.6.5\Editor\StyleSheets\res\Timeline_LightSkin.txt" />
     <None Include="Library\PackageCache\com.unity.timeline@1.6.5\Editor\StyleSheets\Extensions\dark.uss" />

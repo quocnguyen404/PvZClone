@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{0B7BB3B4-C392-EC6D-3E3B-AA42DEF915C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -62,6 +63,7 @@
     <Compile Include="Library\PackageCache\com.unity.testtools.codecoverage@1.2.3\Editor\CoverageFormats\OpenCover\Mono.Reflection\Disassembler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Library\PackageCache\com.unity.testtools.codecoverage@1.2.3\Editor\CoverageFormats\OpenCover\Mono.Reflection\Reflection.asmdef" />
   </ItemGroup>
   <ItemGroup>

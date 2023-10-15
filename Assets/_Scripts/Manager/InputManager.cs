@@ -12,7 +12,6 @@ public class InputManager : MonoBehaviour
 
     public Vector3 GetSelectedPlanePosition()
     {
-
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 

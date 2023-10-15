@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{D7F19D5F-4B40-C93F-FA90-FEF844B0509D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -69,6 +70,7 @@
     <Compile Include="Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\SettingsGUILayout.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\Unity.Settings.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>

@@ -107,6 +107,7 @@
     <Compile Include="Library\PackageCache\com.unity.testtools.codecoverage@1.2.3\Editor\CoverageSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Library\PackageCache\com.unity.testtools.codecoverage@1.2.3\Editor\CodeCoverage.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>

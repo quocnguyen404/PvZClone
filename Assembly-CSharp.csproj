@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{E0EE5363-9FD0-1199-25B3-472BEC91A670}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -59,17 +60,22 @@
     <Compile Include="Assets\_Scripts\UI\UI_PlantDispatcher.cs" />
     <Compile Include="Assets\_Scripts\Manager\Node.cs" />
     <Compile Include="Assets\_Scripts\Unit\UnitData.cs" />
+    <Compile Include="Assets\_Scripts\GameConfig\ConfigHelper.cs" />
     <Compile Include="Assets\_Scripts\Unit\IUnit.cs" />
-    <Compile Include="Assets\_Scripts\Unit\AttributeType.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Attribute.cs" />
     <Compile Include="Assets\_Scripts\Manager\PlacementManager.cs" />
+    <Compile Include="Assets\_Scripts\GameConfig\GameConfig.cs" />
     <Compile Include="Assets\_Scripts\UI\UI_PlantButton.cs" />
     <Compile Include="Assets\_Scripts\Unit\GameEnum.cs" />
     <Compile Include="Assets\_Scripts\Unit\Zombies\Zombie.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Plant.cs" />
     <Compile Include="Assets\_Scripts\Manager\GridManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
+    <Compile Include="Assets\_Scripts\GameConfig\UserData.cs" />
+    <Compile Include="Assets\_Scripts\GameConfig\LevelConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

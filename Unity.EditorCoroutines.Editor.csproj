@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{05F58F59-07E7-7A5B-A513-B34EC03D3829}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -62,6 +63,7 @@
     <Compile Include="Library\PackageCache\com.unity.editorcoroutines@1.0.0\Editor\EditorCoroutineUtility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Library\PackageCache\com.unity.editorcoroutines@1.0.0\Editor\Unity.EditorCoroutines.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>

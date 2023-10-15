@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{91F23B94-C8DC-99CC-2659-110DA626288D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -67,6 +68,7 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\SettingsProvider\ProjectSettings\BackupSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\SettingsProvider\Unity.VisualScripting.SettingsProvider.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>

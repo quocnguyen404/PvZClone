@@ -1,5 +1,5 @@
 
-namespace UnitData
+namespace Data
 {
     public enum AttributeType
     {
@@ -9,5 +9,17 @@ namespace UnitData
         SP,
         FR,
     }
+
+}
+
+
+public enum Chapter
+{
+    Day = 1,
+    Night,
+    Pool,
+    NightPool,
+    Roof,
+    NightRoof,
 }
 
