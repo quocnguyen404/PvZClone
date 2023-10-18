@@ -8,8 +8,6 @@ public class SplashScreenController : MonoBehaviour
 
     public void LoadDataSplashScene()
     {
-        ConfigHelper.LoadGameConfigSplashScreen();
-
         while (ConfigHelper.gameConfig == null)
         {
 

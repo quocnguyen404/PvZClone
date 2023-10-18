@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
-using ES3Types;
+
 public static class ConfigHelper
 {
     const string UserDataKey = "UserData123";
-    
-    public const int plantAmount = 44;
-    
+
+
     public static GameConfig gameConfig = null;
 
     public static GameConfig GameConfig
@@ -16,22 +15,12 @@ public static class ConfigHelper
         get
         {
             if (gameConfig == null)
-                LoadGameConfigSplashScreen();
+            {
+                string textAsset = Resources.Load<TextAsset>("Game Config/GameConfig").text;
+                gameConfig = JsonConvert.DeserializeObject<GameConfig>(textAsset);
+            }
 
             return gameConfig;
-        }
-    }
-
-    public static void LoadGameConfigSplashScreen()
-    {
-        gameConfig = new GameConfig();
-        gameConfig.plants = new Dictionary<string, Plant>();
-
-        Plant[] plantsData = Resources.LoadAll<Plant>("Prefabs/Plant");
-
-        foreach (Plant plant in plantsData)
-        {
-            gameConfig.plants.Add(plant.unitData.name, plant);
         }
     }
 
@@ -69,7 +58,7 @@ public static class ConfigHelper
         defaultUserData.ownPlants = new Dictionary<string, Data.UnitData>();
         defaultUserData.discoverZombies = new Dictionary<string, Data.UnitData>();
 
-        Data.UnitData firstUnit = GameConfig.plants["Pea Shooter"].unitData;
+        Data.UnitData firstUnit = GameConfig.plants["Peashooter"];
 
         defaultUserData.ownPlants.Add(firstUnit.unitName, firstUnit);
 

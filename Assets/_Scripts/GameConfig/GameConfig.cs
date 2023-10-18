@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameConfig
 {
-    public Dictionary<string, Plant> plants = null;
-    public Dictionary<string, Zombie> zombies = null;
+    public Dictionary<string, Data.UnitData> plants = null;
+    public Dictionary<string, Data.UnitData> zombies = null;
     public Dictionary<int, LevelConfig> levelConfigs = null;
 
     public GameConfig()

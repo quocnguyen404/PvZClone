@@ -4,11 +4,15 @@ using UnityEngine;
 
 namespace Data
 {
-    [System.Serializable]
     public class Attribute
     {
         public AttributeType type;
         public float value;
+
+        public Attribute()
+        {
+
+        }
     }
 }
 

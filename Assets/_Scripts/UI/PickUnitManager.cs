@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class PickUnitManager : MonoBehaviour
 {
-    [SerializeField] private PlantButtonHold buttonHolder = null;
-    [SerializeField] private UnitButtonPanel pickPanel = null;
+    [SerializeField] private PlantButtonHold leftPanel = null;
+    [SerializeField] private UnitButtonPanel rightPanel = null;
+
+
 
     private void Awake()
     {
-        buttonHolder.Initialize();
-        pickPanel.Initialize();
+        rightPanel.OnUnitButtonClick = leftPanel.AddToHoldPanel;
+        leftPanel.Initialize();
+        rightPanel.Initialize();
+    }
+
+
+
+    public void RemoveFromHoldPanel()
+    {
+
+    }
+
+    public void UpdataButtonHolder()
+    {
+
     }
 }
