@@ -9,6 +9,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int column;
     [SerializeField] private float nodeLeng;
     [SerializeField] private Node nodePrefab = null;
+    [SerializeField] private Transform parentTrans = null;
 
     public bool draw = false;
 
@@ -38,6 +39,13 @@ public class GridManager : MonoBehaviour
 
                 Node newNode = Instantiate(nodePrefab, new Vector3(x, transform.position.y, z), Quaternion.identity);
                 newNode.WorldPosition = newNode.transform.position;
+                newNode.transform.parent = parentTrans;
+
+                if ( (i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 ==0))
+                {
+                    newNode.MoreBold();
+                }
+
                 nodes[i, j] = newNode;
             }
         }

@@ -5,21 +5,9 @@ using UnityEngine;
 public abstract class IUnit : MonoBehaviour
 {
     public string _name;
+    public int cost => unitData.cost;
 
-    private Data.UnitData unitData = null;
-
-    public Data.UnitData UnitData
-    {
-        get
-        {
-            if (unitData == null)
-            {
-
-            }
-
-            return unitData;
-        }
-    }
+    public Data.UnitData unitData = null;
 
     public virtual void Attack(IUnit target)
     {

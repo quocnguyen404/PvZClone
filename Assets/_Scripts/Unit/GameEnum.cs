@@ -7,11 +7,10 @@ namespace Data
         ATK,
         DFS,
         SP,
-        FR,
+        AAI,
     }
 
 }
-
 
 public enum Chapter
 {

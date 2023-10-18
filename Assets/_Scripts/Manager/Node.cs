@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
+    [SerializeField] private MeshRenderer meshRd = null;
+    
     public Vector3 WorldPosition;
     public bool isEmpty = true;
     public IUnit unit;
 
 
-    public void SelftActive()
+    public void MoreBold()
     {
-        gameObject.SetActive(!gameObject.activeSelf);
+        meshRd.material.color = Color.green;
     }
 
 }

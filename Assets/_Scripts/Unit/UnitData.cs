@@ -4,10 +4,13 @@ using UnityEngine;
 
 namespace Data
 {
-    public class UnitData
+    [CreateAssetMenu(fileName = "UnitData", menuName = "Data/Unit Data")]
+    public class UnitData : ScriptableObject
     {
         public string unitName = "";
-        public List<Attribute> attributes = new List<Attribute>();
+        public int cost = 0;
+        public float rechargeTime = 0f;
+        public List<Attribute> attributes = null;
     }
 }
 
