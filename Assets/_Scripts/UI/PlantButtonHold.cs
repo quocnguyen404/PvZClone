@@ -34,7 +34,12 @@ public class PlantButtonHold : MonoBehaviour
         unitButton.transform.parent = emptySlot.transform;
         unitButton.transform.localPosition = Vector3.zero;
 
-        unitButton.OnUnitButtonClick = OnUnitButtonClick;
+        unitButton.OnUnitButtonClick = UnitButtonClick;
+    }
+
+    public void UnitButtonClick(UnitButton unitButton)
+    {
+        OnUnitButtonClick.Invoke(unitButton);
     }
 
     public Slot GetEmptySlot()
@@ -42,11 +47,6 @@ public class PlantButtonHold : MonoBehaviour
         Slot emptySlot = slots.Find(s => s.unitData == null);
 
         return emptySlot;
-    }
-
-    public void UnitButtonOnClick(UnitButton unitButton)
-    {
-        unitButton.OnUnitButtonClick?.Invoke(unitButton);
     }
 
     public void InitializeUnitData()

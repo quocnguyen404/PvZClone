@@ -1,25 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlacementManager : MonoBehaviour
 {
     [Header("Component Reference")]
     [SerializeField] private InputManager inputManager = null;
     [SerializeField] private GameObject mouseIndicator = null;
-    [SerializeField] private PickUnitManager pickUnitManager = null;
+    [SerializeField] private Button shovelButton = null;
 
-    [Space]
-    [SerializeField] private IUnit onSelectedPlant = null;
+    public bool startPlacing = false;
+
+    //get object from pool
+    public IUnit selectedUnit = null;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && onSelectedPlant != null)
+        if (!startPlacing)
+            return;
+
+        if (Input.GetMouseButtonDown(0) && selectedUnit != null)
         {
             Node selectedNode = inputManager.GetSelectedNode();
 
             if (selectedNode == null)
+            {
+                selectedUnit.gameObject.SetActive(false);
+                selectedUnit = null;
                 return;
+            }
 
             PlacePlantOnNode(selectedNode);
         }
@@ -29,14 +39,21 @@ public class PlacementManager : MonoBehaviour
         mouseIndicator.transform.position = mousePosition;
     }
 
-
     public void PlacePlantOnNode(Node node)
     {
-        if (!node.isEmpty)
+        if (node.unitData != null)
             return;
 
-        node.isEmpty = false;
-        IUnit plant = Instantiate(onSelectedPlant, node.WorldPosition, Quaternion.identity);
-        node.unit = plant;
+        //selectedUnit.transform.parent = node.transform;
+        selectedUnit.transform.position = node.WorldPosition;
+
+        node.unitData = selectedUnit.unitData;
+
+        selectedUnit = null;
+    }
+
+    public void GetUnitData(IUnit unit)
+    {
+        selectedUnit = unit;
     }
 }

@@ -1,3 +1,4 @@
+using Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,12 @@ using UnityEngine.UI;
 
 public class PickUnitManager : MonoBehaviour
 {
-    [SerializeField] private Button playButton = null;
+    [Header("Component Reference")]
     [SerializeField] private PlantButtonHold buttonHold = null;
     [SerializeField] private UnitButtonPanel buttonPanel = null;
+    [SerializeField] private PlantObjectPool plantObjectPool = null;
 
-    public Data.UnitData pickedUnit = null;
+    public System.Action<IUnit> OnPickedUnit = null;
 
     private void Awake()
     {
@@ -17,28 +19,26 @@ public class PickUnitManager : MonoBehaviour
         buttonHold.OnUnitButtonClick = buttonPanel.AddToPanel;
         buttonHold.Initialize();
         buttonPanel.Initialize();
-
-        playButton.onClick.AddListener(() => { StartGame(); });
     }
 
-    private void StartGame()
+    public void InitializeStartGame()
     {
-        if (!PickFull())
-            return;
-
         buttonPanel.Hide();
-        buttonHold.OnUnitButtonClick = SeletedUnit;
         buttonHold.InitializeUnitData();
+        buttonHold.OnUnitButtonClick = SeletedUnit;
+
+        plantObjectPool.InitilizePool(buttonHold.unitDatas);
     }
 
-    private bool PickFull()
+
+    public bool PickFull()
     {
         return !buttonHold.slots.Find(s => s.unitData == null);
     }
 
     private void SeletedUnit(UnitButton unitButton)
     {
-        pickedUnit = unitButton.unitData;
+        IUnit unit = plantObjectPool.GetPlant(unitButton.unitData);
+        OnPickedUnit?.Invoke(unit);
     }
-
 }

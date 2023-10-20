@@ -43,11 +43,11 @@ public class UnitButtonPanel : MonoBehaviour
             newUnitButton.Initialize(data);
             slots[count].GetUnitButton(data);
             newUnitButton.slotOnPanel = slots[count];
-            
+
             newUnitButton.transform.parent = slots[count].transform;
-            
+
             newUnitButton.transform.localPosition = Vector3.zero;
-            
+
             unitButtons.Add(newUnitButton);
 
             count++;
@@ -64,7 +64,7 @@ public class UnitButtonPanel : MonoBehaviour
         unitButton.slotOnHold.EmptySlotData();
         unitButton.slotOnHold = null;
 
-        unitButton.OnUnitButtonClick = OnUnitButtonClick;
+        unitButton.OnUnitButtonClick = UnitButtonClick;
     }
 
     public Slot GetEmptySlot()

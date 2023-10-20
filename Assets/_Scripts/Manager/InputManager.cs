@@ -9,7 +9,6 @@ public class InputManager : MonoBehaviour
 
     private Vector3 lastPosition;
 
-
     public Vector3 GetSelectedPlanePosition()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);

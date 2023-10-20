@@ -60,9 +60,11 @@ public static class ConfigHelper
 
         Data.UnitData firstUnit = GameConfig.plants["Peashooter"];
         Data.UnitData secondUnit = GameConfig.plants["Sunflower"];
+        Data.UnitData thirdUnit = GameConfig.plants["Wall-nut"];
 
         defaultUserData.ownPlants.Add(firstUnit.unitName, firstUnit);
         defaultUserData.ownPlants.Add(secondUnit.unitName, secondUnit);
+        defaultUserData.ownPlants.Add(thirdUnit.unitName, thirdUnit);
 
         return defaultUserData;
     }
