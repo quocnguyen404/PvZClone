@@ -53,6 +53,33 @@
 					"value" : 0.2
 				}
 			]
+		},
+		"Wall-nut" : {
+			"unitName" : "Wall-nut",
+			"cost" : 50,
+			"rechargeTime" : 7.5,
+			"attributes" : [
+				{
+					"type" : 0,
+					"value" : 5
+				},
+				{
+					"type" : 1,
+					"value" : 5
+				},
+				{
+					"type" : 2,
+					"value" : 5
+				},
+				{
+					"type" : 3,
+					"value" : 5
+				},
+				{
+					"type" : 4,
+					"value" : 0.2
+				}
+			]
 		}
 	},
 	"zombies" : {

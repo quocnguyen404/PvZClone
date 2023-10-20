@@ -10,6 +10,9 @@ public class UnitButton : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text costText;
 
+    public Slot slotOnPanel = null;
+    public Slot slotOnHold = null;
+
     public System.Action<UnitButton> OnUnitButtonClick;
     public Data.UnitData unitData { get; private set; }
 

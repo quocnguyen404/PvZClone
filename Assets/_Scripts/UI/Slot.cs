@@ -9,8 +9,13 @@ public class Slot : MonoBehaviour
         get; private set;
     }
 
-    public void Initialize(Data.UnitData unitData)
+    public void GetUnitButton(Data.UnitData unitData)
     {
         this.unitData = unitData;
+    }
+
+    public void EmptySlotData()
+    {
+        unitData = null;
     }
 }

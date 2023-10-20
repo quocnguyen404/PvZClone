@@ -59,8 +59,10 @@ public static class ConfigHelper
         defaultUserData.discoverZombies = new Dictionary<string, Data.UnitData>();
 
         Data.UnitData firstUnit = GameConfig.plants["Peashooter"];
+        Data.UnitData secondUnit = GameConfig.plants["Sunflower"];
 
         defaultUserData.ownPlants.Add(firstUnit.unitName, firstUnit);
+        defaultUserData.ownPlants.Add(secondUnit.unitName, secondUnit);
 
         return defaultUserData;
     }

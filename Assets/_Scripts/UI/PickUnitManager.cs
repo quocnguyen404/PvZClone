@@ -1,30 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUnitManager : MonoBehaviour
 {
-    [SerializeField] private PlantButtonHold leftPanel = null;
-    [SerializeField] private UnitButtonPanel rightPanel = null;
+    [SerializeField] private Button playButton = null;
+    [SerializeField] private PlantButtonHold buttonHold = null;
+    [SerializeField] private UnitButtonPanel buttonPanel = null;
 
-
+    public Data.UnitData pickedUnit = null;
 
     private void Awake()
     {
-        rightPanel.OnUnitButtonClick = leftPanel.AddToHoldPanel;
-        leftPanel.Initialize();
-        rightPanel.Initialize();
+        buttonPanel.OnUnitButtonClick = buttonHold.AddToHoldPanel;
+        buttonHold.OnUnitButtonClick = buttonPanel.AddToPanel;
+        buttonHold.Initialize();
+        buttonPanel.Initialize();
+
+        playButton.onClick.AddListener(() => { StartGame(); });
     }
 
-
-
-    public void RemoveFromHoldPanel()
+    private void StartGame()
     {
+        if (!PickFull())
+            return;
 
+        buttonPanel.Hide();
+        buttonHold.OnUnitButtonClick = SeletedUnit;
+        buttonHold.InitializeUnitData();
     }
 
-    public void UpdataButtonHolder()
+    private bool PickFull()
     {
-
+        return !buttonHold.slots.Find(s => s.unitData == null);
     }
+
+    private void SeletedUnit(UnitButton unitButton)
+    {
+        pickedUnit = unitButton.unitData;
+    }
+
 }

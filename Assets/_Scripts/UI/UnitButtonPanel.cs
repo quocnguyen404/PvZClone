@@ -13,13 +13,10 @@ public class UnitButtonPanel : MonoBehaviour
     [Space]
     [SerializeField] private int plantAmount = 44;
 
-    public UnitButton currentButtonSelected = null;
-
     private List<Slot> slots;
     private List<UnitButton> unitButtons;
 
     public System.Action<UnitButton> OnUnitButtonClick;
-
 
     public void Initialize()
     {
@@ -42,21 +39,32 @@ public class UnitButtonPanel : MonoBehaviour
         {
             UnitButton newUnitButton = Instantiate(unitButtonPrefab, grid);
             newUnitButton.OnUnitButtonClick = UnitButtonClick;
+
             newUnitButton.Initialize(data);
-            slots[count].Initialize(data);
+            slots[count].GetUnitButton(data);
+            newUnitButton.slotOnPanel = slots[count];
+            
             newUnitButton.transform.parent = slots[count].transform;
+            
+            newUnitButton.transform.localPosition = Vector3.zero;
+            
             unitButtons.Add(newUnitButton);
+
+            count++;
         }
     }
 
-    public void AddToPickPanel(UnitButton unitButton)
+    public void AddToPanel(UnitButton unitButton)
     {
-        Slot emptySlot = GetEmptySlot();
+        Slot slotOnPanel = unitButton.slotOnPanel;
 
-        if (emptySlot != null)
-            return;
+        unitButton.transform.parent = slotOnPanel.transform;
+        unitButton.transform.localPosition = Vector3.zero;
 
-        emptySlot.Initialize(unitButton.unitData);
+        unitButton.slotOnHold.EmptySlotData();
+        unitButton.slotOnHold = null;
+
+        unitButton.OnUnitButtonClick = OnUnitButtonClick;
     }
 
     public Slot GetEmptySlot()
@@ -68,7 +76,11 @@ public class UnitButtonPanel : MonoBehaviour
 
     private void UnitButtonClick(UnitButton unitButton)
     {
-        currentButtonSelected = unitButton;
         OnUnitButtonClick?.Invoke(unitButton);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

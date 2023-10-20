@@ -6,25 +6,35 @@ public class PlantButtonHold : MonoBehaviour
 {
     [SerializeField] private Transform content = null;
     public List<Slot> slots;
+    public List<Data.UnitData> unitDatas;
 
-    public System.Action<Slot> OnSelectedButton = null;
+    public System.Action<UnitButton> OnUnitButtonClick;
 
     public void Initialize()
     {
         slots = new List<Slot>();
 
         foreach (Transform slot in content)
-            slots.Add(slot.gameObject.GetComponent<Slot>());
+        {
+            if (slot.gameObject.activeInHierarchy == true)
+                slots.Add(slot.gameObject.GetComponent<Slot>());
+        }
     }
 
-    public void AddToHoldPanel(UnitButton buttonClicked)
+    public void AddToHoldPanel(UnitButton unitButton)
     {
         Slot emptySlot = GetEmptySlot();
 
         if (emptySlot == null)
             return;
 
-        emptySlot.Initialize(buttonClicked.unitData);
+        emptySlot.GetUnitButton(unitButton.unitData);
+        unitButton.slotOnHold = emptySlot;
+
+        unitButton.transform.parent = emptySlot.transform;
+        unitButton.transform.localPosition = Vector3.zero;
+
+        unitButton.OnUnitButtonClick = OnUnitButtonClick;
     }
 
     public Slot GetEmptySlot()
@@ -32,5 +42,20 @@ public class PlantButtonHold : MonoBehaviour
         Slot emptySlot = slots.Find(s => s.unitData == null);
 
         return emptySlot;
+    }
+
+    public void UnitButtonOnClick(UnitButton unitButton)
+    {
+        unitButton.OnUnitButtonClick?.Invoke(unitButton);
+    }
+
+    public void InitializeUnitData()
+    {
+        unitDatas = new List<Data.UnitData>();
+
+        foreach (Slot slot in slots)
+        {
+            unitDatas.Add(slot.unitData);
+        }
     }
 }

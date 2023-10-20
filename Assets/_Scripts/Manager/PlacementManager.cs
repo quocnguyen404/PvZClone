@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
+    [Header("Component Reference")]
     [SerializeField] private InputManager inputManager = null;
     [SerializeField] private GameObject mouseIndicator = null;
+    [SerializeField] private PickUnitManager pickUnitManager = null;
+
+    [Space]
     [SerializeField] private IUnit onSelectedPlant = null;
 
     private void Update()
