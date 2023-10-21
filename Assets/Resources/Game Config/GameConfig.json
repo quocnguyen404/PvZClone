@@ -2,6 +2,7 @@
 	"plants" : {
 		"Peashooter" : {
 			"unitName" : "Peashooter",
+			"productName" : "Pea",
 			"cost" : 100,
 			"rechargeTime" : 7.5,
 			"attributes" : [
@@ -29,6 +30,7 @@
 		},
 		"Sunflower" : {
 			"unitName" : "Sunflower",
+			"productName" : "",
 			"cost" : 50,
 			"rechargeTime" : 7.5,
 			"attributes" : [
@@ -56,6 +58,7 @@
 		},
 		"Wall-nut" : {
 			"unitName" : "Wall-nut",
+			"productName" : "",
 			"cost" : 50,
 			"rechargeTime" : 7.5,
 			"attributes" : [

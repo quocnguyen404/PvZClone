@@ -7,6 +7,7 @@ namespace Data
     public class UnitData
     {
         public string unitName = "";
+        public string productName = null;
         public int cost = 0;
         public float rechargeTime = 0f;
         public List<Attribute> attributes;

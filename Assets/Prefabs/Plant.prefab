@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6374614616769968933}
   - component: {fileID: 6374614616769968930}
   - component: {fileID: 5649815106940224623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,3 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4074c2faaab3e8d4dbfdfb018e2bf215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: 

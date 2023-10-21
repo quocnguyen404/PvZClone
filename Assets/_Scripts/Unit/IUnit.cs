@@ -5,13 +5,14 @@ using UnityEngine;
 
 public abstract class IUnit : MonoBehaviour
 {
-    public string _name;
-    public int cost => unitData.cost;
-    public Data.UnitData unitData = null;
+    public string Name;
+    public int Cost => UnitData.cost;
+    public Data.UnitData UnitData = null;
 
-    public virtual void Attack(IUnit target)
+    public virtual void PlaceUnitOnNode(Node node)
     {
-
+        transform.position = node.WorldPosition;
+        node.unit = this;
     }
 
     public virtual void TakeDamage(float damge)

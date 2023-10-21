@@ -9,9 +9,9 @@ public class PickUnitManager : MonoBehaviour
     [Header("Component Reference")]
     [SerializeField] private PlantButtonHold buttonHold = null;
     [SerializeField] private UnitButtonPanel buttonPanel = null;
-    [SerializeField] private PlantObjectPool plantObjectPool = null;
 
     public System.Action<IUnit> OnPickedUnit = null;
+    public System.Func<Data.UnitData, IUnit> GetPlant = null;
 
     private void Awake()
     {
@@ -21,24 +21,26 @@ public class PickUnitManager : MonoBehaviour
         buttonPanel.Initialize();
     }
 
-    public void InitializeStartGame()
+    public void InitializeUnitData()
     {
         buttonPanel.Hide();
         buttonHold.InitializeUnitData();
         buttonHold.OnUnitButtonClick = SeletedUnit;
-
-        plantObjectPool.InitilizePool(buttonHold.unitDatas);
     }
-
 
     public bool PickFull()
     {
         return !buttonHold.slots.Find(s => s.unitData == null);
     }
 
+    public List<Data.UnitData> PlantDatas()
+    {
+        return buttonHold.unitDatas;
+    }
+
     private void SeletedUnit(UnitButton unitButton)
     {
-        IUnit unit = plantObjectPool.GetPlant(unitButton.unitData);
+        IUnit unit = GetPlant?.Invoke(unitButton.unitData);
         OnPickedUnit?.Invoke(unit);
     }
 }

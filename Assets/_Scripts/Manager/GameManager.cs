@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PickUnitManager pickUnitManager = null;
     [SerializeField] private PlacementManager placementManager = null;
 
+    [Space]
+    [Header("Object Pooling Reference")]
+    [SerializeField] private PlantObjectPool plantObjectPool = null;
+    [SerializeField] private ProjectileObjectPool projectileObjectPool = null;
 
     [Space]
     [SerializeField] private Button playButton = null;
@@ -17,7 +21,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         playButton.onClick.AddListener(() => { StartGame(); });
-        pickUnitManager.OnPickedUnit = placementManager.GetUnitData;
+        pickUnitManager.GetPlant = plantObjectPool.GetPlant;
+        pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
     }
 
     private void StartGame()
@@ -25,9 +30,14 @@ public class GameManager : MonoBehaviour
         if (!pickUnitManager.PickFull())
             return;
 
-        pickUnitManager.InitializeStartGame();
+        pickUnitManager.InitializeUnitData();
+
+        plantObjectPool.InitilizePool(pickUnitManager.PlantDatas());
+
+        //need projectile prefab
+        //projectileObjectPool.InitializePool(pickUnitManager.PlantDatas());
+
         placementManager.startPlacing = true;
         playButton.gameObject.SetActive(false);
     }
-
 }

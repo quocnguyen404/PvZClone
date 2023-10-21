@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlantObjectPool : ObjectPoolBase
 {
-    private Plant unitPrefab = null;
+    private Plant plantPrefab = null;
 
     private int initPlantAmount = 10;
-    private readonly List<Plant> plants = new();
+    private readonly List<Plant> plants = new List<Plant>();
 
     public void InitilizePool(List<Data.UnitData> plantData)
     {
         foreach (Data.UnitData data in plantData)
         {
+            plantPrefab = Resources.Load<Plant>(string.Format(GameConstant.PLANT_PREFAB_PATH, data.unitName));
+
             for (int i = 0; i < initPlantAmount; i++)
                 GeneratePlant(data);
         }
@@ -20,9 +22,8 @@ public class PlantObjectPool : ObjectPoolBase
 
     private void GeneratePlant(Data.UnitData unitdata)
     {
-        unitPrefab = Resources.Load<Plant>(string.Format(GameConstant.PLANT_PREFAB_PATH, unitdata.unitName));
-        Plant newPlant = Instantiate(unitPrefab, transform);
-        newPlant.unitData = unitdata;
+        Plant newPlant = Instantiate(plantPrefab, transform);
+        newPlant.UnitData = unitdata;
         newPlant.gameObject.SetActive(false);
         plants.Add(newPlant);
     }
@@ -30,17 +31,17 @@ public class PlantObjectPool : ObjectPoolBase
 
     public Plant GetPlant(Data.UnitData unitData)
     {
-        foreach (Plant plant in plants)
+        Plant plant = plants.Find(p => !p.gameObject.activeInHierarchy && p.UnitData.unitName == unitData.unitName);
+
+        if (plant != null)
         {
-            if (!plant.gameObject.activeInHierarchy && plant.unitData.unitName == unitData.unitName)
-            {
-                plant.gameObject.SetActive(true);
-                return plant;
-            }
+            plant.gameObject.SetActive(true);
+            return plant;
         }
 
         if (plants.Count < MAX_POOL_SIZE)
         {
+            plantPrefab = Resources.Load<Plant>(string.Format(GameConstant.PLANT_PREFAB_PATH, unitData.unitName));
             GeneratePlant(unitData);
 
             Plant lastPlant = plants[^1];
@@ -50,6 +51,5 @@ public class PlantObjectPool : ObjectPoolBase
         }
 
         return null;
-
     }
 }

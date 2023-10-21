@@ -7,12 +7,9 @@ public class PlacementManager : MonoBehaviour
 {
     [Header("Component Reference")]
     [SerializeField] private InputManager inputManager = null;
-    [SerializeField] private GameObject mouseIndicator = null;
     [SerializeField] private Button shovelButton = null;
 
     public bool startPlacing = false;
-
-    //get object from pool
     public IUnit selectedUnit = null;
 
     private void Update()
@@ -31,28 +28,21 @@ public class PlacementManager : MonoBehaviour
                 return;
             }
 
-            PlacePlantOnNode(selectedNode);
+            PlaceUnitOnNode(selectedNode);
         }
-
-        Vector3 mousePosition = inputManager.GetSelectedPlanePosition();
-
-        mouseIndicator.transform.position = mousePosition;
     }
 
-    public void PlacePlantOnNode(Node node)
+    public void PlaceUnitOnNode(Node node)
     {
-        if (node.unitData != null)
+        if (node.unit != null)
             return;
 
-        //selectedUnit.transform.parent = node.transform;
-        selectedUnit.transform.position = node.WorldPosition;
-
-        node.unitData = selectedUnit.unitData;
+        selectedUnit.PlaceUnitOnNode(node);
 
         selectedUnit = null;
     }
 
-    public void GetUnitData(IUnit unit)
+    public void GetSelectedUnitData(IUnit unit)
     {
         selectedUnit = unit;
     }
