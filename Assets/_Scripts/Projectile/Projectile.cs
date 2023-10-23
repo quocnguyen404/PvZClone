@@ -10,9 +10,9 @@ public class Projectile : MonoBehaviour
     private float speed;
     private float damage;
 
-    public void InitProjectile(Data.UnitData data, Vector3 initPos)
+    public void InitProjectile(Data.UnitData data)
     {
-        transform.position = initPos;
+
     }
 
     public void MoveToTarget(Vector3 dir)
