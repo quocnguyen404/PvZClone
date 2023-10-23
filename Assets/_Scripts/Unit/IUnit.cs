@@ -5,14 +5,24 @@ using UnityEngine;
 
 public abstract class IUnit : MonoBehaviour
 {
-    public string Name;
+    public string Name
+    {
+        get
+        {
+            return UnitData.unitName;
+        }
+    }
+
     public int Cost => UnitData.cost;
     public Data.UnitData UnitData = null;
+    public Vector2Int GridPosition;
+
 
     public virtual void PlaceUnitOnNode(Node node)
     {
         transform.position = node.WorldPosition;
         node.unit = this;
+        GridPosition = node.GridPosition;
     }
 
     public virtual void TakeDamage(float damge)

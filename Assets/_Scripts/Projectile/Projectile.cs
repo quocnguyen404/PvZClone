@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : IProduct
 {
     [SerializeField] private Rigidbody rgBody = null;
 
-    public string projectileName = "";
     private float speed;
     private float damage;
 

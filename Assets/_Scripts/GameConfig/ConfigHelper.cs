@@ -16,7 +16,7 @@ public static class ConfigHelper
         {
             if (gameConfig == null)
             {
-                string textAsset = Resources.Load<TextAsset>("Game Config/GameConfig").text;
+                string textAsset = Resources.Load<TextAsset>(GameConstant.GAMECONFIG_PATH).text;
                 gameConfig = JsonConvert.DeserializeObject<GameConfig>(textAsset);
             }
 
@@ -43,6 +43,11 @@ public static class ConfigHelper
         }
 
         set => ES3.Save(UserDataKey, value);
+    }
+
+    public static LevelConfig GetCurrentLevelConfig()
+    {
+        return GameConfig.levelConfigs[UserData.userLevel];
     }
 
     public static LevelConfig GetLevelConfig(int level)

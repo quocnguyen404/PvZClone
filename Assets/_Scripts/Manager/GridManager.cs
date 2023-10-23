@@ -5,12 +5,13 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [Header("Grid Component")]
-    [SerializeField] private float nodeLeng;
     [SerializeField] private Node nodePrefab = null;
     [SerializeField] private Transform parentTrans = null;
 
     private int row;
     private int column;
+    private float nodeLeng;
+
 
     [Space]
     public bool draw = false;
@@ -18,10 +19,11 @@ public class GridManager : MonoBehaviour
     private Vector3 nodeBottom = Vector3.zero;
     private List<Node> nodes;
 
-    private void Awake()
+    public void Initialize()
     {
         row = GameConstant.GARDEN_ROW;
         column = GameConstant.GARDEN_COLOUMN;
+        nodeLeng = GameConstant.NODE_LENGTH;
 
         float x = transform.position.x - ((column * nodeLeng) / 2) + (nodeLeng / 2);
         float z = transform.position.z - ((row * nodeLeng) / 2) + (nodeLeng / 2);
@@ -46,12 +48,17 @@ public class GridManager : MonoBehaviour
                 newNode.WorldPosition = newNode.transform.position;
                 newNode.transform.parent = parentTrans;
 
-                if ( (i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0))
+                if ((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0))
                     newNode.MoreBold();
 
                 nodes.Add(newNode);
             }
         }
+    }
+
+    public Vector3 NodeBottom()
+    {
+        return nodeBottom;
     }
 
     private void OnDrawGizmos()

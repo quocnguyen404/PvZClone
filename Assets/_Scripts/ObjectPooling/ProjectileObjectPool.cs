@@ -14,7 +14,7 @@ public class ProjectileObjectPool : ObjectPoolBase
     {
         foreach (Data.UnitData data in plantData)
         {
-            if (data.productName != null)
+            if (data.productName != "")
             {
                 projectilePrefab = Resources.Load<Projectile>(string.Format(GameConstant.PROJECTILE_PREFAB_PATH, data.productName));
 

@@ -8,6 +8,8 @@ public class LevelConfig
     public int levelIndex;
     public int zombiesAmount = 4;
 
+    public Dictionary<int, string> zombies;
+
     public LevelConfig()
     {
 

@@ -11,7 +11,7 @@ public class ProjectileShooter : Plant
 
     private Projectile projectTile = null;
     System.Func<Projectile> OnGetProjectile = null;
-   
+
     protected void OnDisable()
     {
         maxRange = 0;
@@ -35,16 +35,16 @@ public class ProjectileShooter : Plant
     {
         if (maxRange == 0)
             return false;
-        
+
         bool value = false;
-        
+
 
         if (Physics.Raycast(spawnPoint.position, spawnPoint.right, (float)maxRange, zombieLayerMask))
             value = true;
 
         return value;
     }
-    
+
     protected virtual void Attack()
     {
         if (timer == 0)

@@ -118,12 +118,18 @@
 		"1" : {
 			"chapter" : 1,
 			"levelIndex" : 1,
-			"zombiesAmount" : 4
+			"zombiesAmount" : 4,
+			"zombies" : {
+				"4" : "Zombie"
+			}
 		},
 		"2" : {
 			"chapter" : 1,
 			"levelIndex" : 2,
-			"zombiesAmount" : 6
+			"zombiesAmount" : 6,
+			"zombies" : {
+				"4" : "Zombie"
+			}
 		}
 	}
 }
