@@ -27,7 +27,6 @@ public class ProjectileObjectPool : ObjectPoolBase
     private void GenerateProjectile(Data.UnitData plantData)
     {
         Projectile newProjectile = Instantiate(projectilePrefab, transform);
-        newProjectile.InitProjectile(plantData);
         newProjectile.gameObject.SetActive(false);
         projectiles.Add(newProjectile);
     }

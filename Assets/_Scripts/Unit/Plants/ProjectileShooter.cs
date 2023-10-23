@@ -10,7 +10,6 @@ public class ProjectileShooter : Plant
     private float timer = 0;
 
     private Projectile projectTile = null;
-
     System.Func<Projectile> OnGetProjectile = null;
    
     protected void OnDisable()
@@ -63,7 +62,7 @@ public class ProjectileShooter : Plant
     {
         projectTile = OnGetProjectile?.Invoke();
 
-        projectTile.InitProjectile(this.UnitData, spawnPoint.position);
+        projectTile.InitProjectile(spawnPoint.position);
 
         Vector3 dir = new Vector3();
         projectTile.MoveToTarget(dir);
