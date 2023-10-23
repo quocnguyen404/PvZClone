@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         playButton.onClick.AddListener(() => { StartGame(); });
-        pickUnitManager.GetPlant = plantObjectPool.GetPlant;
+        pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
         pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
     }
 
@@ -33,11 +33,11 @@ public class GameManager : MonoBehaviour
         pickUnitManager.InitializeUnitData();
 
         plantObjectPool.InitilizePool(pickUnitManager.PlantDatas());
-
         //need projectile prefab
         //projectileObjectPool.InitializePool(pickUnitManager.PlantDatas());
 
-        placementManager.startPlacing = true;
+        placementManager.Initialize();
+
         playButton.gameObject.SetActive(false);
     }
 }

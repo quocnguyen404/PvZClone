@@ -3,11 +3,11 @@ namespace Data
 {
     public enum AttributeType
     {
-        HP,
-        ATK,
-        DFS,
-        SP,
-        AAI,
+        HP, //Health
+        ATK, //Damage
+        DFS, //Amor
+        SP, // Speed
+        AAI, //Average Attack Interval
     }
 
 }

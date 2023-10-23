@@ -6,7 +6,12 @@ public class ProjectileShooter : Plant
 {
     [SerializeField] protected Transform spawnPoint = null;
 
-    public int maxRange = 8;
+    private int maxRange = 0;
+    private float timer = 0;
+
+    private Projectile projectTile = null;
+
+    System.Func<Projectile> OnGetProjectile = null;
    
     protected void OnDisable()
     {
@@ -43,7 +48,25 @@ public class ProjectileShooter : Plant
     
     protected virtual void Attack()
     {
-        
+        if (timer == 0)
+        {
+            ShotProjectile();
+        }
+
+        timer += Time.deltaTime;
+
+        if (timer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
+            timer = 0;
+    }
+
+    protected virtual void ShotProjectile()
+    {
+        projectTile = OnGetProjectile?.Invoke();
+
+        projectTile.InitProjectile(this.UnitData, spawnPoint.position);
+
+        Vector3 dir = new Vector3();
+        projectTile.MoveToTarget(dir);
     }
 
     protected virtual void RangeCalculate(Node node)

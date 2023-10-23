@@ -9,8 +9,17 @@ public class PlacementManager : MonoBehaviour
     [SerializeField] private InputManager inputManager = null;
     [SerializeField] private Button shovelButton = null;
 
-    public bool startPlacing = false;
+    public List<IUnit> unitsOnGrid { get; private set; }
+
+
+    private bool startPlacing = false;
     public IUnit selectedUnit = null;
+
+    public void Initialize()
+    {
+        unitsOnGrid = new List<IUnit>();
+        startPlacing = true;
+    }
 
     private void Update()
     {
@@ -38,6 +47,7 @@ public class PlacementManager : MonoBehaviour
             return;
 
         selectedUnit.PlaceUnitOnNode(node);
+        unitsOnGrid.Add(selectedUnit);
 
         selectedUnit = null;
     }
