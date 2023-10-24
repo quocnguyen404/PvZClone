@@ -9,18 +9,18 @@ public class UnitManager : MonoBehaviour
 
     public System.Action<IProduct> OnUnitGetProduct = null;
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         units = new List<IUnit>();
         rows = new Dictionary<int, List<IUnit>>();
     }
 
-    public void AddUnit(IUnit unit)
+    public virtual void AddUnit(IUnit unit)
     {
         units.Add(unit);
     }
 
-    public void RemoveUnit(IUnit unit)
+    public virtual void RemoveUnit(IUnit unit)
     {
         units.Remove(unit);
         rows[unit.GridPosition.x].Remove(unit);

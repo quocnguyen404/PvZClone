@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ZombieObjectPool : ObjectPoolBase
 {
-    public Transform plantTransform = null;
+    public Transform zombieTransform = null;
 
     private Zombie zombiePrefab = null;
     private readonly List<Zombie> zombies = new List<Zombie>();
@@ -28,8 +28,6 @@ public class ZombieObjectPool : ObjectPoolBase
             Zombie newZombie = Instantiate(zombiePrefab, transform);
             newZombie.UnitData = unitData;
             newZombie.gameObject.SetActive(true);
-
-            newZombie.transform.position = GameUtilities.RandomPositionOnPlane(plantTransform);
 
             OnSpawnUnit?.Invoke(newZombie);
 
