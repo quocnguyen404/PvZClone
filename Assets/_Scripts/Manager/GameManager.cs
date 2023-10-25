@@ -28,10 +28,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gridManager.Initialize();
+
         playButton.onClick.AddListener(() => { StartGame(); });
 
         placementManager.OnPlaceUnit = plantManager.AddUnit;
         zombieObjectPool.OnSpawnUnit = zombieManager.AddUnit;
+        zombieManager.OnZombieGetPath = gridManager.GetRow;
         pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
 
         zombieManager.Initialize();
@@ -53,5 +55,12 @@ public class GameManager : MonoBehaviour
         projectileObjectPool.InitializePool(pickUnitManager.PlantDatas());
 
         playButton.gameObject.SetActive(false);
+
+        ZombieStart();
+    }
+
+    private void ZombieStart()
+    {
+        zombieManager.DispatcherZombie(1);
     }
 }

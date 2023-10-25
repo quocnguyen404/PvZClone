@@ -11,13 +11,13 @@ public class GridManager : MonoBehaviour
     private int row;
     private int column;
     private float nodeLeng;
-
+    private Dictionary<int, List<Node>> rows;
 
     [Space]
     public bool draw = false;
 
-    private Vector3 nodeBottom = Vector3.zero;
-    private List<Node> nodes;
+    private Vector3 nodeBottom;
+    private Node[,] nodes;
 
     public void Initialize()
     {
@@ -34,10 +34,12 @@ public class GridManager : MonoBehaviour
 
     public void GenerateGrid()
     {
-        nodes = new List<Node>();
+        nodes = new Node[row, column];
+        rows = new Dictionary<int, List<Node>>();
 
         for (int i = 0; i < row; i++)
         {
+            rows[i] = new List<Node>();
             for (int j = 0; j < column; j++)
             {
                 float x = nodeBottom.x + j * nodeLeng;
@@ -51,14 +53,15 @@ public class GridManager : MonoBehaviour
                 if ((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0))
                     newNode.MoreBold();
 
-                nodes.Add(newNode);
+                nodes[i, j] = newNode;
+                rows[i].Add(newNode);
             }
         }
     }
 
-    public Vector3 NodeBottom()
+    public List<Node> GetRow(int row)
     {
-        return nodeBottom;
+        return rows[row];
     }
 
     private void OnDrawGizmos()

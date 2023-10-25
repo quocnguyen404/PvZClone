@@ -25,4 +25,12 @@ public class UnitManager : MonoBehaviour
         units.Remove(unit);
         rows[unit.GridPosition.x].Remove(unit);
     }
+
+    protected virtual void AddUnitToRow(IUnit unit, int row)
+    {
+        if (rows.ContainsKey(row))
+            rows[row].Add(unit);
+        else
+            rows[row] = new List<IUnit> { unit };
+    }
 }

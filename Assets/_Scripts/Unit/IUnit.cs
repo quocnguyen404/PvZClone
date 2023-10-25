@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class IUnit : MonoBehaviour
 {
+    [SerializeField] protected UnitAnimator animator = null;
     public string Name
     {
         get

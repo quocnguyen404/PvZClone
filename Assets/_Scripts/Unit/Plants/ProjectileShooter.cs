@@ -39,8 +39,8 @@ public class ProjectileShooter : Plant
         bool value = false;
 
 
-        if (Physics.Raycast(spawnPoint.position, spawnPoint.right, (float)maxRange, zombieLayerMask))
-            value = true;
+        //if (Physics.Raycast(spawnPoint.position, spawnPoint.right, (float)maxRange, zombieLayerMask))
+        //    value = true;
 
         return value;
     }
@@ -64,7 +64,7 @@ public class ProjectileShooter : Plant
 
         projectTile.InitProjectile(spawnPoint.position);
 
-        Vector3 dir = new Vector3();
+        Vector3 dir = transform.right;
         projectTile.MoveToTarget(dir);
     }
 

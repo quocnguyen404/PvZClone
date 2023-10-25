@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class GameUtilities
 {
-    public static void DelayCall(this Plant plant, float time, System.Action Callback)
+    public static void DelayCall(this IUnit unit, float time, System.Action Callback)
     {
-        plant.StartCoroutine(IEDelayCall(time, Callback));
+        unit.StartCoroutine(IEDelayCall(time, Callback));
     }
 
     private static IEnumerator IEDelayCall(float time, System.Action Callback)
