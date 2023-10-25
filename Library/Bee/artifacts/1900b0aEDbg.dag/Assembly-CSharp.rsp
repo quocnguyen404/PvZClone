@@ -353,7 +353,6 @@
 "Assets/_Scripts/Common/GameUtilities.cs"
 "Assets/_Scripts/Common/Helper.cs"
 "Assets/_Scripts/Common/MouseIndicator.cs"
-"Assets/_Scripts/Dispatcher/ZombieDispatcher.cs"
 "Assets/_Scripts/GameConfig/ConfigHelper.cs"
 "Assets/_Scripts/GameConfig/GameConfig.cs"
 "Assets/_Scripts/GameConfig/GameConstant.cs"

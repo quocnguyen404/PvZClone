@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Common\GameUtilities.cs" />
     <Compile Include="Assets\_Scripts\UI\PlantButtonHold.cs" />
-    <Compile Include="Assets\_Scripts\Dispatcher\ZombieDispatcher.cs" />
     <Compile Include="Assets\_Scripts\UI\Slot.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ZombieObjectPool.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ObjectPoolBase.cs" />

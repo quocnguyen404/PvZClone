@@ -6,7 +6,6 @@ public class ZombieManager : UnitManager
 {
     private Vector3 nodeBottom;
 
-
     public override void Initialize()
     {
         base.Initialize();
@@ -14,6 +13,11 @@ public class ZombieManager : UnitManager
         float x = transform.position.x - ((5 * 1) / 2) + (1 / 2);
         float z = transform.position.z - ((5 * 1) / 2) + (1 / 2);
         nodeBottom = new Vector3(x, transform.position.y, z);
+    }
+
+    public void DispatcherZombie()
+    {
+
     }
 
     public override void AddUnit(IUnit unit)
@@ -25,11 +29,13 @@ public class ZombieManager : UnitManager
 
     public Vector3 RandomPositionOnPlane()
     {
-        int x = Random.Range(0, 5) * 1;
+        int x = Random.Range(1, 5) * 1;
         int z = Random.Range(0, 5) * 1;
 
         return new Vector3(x + nodeBottom.x, transform.position.y, z + nodeBottom.z);
     }
+
+
 
     private void OnDrawGizmos()
     {

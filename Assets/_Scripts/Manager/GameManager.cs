@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PickUnitManager pickUnitManager = null;
     [SerializeField] private PlacementManager placementManager = null;
     [SerializeField] private GridManager gridManager = null;
-    [SerializeField] private ZombieDispatcher zombieDispatcher = null;
 
     [Space]
     [Header("Object Pooling Reference")]
@@ -31,15 +30,13 @@ public class GameManager : MonoBehaviour
         gridManager.Initialize();
         playButton.onClick.AddListener(() => { StartGame(); });
 
+        placementManager.OnPlaceUnit = plantManager.AddUnit;
         zombieObjectPool.OnSpawnUnit = zombieManager.AddUnit;
+        pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
 
         zombieManager.Initialize();
         plantManager.Initialize();
         zombieObjectPool.InitializePool(ConfigHelper.GetCurrentLevelConfig());
-
-        pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
-        pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
-        placementManager.OnPlaceUnit = plantManager.AddUnit;
     }
 
     private void StartGame()
@@ -47,12 +44,14 @@ public class GameManager : MonoBehaviour
         if (!pickUnitManager.PickFull())
             return;
 
+        pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
+
         pickUnitManager.InitializeUnitData();
 
+        placementManager.Initialize();
         plantObjectPool.InitilizePool(pickUnitManager.PlantDatas());
         projectileObjectPool.InitializePool(pickUnitManager.PlantDatas());
 
-        placementManager.Initialize();
         playButton.gameObject.SetActive(false);
     }
 }
