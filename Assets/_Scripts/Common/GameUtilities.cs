@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GameUtilities
 {
-    public static void DelayCall(this IUnit unit, float time, System.Action Callback)
+    public static void DelayCall(this MonoBehaviour unit, float time, System.Action Callback)
     {
         unit.StartCoroutine(IEDelayCall(time, Callback));
     }

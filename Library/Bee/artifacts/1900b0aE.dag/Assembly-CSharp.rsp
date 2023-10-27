@@ -359,6 +359,7 @@
 "Assets/_Scripts/GameConfig/GameConfig.cs"
 "Assets/_Scripts/GameConfig/GameConstant.cs"
 "Assets/_Scripts/GameConfig/LevelConfig.cs"
+"Assets/_Scripts/GameConfig/PhaseData.cs"
 "Assets/_Scripts/GameConfig/UserData.cs"
 "Assets/_Scripts/Grid/Node.cs"
 "Assets/_Scripts/Manager/GameManager.cs"

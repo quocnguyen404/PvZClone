@@ -19,13 +19,13 @@ public class ZombieManager : UnitManager
         nodeBottom = new Vector3(x, transform.position.y, z);
     }
 
-    public void DispatcherZombie(int amount)
+    public void DispatcherZombie(int amount, string zombieName)
     {
         for (int i = 0; i < amount; i++)
         {
             int row = Random.Range(0, GameConstant.GARDEN_ROW);
 
-            Zombie zombie = GetZombieAlive();
+            Zombie zombie = GetZombieAlive(zombieName);
             zombie.isOnNode = true;
             zombie.OnGetPath = ZombieGetPath;
             zombie.InitializeRow(row);
@@ -62,9 +62,9 @@ public class ZombieManager : UnitManager
         return zUnit;
     }
 
-    private Zombie GetZombieAlive()
+    private Zombie GetZombieAlive(string zombieName)
     {
-        return ZUnitCast(units.Find(z => ZUnitCast(z).isAlive && !ZUnitCast(z).isOnNode));
+        return ZUnitCast(units.Find(z => ZUnitCast(z).isAlive && !ZUnitCast(z).isOnNode && z.UnitData.unitName == zombieName));
     }
 
     public Vector3 RandomPositionOnPlane()

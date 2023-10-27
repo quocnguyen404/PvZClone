@@ -5,5 +5,11 @@ using UnityEngine;
 public class Plant : IUnit
 {
     [SerializeField] protected LayerMask zombieLayerMask;
+    [SerializeField] protected List<Node> nodesPath;
 
+
+    public virtual void InitializeRow()
+    {
+        nodesPath = OnGetPath?.Invoke(GridPosition.x);
+    }
 }

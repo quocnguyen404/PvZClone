@@ -10,7 +10,6 @@ public class ProjectileShooter : Plant
     private float timer = 0;
 
     private Projectile projectTile = null;
-    System.Func<Projectile> OnGetProjectile = null;
 
     protected void OnDisable()
     {
@@ -36,11 +35,14 @@ public class ProjectileShooter : Plant
         if (maxRange == 0)
             return false;
 
+        if (nodesPath == null)
+            return false;
+
         bool value = false;
 
+        Node checkNode = nodesPath.Find(n => n.unit is Zombie);
 
-        //if (Physics.Raycast(spawnPoint.position, spawnPoint.right, (float)maxRange, zombieLayerMask))
-        //    value = true;
+        value = checkNode != null;
 
         return value;
     }
@@ -60,7 +62,7 @@ public class ProjectileShooter : Plant
 
     protected virtual void ShotProjectile()
     {
-        projectTile = OnGetProjectile?.Invoke();
+        projectTile = (Projectile)(OnGetProduct?.Invoke());
 
         projectTile.InitProjectile(spawnPoint.position);
 

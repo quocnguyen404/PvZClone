@@ -22,9 +22,6 @@ public class Zombie : IUnit
         }
     }
 
-    public System.Func<int, List<Node>> OnGetPath = null;
-
-
     public virtual void InitializeRow(int row)
     {
         nodesPath = OnGetPath?.Invoke(row);

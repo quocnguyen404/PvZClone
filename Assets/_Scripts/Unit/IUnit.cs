@@ -18,6 +18,8 @@ public abstract class IUnit : MonoBehaviour
     public Data.UnitData UnitData = null;
     public Vector2Int GridPosition;
 
+    public System.Func<int, List<Node>> OnGetPath = null;
+    public System.Func<IProduct> OnGetProduct = null;
 
     public virtual void PlaceUnitOnNode(Node node)
     {

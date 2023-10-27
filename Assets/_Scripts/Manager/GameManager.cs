@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PickUnitManager pickUnitManager = null;
     [SerializeField] private PlacementManager placementManager = null;
     [SerializeField] private GridManager gridManager = null;
+    [SerializeField] private PhaseManager phaseManager = null;
 
     [Space]
     [Header("Object Pooling Reference")]
@@ -33,7 +35,9 @@ public class GameManager : MonoBehaviour
 
         placementManager.OnPlaceUnit = plantManager.AddUnit;
         zombieObjectPool.OnSpawnUnit = zombieManager.AddUnit;
+
         zombieManager.OnZombieGetPath = gridManager.GetRow;
+        plantManager.OnPlantGetPath = gridManager.GetRow;
         pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
 
         zombieManager.Initialize();
@@ -56,11 +60,15 @@ public class GameManager : MonoBehaviour
 
         playButton.gameObject.SetActive(false);
 
+        zombieManager.OnZombieDie = phaseManager.ZombieDie;
+        phaseManager.OnZombieDispatcher = zombieManager.DispatcherZombie;
+
         ZombieStart();
     }
 
     private void ZombieStart()
     {
-        zombieManager.DispatcherZombie(1);
+
+        phaseManager.StartLevel();
     }
 }

@@ -4,9 +4,33 @@ using UnityEngine;
 
 public class PlantManager : UnitManager
 {
-    private void GetProjectile()
-    {
+    public System.Func<int, List<Node>> OnPlantGetPath = null;
 
+    private IProduct GetProjectile()
+    {
+        return OnUnitGetProduct?.Invoke();
+    }
+
+    public override void AddUnit(IUnit unit)
+    {
+        base.AddUnit(unit);
+
+        Plant plant = PUnitCast(unit);
+        plant.OnGetPath = PlantGetPath;
+        plant.OnGetProduct = GetProjectile;
+
+        plant.InitializeRow();
+    }
+
+    private Plant PUnitCast(IUnit unit)
+    {
+        Plant pUnit = unit as Plant;
+        return pUnit;
+    }
+
+    private List<Node> PlantGetPath(int row)
+    {
+        return OnPlantGetPath?.Invoke(row);
     }
 
 }

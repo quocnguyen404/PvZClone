@@ -14,10 +14,13 @@ public class ZombieObjectPool : ObjectPoolBase
 
     public void InitializePool(LevelConfig levelConfig)
     {
-        foreach (KeyValuePair<int, string> zombie in levelConfig.zombies)
+        foreach (PhaseData phase in levelConfig.phases)
         {
-            zombiePrefab = Resources.Load<Zombie>(string.Format(GameConstant.ZOMBIE_PREFAB_PATH, zombie.Value));
-            GenerateZombie(ConfigHelper.GameConfig.zombies[zombie.Value], zombie.Key);
+            foreach (KeyValuePair<int, string> zombie in phase.zombies)
+            {
+                zombiePrefab = Resources.Load<Zombie>(string.Format(GameConstant.ZOMBIE_PREFAB_PATH, zombie.Value));
+                GenerateZombie(ConfigHelper.GameConfig.zombies[zombie.Value], zombie.Key);
+            }
         }
     }
 

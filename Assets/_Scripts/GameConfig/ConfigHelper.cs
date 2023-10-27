@@ -7,8 +7,7 @@ public static class ConfigHelper
 {
     const string UserDataKey = "UserData123";
 
-
-    public static GameConfig gameConfig = null;
+    private static GameConfig gameConfig = null;
 
     public static GameConfig GameConfig
     {

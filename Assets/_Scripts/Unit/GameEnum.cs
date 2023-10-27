@@ -12,13 +12,3 @@ namespace Data
 
 }
 
-public enum Chapter
-{
-    Day = 1,
-    Night,
-    Pool,
-    NightPool,
-    Roof,
-    NightRoof,
-}
-

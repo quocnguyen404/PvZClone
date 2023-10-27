@@ -6,8 +6,7 @@ public class UnitManager : MonoBehaviour
 {
     public List<IUnit> units = null;
     public Dictionary<int, List<IUnit>> rows = null;
-
-    public System.Action<IProduct> OnUnitGetProduct = null;
+    public System.Func<IProduct> OnUnitGetProduct = null;
 
     public virtual void Initialize()
     {

@@ -79,6 +79,7 @@
     <Compile Include="Assets\_Scripts\GameConfig\GameConstant.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\GameConfig.cs" />
     <Compile Include="Assets\_Scripts\Common\MouseIndicator.cs" />
+    <Compile Include="Assets\_Scripts\Controller\UnitAnimator.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButton.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ProjectileObjectPool.cs" />
     <Compile Include="Assets\_Scripts\Unit\GameEnum.cs" />
@@ -90,7 +91,8 @@
     <Compile Include="Assets\_Scripts\Projectile\IProduct.cs" />
     <Compile Include="Assets\_Scripts\Manager\UnitManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
-    <Compile Include="Assets\_Scripts\Controller\UnitAnimator.cs" />
+    <Compile Include="Assets\_Scripts\GameConfig\PhaseData.cs" />
+    <Compile Include="Assets\_Scripts\Manager\PhaseManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -362,6 +364,9 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.17f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -370,9 +375,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\jillejr.newtonsoft.json-for-unity@13.0.102\Plugins\Newtonsoft.Json Editor\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.17f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
