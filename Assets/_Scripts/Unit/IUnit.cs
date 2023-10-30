@@ -14,18 +14,19 @@ public abstract class IUnit : MonoBehaviour
         }
     }
 
-    public int Cost => UnitData.cost;
     public Data.UnitData UnitData = null;
     public Vector2Int GridPosition;
+    public bool isOnNode = false;
 
     public System.Func<int, List<Node>> OnGetPath = null;
-    public System.Func<IProduct> OnGetProduct = null;
+    public System.Func<Data.UnitData, IProduct> OnGetProduct = null;
 
     public virtual void PlaceUnitOnNode(Node node)
     {
         transform.position = node.WorldPosition;
-        node.unit = this;
+        node.units.Add(this);
         GridPosition = node.GridPosition;
+        isOnNode = true;
     }
 
     public virtual void TakeDamage(float damge)

@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Object Pooling Reference")]
     [SerializeField] private PlantObjectPool plantObjectPool = null;
     [SerializeField] private ZombieObjectPool zombieObjectPool = null;
-    [SerializeField] private ProjectileObjectPool projectileObjectPool = null;
+    [SerializeField] private ProductObjectPool projectileObjectPool = null;
 
     [Space]
     [Header("Unit Manager Reference")]
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
         playButton.gameObject.SetActive(false);
 
+        plantManager.OnUnitGetProduct = projectileObjectPool.GetProjectile;
         zombieManager.OnZombieDie = phaseManager.ZombieDie;
         phaseManager.OnZombieDispatcher = zombieManager.DispatcherZombie;
 

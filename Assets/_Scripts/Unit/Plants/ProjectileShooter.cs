@@ -6,8 +6,8 @@ public class ProjectileShooter : Plant
 {
     [SerializeField] protected Transform spawnPoint = null;
 
-    private int maxRange = 0;
-    private float timer = 0;
+    protected int maxRange = 0;
+    protected float timer = 0;
 
     private Projectile projectTile = null;
 
@@ -40,7 +40,7 @@ public class ProjectileShooter : Plant
 
         bool value = false;
 
-        Node checkNode = nodesPath.Find(n => n.unit is Zombie);
+        Node checkNode = nodesPath.Find(n => n.hasZombie && n.GridPosition.x >= GridPosition.x);
 
         value = checkNode != null;
 
@@ -62,7 +62,7 @@ public class ProjectileShooter : Plant
 
     protected virtual void ShotProjectile()
     {
-        projectTile = (Projectile)(OnGetProduct?.Invoke());
+        projectTile = (Projectile)(OnGetProduct?.Invoke(UnitData));
 
         projectTile.InitProjectile(spawnPoint.position);
 
@@ -75,11 +75,11 @@ public class ProjectileShooter : Plant
         maxRange = GameConstant.GARDEN_COLOUMN - node.GridPosition.y;
     }
 
-    protected void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Vector3 direction = spawnPoint.TransformDirection(Vector3.right) * maxRange;
-        Gizmos.DrawRay(spawnPoint.position, direction);
-    }
+    //protected void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Vector3 direction = spawnPoint.TransformDirection(Vector3.right) * maxRange;
+    //    Gizmos.DrawRay(spawnPoint.position, direction);
+    //}
 
 }

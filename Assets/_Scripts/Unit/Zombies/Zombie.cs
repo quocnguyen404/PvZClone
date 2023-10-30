@@ -12,7 +12,6 @@ public class Zombie : IUnit
 
     protected List<Node> nodesPath = null;
     protected int currentNodeIndex;
-    protected bool arried = false;
 
     public float unitSpeed
     {
@@ -37,7 +36,7 @@ public class Zombie : IUnit
             return;
 
         Vector3 destination = nodesPath[currentNodeIndex].WorldPosition;
-        IUnit target = nodesPath[currentNodeIndex].unit;
+        IUnit target = nodesPath[currentNodeIndex].GetPlantFromNode();
 
         if (target != null)
         {
@@ -50,8 +49,8 @@ public class Zombie : IUnit
 
             MoveToDestination(destination, () =>
             {
-                arried = true;
-                currentNodeIndex--;
+
+                nodesPath[currentNodeIndex].units.Add(this);
             });
         }
     }
@@ -71,6 +70,7 @@ public class Zombie : IUnit
             .SetEase(Ease.Linear)
             .OnComplete(() =>
             {
+                currentNodeIndex--;
                 Callback?.Invoke();
             }).SetAutoKill();
     }

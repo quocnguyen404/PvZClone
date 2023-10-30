@@ -1,214 +1,214 @@
 {
-	"plants" : {
-		"Peashooter" : {
-			"unitName" : "Peashooter",
-			"productName" : "Pea",
-			"cost" : 100,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 5
-				},
-				{
-					"type" : 1,
-					"value" : 5
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 5
-				},
-				{
-					"type" : 4,
-					"value" : 0.2
-				}
-			]
-		},
-		"Sunflower" : {
-			"unitName" : "Sunflower",
-			"productName" : "",
-			"cost" : 50,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 5
-				},
-				{
-					"type" : 1,
-					"value" : 5
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 5
-				},
-				{
-					"type" : 4,
-					"value" : 0.2
-				}
-			]
-		},
-		"Wall-nut" : {
-			"unitName" : "Wall-nut",
-			"productName" : "",
-			"cost" : 50,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 5
-				},
-				{
-					"type" : 1,
-					"value" : 5
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 5
-				},
-				{
-					"type" : 4,
-					"value" : 0.2
-				}
-			]
-		}
-	},
-	"zombies" : {
-		"Zombie" : {
-			"unitName" : "Zombie",
-			"cost" : 0,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 10
-				},
-				{
-					"type" : 1,
-					"value" : 5
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 4.7
-				},
-				{
-					"type" : 4,
-					"value" : 0.2
-				}
-			]
-		},
-		"Flag Zombie" : {
-			"unitName" : "Flag Zombie",
-			"cost" : 0,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 10
-				},
-				{
-					"type" : 1,
-					"value" : 5
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 4.7
-				},
-				{
-					"type" : 4,
-					"value" : 0.2
-				}
-			]
-		},
-		"Conehead Zombie" : {
-			"unitName" : "Conehead Zombie",
-			"cost" : 0,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 10
-				},
-				{
-					"type" : 1,
-					"value" : 5
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 4.7
-				},
-				{
-					"type" : 4,
-					"value" : 0.2
-				}
-			]
-		}
-	},
-	"levelConfigs" : {
-		"1" : {
-			"levelIndex" : 1,
-			"zombiesAmount" : 5,
-			"timeBetweenPhase" : 30,
-			"phases" : [
-				{
-					"phaseIndex" : 1,
-					"zombieAmount" : 5,
-					"timeBetweenSpawn" : 2,
-					"zombies" : {
-						"2" : "Zombie",
-						"1" : "Flag Zombie"
-					}
-				}
-			]
-		},
-		"2" : {
-			"levelIndex" : 1,
-			"zombiesAmount" : 10,
-			"timeBetweenPhase" : 30,
-			"phases" : [
-				{
-					"phaseIndex" : 1,
-					"zombieAmount" : 5,
-					"timeBetweenSpawn" : 2,
-					"zombies" : {
-						"2" : "Zombie",
-						"1" : "Flag Zombie"
-					}
-				},
-				{
-					"phaseIndex" : 2,
-					"zombieAmount" : 5,
-					"timeBetweenSpawn" : 2,
-					"zombies" : {
-						"2" : "Zombie",
-						"1" : "Conehead Zombie"
-					}
-				}
-			]
-		}
-	}
+    "plants": {
+        "Peashooter": {
+            "unitName": "Peashooter",
+            "productName": "Pea",
+            "cost": 100,
+            "rechargeTime": 7.5,
+            "attributes": [
+                {
+                    "type": 0,
+                    "value": 5
+                },
+                {
+                    "type": 1,
+                    "value": 5
+                },
+                {
+                    "type": 2,
+                    "value": 5
+                },
+                {
+                    "type": 3,
+                    "value": 5
+                },
+                {
+                    "type": 4,
+                    "value": 1.425
+                }
+            ]
+        },
+        "Sunflower": {
+            "unitName": "Sunflower",
+            "productName": "Sun",
+            "cost": 50,
+            "rechargeTime": 7.5,
+            "attributes": [
+                {
+                    "type": 0,
+                    "value": 5
+                },
+                {
+                    "type": 1,
+                    "value": 5
+                },
+                {
+                    "type": 2,
+                    "value": 5
+                },
+                {
+                    "type": 3,
+                    "value": 5
+                },
+                {
+                    "type": 4,
+                    "value": 24.25
+                }
+            ]
+        },
+        "Wall-nut": {
+            "unitName": "Wall-nut",
+            "productName": "",
+            "cost": 50,
+            "rechargeTime": 7.5,
+            "attributes": [
+                {
+                    "type": 0,
+                    "value": 5
+                },
+                {
+                    "type": 1,
+                    "value": 5
+                },
+                {
+                    "type": 2,
+                    "value": 5
+                },
+                {
+                    "type": 3,
+                    "value": 5
+                },
+                {
+                    "type": 4,
+                    "value": 0.2
+                }
+            ]
+        }
+    },
+    "zombies": {
+        "Zombie": {
+            "unitName": "Zombie",
+            "cost": 0,
+            "rechargeTime": 7.5,
+            "attributes": [
+                {
+                    "type": 0,
+                    "value": 10
+                },
+                {
+                    "type": 1,
+                    "value": 5
+                },
+                {
+                    "type": 2,
+                    "value": 5
+                },
+                {
+                    "type": 3,
+                    "value": 4.7
+                },
+                {
+                    "type": 4,
+                    "value": 0.2
+                }
+            ]
+        },
+        "Flag Zombie": {
+            "unitName": "Flag Zombie",
+            "cost": 0,
+            "rechargeTime": 7.5,
+            "attributes": [
+                {
+                    "type": 0,
+                    "value": 10
+                },
+                {
+                    "type": 1,
+                    "value": 5
+                },
+                {
+                    "type": 2,
+                    "value": 5
+                },
+                {
+                    "type": 3,
+                    "value": 4.7
+                },
+                {
+                    "type": 4,
+                    "value": 0.2
+                }
+            ]
+        },
+        "Conehead Zombie": {
+            "unitName": "Conehead Zombie",
+            "cost": 0,
+            "rechargeTime": 7.5,
+            "attributes": [
+                {
+                    "type": 0,
+                    "value": 10
+                },
+                {
+                    "type": 1,
+                    "value": 5
+                },
+                {
+                    "type": 2,
+                    "value": 5
+                },
+                {
+                    "type": 3,
+                    "value": 4.7
+                },
+                {
+                    "type": 4,
+                    "value": 0.2
+                }
+            ]
+        }
+    },
+    "levelConfigs": {
+        "1": {
+            "levelIndex": 1,
+            "zombiesAmount": 5,
+            "timeBetweenPhase": 30,
+            "phases": [
+                {
+                    "phaseIndex": 1,
+                    "zombieAmount": 5,
+                    "timeBetweenSpawn": 2,
+                    "zombies": {
+                        "2": "Zombie",
+                        "1": "Flag Zombie"
+                    }
+                }
+            ]
+        },
+        "2": {
+            "levelIndex": 1,
+            "zombiesAmount": 10,
+            "timeBetweenPhase": 30,
+            "phases": [
+                {
+                    "phaseIndex": 1,
+                    "zombieAmount": 5,
+                    "timeBetweenSpawn": 2,
+                    "zombies": {
+                        "2": "Zombie",
+                        "1": "Flag Zombie"
+                    }
+                },
+                {
+                    "phaseIndex": 2,
+                    "zombieAmount": 5,
+                    "timeBetweenSpawn": 2,
+                    "zombies": {
+                        "2": "Zombie",
+                        "1": "Conehead Zombie"
+                    }
+                }
+            ]
+        }
+    }
 }

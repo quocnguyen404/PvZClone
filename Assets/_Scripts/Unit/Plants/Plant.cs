@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Plant : IUnit
 {
-    [SerializeField] protected LayerMask zombieLayerMask;
     [SerializeField] protected List<Node> nodesPath;
 
 

@@ -10,5 +10,7 @@ public static class GameConstant
     public const int GARDEN_ROW = 5;
     public const int GARDEN_COLOUMN = 9;
     public const float NODE_LENGTH = 1f;
+
+    public const float TIME_SUN_MOVE = 2f;
 }
 

@@ -365,6 +365,7 @@
 "Assets/_Scripts/Manager/GameManager.cs"
 "Assets/_Scripts/Manager/GridManager.cs"
 "Assets/_Scripts/Manager/InputManager.cs"
+"Assets/_Scripts/Manager/PhaseManager.cs"
 "Assets/_Scripts/Manager/PlacementManager.cs"
 "Assets/_Scripts/Manager/PlantManager.cs"
 "Assets/_Scripts/Manager/UnitManager.cs"

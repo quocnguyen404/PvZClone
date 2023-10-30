@@ -7,6 +7,7 @@ public class PlacementManager : MonoBehaviour
 {
     [Header("Component Reference")]
     [SerializeField] private InputManager inputManager = null;
+    [SerializeField] private CurrencyManager currencyManager = null;
     [SerializeField] private Button shovelButton = null;
 
     public System.Action<IUnit> OnPlaceUnit = null;
@@ -17,6 +18,7 @@ public class PlacementManager : MonoBehaviour
     public void Initialize()
     {
         startPlacing = true;
+        currencyManager.Initialize();
     }
 
     private void Update()
@@ -41,10 +43,11 @@ public class PlacementManager : MonoBehaviour
 
     public void PlaceUnitOnNode(Node node)
     {
-        if (node.unit != null)
+        if (node.HasPlant())
             return;
 
         selectedUnit.PlaceUnitOnNode(node);
+        currencyManager.BuyPlant(selectedUnit.UnitData);
         OnPlaceUnit?.Invoke(selectedUnit);
 
         selectedUnit = null;
@@ -52,6 +55,12 @@ public class PlacementManager : MonoBehaviour
 
     public void GetSelectedUnitData(IUnit unit)
     {
+        if (!currencyManager.CanBuy(unit.UnitData))
+        {
+            unit.gameObject.SetActive(false);
+            return;
+        }
+
         selectedUnit = unit;
     }
 }

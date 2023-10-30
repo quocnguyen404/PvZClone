@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Manager\PhaseManager.cs" />
     <Compile Include="Assets\_Scripts\Common\GameUtilities.cs" />
     <Compile Include="Assets\_Scripts\UI\PlantButtonHold.cs" />
     <Compile Include="Assets\_Scripts\UI\Slot.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Assets\_Scripts\GameConfig\UserData.cs" />
     <Compile Include="Assets\_Scripts\Grid\Node.cs" />
     <Compile Include="Assets\_Scripts\Unit\UnitData.cs" />
-    <Compile Include="Assets\_Scripts\Projectile\Projectile.cs" />
+    <Compile Include="Assets\_Scripts\Product\Projectile.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\ConfigHelper.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButtonPanel.cs" />
     <Compile Include="Assets\_Scripts\Unit\IUnit.cs" />
@@ -76,23 +77,26 @@
     <Compile Include="Assets\_Scripts\UI\PickUnitManager.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\PlantObjectPool.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\ProjectileShooter.cs" />
+    <Compile Include="Assets\_Scripts\GameConfig\PhaseData.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\GameConstant.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\GameConfig.cs" />
     <Compile Include="Assets\_Scripts\Common\MouseIndicator.cs" />
     <Compile Include="Assets\_Scripts\Controller\UnitAnimator.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButton.cs" />
-    <Compile Include="Assets\_Scripts\ObjectPooling\ProjectileObjectPool.cs" />
+    <Compile Include="Assets\_Scripts\ObjectPooling\ProductObjectPool.cs" />
     <Compile Include="Assets\_Scripts\Unit\GameEnum.cs" />
     <Compile Include="Assets\_Scripts\Unit\Zombies\Zombie.cs" />
     <Compile Include="Assets\_Scripts\Manager\PlantManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Plant.cs" />
     <Compile Include="Assets\_Scripts\Manager\GridManager.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\LevelConfig.cs" />
-    <Compile Include="Assets\_Scripts\Projectile\IProduct.cs" />
+    <Compile Include="Assets\_Scripts\Product\IProduct.cs" />
     <Compile Include="Assets\_Scripts\Manager\UnitManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
-    <Compile Include="Assets\_Scripts\GameConfig\PhaseData.cs" />
-    <Compile Include="Assets\_Scripts\Manager\PhaseManager.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Plants\SunProducing.cs" />
+    <Compile Include="Assets\_Scripts\Product\Sun.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Plants\WallPlant.cs" />
+    <Compile Include="Assets\_Scripts\Manager\CurrencyManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

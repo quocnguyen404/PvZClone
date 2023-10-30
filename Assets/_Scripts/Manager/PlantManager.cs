@@ -6,9 +6,9 @@ public class PlantManager : UnitManager
 {
     public System.Func<int, List<Node>> OnPlantGetPath = null;
 
-    private IProduct GetProjectile()
+    private IProduct GetProjectile(Data.UnitData data)
     {
-        return OnUnitGetProduct?.Invoke();
+        return OnUnitGetProduct?.Invoke(data);
     }
 
     public override void AddUnit(IUnit unit)
