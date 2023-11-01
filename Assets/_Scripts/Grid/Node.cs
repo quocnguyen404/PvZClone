@@ -8,10 +8,24 @@ public class Node : MonoBehaviour
 
     public Vector2Int GridPosition;
     public Vector3 WorldPosition;
-    public List<IUnit> units = null;
+    private List<IUnit> units = null;
 
     public bool hasZombie => HasZombie();
 
+    public void Initialize()
+    {
+        units = new List<IUnit>();
+    }
+
+    public void AddUnit(IUnit unit)
+    {
+        units.Add(unit);
+    }
+
+    public void RemoveUnit(IUnit unit)
+    {
+        units.Remove(unit);
+    }
 
     public bool HasPlant()
     {
@@ -20,9 +34,9 @@ public class Node : MonoBehaviour
         return unit != null;
     }
 
-    public bool HasZombie()
+    private bool HasZombie()
     {
-        IUnit unit = units.Find(n => n is Zombie);
+        IUnit unit = units.Find(n => n is Zombie && n.IsAlive);
 
         return unit != null;
     }

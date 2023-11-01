@@ -18,6 +18,7 @@ public class Projectile : IProduct
     public void MoveToTarget(Vector3 dir)
     {
         rgBody.AddForce(dir * speed);
+        ReturnPool(10f);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -12,5 +12,6 @@ public static class GameConstant
     public const float NODE_LENGTH = 1f;
 
     public const float TIME_SUN_MOVE = 2f;
+    public const float TIME_SUN_DISARPEAR = 4f;
 }
 

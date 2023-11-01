@@ -63,4 +63,10 @@ public class PlacementManager : MonoBehaviour
 
         selectedUnit = unit;
     }
+
+    public void PickUpSun(Sun sun)
+    {
+        currencyManager.PickSunUp(sun.value);
+        sun.MoveToSunBar(currencyManager.GetSunBarPosition());
+    }
 }

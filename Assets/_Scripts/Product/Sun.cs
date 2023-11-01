@@ -8,6 +8,8 @@ public class Sun : IProduct
 {
     [SerializeField] private float jumpSpeed;
 
+    public System.Action<Sun> OnClick = null;
+
     public float jumpTime = 0.5f;
     public float jumpForce = 0.5f;
     public int value = 50;
@@ -33,10 +35,22 @@ public class Sun : IProduct
         Vector3 jumpTarget = transform.position + dir * jumpForce;
 
         transform.DOJump(jumpTarget, jumpForce, 1, jumpTime).SetEase(Ease.OutCubic).SetAutoKill();
+
+        ReturnPool(4f);
     }
 
-    public void MoveToPosition(Vector3 pos)
+    public void MoveToSunBar(Vector3 pos)
     {
-        transform.DOMove(pos, GameConstant.TIME_SUN_MOVE).SetAutoKill();
+        transform.DOMove(pos, GameConstant.TIME_SUN_MOVE)
+            .OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+            })
+            .SetAutoKill();
+    }
+
+    private void OnMouseDown()
+    {
+        OnClick?.Invoke(this);
     }
 }

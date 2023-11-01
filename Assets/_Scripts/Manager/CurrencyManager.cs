@@ -12,8 +12,13 @@ public class CurrencyManager : MonoBehaviour
 
     public void Initialize()
     {
-        OnSunChange(25);
+        OnSunChange(50);
         ShowSunBar();
+    }
+
+    public void PickSunUp(int value)
+    {
+        OnSunChange(value);
     }
 
     public void BuyPlant(Data.UnitData unit)
@@ -23,7 +28,7 @@ public class CurrencyManager : MonoBehaviour
 
     public bool CanBuy(Data.UnitData unit)
     {
-        return currentSun - unit.cost > 0;
+        return currentSun - unit.cost >= 0;
     }
 
     private void OnSunChange(int value)
@@ -35,7 +40,12 @@ public class CurrencyManager : MonoBehaviour
 
     public void ShowSunBar()
     {
-        sunbar.SetActive(true);
+        sunbar.gameObject.SetActive(true);
+    }
+
+    public Vector3 GetSunBarPosition()
+    {
+        return sunbar.transform.position;
     }
 
     private void UpdateSunText()

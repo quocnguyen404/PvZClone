@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
     [Header("Object Pooling Reference")]
     [SerializeField] private PlantObjectPool plantObjectPool = null;
     [SerializeField] private ZombieObjectPool zombieObjectPool = null;
-    [SerializeField] private ProductObjectPool projectileObjectPool = null;
+    [SerializeField] private ProductObjectPool productObjectPool = null;
 
     [Space]
     [Header("Unit Manager Reference")]
     [SerializeField] private PlantManager plantManager = null;
     [SerializeField] private ZombieManager zombieManager = null;
+    [SerializeField] private SunManager sunManager = null;
 
     [Space]
     [SerializeField] private Button playButton = null;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
 
         placementManager.OnPlaceUnit = plantManager.AddUnit;
         zombieObjectPool.OnSpawnUnit = zombieManager.AddUnit;
+        productObjectPool.OnSpawnProduct = sunManager.AddProduct;
 
         zombieManager.OnZombieGetPath = gridManager.GetRow;
         plantManager.OnPlantGetPath = gridManager.GetRow;
@@ -51,16 +53,18 @@ public class GameManager : MonoBehaviour
             return;
 
         pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
+        sunManager.OnSunClick = placementManager.PickUpSun;
 
         pickUnitManager.InitializeUnitData();
 
         placementManager.Initialize();
         plantObjectPool.InitilizePool(pickUnitManager.PlantDatas());
-        projectileObjectPool.InitializePool(pickUnitManager.PlantDatas());
+        productObjectPool.InitializePool(pickUnitManager.PlantDatas());
 
+        playButton.onClick.RemoveAllListeners();
         playButton.gameObject.SetActive(false);
 
-        plantManager.OnUnitGetProduct = projectileObjectPool.GetProjectile;
+        plantManager.OnUnitGetProduct = productObjectPool.GetProduct;
         zombieManager.OnZombieDie = phaseManager.ZombieDie;
         phaseManager.OnZombieDispatcher = zombieManager.DispatcherZombie;
 

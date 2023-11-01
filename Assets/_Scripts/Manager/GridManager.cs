@@ -46,6 +46,7 @@ public class GridManager : MonoBehaviour
                 float z = nodeBottom.z + i * nodeLeng;
                 Node newNode = Instantiate(nodePrefab, new Vector3(x, transform.position.y, z), Quaternion.identity);
 
+                newNode.Initialize();
                 newNode.GridPosition = new Vector2Int(i, j);
                 newNode.WorldPosition = newNode.transform.position;
                 newNode.transform.parent = parentTrans;

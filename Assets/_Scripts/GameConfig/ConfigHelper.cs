@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 public static class ConfigHelper
 {
-    const string UserDataKey = "UserData123";
+    private const string UserDataKey = "UserData123";
 
     private static GameConfig gameConfig = null;
 

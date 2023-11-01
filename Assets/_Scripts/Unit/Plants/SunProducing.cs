@@ -12,7 +12,7 @@ public class SunProducing : Plant
 
     protected virtual void Update()
     {
-        if (isOnNode)
+        if (IsOnNode)
         {
             ProduceSun();
         }
