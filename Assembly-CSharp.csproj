@@ -64,7 +64,9 @@
     <Compile Include="Assets\_Scripts\ObjectPooling\ObjectPoolBase.cs" />
     <Compile Include="Assets\_Scripts\Manager\Unit Manager\ZombieManager.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\UserData.cs" />
+    <Compile Include="Assets\_Scripts\Manager\Product Manager\SunManager.cs" />
     <Compile Include="Assets\_Scripts\Grid\Node.cs" />
+    <Compile Include="Assets\_Scripts\Manager\Product Manager\ProductManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\UnitData.cs" />
     <Compile Include="Assets\_Scripts\Product\Projectile.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\ConfigHelper.cs" />
@@ -97,8 +99,8 @@
     <Compile Include="Assets\_Scripts\Manager\CurrencyManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\Unit Manager\UnitManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
-    <Compile Include="Assets\_Scripts\Manager\Product Manager\ProductManager.cs" />
-    <Compile Include="Assets\_Scripts\Manager\Product Manager\SunManager.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Plants\InstantUsePlant.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Unit Interface\IInstantUserPlant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

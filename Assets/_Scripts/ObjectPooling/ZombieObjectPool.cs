@@ -16,7 +16,7 @@ public class ZombieObjectPool : ObjectPoolBase
     {
         foreach (PhaseData phase in levelConfig.phases)
         {
-            foreach (KeyValuePair<int, string> zombie in phase.zombies)
+            foreach (var zombie in phase.zombies)
             {
                 zombiePrefab = Resources.Load<Zombie>(string.Format(GameConstant.ZOMBIE_PREFAB_PATH, zombie.Value));
                 GenerateZombie(ConfigHelper.GameConfig.zombies[zombie.Value], zombie.Key);

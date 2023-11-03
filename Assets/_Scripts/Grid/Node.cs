@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer meshRd = null;
+    [SerializeField] protected MeshRenderer meshRd = null;
 
     public Vector2Int GridPosition;
     public Vector3 WorldPosition;
@@ -19,6 +19,7 @@ public class Node : MonoBehaviour
 
     public void AddUnit(IUnit unit)
     {
+        unit.GridPosition = GridPosition;
         units.Add(unit);
     }
 
@@ -43,14 +44,26 @@ public class Node : MonoBehaviour
 
     public Plant GetPlantFromNode()
     {
+        if (units == null)
+            return null;
+
         Plant plant = units.Find(n => n is Plant) as Plant;
 
         return plant;
     }
 
-    public void MoreBold()
+    public void ChangeColor(Color color)
     {
-        meshRd.material.color = Color.green;
+        meshRd.material.color = color;
+    }
+
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawCube(WorldPosition, Vector3.one * 0.3f);
     }
 }
 

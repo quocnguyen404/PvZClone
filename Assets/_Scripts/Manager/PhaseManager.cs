@@ -15,25 +15,30 @@ public class PhaseManager : MonoBehaviour
     public void StartLevel()
     {
         LevelConfig currentLevel = ConfigHelper.GetCurrentLevelConfig();
-        maxPhase = currentLevel.phases.Count;
+        maxPhase = currentLevel.phases.Count - 1;
         currentPhase = 0;
         killCount = 0;
         killToCallNextPhase = 0;
 
-        this.DelayCall(1f, () => { StartPhase(currentLevel.phases[currentPhase]); });
+        this.DelayCall(1f, () =>
+        {
+            StartPhase(currentLevel.phases[currentPhase]);
+        });
     }
 
     public void StartPhase(PhaseData phase)
     {
         currentPhase = phase.phaseIndex;
-        killToCallNextPhase = phase.zombieAmount / 2;
+        killToCallNextPhase = phase.zombieAmount;
+
+        float callTime = phase.timeBetweenSpawn;
+
 
         foreach (var zombie in phase.zombies)
         {
-            this.DelayCall(phase.timeBetweenSpawn, () =>
-            {
-                OnZombieDispatcher?.Invoke(zombie.Key, zombie.Value);
-            });
+
+            CallNextZombie(callTime, () => { OnZombieDispatcher?.Invoke(zombie.Key, zombie.Value); });
+            callTime += phase.timeBetweenSpawn;
         }
     }
 
@@ -45,6 +50,7 @@ public class PhaseManager : MonoBehaviour
         {
             CallNextPhase();
         }
+
     }
 
     public void CallNextPhase()
@@ -55,12 +61,25 @@ public class PhaseManager : MonoBehaviour
 
         StopCoroutine("IEDelayCall");
 
-        if (currentPhase >= maxPhase)
+        if (currentPhase > maxPhase)
         {
+            StopAllCoroutines();
             OnWin?.Invoke();
             return;
         }
 
         StartPhase(ConfigHelper.GetCurrentLevelConfig().phases[currentPhase]);
+    }
+
+    private void CallNextZombie(float time, System.Action callback)
+    {
+        StartCoroutine(IEDelay(time, callback));
+    }
+
+    private IEnumerator IEDelay(float time, System.Action callback)
+    {
+        yield return Helper.GetWait(time);
+
+        callback?.Invoke();
     }
 }

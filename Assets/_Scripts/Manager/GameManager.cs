@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        gridManager.Initialize();
+        gridManager.Initialize(GameConstant.GARDEN_ROW, GameConstant.GARDEN_COLOUMN, GameConstant.NODE_LENGTH);
 
         playButton.onClick.AddListener(() => { StartGame(); });
 
@@ -67,13 +68,18 @@ public class GameManager : MonoBehaviour
         plantManager.OnUnitGetProduct = productObjectPool.GetProduct;
         zombieManager.OnZombieDie = phaseManager.ZombieDie;
         phaseManager.OnZombieDispatcher = zombieManager.DispatcherZombie;
+        phaseManager.OnWin = Win;
 
         ZombieStart();
     }
 
     private void ZombieStart()
     {
-
         phaseManager.StartLevel();
+    }
+
+    private void Win()
+    {
+        Debug.Log("Win");
     }
 }

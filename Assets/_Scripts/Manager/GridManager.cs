@@ -15,15 +15,15 @@ public class GridManager : MonoBehaviour
 
     [Space]
     public bool draw = false;
-
+    public bool isBold = true;
     private Vector3 nodeBottom;
     private Node[,] nodes;
 
-    public void Initialize()
+    public void Initialize(int row, int column, float nodeLen)
     {
-        row = GameConstant.GARDEN_ROW;
-        column = GameConstant.GARDEN_COLOUMN;
-        nodeLeng = GameConstant.NODE_LENGTH;
+        this.row = row;
+        this.column = column;
+        this.nodeLeng = nodeLen;
 
         float x = transform.position.x - ((column * nodeLeng) / 2) + (nodeLeng / 2);
         float z = transform.position.z - ((row * nodeLeng) / 2) + (nodeLeng / 2);
@@ -32,7 +32,7 @@ public class GridManager : MonoBehaviour
         GenerateGrid();
     }
 
-    public void GenerateGrid()
+    private void GenerateGrid()
     {
         nodes = new Node[row, column];
         rows = new Dictionary<int, List<Node>>();
@@ -51,8 +51,8 @@ public class GridManager : MonoBehaviour
                 newNode.WorldPosition = newNode.transform.position;
                 newNode.transform.parent = parentTrans;
 
-                if ((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0))
-                    newNode.MoreBold();
+                if (((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0)) && isBold)
+                    newNode.ChangeColor(Color.green);
 
                 nodes[i, j] = newNode;
                 rows[i].Add(newNode);

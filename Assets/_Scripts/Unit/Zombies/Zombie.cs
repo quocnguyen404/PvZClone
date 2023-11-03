@@ -19,11 +19,11 @@ public class Zombie : IUnit
 
     public virtual void InitializeRow(int row)
     {
-        nodesPath = OnGetPath?.Invoke(row);
+        nodesPath = new List<Node>(OnGetPath?.Invoke(row));
 
-        currentNodeIndex = GameConstant.GARDEN_COLOUMN - 1;
+        currentNodeIndex = GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN - 1;
 
-        Move();
+        transform.position = nodesPath[currentNodeIndex].WorldPosition;
     }
 
 
@@ -37,7 +37,16 @@ public class Zombie : IUnit
 
         }
 
-        Vector3 nodePosition = nodesPath[currentNodeIndex].WorldPosition;
+        Vector3 nodePosition = Vector3.zero;
+        try
+        {
+            nodePosition = nodesPath[currentNodeIndex].WorldPosition;
+        }
+        catch
+        {
+            Debug.Log("AA");
+        }
+
         Vector3 destination = new Vector3(nodePosition.x - GameConstant.NODE_LENGTH / 2, nodePosition.y, nodePosition.z);
         IUnit target = nodesPath[currentNodeIndex].GetPlantFromNode();
 
@@ -87,10 +96,6 @@ public class Zombie : IUnit
     public override void Dead()
     {
         base.Dead();
-
-        gameObject.SetActive(false);
-        nodesPath[currentNodeIndex].RemoveUnit(this);
-        nodesPath.Clear();
         OnZombieDie?.Invoke();
     }
 }

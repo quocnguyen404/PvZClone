@@ -52,7 +52,7 @@
 				},
 				{
 					"type" : 4,
-					"value" : 24.25
+					"value" : 5
 				}
 			]
 		},
@@ -175,11 +175,21 @@
 			"timeBetweenPhase" : 30,
 			"phases" : [
 				{
-					"phaseIndex" : 1,
-					"zombieAmount" : 5,
+					"phaseIndex" : 0,
+					"zombieAmount" : 3,
 					"timeBetweenSpawn" : 2,
 					"zombies" : {
-						"1" : "Flag Zombie"
+						"1" : "Flag Zombie",
+						"2" : "Zombie"
+					}
+				},
+				{
+					"phaseIndex" : 1,
+					"zombieAmount" : 3,
+					"timeBetweenSpawn" : 2,
+					"zombies" : {
+						"1" : "Flag Zombie",
+						"2" : "Zombie"
 					}
 				}
 			]

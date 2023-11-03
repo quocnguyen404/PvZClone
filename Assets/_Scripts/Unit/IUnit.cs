@@ -6,7 +6,9 @@ using UnityEngine;
 public abstract class IUnit : MonoBehaviour
 {
     [SerializeField] protected UnitAnimator animator = null;
-    [SerializeField] protected List<Node> nodesPath = null;
+
+    [SerializeField]
+    protected List<Node> nodesPath = null;
 
     public string Name
     {
@@ -30,8 +32,8 @@ public abstract class IUnit : MonoBehaviour
     public System.Func<int, List<Node>> OnGetPath = null;
     public System.Func<Data.UnitData, IProduct> OnGetProduct = null;
 
-    private float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
-    private float currentHealth;
+    protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
+    protected float currentHealth;
 
     public bool IsAlive => currentHealth > 0;
 
@@ -62,5 +64,9 @@ public abstract class IUnit : MonoBehaviour
     {
         //return to pool
         Debug.Log(UnitData.unitName + " is die");
+        gameObject.SetActive(false);
+        nodesPath[GridPosition.y].RemoveUnit(this);
+        transform.position = Vector3.zero;
+        nodesPath.Clear();
     }
 }

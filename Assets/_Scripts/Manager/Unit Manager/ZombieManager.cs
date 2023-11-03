@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ZombieManager : UnitManager
 {
-    private Vector3 nodeBottom;
+    [SerializeField] private GridManager gridManager = null;
+    private Dictionary<int, List<Node>> nodes;
 
     public System.Action OnZombieWin = null;
     public System.Action OnZombieDie = null;
@@ -13,17 +14,15 @@ public class ZombieManager : UnitManager
     public override void Initialize()
     {
         base.Initialize();
-
-        float x = transform.position.x - ((GameConstant.GARDEN_ROW * GameConstant.NODE_LENGTH) / 2) + (GameConstant.NODE_LENGTH / 2);
-        float z = transform.position.z - ((GameConstant.GARDEN_ROW * GameConstant.NODE_LENGTH) / 2) + (GameConstant.NODE_LENGTH / 2);
-        nodeBottom = new Vector3(x, transform.position.y, z);
+        gridManager.isBold = false;
+        gridManager.Initialize(GameConstant.ZOMBIE_ROW, GameConstant.ZOMBIE_COLUMN, GameConstant.NODE_LENGTH);
     }
 
     public void DispatcherZombie(int amount, string zombieName)
     {
         for (int i = 0; i < amount; i++)
         {
-            int row = Random.Range(0, GameConstant.GARDEN_ROW);
+            int row = Random.Range(0, GameConstant.ZOMBIE_ROW);
 
             Zombie zombie = GetZombieAlive(zombieName);
             zombie.OnGetPath = ZombieGetPath;
@@ -33,8 +32,10 @@ public class ZombieManager : UnitManager
 
     public override void AddUnit(IUnit unit)
     {
+        int row = Random.Range(0, GameConstant.ZOMBIE_ROW);
+        int column = Random.Range(0, GameConstant.ZOMBIE_COLUMN);
+
         base.AddUnit(unit);
-        unit.transform.position = RandomPositionOnPlane();
         Zombie zombie = ZUnitCast(unit);
         zombie.OnZombieDie = ZombieDie;
         zombie.Initialize();
@@ -47,7 +48,9 @@ public class ZombieManager : UnitManager
 
     private List<Node> ZombieGetPath(int row)
     {
-        return OnZombieGetPath?.Invoke(row);
+        List<Node> nodepaths = OnZombieGetPath?.Invoke(row);
+        nodepaths.AddRange(gridManager.GetRow(row));
+        return nodepaths;
     }
 
     private void ZombieDie()
@@ -66,17 +69,17 @@ public class ZombieManager : UnitManager
         return ZUnitCast(units.Find(z => ZUnitCast(z).IsAlive && !ZUnitCast(z).IsOnNode && z.UnitData.unitName == zombieName));
     }
 
-    public Vector3 RandomPositionOnPlane()
-    {
-        int x = Random.Range(1, 5) * 1;
-        int z = Random.Range(0, 5) * 1;
+    //public Vector3 RandomPositionOnPlane()
+    //{
+    //    int x = Random.Range(1, 5) * 1;
+    //    int z = Random.Range(0, 5) * 1;
 
-        return new Vector3(x + nodeBottom.x, transform.position.y, z + nodeBottom.z);
-    }
+    //    return new Vector3(x + nodeBottom.x, transform.position.y, z + nodeBottom.z);
+    //}
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(nodeBottom, Vector3.one * 0.3f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawCube(nodeBottom, Vector3.one * 0.3f);
+    //}
 }

@@ -6,7 +6,7 @@ public class Plant : IUnit
 {
     public virtual void InitializeRow()
     {
-        nodesPath = OnGetPath?.Invoke(GridPosition.x);
+        nodesPath = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
     }
 
     public override void PlaceUnitOnNode(Node node)
@@ -15,12 +15,4 @@ public class Plant : IUnit
         Initialize();
     }
 
-    public override void Dead()
-    {
-        base.Dead();
-        gameObject.SetActive(false);
-        nodesPath[GridPosition.y].RemoveUnit(this);
-        transform.position = Vector3.zero;
-        nodesPath.Clear();
-    }
 }
