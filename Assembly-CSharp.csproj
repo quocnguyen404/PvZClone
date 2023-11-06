@@ -70,6 +70,7 @@
     <Compile Include="Assets\_Scripts\Unit\UnitData.cs" />
     <Compile Include="Assets\_Scripts\Product\Projectile.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\ConfigHelper.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Plants\InstantUsePlant.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButtonPanel.cs" />
     <Compile Include="Assets\_Scripts\Unit\IUnit.cs" />
     <Compile Include="Assets\_Scripts\Unit\Attribute.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\_Scripts\Controller\UnitAnimator.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButton.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ProductObjectPool.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Unit Interface\IInstantUserPlant.cs" />
     <Compile Include="Assets\_Scripts\Unit\GameEnum.cs" />
     <Compile Include="Assets\_Scripts\Unit\Zombies\Zombie.cs" />
     <Compile Include="Assets\_Scripts\Manager\Unit Manager\PlantManager.cs" />
@@ -99,8 +101,6 @@
     <Compile Include="Assets\_Scripts\Manager\CurrencyManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\Unit Manager\UnitManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
-    <Compile Include="Assets\_Scripts\Unit\Plants\InstantUsePlant.cs" />
-    <Compile Include="Assets\_Scripts\Unit\Unit Interface\IInstantUserPlant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

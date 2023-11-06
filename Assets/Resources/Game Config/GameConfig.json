@@ -171,24 +171,26 @@
 	"levelConfigs" : {
 		"1" : {
 			"levelIndex" : 1,
-			"zombiesAmount" : 5,
 			"timeBetweenPhase" : 30,
 			"phases" : [
 				{
 					"phaseIndex" : 0,
-					"zombieAmount" : 3,
-					"timeBetweenSpawn" : 2,
+					"timeBetweenSpawn" : 3,
 					"zombies" : {
-						"1" : "Flag Zombie",
 						"2" : "Zombie"
 					}
 				},
 				{
 					"phaseIndex" : 1,
-					"zombieAmount" : 3,
-					"timeBetweenSpawn" : 2,
+					"timeBetweenSpawn" : 3,
 					"zombies" : {
-						"1" : "Flag Zombie",
+						"2" : "Zombie"
+					}
+				},
+				{
+					"phaseIndex" : 2,
+					"timeBetweenSpawn" : 3,
+					"zombies" : {
 						"2" : "Zombie"
 					}
 				}
@@ -196,7 +198,6 @@
 		},
 		"2" : {
 			"levelIndex" : 1,
-			"zombiesAmount" : 10,
 			"timeBetweenPhase" : 30,
 			"phases" : [
 				{

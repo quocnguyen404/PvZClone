@@ -13,7 +13,8 @@ public class PlacementManager : MonoBehaviour
     public System.Action<IUnit> OnPlaceUnit = null;
 
     private bool startPlacing = false;
-    public IUnit selectedUnit = null;
+    private IUnit selectedUnit = null;
+    private UnitButton selectedButton = null;
 
     public void Initialize()
     {
@@ -49,11 +50,13 @@ public class PlacementManager : MonoBehaviour
         selectedUnit.PlaceUnitOnNode(node);
         currencyManager.BuyPlant(selectedUnit.UnitData);
         OnPlaceUnit?.Invoke(selectedUnit);
+        selectedButton.Recharge(selectedUnit.UnitData.rechargeTime);
 
         selectedUnit = null;
+        selectedButton = null;
     }
 
-    public void GetSelectedUnitData(IUnit unit)
+    public void GetSelectedUnitData(IUnit unit, UnitButton unitButton)
     {
         if (!currencyManager.CanBuy(unit.UnitData))
         {
@@ -62,6 +65,7 @@ public class PlacementManager : MonoBehaviour
         }
 
         selectedUnit = unit;
+        selectedButton = unitButton;
     }
 
     public void PickUpSun(Sun sun)

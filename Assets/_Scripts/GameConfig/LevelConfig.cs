@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelConfig
 {
     public int levelIndex;
-    public int zombiesAmount = 4;
     public float timeBetweenPhase = 5f;
     public List<PhaseData> phases;
 

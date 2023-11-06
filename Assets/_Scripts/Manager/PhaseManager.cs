@@ -1,85 +1,63 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PhaseManager : MonoBehaviour
 {
-    private int killCount = 0;
-    private int killToCallNextPhase = 0;
-    private int currentPhase = 0;
-    private int maxPhase = 0;
+    public LevelConfig currentLevel
+    {
+        get
+        {
+            return ConfigHelper.GetCurrentLevelConfig();
+        }
+    }
 
-    public System.Action<int, string> OnZombieDispatcher = null;
+
+    public System.Action<string> OnZombieDispatcher = null;
     public System.Action OnWin = null;
+
+    private int phaseIndex = 0;
+    private int maxPhaseAmount = 0;
 
     public void StartLevel()
     {
-        LevelConfig currentLevel = ConfigHelper.GetCurrentLevelConfig();
-        maxPhase = currentLevel.phases.Count - 1;
-        currentPhase = 0;
-        killCount = 0;
-        killToCallNextPhase = 0;
-
-        this.DelayCall(1f, () =>
-        {
-            StartPhase(currentLevel.phases[currentPhase]);
-        });
+        phaseIndex = 0;
+        maxPhaseAmount = currentLevel.phases.Count - 1;
     }
 
     public void StartPhase(PhaseData phase)
     {
-        currentPhase = phase.phaseIndex;
-        killToCallNextPhase = phase.zombieAmount;
+        int index = 0;
+        int zombieIndex = 0;
+        phaseIndex = phase.phaseIndex;
 
-        float callTime = phase.timeBetweenSpawn;
+        List<int> zombieAmount = phase.zombies.Keys.ToList();
+        List<string> zombies = phase.zombies.Values.ToList();
 
-
-        foreach (var zombie in phase.zombies)
+        DOVirtual.DelayedCall(GameConstant.TIME_START_MATCH, () =>
         {
 
-            CallNextZombie(callTime, () => { OnZombieDispatcher?.Invoke(zombie.Key, zombie.Value); });
-            callTime += phase.timeBetweenSpawn;
-        }
+
+        }).SetAutoKill();
+    }
+
+    public void CallZombie(string zombieName, List<string> zombies)
+    {
+        //call first zombie
+        OnZombieDispatcher?.Invoke(zombies[0]);
+
     }
 
     public void ZombieDie()
     {
-        killCount++;
-
-        if (killToCallNextPhase >= killCount)
-        {
-            CallNextPhase();
-        }
 
     }
 
     public void CallNextPhase()
     {
-        killCount = 0;
-        killToCallNextPhase = 0;
-        currentPhase++;
 
-        StopCoroutine("IEDelayCall");
-
-        if (currentPhase > maxPhase)
-        {
-            StopAllCoroutines();
-            OnWin?.Invoke();
-            return;
-        }
-
-        StartPhase(ConfigHelper.GetCurrentLevelConfig().phases[currentPhase]);
-    }
-
-    private void CallNextZombie(float time, System.Action callback)
-    {
-        StartCoroutine(IEDelay(time, callback));
-    }
-
-    private IEnumerator IEDelay(float time, System.Action callback)
-    {
-        yield return Helper.GetWait(time);
-
-        callback?.Invoke();
     }
 }

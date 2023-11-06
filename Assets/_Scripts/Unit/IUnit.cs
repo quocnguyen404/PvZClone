@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class IUnit : MonoBehaviour
 {
-    [SerializeField] protected UnitAnimator animator = null;
+    [SerializeField] protected UnitAnimator ator = null;
 
     [SerializeField]
     protected List<Node> nodesPath = null;
@@ -37,21 +37,20 @@ public abstract class IUnit : MonoBehaviour
 
     public bool IsAlive => currentHealth > 0;
 
-    public virtual void Initialize()
+    public virtual void Initialize(Vector2Int pos)
     {
         currentHealth = maxHealth;
+        GridPosition = pos;
     }
 
     public virtual void PlaceUnitOnNode(Node node)
     {
         transform.position = node.WorldPosition;
         node.AddUnit(this);
-        GridPosition = node.GridPosition;
     }
 
     public virtual void TakeDamage(float damge)
     {
-        Debug.Log(UnitData.unitName + " is take damage");
         currentHealth -= damge;
 
         if (currentHealth <= 0)
@@ -63,8 +62,6 @@ public abstract class IUnit : MonoBehaviour
     public virtual void Dead()
     {
         //return to pool
-        Debug.Log(UnitData.unitName + " is die");
-        gameObject.SetActive(false);
         nodesPath[GridPosition.y].RemoveUnit(this);
         transform.position = Vector3.zero;
         nodesPath.Clear();

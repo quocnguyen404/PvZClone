@@ -19,11 +19,13 @@ public class Zombie : IUnit
 
     public virtual void InitializeRow(int row)
     {
-        nodesPath = new List<Node>(OnGetPath?.Invoke(row));
+        nodesPath = OnGetPath?.Invoke(row);
 
-        currentNodeIndex = GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN - 1;
 
+        currentNodeIndex = GridPosition.y + 9;
         transform.position = nodesPath[currentNodeIndex].WorldPosition;
+
+        Move();
     }
 
 
@@ -32,12 +34,15 @@ public class Zombie : IUnit
         if (!IsAlive)
             return;
 
+
         if (currentNodeIndex > nodesPath.Count)
         {
-
+            StopAllCoroutines();
         }
 
+
         Vector3 nodePosition = Vector3.zero;
+
         try
         {
             nodePosition = nodesPath[currentNodeIndex].WorldPosition;
@@ -52,6 +57,7 @@ public class Zombie : IUnit
 
         if (target != null && target.IsAlive)
         {
+            ator.Reset();
             StopAllCoroutines();
             Attack(target);
         }
@@ -70,19 +76,19 @@ public class Zombie : IUnit
 
     public virtual void Attack(IUnit target)
     {
+        ator.SetTriggger("Attack");
 
-        target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
+        DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
+        {
+            target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
+        });
 
         this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, Move);
-
-        //Vector3 destination = new Vector3(target.transform.position.x + GameConstant.NODE_LENGTH / 2, target.transform.position.y, target.transform.position.z);
-        //MoveToDestination(destination, unitSpeed / 2, () =>
-        //{
-        //});
     }
 
     public virtual void MoveToDestination(Vector3 destination, float time, System.Action Callback)
     {
+        ator.SetMove(UnitAnimator.MovementType.Move);
         transform.DOMove(destination, time)
             .SetEase(Ease.Linear)
             .OnComplete(() =>
@@ -95,7 +101,11 @@ public class Zombie : IUnit
 
     public override void Dead()
     {
-        base.Dead();
+        //nodesPath[GridPosition.y].RemoveUnit(this);
+        //transform.position = Vector3.zero;
+        //nodesPath.Clear();
+        ator.SetTriggger("Death");
+        gameObject.SetActive(false);
         OnZombieDie?.Invoke();
     }
 }

@@ -10,7 +10,7 @@ public class PickUnitManager : MonoBehaviour
     [SerializeField] private PlantButtonHold buttonHold = null;
     [SerializeField] private UnitButtonPanel buttonPanel = null;
 
-    public System.Action<IUnit> OnPickedUnit = null;
+    public System.Action<IUnit, UnitButton> OnPickedUnit = null;
     public System.Func<Data.UnitData, IUnit> OnGetPlant = null;
 
     private void Awake()
@@ -41,6 +41,6 @@ public class PickUnitManager : MonoBehaviour
     private void SeletedUnit(UnitButton unitButton)
     {
         IUnit unit = OnGetPlant?.Invoke(unitButton.unitData);
-        OnPickedUnit?.Invoke(unit);
+        OnPickedUnit?.Invoke(unit, unitButton);
     }
 }

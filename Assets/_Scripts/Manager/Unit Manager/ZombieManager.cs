@@ -5,7 +5,6 @@ using UnityEngine;
 public class ZombieManager : UnitManager
 {
     [SerializeField] private GridManager gridManager = null;
-    private Dictionary<int, List<Node>> nodes;
 
     public System.Action OnZombieWin = null;
     public System.Action OnZombieDie = null;
@@ -18,27 +17,23 @@ public class ZombieManager : UnitManager
         gridManager.Initialize(GameConstant.ZOMBIE_ROW, GameConstant.ZOMBIE_COLUMN, GameConstant.NODE_LENGTH);
     }
 
-    public void DispatcherZombie(int amount, string zombieName)
+    public void DispatcherZombie(string zombieName)
     {
-        for (int i = 0; i < amount; i++)
-        {
-            int row = Random.Range(0, GameConstant.ZOMBIE_ROW);
-
-            Zombie zombie = GetZombieAlive(zombieName);
-            zombie.OnGetPath = ZombieGetPath;
-            zombie.InitializeRow(row);
-        }
+        Zombie zombie = GetZombieAlive(zombieName);
+        zombie.OnGetPath = ZombieGetPath;
+        zombie.InitializeRow(zombie.GridPosition.x);
     }
 
     public override void AddUnit(IUnit unit)
     {
         int row = Random.Range(0, GameConstant.ZOMBIE_ROW);
-        int column = Random.Range(0, GameConstant.ZOMBIE_COLUMN);
+        int column = Random.Range(3, GameConstant.ZOMBIE_COLUMN);
 
         base.AddUnit(unit);
         Zombie zombie = ZUnitCast(unit);
         zombie.OnZombieDie = ZombieDie;
-        zombie.Initialize();
+        zombie.Initialize(new Vector2Int(row, column));
+        zombie.transform.position = gridManager.GetRow(row)[column].WorldPosition;
     }
 
     public override void RemoveUnit(IUnit unit)
@@ -48,7 +43,7 @@ public class ZombieManager : UnitManager
 
     private List<Node> ZombieGetPath(int row)
     {
-        List<Node> nodepaths = OnZombieGetPath?.Invoke(row);
+        List<Node> nodepaths = new List<Node>(OnZombieGetPath?.Invoke(row));
         nodepaths.AddRange(gridManager.GetRow(row));
         return nodepaths;
     }

@@ -58,12 +58,11 @@ public class Node : MonoBehaviour
     }
 
 
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawCube(WorldPosition, Vector3.one * 0.3f);
-    }
+    //    Gizmos.DrawCube(WorldPosition, Vector3.one * 0.3f);
+    //}
 }
 

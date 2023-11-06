@@ -12,7 +12,12 @@ public class Plant : IUnit
     public override void PlaceUnitOnNode(Node node)
     {
         base.PlaceUnitOnNode(node);
-        Initialize();
+        Initialize(node.GridPosition);
     }
 
+    public override void Dead()
+    {
+        base.Dead();
+        gameObject.SetActive(false);
+    }
 }
