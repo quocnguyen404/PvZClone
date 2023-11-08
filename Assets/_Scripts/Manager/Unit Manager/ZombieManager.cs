@@ -5,6 +5,7 @@ using UnityEngine;
 public class ZombieManager : UnitManager
 {
     [SerializeField] private GridManager gridManager = null;
+    [SerializeField] private Transform housePosition = null;
 
     public System.Action OnZombieWin = null;
     public System.Action OnZombieDie = null;
@@ -32,6 +33,8 @@ public class ZombieManager : UnitManager
         base.AddUnit(unit);
         Zombie zombie = ZUnitCast(unit);
         zombie.OnZombieDie = ZombieDie;
+        zombie.OnGetHousePosition = ZombieGetHousePosition;
+        zombie.OnZombieGetInHouse = ZombieGetInHouse;
         zombie.Initialize(new Vector2Int(row, column));
         zombie.transform.position = gridManager.GetRow(row)[column].WorldPosition;
     }
@@ -51,6 +54,16 @@ public class ZombieManager : UnitManager
     private void ZombieDie()
     {
         OnZombieDie?.Invoke();
+    }
+
+    private void ZombieGetInHouse()
+    {
+        OnZombieWin?.Invoke();
+    }
+
+    private Vector3 ZombieGetHousePosition()
+    {
+        return housePosition.position;
     }
 
     private Zombie ZUnitCast(IUnit unit)

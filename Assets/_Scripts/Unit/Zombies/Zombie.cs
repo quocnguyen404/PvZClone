@@ -8,6 +8,10 @@ public class Zombie : IUnit
     public System.Action OnZombieDie = null;
 
     protected int currentNodeIndex;
+    protected float animOffSet = 0.5f;
+
+    public System.Func<Vector3> OnGetHousePosition = null;
+    public System.Action OnZombieGetInHouse = null;
 
     public float unitSpeed
     {
@@ -16,6 +20,8 @@ public class Zombie : IUnit
             return UnitData.attributes[(int)Data.AttributeType.SP].value;
         }
     }
+
+
 
     public virtual void InitializeRow(int row)
     {
@@ -28,16 +34,22 @@ public class Zombie : IUnit
         Move();
     }
 
-
     public virtual void Move()
     {
         if (!IsAlive)
             return;
 
 
-        if (currentNodeIndex > nodesPath.Count)
+        if (currentNodeIndex < 0)
         {
-            StopAllCoroutines();
+            MoveToDestination((Vector3)OnGetHousePosition?.Invoke(), unitSpeed, () =>
+            {
+                Debug.Log("Lose");
+                //OnZombieGetInHouse?.Invoke();
+                //StopAllCoroutines();
+            });
+            //StopAllCoroutines();
+            return;
         }
 
 
@@ -78,10 +90,10 @@ public class Zombie : IUnit
     {
         ator.SetTriggger("Attack");
 
-        DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
+        DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value - animOffSet, () =>
         {
             target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
-        });
+        }).SetAutoKill();
 
         this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, Move);
     }
@@ -101,9 +113,6 @@ public class Zombie : IUnit
 
     public override void Dead()
     {
-        //nodesPath[GridPosition.y].RemoveUnit(this);
-        //transform.position = Vector3.zero;
-        //nodesPath.Clear();
         ator.SetTriggger("Death");
         gameObject.SetActive(false);
         OnZombieDie?.Invoke();

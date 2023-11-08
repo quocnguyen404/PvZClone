@@ -17,6 +17,7 @@ public class UnitManager : MonoBehaviour
     public virtual void AddUnit(IUnit unit)
     {
         units.Add(unit);
+        unit.PoolPosition = this.transform.position;
     }
 
     public virtual void RemoveUnit(IUnit unit)

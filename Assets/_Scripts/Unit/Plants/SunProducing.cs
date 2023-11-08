@@ -6,16 +6,16 @@ public class SunProducing : Plant
 {
     [SerializeField] private Transform spawnPoint = null;
 
-    public Sun sun = null;
+    protected Sun sunTemp = null;
 
     protected float timer = 0;
 
     protected virtual void Update()
     {
-        if (IsOnNode)
-        {
-            ProduceSun();
-        }
+        if (!IsOnNode)
+            return;
+
+        ProduceSun();
     }
 
     protected virtual void ProduceSun()
@@ -24,12 +24,11 @@ public class SunProducing : Plant
 
         if (timer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
         {
-            sun = (Sun)OnGetProduct?.Invoke(UnitData);
-            sun.Initialize(spawnPoint.position, 50);
-            sun.TossSun(transform.position);
-
+            sunTemp = (Sun)OnGetProduct?.Invoke(UnitData);
+            sunTemp.Initialize(spawnPoint.position, (int)UnitData.attributes[(int)Data.AttributeType.ATK].value);
+            sunTemp.TossSun(transform.position);
+            sunTemp = null;
             timer = 0;
         }
-
     }
 }

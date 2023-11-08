@@ -39,18 +39,26 @@ public class Sun : IProduct
         ReturnPool(4f);
     }
 
+    public void Fall(Vector3 ground)
+    {
+        transform.DOMoveY(ground.y, 9f).SetAutoKill();
+    }
+
     public void MoveToSunBar(Vector3 pos)
     {
-        transform.DOMove(pos, GameConstant.TIME_SUN_MOVE)
-            .OnComplete(() =>
-            {
-                gameObject.SetActive(false);
-            })
-            .SetAutoKill();
+        //transform.DOMove(pos, GameConstant.TIME_SUN_MOVE)
+        //    .OnComplete(() =>
+        //    {
+        //        gameObject.SetActive(false);
+        //    })
+        //    .SetAutoKill();
+
+        gameObject.SetActive(false);
     }
 
     private void OnMouseDown()
     {
+        transform.DOKill();
         OnClick?.Invoke(this);
     }
 }

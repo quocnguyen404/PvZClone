@@ -68,6 +68,14 @@ public class GridManager : MonoBehaviour
         return rows[row];
     }
 
+    public Vector3 GetRandomPosition()
+    {
+        int x = Random.Range(0, GameConstant.GARDEN_ROW);
+        int z = Random.Range(0, GameConstant.GARDEN_COLOUMN);
+
+        return nodes[x, z].WorldPosition;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.black;

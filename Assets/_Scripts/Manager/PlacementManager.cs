@@ -9,12 +9,20 @@ public class PlacementManager : MonoBehaviour
     [SerializeField] private InputManager inputManager = null;
     [SerializeField] private CurrencyManager currencyManager = null;
     [SerializeField] private Button shovelButton = null;
+    [SerializeField] private Transform dropSunPosition = null;
 
     public System.Action<IUnit> OnPlaceUnit = null;
+    public System.Func<Data.UnitData, IProduct> OnGetSun = null;
+    public System.Func<Vector3> OnGetPosition = null;
 
     private bool startPlacing = false;
     private IUnit selectedUnit = null;
     private UnitButton selectedButton = null;
+
+    private Sun sunPre = null;
+    private float timer = 0;
+
+
 
     public void Initialize()
     {
@@ -26,6 +34,15 @@ public class PlacementManager : MonoBehaviour
     {
         if (!startPlacing)
             return;
+
+        timer += Time.deltaTime;
+
+        if (timer >= GameConstant.TIME_SUN_DROP)
+        {
+            DropSun();
+            timer = 0;
+        }
+
 
         if (Input.GetMouseButtonDown(0) && selectedUnit != null)
         {
@@ -72,5 +89,19 @@ public class PlacementManager : MonoBehaviour
     {
         currencyManager.PickSunUp(sun.value);
         sun.MoveToSunBar(currencyManager.GetSunBarPosition());
+    }
+
+    private void DropSun()
+    {
+        sunPre = (Sun)OnGetSun?.Invoke(ConfigHelper.GameConfig.plants["Sunflower"]);
+
+        Vector3 target = (Vector3)OnGetPosition?.Invoke();
+
+        Vector3 initPos = new Vector3(target.x, dropSunPosition.position.y, target.z);
+
+        sunPre.Initialize(initPos, GameConstant.SUN_DROP_COST);
+        sunPre.Fall(target);
+
+        sunPre = null;
     }
 }

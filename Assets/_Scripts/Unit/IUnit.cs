@@ -7,8 +7,9 @@ public abstract class IUnit : MonoBehaviour
 {
     [SerializeField] protected UnitAnimator ator = null;
 
-    [SerializeField]
-    protected List<Node> nodesPath = null;
+    [SerializeField] protected List<Node> nodesPath = null;
+
+    public Vector3 PoolPosition = Vector3.zero;
 
     public string Name
     {
@@ -63,7 +64,7 @@ public abstract class IUnit : MonoBehaviour
     {
         //return to pool
         nodesPath[GridPosition.y].RemoveUnit(this);
-        transform.position = Vector3.zero;
+        transform.position = PoolPosition;
         nodesPath.Clear();
     }
 }

@@ -65,10 +65,13 @@ public class GameManager : MonoBehaviour
         playButton.onClick.RemoveAllListeners();
         playButton.gameObject.SetActive(false);
 
+        placementManager.OnGetPosition = gridManager.GetRandomPosition;
         plantManager.OnUnitGetProduct = productObjectPool.GetProduct;
+        placementManager.OnGetSun = productObjectPool.GetProduct;
         zombieManager.OnZombieDie = phaseManager.ZombieDie;
         phaseManager.OnZombieDispatcher = zombieManager.DispatcherZombie;
         phaseManager.OnWin = Win;
+        zombieManager.OnZombieWin = Lose;
 
         ZombieStart();
     }
@@ -81,5 +84,10 @@ public class GameManager : MonoBehaviour
     private void Win()
     {
         Debug.Log("Win");
+    }
+
+    private void Lose()
+    {
+        Debug.Log("Lose");
     }
 }

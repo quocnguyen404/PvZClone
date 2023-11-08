@@ -56,11 +56,12 @@ public static class ConfigHelper
 
     public static UserData GetDefaultUserData()
     {
-        UserData defaultUserData = new UserData();
-
-        defaultUserData.userLevel = 1;
-        defaultUserData.ownPlants = new Dictionary<string, Data.UnitData>();
-        defaultUserData.discoverZombies = new Dictionary<string, Data.UnitData>();
+        UserData defaultUserData = new UserData
+        {
+            userLevel = 1,
+            ownPlants = new Dictionary<string, Data.UnitData>(),
+            discoverZombies = new Dictionary<string, Data.UnitData>()
+        };
 
         Data.UnitData firstUnit = GameConfig.plants["Peashooter"];
         Data.UnitData secondUnit = GameConfig.plants["Sunflower"];
