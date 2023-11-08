@@ -48,7 +48,10 @@ public class GridManager : MonoBehaviour
 
                 newNode.Initialize();
                 newNode.GridPosition = new Vector2Int(i, j);
-                newNode.WorldPosition = newNode.transform.position;
+
+                Vector3 worldPos = new Vector3(newNode.transform.position.x, GameConstant.NODE_THICKNESS, newNode.transform.position.z);
+
+                newNode.WorldPosition = worldPos;
                 newNode.transform.parent = parentTrans;
 
                 if (((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0)) && isBold)
