@@ -7,7 +7,7 @@ public static class ConfigHelper
 {
     private const string UserDataKey = "UserData123";
 
-    public static GameConfig gameConfig = null;
+    private static GameConfig gameConfig = null;
 
     public static GameConfig GameConfig
     {
@@ -32,7 +32,7 @@ public static class ConfigHelper
 
             if (!ES3.KeyExists(UserDataKey))
             {
-                userData = GetDefaultUserData();
+                userData = GetTestUserData();
                 ES3.Save(UserDataKey, userData);
             }
             else
@@ -72,5 +72,22 @@ public static class ConfigHelper
         defaultUserData.ownPlants.Add(thirdUnit.unitName, thirdUnit);
 
         return defaultUserData;
+    }
+
+    public static UserData GetTestUserData()
+    {
+        UserData testUserData = new UserData
+        {
+            userLevel = 1,
+            ownPlants = new Dictionary<string, Data.UnitData>(),
+            discoverZombies = new Dictionary<string, Data.UnitData>()
+        };
+
+        foreach (var plant in GameConfig.plants)
+        {
+            testUserData.ownPlants.Add(plant.Key, plant.Value);
+        }
+
+        return testUserData;
     }
 }

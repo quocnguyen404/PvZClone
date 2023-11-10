@@ -15,7 +15,6 @@ public class GridManager : MonoBehaviour
 
     [Space]
     public bool draw = false;
-    public bool isBold = true;
     private Vector3 nodeBottom;
     private Node[,] nodes;
 
@@ -54,7 +53,7 @@ public class GridManager : MonoBehaviour
                 newNode.WorldPosition = worldPos;
                 newNode.transform.parent = parentTrans;
 
-                if (((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0)) && isBold)
+                if (((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0)) && j < 9)
                     newNode.ChangeColor(Color.green);
 
                 nodes[i, j] = newNode;
@@ -66,6 +65,25 @@ public class GridManager : MonoBehaviour
     public List<Node> GetRow(int row)
     {
         return rows[row];
+    }
+
+    public List<Node> GetArea(int row, int column)
+    {
+        List<Node> area = new List<Node>();
+
+        int firstRow = row - 1;
+        int firstColumn = column - 1;
+
+        for (int i = firstRow; i < firstRow + 3; i++)
+        {
+            for (int j = firstColumn; j < firstColumn + 3; j++)
+            {
+                if (i >= 0 && j >= 0 && i < GameConstant.GARDEN_ROW && j < GameConstant.GARDEN_COLOUMN)
+                    area.Add(nodes[i, j]);
+            }
+        }
+
+        return area;
     }
 
     public Vector3 GetRandomPosition()

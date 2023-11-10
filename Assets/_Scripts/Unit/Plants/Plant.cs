@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plant : IUnit
 {
-    public virtual void InitializeRow()
+    public virtual void InitializeRange()
     {
         nodesPath = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
     }
@@ -13,11 +13,12 @@ public class Plant : IUnit
     {
         base.PlaceUnitOnNode(node);
         Initialize(node.GridPosition);
+        InitializeRange();
     }
 
     public override void Dead()
     {
-        base.Dead();
+        transform.position = PoolPosition;
         gameObject.SetActive(false);
     }
 }

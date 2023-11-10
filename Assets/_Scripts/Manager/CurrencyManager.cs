@@ -12,7 +12,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void Initialize()
     {
-        OnSunChange(50);
+        OnSunChange(1000);
         ShowSunBar();
     }
 

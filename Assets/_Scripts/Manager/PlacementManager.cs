@@ -23,7 +23,6 @@ public class PlacementManager : MonoBehaviour
     private float timer = 0;
 
 
-
     public void Initialize()
     {
         startPlacing = true;
@@ -64,9 +63,13 @@ public class PlacementManager : MonoBehaviour
         if (node.HasPlant())
             return;
 
+        if (node.GridPosition.y > GameConstant.GARDEN_COLOUMN - 1)
+            return;
+
+
+        OnPlaceUnit?.Invoke(selectedUnit);
         selectedUnit.PlaceUnitOnNode(node);
         currencyManager.BuyPlant(selectedUnit.UnitData);
-        OnPlaceUnit?.Invoke(selectedUnit);
         selectedButton.Recharge(selectedUnit.UnitData.rechargeTime);
 
         selectedUnit = null;

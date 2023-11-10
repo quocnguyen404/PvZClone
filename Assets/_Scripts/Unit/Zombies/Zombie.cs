@@ -27,10 +27,7 @@ public class Zombie : IUnit
     {
         nodesPath = OnGetPath?.Invoke(row);
 
-
-        currentNodeIndex = GridPosition.y + 9;
-        transform.position = nodesPath[currentNodeIndex].WorldPosition;
-
+        currentNodeIndex = GridPosition.y;
         Move();
     }
 
@@ -42,13 +39,8 @@ public class Zombie : IUnit
 
         if (currentNodeIndex < 0)
         {
-            MoveToDestination((Vector3)OnGetHousePosition?.Invoke(), unitSpeed, () =>
-            {
-                Debug.Log("Lose");
-                //OnZombieGetInHouse?.Invoke();
-                //StopAllCoroutines();
-            });
-            //StopAllCoroutines();
+            MoveToDestination((Vector3)OnGetHousePosition?.Invoke(), unitSpeed, null);
+            OnZombieGetInHouse?.Invoke();
             return;
         }
 
@@ -61,7 +53,7 @@ public class Zombie : IUnit
         }
         catch
         {
-            Debug.Log("AA");
+            Debug.Log("Current Node Index go outside");
         }
 
         Vector3 destination = new Vector3(nodePosition.x - GameConstant.NODE_LENGTH / 2, nodePosition.y, nodePosition.z);
@@ -107,6 +99,7 @@ public class Zombie : IUnit
             {
                 nodesPath[currentNodeIndex].RemoveUnit(this);
                 currentNodeIndex--;
+                nodesPath[currentNodeIndex].AddUnit(this);
                 Callback?.Invoke();
             }).SetAutoKill();
     }
@@ -115,6 +108,8 @@ public class Zombie : IUnit
     {
         ator.SetTriggger("Death");
         gameObject.SetActive(false);
+        transform.position = PoolPosition;
+        nodesPath[currentNodeIndex].RemoveUnit(this);
         OnZombieDie?.Invoke();
     }
 }

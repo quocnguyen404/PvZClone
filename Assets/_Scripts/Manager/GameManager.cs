@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        gridManager.Initialize(GameConstant.GARDEN_ROW, GameConstant.GARDEN_COLOUMN, GameConstant.NODE_LENGTH);
+        gridManager.Initialize(GameConstant.GARDEN_ROW, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN, GameConstant.NODE_LENGTH);
 
         playButton.onClick.AddListener(() => { StartGame(); });
 
@@ -41,8 +41,10 @@ public class GameManager : MonoBehaviour
 
         zombieManager.OnZombieGetPath = gridManager.GetRow;
         plantManager.OnPlantGetPath = gridManager.GetRow;
+        plantManager.OnPlantGetArea = gridManager.GetArea;
         pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
 
+        zombieManager.gridManager = gridManager;
         zombieManager.Initialize();
         plantManager.Initialize();
         zombieObjectPool.InitializePool(ConfigHelper.GetCurrentLevelConfig());

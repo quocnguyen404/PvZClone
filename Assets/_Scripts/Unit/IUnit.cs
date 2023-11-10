@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class IUnit : MonoBehaviour
 {
     [SerializeField] protected UnitAnimator ator = null;
-
     [SerializeField] protected List<Node> nodesPath = null;
 
     public Vector3 PoolPosition = Vector3.zero;
@@ -29,8 +28,9 @@ public abstract class IUnit : MonoBehaviour
         }
     }
 
-
+    public System.Func<int, int, Node> OnGetNode = null;
     public System.Func<int, List<Node>> OnGetPath = null;
+    public System.Func<int, int, List<Node>> OnGetArea = null;
     public System.Func<Data.UnitData, IProduct> OnGetProduct = null;
 
     protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
@@ -62,9 +62,6 @@ public abstract class IUnit : MonoBehaviour
 
     public virtual void Dead()
     {
-        //return to pool
-        nodesPath[GridPosition.y].RemoveUnit(this);
-        transform.position = PoolPosition;
-        nodesPath.Clear();
+
     }
 }

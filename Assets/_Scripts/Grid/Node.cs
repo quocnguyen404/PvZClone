@@ -52,17 +52,14 @@ public class Node : MonoBehaviour
         return plant;
     }
 
+    public List<IUnit> GetAllZobmie()
+    {
+        return units.FindAll(n => n is Zombie);
+    }
+
     public void ChangeColor(Color color)
     {
         meshRd.material.color = color;
     }
-
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-
-    //    Gizmos.DrawCube(WorldPosition, Vector3.one * 0.3f);
-    //}
 }
 

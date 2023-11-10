@@ -31,4 +31,10 @@ public class SunProducing : Plant
             timer = 0;
         }
     }
+
+    public override void Dead()
+    {
+        base.Dead();
+        timer = 0;
+    }
 }

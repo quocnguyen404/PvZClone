@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ator: {fileID: 5688718343408029046}
   nodesPath: []
+  PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
 --- !u!1001 &9175998277546603771
 PrefabInstance:
