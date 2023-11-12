@@ -13,14 +13,22 @@ public class Zombie : IUnit
     public System.Func<Vector3> OnGetHousePosition = null;
     public System.Action OnZombieGetInHouse = null;
 
-    public float unitSpeed
+    private float unitSpeed = -1f;
+    public float UnitSpeed
     {
         get
         {
-            return UnitData.attributes[(int)Data.AttributeType.SP].value;
+            if (unitSpeed == -1f)
+                unitSpeed = UnitData.attributes[(int)Data.AttributeType.SP].value;
+            
+            return unitSpeed;
+        }
+
+        set
+        {
+            unitSpeed = value;
         }
     }
-
 
 
     public virtual void InitializeRow(int row)
@@ -39,7 +47,7 @@ public class Zombie : IUnit
 
         if (currentNodeIndex < 0)
         {
-            MoveToDestination((Vector3)OnGetHousePosition?.Invoke(), unitSpeed, null);
+            MoveToDestination((Vector3)OnGetHousePosition?.Invoke(), UnitSpeed, null);
             OnZombieGetInHouse?.Invoke();
             return;
         }
@@ -67,12 +75,11 @@ public class Zombie : IUnit
         }
         else
         {
-            this.DelayCall(unitSpeed, Move);
+            this.DelayCall(UnitSpeed, Move);
 
-            MoveToDestination(destination, unitSpeed, () =>
+            MoveToDestination(destination, UnitSpeed, () =>
             {
 
-                nodesPath[currentNodeIndex].AddUnit(this);
             });
         }
 

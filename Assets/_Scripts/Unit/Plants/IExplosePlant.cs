@@ -10,11 +10,6 @@ public class IExplosePlant : Plant
         nodesPath = new List<Node>(OnGetArea?.Invoke(GridPosition.x, GridPosition.y));
     }
 
-    public override void PlaceUnitOnNode(Node node)
-    {
-        base.PlaceUnitOnNode(node);
-    }
-
     protected virtual void Explose()
     {
 

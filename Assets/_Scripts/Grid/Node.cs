@@ -21,11 +21,13 @@ public class Node : MonoBehaviour
     {
         unit.GridPosition = GridPosition;
         units.Add(unit);
+        Debug.Log($"Add {unit.UnitData.unitName} to node {GridPosition.x}, {GridPosition.y}");
     }
 
     public void RemoveUnit(IUnit unit)
     {
         units.Remove(unit);
+        Debug.Log($"Remove {unit.UnitData.unitName} to node {GridPosition.x}, {GridPosition.y}");
     }
 
     public bool HasPlant()

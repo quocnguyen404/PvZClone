@@ -62,6 +62,11 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public Node GetNode(int row, int column)
+    {
+        return nodes[row, column];
+    }
+
     public List<Node> GetRow(int row)
     {
         return rows[row];

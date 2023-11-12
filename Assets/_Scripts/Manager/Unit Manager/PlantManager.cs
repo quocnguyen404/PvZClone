@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlantManager : UnitManager
 {
-    public System.Func<int, int, Node> OnGetNode = null;
+    public System.Func<int, int, Node> OnPlantGetNode = null;
     public System.Func<int, List<Node>> OnPlantGetPath = null;
     public System.Func<int, int, List<Node>> OnPlantGetArea = null;
-
 
 
     public override void AddUnit(IUnit unit)
@@ -15,6 +14,7 @@ public class PlantManager : UnitManager
         base.AddUnit(unit);
 
         Plant plant = PUnitCast(unit);
+        plant.OnGetNode = PlantGetNode;
         plant.OnGetPath = PlantGetPath;
         plant.OnGetArea = PlantGetArea;
         plant.OnGetProduct = GetProjectile;
@@ -33,7 +33,7 @@ public class PlantManager : UnitManager
 
     private Node PlantGetNode(int row, int column)
     {
-
+        return OnPlantGetNode?.Invoke(row, column);
     }
 
     private List<Node> PlantGetPath(int row)

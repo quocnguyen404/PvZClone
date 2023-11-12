@@ -28,6 +28,11 @@ public class PickUnitManager : MonoBehaviour
         buttonHold.OnUnitButtonClick = SeletedUnit;
     }
 
+    public void InitializeUnitDataLimitPlant()
+    {
+
+    }
+
     public bool PickFull()
     {
         return !buttonHold.slots.Find(s => s.unitData == null);

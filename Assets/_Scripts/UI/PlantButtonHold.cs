@@ -12,13 +12,8 @@ public class PlantButtonHold : MonoBehaviour
 
     public void Initialize()
     {
-        slots = new List<Slot>();
-
-        foreach (Transform slot in content)
-        {
-            if (slot.gameObject.activeInHierarchy == true)
-                slots.Add(slot.gameObject.GetComponent<Slot>());
-        }
+        //foreach (Slot slot in slots)
+        //    slot.gameObject.SetActive(true);
     }
 
     public void AddToHoldPanel(UnitButton unitButton)

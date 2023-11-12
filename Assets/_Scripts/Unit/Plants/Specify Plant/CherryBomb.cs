@@ -31,4 +31,10 @@ public class CherryBomb : IExplosePlant
             zombie.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
         }
     }
+
+    public override void Dead()
+    {
+        base.Dead();
+        col.enabled = false;
+    }
 }

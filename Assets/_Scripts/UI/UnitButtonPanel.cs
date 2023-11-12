@@ -10,9 +10,6 @@ public class UnitButtonPanel : MonoBehaviour
     [SerializeField] private UnitButton unitButtonPrefab = null;
     [SerializeField] private Slot slotPrefab = null;
 
-    [Space]
-    [SerializeField] private int plantAmount = 44;
-
     private List<Slot> slots;
     private List<UnitButton> unitButtons;
 
@@ -29,7 +26,7 @@ public class UnitButtonPanel : MonoBehaviour
         slots = new List<Slot>();
         int count = 0;
 
-        for (int i = 0; i < plantAmount; i++)
+        for (int i = 0; i < GameConstant.PLANT_AMOUNT; i++)
         {
             Slot newSlot = Instantiate(slotPrefab, grid);
             slots.Add(newSlot);
@@ -45,7 +42,6 @@ public class UnitButtonPanel : MonoBehaviour
             newUnitButton.slotOnPanel = slots[count];
 
             newUnitButton.transform.parent = slots[count].transform;
-
             newUnitButton.transform.localPosition = Vector3.zero;
 
             unitButtons.Add(newUnitButton);

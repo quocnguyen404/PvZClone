@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         productObjectPool.OnSpawnProduct = sunManager.AddProduct;
 
         zombieManager.OnZombieGetPath = gridManager.GetRow;
+        plantManager.OnPlantGetNode = gridManager.GetNode;
         plantManager.OnPlantGetPath = gridManager.GetRow;
         plantManager.OnPlantGetArea = gridManager.GetArea;
         pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
@@ -53,7 +54,11 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         if (!pickUnitManager.PickFull())
+        {
+            //player pick plan not done
+
             return;
+        }
 
         pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
         sunManager.OnSunClick = placementManager.PickUpSun;
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
         placementManager.OnGetSun = productObjectPool.GetProduct;
         zombieManager.OnZombieDie = phaseManager.ZombieDie;
         phaseManager.OnZombieDispatcher = zombieManager.DispatcherZombie;
+
         phaseManager.OnWin = Win;
         zombieManager.OnZombieWin = Lose;
 

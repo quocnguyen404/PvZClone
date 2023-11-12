@@ -164,7 +164,35 @@
 				},
 				{
 					"type" : 4,
-					"value" : 15
+					"value" : 1
+				}
+			]
+		},
+		"SnowPea" : {
+			"unitName" : "SnowPea",
+			"productName" : "Snow Pea",
+			"cost" : 175,
+			"rechargeTime" : 7.5,
+			"attributes" : [
+				{
+					"type" : 0,
+					"value" : 300
+				},
+				{
+					"type" : 1,
+					"value" : 20
+				},
+				{
+					"type" : 2,
+					"value" : 5
+				},
+				{
+					"type" : 3,
+					"value" : 1
+				},
+				{
+					"type" : 4,
+					"value" : 1.425
 				}
 			]
 		}
@@ -189,7 +217,7 @@
 				},
 				{
 					"type" : 3,
-					"value" : 1
+					"value" : 4.7
 				},
 				{
 					"type" : 4,

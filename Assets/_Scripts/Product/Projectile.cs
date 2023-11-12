@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Projectile : IProduct
 {
-    [SerializeField] private Rigidbody rgBody = null;
-
-    [SerializeField] private float speed;
-    [SerializeField] private float damage;
+    [SerializeField] protected Rigidbody rgBody = null;
+    
+    protected float speed;
+    protected float damage;
 
     public void InitProjectile(Vector3 initPos)
     {
@@ -21,7 +21,7 @@ public class Projectile : IProduct
         ReturnPool(10f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         IUnit unit = other.gameObject.GetComponent<Zombie>();
 

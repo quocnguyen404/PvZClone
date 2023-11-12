@@ -7,6 +7,7 @@ public static class GameConstant
     public const string PROJECTILE_PREFAB_PATH = "Prefabs/Projectile/{0}";
     public const string GAMECONFIG_PATH = "Game Config/GameConfig";
 
+    public const int PLANT_AMOUNT = 44;
     public const int GARDEN_ROW = 5;
     public const int GARDEN_COLOUMN = 9;
     public const int ZOMBIE_ROW = 5;
@@ -17,9 +18,7 @@ public static class GameConstant
     public const float TIME_SUN_MOVE = 2f;
     public const float TIME_SUN_DISARPEAR = 4f;
     public const float TIME_SUN_DROP = 15f;
-
     public const int SUN_DROP_COST = 25;
-
     public const float TIME_START_MATCH = 4f;
 }
 
