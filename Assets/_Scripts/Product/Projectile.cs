@@ -5,14 +5,16 @@ using UnityEngine;
 public class Projectile : IProduct
 {
     [SerializeField] protected Rigidbody rgBody = null;
-    
+
     protected float speed;
     protected float damage;
 
-    public void InitProjectile(Vector3 initPos)
+    public void InitProjectile(Vector3 initPos, Data.UnitData unitData)
     {
         transform.position = initPos;
         rgBody.velocity = Vector3.zero;
+        speed = unitData.attributes[(int)Data.AttributeType.SP].value;
+        damage = unitData.attributes[(int)Data.AttributeType.ATK].value;
     }
 
     public void MoveToTarget(Vector3 dir)

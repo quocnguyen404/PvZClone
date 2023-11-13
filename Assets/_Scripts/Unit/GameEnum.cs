@@ -9,6 +9,5 @@ namespace Data
         SP, // Speed 3
         AAI, //Average Attack Interval 4
     }
-
 }
 

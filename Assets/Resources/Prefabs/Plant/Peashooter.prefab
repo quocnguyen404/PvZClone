@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329866165647955538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2134, y: 0.3838, z: 0}
+  m_LocalPosition: {x: 0.2338, y: 0.3838, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,7 +273,6 @@ GameObject:
   - component: {fileID: 4610380151827902044}
   - component: {fileID: 1830312363701025293}
   - component: {fileID: 6889232957779179838}
-  - component: {fileID: 8829066321472216965}
   m_Layer: 0
   m_Name: Mouth
   m_TagString: Untagged
@@ -347,20 +346,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8829066321472216965
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3621675653539358924}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3683486964156878993
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +648,6 @@ GameObject:
   - component: {fileID: 1097425022185969646}
   - component: {fileID: 552818443090284125}
   - component: {fileID: 3782178097515279862}
-  - component: {fileID: 4389039842876095773}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -736,20 +720,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4389039842876095773
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5319093145895913454}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7425748160469625750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,5 +1058,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ator: {fileID: 0}
   nodesPath: []
+  PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   spawnPoint: {fileID: 1976125951373931298}

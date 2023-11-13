@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3688846639028461809}
   - component: {fileID: 3688846639028461808}
   - component: {fileID: -3876338795387153078}
-  - component: {fileID: -4544005069818859331}
+  - component: {fileID: 7711422856480196538}
   m_Layer: 0
   m_Name: Pea
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-4544005069818859331
+--- !u!114 &7711422856480196538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3688846639028461811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 815be38962f73f647baf1f0cf51f8b9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c3955a0bebc3f74abb0211913ed9930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileName: Pea
+  projectileName: 
   rgBody: {fileID: -3876338795387153078}
-  speed: 50
-  damage: 30
+  speed: 0
+  damage: 20

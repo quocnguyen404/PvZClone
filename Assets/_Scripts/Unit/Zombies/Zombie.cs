@@ -10,15 +10,15 @@ public class Zombie : IUnit
     protected int currentNodeIndex;
     protected float animOffSet = 0.5f;
 
-    public System.Func<Vector3> OnGetHousePosition = null;
     public System.Action OnZombieGetInHouse = null;
+    public System.Func<Vector3> OnGetHousePosition = null;
 
     private float unitSpeed = -1f;
     public float UnitSpeed
     {
         get
         {
-            if (unitSpeed == -1f)
+            if (unitSpeed <= 0f)
                 unitSpeed = UnitData.attributes[(int)Data.AttributeType.SP].value;
             
             return unitSpeed;
@@ -30,6 +30,7 @@ public class Zombie : IUnit
         }
     }
 
+    public bool isDebuff = false;
 
     public virtual void InitializeRow(int row)
     {
@@ -39,11 +40,17 @@ public class Zombie : IUnit
         Move();
     }
 
+    private void Update()
+    {
+
+        if (!IsAlive)
+            return;
+    }
+
     public virtual void Move()
     {
         if (!IsAlive)
             return;
-
 
         if (currentNodeIndex < 0)
         {
@@ -52,17 +59,7 @@ public class Zombie : IUnit
             return;
         }
 
-
         Vector3 nodePosition = Vector3.zero;
-
-        try
-        {
-            nodePosition = nodesPath[currentNodeIndex].WorldPosition;
-        }
-        catch
-        {
-            Debug.Log("Current Node Index go outside");
-        }
 
         Vector3 destination = new Vector3(nodePosition.x - GameConstant.NODE_LENGTH / 2, nodePosition.y, nodePosition.z);
         IUnit target = nodesPath[currentNodeIndex].GetPlantFromNode();
@@ -109,6 +106,11 @@ public class Zombie : IUnit
                 nodesPath[currentNodeIndex].AddUnit(this);
                 Callback?.Invoke();
             }).SetAutoKill();
+    }
+
+    public virtual void TakeSlowDebuff()
+    {
+
     }
 
     public override void Dead()

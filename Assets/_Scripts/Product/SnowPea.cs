@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class SnowPea : Projectile, IDebuff
 {
+    [SerializeField] protected float debuffValue;
+
+    public float DebuffValue 
+    {
+        get;
+        set; 
+    }
 
     protected override void OnTriggerEnter(Collider other)
     {
@@ -20,6 +27,14 @@ public class SnowPea : Projectile, IDebuff
     public void IDebuff(IUnit unit)
     {
         Zombie zombie = (Zombie)unit;
-        
+
+        if (zombie.isDebuff)
+        {
+            zombie.isDebuff = true;
+            return;
+        }
+
+        //do debug
+        zombie.isDebuff = true;
     }
 }

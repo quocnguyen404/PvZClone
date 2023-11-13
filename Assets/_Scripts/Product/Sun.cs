@@ -34,14 +34,22 @@ public class Sun : IProduct
 
         Vector3 jumpTarget = transform.position + dir * jumpForce;
 
-        transform.DOJump(jumpTarget, jumpForce, 1, jumpTime).SetEase(Ease.OutCubic).SetAutoKill();
-
-        ReturnPool(4f);
+        transform.DOJump(jumpTarget, jumpForce, 1, jumpTime).SetEase(Ease.OutCubic)
+            .OnComplete(() => 
+            { 
+                ReturnPool(4f);
+            })
+            .SetAutoKill();
     }
 
     public void Fall(Vector3 ground)
     {
-        transform.DOMoveY(ground.y, 9f).SetAutoKill();
+        transform.DOMoveY(ground.y, 9f)
+            .OnComplete(() => 
+            {
+                ReturnPool(4f);
+            })
+            .SetAutoKill();
     }
 
     public void MoveToSunBar(Vector3 pos)

@@ -64,7 +64,7 @@ public class ProjectileShooter : Plant
     {
         projectTile = (Projectile)(OnGetProduct?.Invoke(UnitData));
 
-        projectTile.InitProjectile(spawnPoint.position);
+        projectTile.InitProjectile(spawnPoint.position, UnitData);
 
         Vector3 dir = transform.right;
         projectTile.MoveToTarget(dir);
