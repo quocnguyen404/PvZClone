@@ -2,25 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 
 public class Zombie : IUnit
 {
-    public System.Action OnZombieDie = null;
-
     protected int currentNodeIndex;
-    protected float animOffSet = 0.5f;
 
+    #region Event 
+    public System.Action OnZombieDie = null;
     public System.Action OnZombieGetInHouse = null;
     public System.Func<Vector3> OnGetHousePosition = null;
+    #endregion
 
-    private float unitSpeed = -1f;
+    #region Attributes
+    protected float unitSpeed = -1f;
     public float UnitSpeed
     {
         get
         {
             if (unitSpeed <= 0f)
                 unitSpeed = UnitData.attributes[(int)Data.AttributeType.SP].value;
-            
+
             return unitSpeed;
         }
 
@@ -29,22 +31,77 @@ public class Zombie : IUnit
             unitSpeed = value;
         }
     }
+    #endregion
 
-    public bool isDebuff = false;
+    #region Debuff Handle
+    protected Dictionary<DebuffType, float> dictValueDebuff;
+    protected Dictionary<DebuffType, float> dictDebuff;
+    public List<DebuffType> currentDebuffs
+    {
+        get
+        {
+            List<DebuffType> d = new List<DebuffType>();
+
+            foreach (var e in dictDebuff)
+            {
+                if (e.Value > 0)
+                    d.Add(e.Key);
+            }
+
+            return d;
+        }
+    }
+    public bool IsDebuff
+    {
+        get
+        {
+            return currentDebuffs.Count > 0;
+        }
+    }
+    protected float debuffTimer = 0f;
+    #endregion
+
+    public override void Initialize(Vector2Int pos)
+    {
+        base.Initialize(pos);
+
+        dictValueDebuff = new Dictionary<DebuffType, float>();
+        dictDebuff = new Dictionary<DebuffType, float>();
+
+        dictDebuff[DebuffType.Slow] = 0f;
+        dictDebuff[DebuffType.Bleed] = 0f;
+        dictDebuff[DebuffType.Burn] = 0f;
+    }
 
     public virtual void InitializeRow(int row)
     {
         nodesPath = OnGetPath?.Invoke(row);
 
         currentNodeIndex = GridPosition.y;
+
         Move();
     }
 
-    private void Update()
+    public override void Update()
     {
-
         if (!IsAlive)
             return;
+
+        if (IsDebuff)
+        {
+            foreach (DebuffType t in currentDebuffs)
+                CountDownDebuff(t);
+
+            if (debuffTimer <= 0f)
+            {
+                foreach (DebuffType t in currentDebuffs)
+                    DoDebuff(dictValueDebuff[t], t);
+
+                debuffTimer = 1f;
+            }
+        }
+
+        debuffTimer -= Time.deltaTime;
     }
 
     public virtual void Move()
@@ -86,7 +143,7 @@ public class Zombie : IUnit
     {
         ator.SetTriggger("Attack");
 
-        DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value - animOffSet, () =>
+        DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
         {
             target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
         }).SetAutoKill();
@@ -108,9 +165,41 @@ public class Zombie : IUnit
             }).SetAutoKill();
     }
 
-    public virtual void TakeSlowDebuff()
+    public virtual void TakeDebuff(float duration, DebuffType type, float debuffValue)
     {
+        dictDebuff[type] = duration;
+        dictValueDebuff[type] = debuffValue;
+    }
 
+    public virtual void DoDebuff(float debuffValue, DebuffType type)
+    {
+        switch (type)
+        {
+            case DebuffType.Slow:
+
+                if (UnitSpeed == UnitSpeed - debuffValue)
+                    return;
+
+                UnitSpeed -= debuffValue;
+
+                return;
+
+            case DebuffType.Burn:
+                currentHealth -= debuffValue;
+                return;
+
+            case DebuffType.Bleed:
+                currentHealth -= debuffValue;
+                return;
+
+            default:
+                return;
+        }
+    }
+
+    public virtual void CountDownDebuff(DebuffType type)
+    {
+        dictDebuff[type] -= Time.deltaTime;
     }
 
     public override void Dead()

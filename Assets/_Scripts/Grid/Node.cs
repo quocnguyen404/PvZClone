@@ -10,8 +10,6 @@ public class Node : MonoBehaviour
     public Vector3 WorldPosition;
     private List<IUnit> units = null;
 
-    public bool hasZombie => HasZombie();
-
     public void Initialize()
     {
         units = new List<IUnit>();
@@ -37,7 +35,7 @@ public class Node : MonoBehaviour
         return unit != null;
     }
 
-    private bool HasZombie()
+    public bool HasZombie()
     {
         IUnit unit = units.Find(n => n is Zombie && n.IsAlive);
 

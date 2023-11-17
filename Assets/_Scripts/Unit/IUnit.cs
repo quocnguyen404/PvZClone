@@ -5,11 +5,13 @@ using UnityEngine;
 
 public abstract class IUnit : MonoBehaviour
 {
+    #region Composition Reference
     [SerializeField] protected UnitAnimator ator = null;
     [SerializeField] protected List<Node> nodesPath = null;
+    #endregion
 
-    public Vector3 PoolPosition = Vector3.zero;
-
+    #region Unit Data
+    public Data.UnitData UnitData = null;
     public string Name
     {
         get
@@ -17,31 +19,34 @@ public abstract class IUnit : MonoBehaviour
             return UnitData.unitName;
         }
     }
+    protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
+    protected float currentHealth;
+    public bool IsAlive => currentHealth > 0;
 
-    public Data.UnitData UnitData = null;
+    public bool IsOnNode => nodesPath.Count > 0;
+
+    public Vector3 PoolPosition = Vector3.zero;
     public Vector2Int GridPosition;
-    public bool IsOnNode
-    {
-        get
-        {
-            return nodesPath.Count > 0;
-        }
-    }
+    #endregion
 
+    #region Event
     public System.Func<int, int, Node> OnGetNode = null;
     public System.Func<int, List<Node>> OnGetPath = null;
     public System.Func<int, int, List<Node>> OnGetArea = null;
     public System.Func<Data.UnitData, IProduct> OnGetProduct = null;
+    #endregion
 
-    protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
-    protected float currentHealth;
-
-    public bool IsAlive => currentHealth > 0;
 
     public virtual void Initialize(Vector2Int pos)
     {
         currentHealth = maxHealth;
         GridPosition = pos;
+    }
+
+
+    public virtual void Update()
+    {
+
     }
 
     public virtual void PlaceUnitOnNode(Node node)

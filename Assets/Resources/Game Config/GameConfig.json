@@ -170,8 +170,92 @@
 		},
 		"SnowPea" : {
 			"unitName" : "SnowPea",
-			"productName" : "Snow Pea",
+			"productName" : "SnowPea",
 			"cost" : 175,
+			"rechargeTime" : 7.5,
+			"attributes" : [
+				{
+					"type" : 0,
+					"value" : 300
+				},
+				{
+					"type" : 1,
+					"value" : 20
+				},
+				{
+					"type" : 2,
+					"value" : 5
+				},
+				{
+					"type" : 3,
+					"value" : 30
+				},
+				{
+					"type" : 4,
+					"value" : 1.425
+				}
+			]
+		},
+		"Chomper" : {
+			"unitName" : "Chomper",
+			"productName" : "",
+			"cost" : 150,
+			"rechargeTime" : 7.5,
+			"attributes" : [
+				{
+					"type" : 0,
+					"value" : 300
+				},
+				{
+					"type" : 1,
+					"value" : 1600
+				},
+				{
+					"type" : 2,
+					"value" : 5
+				},
+				{
+					"type" : 3,
+					"value" : 30
+				},
+				{
+					"type" : 4,
+					"value" : 40
+				}
+			]
+		},
+		"Repeater" : {
+			"unitName" : "Repeater",
+			"productName" : "Pea",
+			"cost" : 200,
+			"rechargeTime" : 7.5,
+			"attributes" : [
+				{
+					"type" : 0,
+					"value" : 300
+				},
+				{
+					"type" : 1,
+					"value" : 20
+				},
+				{
+					"type" : 2,
+					"value" : 5
+				},
+				{
+					"type" : 3,
+					"value" : 30
+				},
+				{
+					"type" : 4,
+					"value" : 1.425
+				}
+			]
+		},
+		"Puffshroom" : {
+			"unitName" : "Puffshroom",
+			"productName" : "Spore",
+			"cost" : 0,
 			"rechargeTime" : 7.5,
 			"attributes" : [
 				{

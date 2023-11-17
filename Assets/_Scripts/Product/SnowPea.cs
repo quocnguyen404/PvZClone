@@ -2,16 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnowPea : Projectile, IDebuff
+public class SnowPea : Projectile
 {
-    [SerializeField] protected float debuffValue;
-
-    public float DebuffValue 
-    {
-        get;
-        set; 
-    }
-
     protected override void OnTriggerEnter(Collider other)
     {
         IUnit unit = other.gameObject.GetComponent<Zombie>();
@@ -19,22 +11,16 @@ public class SnowPea : Projectile, IDebuff
         if (unit != null)
         {
             unit.TakeDamage(damage);
+            Debuff(unit);
             gameObject.SetActive(false);
         }
 
     }
 
-    public void IDebuff(IUnit unit)
+    protected override void Debuff(IUnit unit)
     {
         Zombie zombie = (Zombie)unit;
 
-        if (zombie.isDebuff)
-        {
-            zombie.isDebuff = true;
-            return;
-        }
-
-        //do debug
-        zombie.isDebuff = true;
+        zombie.TakeDebuff(DebuffDuration, Type, DebuffValue);
     }
 }

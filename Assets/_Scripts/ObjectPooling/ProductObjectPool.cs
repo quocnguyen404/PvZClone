@@ -37,7 +37,7 @@ public class ProductObjectPool : ObjectPoolBase
 
     public IProduct GetProduct(Data.UnitData plantData)
     {
-        IProduct projectile = products.Find(p => !p.gameObject.activeInHierarchy && plantData.productName == p.projectileName);
+        IProduct projectile = products.Find(p => !p.gameObject.activeInHierarchy && plantData.productName == p.productName);
 
         if (projectile != null)
         {

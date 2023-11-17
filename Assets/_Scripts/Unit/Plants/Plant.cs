@@ -9,6 +9,12 @@ public class Plant : IUnit
         nodesPath = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
     }
 
+    public override void Update()
+    {
+        if (!IsOnNode)
+            return;
+    }
+
     public override void PlaceUnitOnNode(Node node)
     {
         base.PlaceUnitOnNode(node);
@@ -20,5 +26,6 @@ public class Plant : IUnit
     {
         transform.position = PoolPosition;
         gameObject.SetActive(false);
+        nodesPath.Find(n => n.GridPosition == GridPosition).RemoveUnit(this);
     }
 }

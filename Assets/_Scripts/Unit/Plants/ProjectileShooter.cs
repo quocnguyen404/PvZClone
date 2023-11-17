@@ -5,23 +5,32 @@ using UnityEngine;
 public class ProjectileShooter : Plant
 {
     [SerializeField] protected Transform spawnPoint = null;
+    [SerializeField] protected int MaxRange;
 
     protected int maxRange = 0;
-    protected float timer = 0;
+    protected float attackTimer = 0;
 
-    private Projectile projectTile = null;
+    protected Projectile projectTile = null;
 
     protected void OnDisable()
     {
         maxRange = 0;
     }
 
-    protected virtual void Update()
+    public override void Update()
     {
+        base.Update();
+
         if (!DetectEnemy())
             return;
 
-        Attack();
+        if (attackTimer <= 0)
+        {
+            Attack();
+            attackTimer = UnitData.attributes[(int)Data.AttributeType.AAI].value;
+        }
+
+        attackTimer -= Time.deltaTime;
     }
 
     public override void PlaceUnitOnNode(Node node)
@@ -40,7 +49,7 @@ public class ProjectileShooter : Plant
 
         bool value = false;
 
-        Node checkNode = nodesPath.Find(n => n.hasZombie && n.GridPosition.y < GameConstant.GARDEN_COLOUMN && n.GridPosition.y >= GridPosition.y);
+        Node checkNode = nodesPath.Find(n => n.HasZombie() && n.GridPosition.y < maxRange && n.GridPosition.y >= GridPosition.y);
 
         value = checkNode != null;
 
@@ -49,15 +58,7 @@ public class ProjectileShooter : Plant
 
     protected virtual void Attack()
     {
-        if (timer == 0)
-        {
-            ShotProjectile();
-        }
-
-        timer += Time.deltaTime;
-
-        if (timer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
-            timer = 0;
+        ShotProjectile();
     }
 
     protected virtual void ShotProjectile()
@@ -72,14 +73,17 @@ public class ProjectileShooter : Plant
 
     protected virtual void RangeCalculate(Node node)
     {
-        maxRange = GameConstant.GARDEN_COLOUMN - node.GridPosition.y;
+        maxRange = MaxRange + node.GridPosition.y;
+
+        if (maxRange > GameConstant.GARDEN_COLOUMN)
+        {
+
+        }
     }
 
-    //protected void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Vector3 direction = spawnPoint.TransformDirection(Vector3.right) * maxRange;
-    //    Gizmos.DrawRay(spawnPoint.position, direction);
-    //}
-
+    public override void Dead()
+    {
+        base.Dead();
+        attackTimer = UnitData.attributes[(int)Data.AttributeType.AAI].value;
+    }
 }

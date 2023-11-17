@@ -14,10 +14,4 @@ public class IExplosePlant : Plant
     {
 
     }
-
-    public override void Dead()
-    {
-        base.Dead();
-        nodesPath.Find(n => n.GridPosition == GridPosition).RemoveUnit(this);
-    }
 }

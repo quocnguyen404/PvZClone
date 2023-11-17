@@ -8,33 +8,32 @@ public class SunProducing : Plant
 
     protected Sun sunTemp = null;
 
-    protected float timer = 0;
+    protected float sunTimer = 0;
 
-    protected virtual void Update()
+    public override void Update()
     {
-        if (!IsOnNode)
-            return;
+        base.Update();
 
         ProduceSun();
     }
 
     protected virtual void ProduceSun()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
+        if (sunTimer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
         {
             sunTemp = (Sun)OnGetProduct?.Invoke(UnitData);
             sunTemp.Initialize(spawnPoint.position, (int)UnitData.attributes[(int)Data.AttributeType.ATK].value);
             sunTemp.TossSun(transform.position);
             sunTemp = null;
-            timer = 0;
+            sunTimer = 0;
         }
+
+        sunTimer += Time.deltaTime;
     }
 
     public override void Dead()
     {
         base.Dead();
-        timer = 0;
+        sunTimer = 0;
     }
 }

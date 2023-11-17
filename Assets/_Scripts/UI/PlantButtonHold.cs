@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlantButtonHold : MonoBehaviour
 {
-    [SerializeField] private Transform content = null;
+    //[SerializeField] private Transform content = null;
     public List<Slot> slots;
     public List<Data.UnitData> unitDatas;
 

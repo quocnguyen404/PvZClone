@@ -9,6 +9,10 @@ public class Projectile : IProduct
     protected float speed;
     protected float damage;
 
+    public float DebuffValue = 0f;
+    public float DebuffDuration = 0f;
+    public DebuffType Type = DebuffType.None;
+
     public void InitProjectile(Vector3 initPos, Data.UnitData unitData)
     {
         transform.position = initPos;
@@ -20,7 +24,7 @@ public class Projectile : IProduct
     public void MoveToTarget(Vector3 dir)
     {
         rgBody.AddForce(dir * speed);
-        ReturnPool(10f);
+        ReturnPool(existTime);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -32,5 +36,10 @@ public class Projectile : IProduct
             unit.TakeDamage(damage);
             gameObject.SetActive(false);
         }
+    }
+
+    protected virtual void Debuff(IUnit unit)
+    {
+
     }
 }

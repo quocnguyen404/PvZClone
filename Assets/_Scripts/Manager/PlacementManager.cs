@@ -8,7 +8,7 @@ public class PlacementManager : MonoBehaviour
     [Header("Component Reference")]
     [SerializeField] private InputManager inputManager = null;
     [SerializeField] private CurrencyManager currencyManager = null;
-    [SerializeField] private Button shovelButton = null;
+    //[SerializeField] private Button shovelButton = null;
     [SerializeField] private Transform dropSunPosition = null;
 
     public System.Action<IUnit> OnPlaceUnit = null;

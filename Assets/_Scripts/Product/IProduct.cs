@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class IProduct : MonoBehaviour
 {
-    public string projectileName = "";
+    public string productName = "";
+    public float existTime = 0;
 
     protected virtual void ReturnPool(float time)
     {
@@ -15,7 +16,6 @@ public class IProduct : MonoBehaviour
     private IEnumerator ICountdown(float time, System.Action Callback)
     {
         yield return Helper.GetWait(time);
-
         Callback?.Invoke();
     }
 }

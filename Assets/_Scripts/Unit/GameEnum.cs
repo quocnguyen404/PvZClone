@@ -9,5 +9,15 @@ namespace Data
         SP, // Speed 3
         AAI, //Average Attack Interval 4
     }
+
+
+}
+
+public enum DebuffType
+{
+    None,
+    Slow,
+    Bleed,
+    Burn,
 }
 

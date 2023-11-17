@@ -18,7 +18,11 @@ public class CherryBomb : IExplosePlant
         {
             col.enabled = true;
 
-            this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () => { Dead(); });
+            this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
+            {
+                Dead();
+                StopAllCoroutines();
+            });
         });
     }
 
