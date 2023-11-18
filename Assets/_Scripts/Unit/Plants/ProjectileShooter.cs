@@ -18,6 +18,9 @@ public class ProjectileShooter : Plant
 
     protected virtual void Update()
     {
+        if (!IsOnNode)
+            return;
+
         if (!DetectEnemy())
             return;
 
@@ -32,15 +35,9 @@ public class ProjectileShooter : Plant
 
     protected virtual bool DetectEnemy()
     {
-        if (maxRange == 0)
-            return false;
-
-        if (nodesPath == null)
-            return false;
-
         bool value = false;
 
-        Node checkNode = nodesPath.Find(n => n.hasZombie && n.GridPosition.y < GameConstant.GARDEN_COLOUMN && n.GridPosition.y >= GridPosition.y);
+        Node checkNode = nodesPath.Find(n => n.hasZombie && n.GridPosition.y <= maxRange && n.GridPosition.y >= GridPosition.y);
 
         value = checkNode != null;
 
@@ -75,11 +72,8 @@ public class ProjectileShooter : Plant
         maxRange = GameConstant.GARDEN_COLOUMN - node.GridPosition.y;
     }
 
-    //protected void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Vector3 direction = spawnPoint.TransformDirection(Vector3.right) * maxRange;
-    //    Gizmos.DrawRay(spawnPoint.position, direction);
-    //}
-
+    public override void Dead()
+    {
+        base.Dead();
+    }
 }

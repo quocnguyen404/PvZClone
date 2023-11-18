@@ -20,5 +20,6 @@ public class Plant : IUnit
     {
         transform.position = PoolPosition;
         gameObject.SetActive(false);
+        nodesPath.Find(n => n.GridPosition == GridPosition).RemoveUnit(this);
     }
 }

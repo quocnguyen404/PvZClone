@@ -20,7 +20,6 @@ public class ZombieManager : UnitManager
     public void DispatcherZombie(string zombieName)
     {
         Zombie zombie = GetZombieAlive(zombieName);
-        zombie.OnGetPath = ZombieGetPath;
         zombie.InitializeRow(zombie.GridPosition.x);
     }
 
@@ -32,6 +31,7 @@ public class ZombieManager : UnitManager
         base.AddUnit(unit);
         Zombie zombie = ZUnitCast(unit);
         zombie.OnZombieDie = ZombieDie;
+        zombie.OnGetPath = ZombieGetPath;
         zombie.OnGetHousePosition = ZombieGetHousePosition;
         zombie.OnZombieGetInHouse = ZombieGetInHouse;
         zombie.Initialize(new Vector2Int(row, column));

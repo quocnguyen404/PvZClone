@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6580436228067334764}
   - component: {fileID: 6580436228067334765}
   - component: {fileID: 6580436228067334769}
+  - component: {fileID: 8604375249123675990}
   m_Layer: 7
   m_Name: Flag Zombie
   m_TagString: Untagged
@@ -111,6 +112,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7563ebb614e324881f0cbbc0da16b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  ator: {fileID: 0}
+  nodesPath: []
+  PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
-  isAlive: 0
+  agent: {fileID: 8604375249123675990}
+  col: {fileID: 6580436228067334765}
+  isDebuff: 0
+--- !u!114 &8604375249123675990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580436228067334762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c908c034a1aff4d87740e6d4330d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  radius: 0
+  isStop: 0

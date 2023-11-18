@@ -10,6 +10,13 @@ public class SunProducing : Plant
 
     protected float timer = 0;
 
+    public override void InitializeRange()
+    {
+        Node node = OnGetNode?.Invoke(GridPosition.x, GridPosition.y);
+        nodesPath = new List<Node>();
+        nodesPath.Add(node);
+    }
+
     protected virtual void Update()
     {
         if (!IsOnNode)

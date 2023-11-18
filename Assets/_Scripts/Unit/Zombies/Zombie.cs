@@ -5,11 +5,15 @@ using DG.Tweening;
 
 public class Zombie : IUnit
 {
-    public System.Action OnZombieDie = null;
+    [SerializeField] protected Agent agent = null;
+    [SerializeField] protected CapsuleCollider col = null;
 
     protected int currentNodeIndex;
-    protected float animOffSet = 0.5f;
+    protected float timer = 0;
+    protected bool arried = true;
+    public bool isDebuff = false;
 
+    public System.Action OnZombieDie = null;
     public System.Action OnZombieGetInHouse = null;
     public System.Func<Vector3> OnGetHousePosition = null;
 
@@ -30,87 +34,89 @@ public class Zombie : IUnit
         }
     }
 
-    public bool isDebuff = false;
 
     public virtual void InitializeRow(int row)
     {
         nodesPath = OnGetPath?.Invoke(row);
 
         currentNodeIndex = GridPosition.y;
-        Move();
+        agent.OnArried = Arried;
+        arried = false;
+        agent.Initialize(UnitSpeed, col.radius);
     }
 
-    private void Update()
-    {
-
-        if (!IsAlive)
-            return;
-    }
-
-    public virtual void Move()
+    public virtual void Update()
     {
         if (!IsAlive)
             return;
 
-        if (currentNodeIndex < 0)
-        {
-            MoveToDestination((Vector3)OnGetHousePosition?.Invoke(), UnitSpeed, null);
-            OnZombieGetInHouse?.Invoke();
+        if (arried)
             return;
-        }
 
-        Vector3 nodePosition = Vector3.zero;
-
-        Vector3 destination = new Vector3(nodePosition.x - GameConstant.NODE_LENGTH / 2, nodePosition.y, nodePosition.z);
-        IUnit target = nodesPath[currentNodeIndex].GetPlantFromNode();
-
-        if (target != null && target.IsAlive)
+        if (CanAttack())
         {
-            ator.Reset();
-            StopAllCoroutines();
-            Attack(target);
-        }
-        else
-        {
-            this.DelayCall(UnitSpeed, Move);
-
-            MoveToDestination(destination, UnitSpeed, () =>
+            agent.Stop();
+            timer += Time.deltaTime;
+            if (timer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
             {
+                Attack(nodesPath[currentNodeIndex].GetPlantFromNode());
+                timer = 0;
+            }
 
-            });
+            return;
         }
 
+        agent.SetDestination(nodesPath[currentNodeIndex].WorldPosition);
+    }
+
+    public virtual void Arried()
+    {
+        arried = true;
+
+        this.DelayCall(GameUtilities.TimeToDestination(transform.position, nodesPath[currentNodeIndex].WorldPosition, UnitSpeed), () =>
+        {
+            ator.SetMove(UnitAnimator.MovementType.Move);
+            nodesPath[currentNodeIndex].RemoveUnit(this);
+            currentNodeIndex--;
+
+            if (currentNodeIndex < 0)
+            {
+                Vector3 housePos = (Vector3)OnGetHousePosition?.Invoke();
+                agent.OnArried = null;
+                agent.SetDestination(housePos);
+                arried = true;
+
+                this.DelayCall(GameUtilities.TimeToDestination(transform.position, housePos, UnitSpeed), () =>
+                {
+                    ator.SetTriggger("Attack");
+                    OnZombieGetInHouse?.Invoke();
+                    StopAllCoroutines();
+                });
+
+                return;
+            }
+
+            nodesPath[currentNodeIndex].AddUnit(this);
+
+            arried = false;
+        });
+    }
+
+    public virtual bool CanAttack()
+    {
+        return nodesPath[currentNodeIndex].HasPlant() 
+            && Vector3.Distance(transform.position, nodesPath[currentNodeIndex].WorldPosition) 
+            <= (col.radius /*+ GameConstant.NODE_LENGTH/2*/);
     }
 
     public virtual void Attack(IUnit target)
     {
+        ator.Reset();
         ator.SetTriggger("Attack");
-
-        DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value - animOffSet, () =>
+        this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
         {
             target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
-        }).SetAutoKill();
-
-        this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, Move);
-    }
-
-    public virtual void MoveToDestination(Vector3 destination, float time, System.Action Callback)
-    {
-        ator.SetMove(UnitAnimator.MovementType.Move);
-        transform.DOMove(destination, time)
-            .SetEase(Ease.Linear)
-            .OnComplete(() =>
-            {
-                nodesPath[currentNodeIndex].RemoveUnit(this);
-                currentNodeIndex--;
-                nodesPath[currentNodeIndex].AddUnit(this);
-                Callback?.Invoke();
-            }).SetAutoKill();
-    }
-
-    public virtual void TakeSlowDebuff()
-    {
-
+        });
     }
 
     public override void Dead()

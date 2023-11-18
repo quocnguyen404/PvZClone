@@ -22,6 +22,10 @@ public class UnitAnimator : MonoBehaviour
         ator.SetTrigger(actionName);
     }
 
+    public void Stop()
+    {
+        ator.StopPlayback();
+    }
     public void Reset()
     {
         ator.Rebind();

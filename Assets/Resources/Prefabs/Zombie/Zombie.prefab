@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6580436228067334766}
   - component: {fileID: 6580436228067334765}
   - component: {fileID: 6580436228067334769}
+  - component: {fileID: 4765071782585938415}
   - component: {fileID: -6537749923655966939}
   m_Layer: 7
   m_Name: Zombie
@@ -65,6 +66,24 @@ MonoBehaviour:
   nodesPath: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
+  agent: {fileID: 4765071782585938415}
+  col: {fileID: 6580436228067334765}
+  isDebuff: 0
+--- !u!114 &4765071782585938415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580436228067334762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c908c034a1aff4d87740e6d4330d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  radius: 0
+  isStop: 0
 --- !u!54 &-6537749923655966939
 Rigidbody:
   m_ObjectHideFlags: 0

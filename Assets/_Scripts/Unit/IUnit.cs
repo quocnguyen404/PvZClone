@@ -62,6 +62,5 @@ public abstract class IUnit : MonoBehaviour
 
     public virtual void Dead()
     {
-
     }
 }
