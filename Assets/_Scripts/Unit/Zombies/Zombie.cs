@@ -83,6 +83,8 @@ public class Zombie : IUnit
     {
         nodesPath = OnGetPath?.Invoke(row);
 
+        transform.eulerAngles = Helper.Cam.transform.eulerAngles;
+
         currentNodeIndex = GridPosition.y;
         agent.OnArried = Arried;
         arried = false;
@@ -135,7 +137,11 @@ public class Zombie : IUnit
 
         this.DelayCall(GameUtilities.TimeToDestination(transform.position, nodesPath[currentNodeIndex].WorldPosition, UnitSpeed), () =>
         {
-            ator.SetZombieMove(UnitAnimator.ZombieStateType.Move);
+            if (IsAlive)
+                ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
+            else
+                ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHeadWalk);
+
             nodesPath[currentNodeIndex].RemoveUnit(this);
             currentNodeIndex--;
 
@@ -148,7 +154,7 @@ public class Zombie : IUnit
 
                 this.DelayCall(GameUtilities.TimeToDestination(transform.position, housePos, UnitSpeed), () =>
                 {
-                    ator.SetTriggger("Attack");
+                    ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
                     OnZombieGetInHouse?.Invoke();
                     StopAllCoroutines();
                 });
@@ -171,8 +177,7 @@ public class Zombie : IUnit
 
     public virtual void Attack(IUnit target)
     {
-        ator.Reset();
-        ator.SetTriggger("Attack");
+        ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
         DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
         {
             target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
@@ -216,10 +221,14 @@ public class Zombie : IUnit
         dictDebuff[type] -= Time.deltaTime;
     }
 
+    public override void TakeDamage(float damge)
+    {
+        base.TakeDamage(damge);
+    }
+
     public override void Dead()
     {
-        ator.SetTriggger("Death");
-        gameObject.SetActive(false);
+        ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHead);
         transform.position = PoolPosition;
         nodesPath[currentNodeIndex].RemoveUnit(this);
         OnZombieDie?.Invoke();

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     [SerializeField] protected MeshRenderer meshRd = null;
-    [SerializeField] protected GameObject bold = null;
 
     public Vector2Int GridPosition;
     public Vector3 WorldPosition;
@@ -71,7 +70,6 @@ public class Node : MonoBehaviour
     public void ChangeColor(Color color)
     {
         meshRd.material.color = color;
-        bold.SetActive(true);
     }
 }
 

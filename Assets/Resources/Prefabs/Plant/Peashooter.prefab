@@ -117,7 +117,7 @@ MonoBehaviour:
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   spawnPoint: {fileID: 659346788042748840}
-  MaxRange: 0
+  MaxRange: 9
 --- !u!1 &3814784321683417903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7426401668095524584, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}

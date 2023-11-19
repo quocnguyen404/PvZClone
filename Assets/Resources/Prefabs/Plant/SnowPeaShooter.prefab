@@ -174,4 +174,4 @@ MonoBehaviour:
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   spawnPoint: {fileID: 7591463768868133568}
-  MaxRange: 9
+  MaxRange: 10

@@ -8,8 +8,13 @@ public class UnitAnimator : MonoBehaviour
 
     public enum ZombieStateType
     {
-        Move,
+        Idle,
+        Walk,
         Attack,
+        LostHead,
+        LostHeadWalk,
+        LostHeadAttack,
+        Die,
     }
 
     public enum PlantStateType
@@ -23,7 +28,7 @@ public class UnitAnimator : MonoBehaviour
 
     public void SetZombieMove(ZombieStateType movement)
     {
-        ator.SetFloat("MovementType", (int)movement);
+        ator.SetFloat("ZombieState", (int)movement);
     }
 
     public void SetPlantMove(PlantStateType movement)
