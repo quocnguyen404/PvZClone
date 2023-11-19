@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productName: Sun
-  existTime: 0
+  existTime: 4
   jumpSpeed: 1
   jumpTime: 0.5
   jumpForce: 0.73

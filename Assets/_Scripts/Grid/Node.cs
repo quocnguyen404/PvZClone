@@ -47,9 +47,19 @@ public class Node : MonoBehaviour
         if (units == null)
             return null;
 
-        Plant plant = units.Find(n => n is Plant) as Plant;
+        Plant plant = units.Find(p => p is Plant) as Plant;
 
         return plant;
+    }
+
+    public Zombie GetZombieFromNode()
+    {
+        if (units == null)
+            return null;
+
+        Zombie zombie = units.Find(z => z is Zombie) as Zombie;
+
+        return zombie;
     }
 
     public List<IUnit> GetAllZobmie()

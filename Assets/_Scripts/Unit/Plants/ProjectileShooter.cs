@@ -49,7 +49,7 @@ public class ProjectileShooter : Plant
 
         bool value = false;
 
-        Node checkNode = nodesPath.Find(n => n.HasZombie() && n.GridPosition.y < maxRange && n.GridPosition.y >= GridPosition.y);
+        Node checkNode = nodesPath.Find(n => n.HasZombie() && n.GridPosition.y < GameConstant.GARDEN_COLOUMN && n.GridPosition.y >= GridPosition.y);
 
         value = checkNode != null;
 
