@@ -16,18 +16,8 @@ public class Chomper : Plant
         }
     }
 
-    //public float CoolDown
-    //{
-    //    get
-    //    {
-    //    }
-    //}
-
-
-    protected void Update()
+    public override void Update()
     {
-        if (!IsOnNode)
-            return;
 
         if (DetectEnemy())
             Attack();

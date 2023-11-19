@@ -14,6 +14,7 @@ public class CherryBomb : IExplosePlant
 
     protected override void Explose()
     {
+        ator.SetPlantMove(UnitAnimator.PlantStateType.Attack);
         this.DelayCall(0.25f, () =>
         {
             col.enabled = true;

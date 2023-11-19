@@ -27,6 +27,12 @@ public class Projectile : IProduct
         ReturnPool(existTime);
     }
 
+    protected override void ReturnPool()
+    {
+        base.ReturnPool();
+        rgBody.velocity = Vector3.zero;
+    }
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         IUnit unit = other.gameObject.GetComponent<Zombie>();

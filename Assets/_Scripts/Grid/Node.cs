@@ -5,6 +5,7 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     [SerializeField] protected MeshRenderer meshRd = null;
+    [SerializeField] protected GameObject bold = null;
 
     public Vector2Int GridPosition;
     public Vector3 WorldPosition;
@@ -19,13 +20,13 @@ public class Node : MonoBehaviour
     {
         unit.GridPosition = GridPosition;
         units.Add(unit);
-        Debug.Log($"Add {unit.UnitData.unitName} to node {GridPosition.x}, {GridPosition.y}");
+        //Debug.Log($"Add {unit.UnitData.unitName} to node {GridPosition.x}, {GridPosition.y}");
     }
 
     public void RemoveUnit(IUnit unit)
     {
         units.Remove(unit);
-        Debug.Log($"Remove {unit.UnitData.unitName} to node {GridPosition.x}, {GridPosition.y}");
+        //Debug.Log($"Remove {unit.UnitData.unitName} to node {GridPosition.x}, {GridPosition.y}");
     }
 
     public bool HasPlant()
@@ -70,6 +71,7 @@ public class Node : MonoBehaviour
     public void ChangeColor(Color color)
     {
         meshRd.material.color = color;
+        bold.SetActive(true);
     }
 }
 

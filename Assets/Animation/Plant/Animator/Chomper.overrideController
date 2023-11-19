@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chomper
+  m_Controller: {fileID: 9100000, guid: f08daee76b80deb40b6db6d9eb3dd85f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: dab7a6cbf24af1149adfde3a489aba66, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fc0e8e7e3a6f4e840a2f603ae421231b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6d080bba49da4fa488b146e62a463bf9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a88deffe5294c57459f7c01fb840e23c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 562576c59569a3d47b4b892c5160615e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 75096bed0e0611f4d9b4052bd002343f, type: 2}

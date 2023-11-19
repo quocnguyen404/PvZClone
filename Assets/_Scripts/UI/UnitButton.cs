@@ -26,7 +26,7 @@ public class UnitButton : MonoBehaviour
     public void Initialize(Data.UnitData unitData)
     {
         this.unitData = unitData;
-        icon.sprite = Resources.Load<Sprite>(string.Format(GameConstant.SPRITE_PATH, unitData.unitName));
+        icon.sprite = Resources.Load<Sprite>(string.Format(GameConstant.CARDS_PATH, unitData.unitName));
         costText.text = unitData.cost.ToString();
     }
 

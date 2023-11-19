@@ -135,7 +135,7 @@ public class Zombie : IUnit
 
         this.DelayCall(GameUtilities.TimeToDestination(transform.position, nodesPath[currentNodeIndex].WorldPosition, UnitSpeed), () =>
         {
-            ator.SetMove(UnitAnimator.MovementType.Move);
+            ator.SetZombieMove(UnitAnimator.ZombieStateType.Move);
             nodesPath[currentNodeIndex].RemoveUnit(this);
             currentNodeIndex--;
 

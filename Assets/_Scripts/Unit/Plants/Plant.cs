@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Plant : IUnit
 {
+
     public virtual void InitializeRange()
     {
         nodesPath = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
@@ -17,7 +18,11 @@ public class Plant : IUnit
 
     public override void PlaceUnitOnNode(Node node)
     {
-        base.PlaceUnitOnNode(node);
+        //Vector3 plantWorldPosition = new Vector3(node.WorldPosition.x, node.WorldPosition.y, node.WorldPosition.z);
+        //transform.position = plantWorldPosition;
+        transform.position = node.WorldPosition;
+        ator.transform.eulerAngles = Helper.Cam.transform.eulerAngles;
+        node.AddUnit(this);
         Initialize(node.GridPosition);
         InitializeRange();
     }

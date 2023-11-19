@@ -1,7 +1,7 @@
 
 public static class GameConstant
 {
-    public const string SPRITE_PATH = "Sprites/{0}";
+    public const string CARDS_PATH = "Cards/{0}";
     public const string PLANT_PREFAB_PATH = "Prefabs/Plant/{0}";
     public const string ZOMBIE_PREFAB_PATH = "Prefabs/Zombie/{0}";
     public const string PROJECTILE_PREFAB_PATH = "Prefabs/Product/{0}";

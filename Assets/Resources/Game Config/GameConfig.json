@@ -1,7 +1,7 @@
 {
 	"plants" : {
-		"Peashooter" : {
-			"unitName" : "Peashooter",
+		"PeaShooter" : {
+			"unitName" : "PeaShooter",
 			"productName" : "Pea",
 			"cost" : 100,
 			"rechargeTime" : 7.5,
@@ -168,8 +168,8 @@
 				}
 			]
 		},
-		"SnowPea" : {
-			"unitName" : "SnowPea",
+		"SnowPeaShooter" : {
+			"unitName" : "SnowPeaShooter",
 			"productName" : "SnowPea",
 			"cost" : 175,
 			"rechargeTime" : 7.5,
@@ -251,34 +251,6 @@
 					"value" : 1.425
 				}
 			]
-		},
-		"Puffshroom" : {
-			"unitName" : "Puffshroom",
-			"productName" : "Spore",
-			"cost" : 0,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 300
-				},
-				{
-					"type" : 1,
-					"value" : 20
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 30
-				},
-				{
-					"type" : 4,
-					"value" : 1.425
-				}
-			]
 		}
 	},
 	"zombies" : {
@@ -301,7 +273,7 @@
 				},
 				{
 					"type" : 3,
-					"value" : 1
+					"value" : 4.7
 				},
 				{
 					"type" : 4,
