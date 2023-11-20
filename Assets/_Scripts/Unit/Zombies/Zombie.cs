@@ -10,7 +10,7 @@ public class Zombie : IUnit
     [SerializeField] protected CapsuleCollider col = null;
 
     protected int currentNodeIndex;
-    protected float timer = 0;
+    protected float attackTimer = 0;
     protected bool arried = true;
     public bool isDebuff = false;
 
@@ -71,7 +71,6 @@ public class Zombie : IUnit
     {
         base.Initialize(pos);
 
-        ator.Initialize();
 
         dictValueDebuff = new Dictionary<DebuffType, float>();
         dictDebuff = new Dictionary<DebuffType, float>();
@@ -122,11 +121,11 @@ public class Zombie : IUnit
         if (CanAttack())
         {
             agent.Stop();
-            timer += Time.deltaTime;
-            if (timer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
+            attackTimer += Time.deltaTime;
+            if (attackTimer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
             {
                 Attack(nodesPath[currentNodeIndex].GetPlantFromNode());
-                timer = 0;
+                attackTimer = 0;
             }
 
             return;
@@ -140,10 +139,18 @@ public class Zombie : IUnit
     {
         arried = true;
 
+        if (!IsAlive)
+        {
+            //
+            return;
+        }
+
         this.DelayCall(GameUtilities.TimeToDestination(transform.position, nodesPath[currentNodeIndex].WorldPosition, UnitSpeed), () =>
         {
-            if (IsAlive)
+            if (!isLostHead)
                 ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
+            else
+                ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHeadWalk);
 
             nodesPath[currentNodeIndex].RemoveUnit(this);
             currentNodeIndex--;
@@ -173,18 +180,18 @@ public class Zombie : IUnit
 
     public virtual bool CanAttack()
     {
-        return nodesPath[currentNodeIndex].HasPlant() 
-            && Vector3.Distance(transform.position, nodesPath[currentNodeIndex].WorldPosition) 
+        return nodesPath[currentNodeIndex].HasPlant()
+            && Vector3.Distance(transform.position, nodesPath[currentNodeIndex].WorldPosition)
             <= (col.radius /*+ GameConstant.NODE_LENGTH/2*/);
     }
 
     public virtual void Attack(IUnit target)
     {
         ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
-        DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
-        {
-            target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
-        }).SetAutoKill();
+        //DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
+        //{
+        target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
+        //}).SetAutoKill();
     }
 
     public virtual void TakeDebuff(float duration, DebuffType type, float debuffValue)
@@ -224,17 +231,30 @@ public class Zombie : IUnit
         dictDebuff[type] -= Time.deltaTime;
     }
 
+
+    bool isLostHead = false;
+
     public override void TakeDamage(float damge)
     {
         base.TakeDamage(damge);
+
+        if (!isLostHead && currentHealth <= 100)
+        {
+            ator.SetZombieLostHead();
+            isLostHead = true;
+        }
+
     }
+
+
 
     public override void Dead()
     {
-        ator.SetZombieDie();
+        ator.SetZombieMove(UnitAnimator.ZombieStateType.Die);
+        //ator.SetZombieDie();
         //transform.position = PoolPosition;
-        nodesPath[currentNodeIndex].RemoveUnit(this);
-        col.enabled = false;
-        OnZombieDie?.Invoke();
+        //nodesPath[currentNodeIndex].RemoveUnit(this);
+        //col.enabled = false;
+        //OnZombieDie?.Invoke();
     }
 }

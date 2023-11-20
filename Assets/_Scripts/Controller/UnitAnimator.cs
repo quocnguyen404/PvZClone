@@ -5,17 +5,19 @@ using UnityEngine;
 public class UnitAnimator : MonoBehaviour
 {
     [SerializeField] protected Animator ator = null;
-
     [SerializeField] protected ZombieStateType zCurrentState;
     [SerializeField] protected PlantStateType pCurrentState;
+
     public enum ZombieStateType
     {
         Idle,
         Walk,
         Attack,
-        WalkDie,
-        AttackDie,
-        BombDie,
+        LostHeadWalkState,
+        LostHeadAttackState,
+        LostHeadAttack,
+        LostHeadWalk,
+        Die,
     }
 
     public enum PlantStateType
@@ -33,32 +35,32 @@ public class UnitAnimator : MonoBehaviour
         SetPlantMove(PlantStateType.Idle);
     }
 
-    public void SetZombieDie()
+
+    public void SetZombieMove(ZombieStateType movement)
+    {
+        if (movement == zCurrentState)
+            return;
+
+        Debug.Log(movement.ToString());
+
+        zCurrentState = movement;
+
+        ator.Play(movement.ToString());
+    }
+
+    public void SetZombieLostHead()
     {
         switch (zCurrentState)
         {
             case ZombieStateType.Walk:
 
-                SetZombieMove(ZombieStateType.WalkDie);
-                return;
+                SetZombieMove(ZombieStateType.LostHeadWalkState);
+                break;
 
             case ZombieStateType.Attack:
-
-                return;
-
-            default:
-                return;
+                SetZombieMove(ZombieStateType.LostHeadAttackState);
+                break;
         }
-    }
-
-    public void SetZombieMove(ZombieStateType movement)
-    {
-        if (zCurrentState == ZombieStateType.Walk)
-            return;
-
-        zCurrentState = movement;
-
-        ator.SetFloat("ZombieState", (int)movement);
     }
 
 

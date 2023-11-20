@@ -57,6 +57,10 @@ public abstract class IUnit : MonoBehaviour
 
     public virtual void TakeDamage(float damge)
     {
+
+        if (!IsAlive)
+            return;
+
         currentHealth -= damge;
 
         if (currentHealth <= 0)
