@@ -71,12 +71,16 @@ public class Zombie : IUnit
     {
         base.Initialize(pos);
 
+        ator.Initialize();
+
         dictValueDebuff = new Dictionary<DebuffType, float>();
         dictDebuff = new Dictionary<DebuffType, float>();
 
         dictDebuff[DebuffType.Slow] = 0f;
         dictDebuff[DebuffType.Bleed] = 0f;
         dictDebuff[DebuffType.Burn] = 0f;
+        col.enabled = true;
+        ator.Initialize();
     }
 
     public virtual void InitializeRow(int row)
@@ -129,6 +133,7 @@ public class Zombie : IUnit
         }
 
         agent.SetDestination(nodesPath[currentNodeIndex].WorldPosition);
+        ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
     }
 
     protected virtual void Arried()
@@ -139,8 +144,6 @@ public class Zombie : IUnit
         {
             if (IsAlive)
                 ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
-            else
-                ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHeadWalk);
 
             nodesPath[currentNodeIndex].RemoveUnit(this);
             currentNodeIndex--;
@@ -228,9 +231,10 @@ public class Zombie : IUnit
 
     public override void Dead()
     {
-        ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHead);
-        transform.position = PoolPosition;
+        ator.SetZombieDie();
+        //transform.position = PoolPosition;
         nodesPath[currentNodeIndex].RemoveUnit(this);
+        col.enabled = false;
         OnZombieDie?.Invoke();
     }
 }
