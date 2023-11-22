@@ -33,7 +33,7 @@ public class CherryBomb : IExplosePlant
 
         if (zombie != null)
         {
-            zombie.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
+            zombie.Explose(UnitData.attributes[(int)Data.AttributeType.ATK].value);
         }
     }
 

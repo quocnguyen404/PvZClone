@@ -21,7 +21,7 @@ public abstract class IUnit : MonoBehaviour
     }
     protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
     protected float currentHealth;
-    public bool IsAlive => currentHealth > 0;
+    public virtual bool IsAlive => currentHealth > 0;
 
     public bool IsOnNode => nodesPath.Count > 0;
 
@@ -57,7 +57,6 @@ public abstract class IUnit : MonoBehaviour
 
     public virtual void TakeDamage(float damge)
     {
-
         if (!IsAlive)
             return;
 

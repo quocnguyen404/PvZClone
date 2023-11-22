@@ -18,6 +18,7 @@ public class UnitAnimator : MonoBehaviour
         LostHeadAttack,
         LostHeadWalk,
         Die,
+        BombDie,
     }
 
     public enum PlantStateType

@@ -40,13 +40,21 @@ public class Agent : MonoBehaviour
             .SetAutoKill();
     }
 
+    public void AttackStop()
+    {
+        if (isStop)
+            return;
 
+        transform.DOKill();
+        isStop = true;
+    }
 
     public void Stop()
     {
         if (isStop)
             return;
 
+        OnArried?.Invoke();
         transform.DOKill();
         isStop = true;
     }

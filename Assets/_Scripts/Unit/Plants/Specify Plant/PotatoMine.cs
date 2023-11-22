@@ -20,7 +20,7 @@ public class PotatoMine : IExplosePlant
 
     private void CountDown()
     {
-        this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () => 
+        this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
         {
             Growth();
         });
@@ -39,7 +39,7 @@ public class PotatoMine : IExplosePlant
 
         if (zombie != null)
         {
-            zombie.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
+            zombie.Explose(UnitData.attributes[(int)Data.AttributeType.ATK].value);
             Dead();
         }
     }
