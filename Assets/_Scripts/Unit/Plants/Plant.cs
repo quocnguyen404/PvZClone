@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Plant : IUnit
 {
-
     public virtual void InitializeRange()
     {
         nodesPath = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
@@ -14,6 +13,12 @@ public class Plant : IUnit
     {
         if (!IsOnNode)
             return;
+    }
+
+    public override void Initialize(Vector2Int pos)
+    {
+        base.Initialize(pos);
+        ator.PInitialize();
     }
 
     public override void PlaceUnitOnNode(Node node)

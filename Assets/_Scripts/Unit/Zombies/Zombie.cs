@@ -97,7 +97,7 @@ public class Zombie : IUnit
         dictDebuff[DebuffType.Bleed] = 0f;
         dictDebuff[DebuffType.Burn] = 0f;
         col.enabled = true;
-        ator.Initialize();
+        ator.ZInitialize();
     }
 
     public virtual void InitializeRow(int row)
@@ -268,10 +268,16 @@ public class Zombie : IUnit
 
     public virtual void Explose(float damge)
     {
-        if (currentHealth > 0)
-            currentHealth -= damge;
-        else if (currentHealth <= 0)
-            Armour -= damge;
+        if (currentHealth + Armour - damge <= 0)
+        {
+            currentHealth = 0;
+            Armour = 0;
+        }
+        else
+        {
+            TakeDamage(damge);
+        }
+
 
         if (currentHealth <= 0 && Armour <= 0)
         {

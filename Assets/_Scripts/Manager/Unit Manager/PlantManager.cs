@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PlantManager : UnitManager
 {
+    public Transform PoolTransform = null;
     public System.Func<int, int, Node> OnPlantGetNode = null;
     public System.Func<int, List<Node>> OnPlantGetPath = null;
     public System.Func<int, int, List<Node>> OnPlantGetArea = null;
-
 
     public override void AddUnit(IUnit unit)
     {
         base.AddUnit(unit);
 
         Plant plant = PUnitCast(unit);
+        plant.PoolPosition = PoolTransform.position;
         plant.OnGetNode = PlantGetNode;
         plant.OnGetPath = PlantGetPath;
         plant.OnGetArea = PlantGetArea;

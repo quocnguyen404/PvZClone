@@ -30,9 +30,13 @@ public class UnitAnimator : MonoBehaviour
         Attack,
     }
 
-    public void Initialize()
+    public void ZInitialize()
     {
         SetZombieMove(ZombieStateType.Idle);
+    }
+
+    public void PInitialize()
+    {
         SetPlantMove(PlantStateType.Idle);
     }
 
@@ -67,18 +71,17 @@ public class UnitAnimator : MonoBehaviour
 
     public void SetPlantMove(PlantStateType movement)
     {
-        ator.SetFloat("PlantState", (int)movement);
+        if (movement == pCurrentState)
+            return;
+
+        Debug.Log(movement.ToString());
+
+        pCurrentState = movement;
+
+        ator.Play(movement.ToString());
     }
 
-    public void SetTriggger(string actionName)
-    {
-        ator.SetTrigger(actionName);
-    }
 
-    public void Stop()
-    {
-        ator.StopPlayback();
-    }
     public void Reset()
     {
         ator.Rebind();

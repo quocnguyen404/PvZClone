@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         productObjectPool.OnSpawnProduct = sunManager.AddProduct;
 
         zombieManager.OnZombieGetPath = gridManager.GetRow;
+        plantManager.PoolTransform = plantObjectPool.transform;
         plantManager.OnPlantGetNode = gridManager.GetNode;
         plantManager.OnPlantGetPath = gridManager.GetRow;
         plantManager.OnPlantGetArea = gridManager.GetArea;
