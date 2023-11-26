@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class UnitButtonPanel : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class UnitButtonPanel : MonoBehaviour
             slots[count].GetUnitButton(data);
             newUnitButton.slotOnPanel = slots[count];
 
-            newUnitButton.transform.parent = slots[count].transform;
+            newUnitButton.transform.SetParent(slots[count].transform);
             newUnitButton.transform.localPosition = Vector3.zero;
 
             unitButtons.Add(newUnitButton);
@@ -54,8 +55,8 @@ public class UnitButtonPanel : MonoBehaviour
     {
         Slot slotOnPanel = unitButton.slotOnPanel;
 
-        unitButton.transform.parent = slotOnPanel.transform;
-        unitButton.transform.localPosition = Vector3.zero;
+        unitButton.transform.SetParent(slotOnPanel.transform);
+        unitButton.transform.DOLocalMove(Vector3.zero, GameConstant.TIME_BUTTON_MOVE/2).SetAutoKill();
 
         unitButton.slotOnHold.EmptySlotData();
         unitButton.slotOnHold = null;

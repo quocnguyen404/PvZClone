@@ -25,7 +25,7 @@ public class Agent : MonoBehaviour
 
         MoveToDestination(destination);
 
-        if (Vector3.Distance(transform.position, destination) <= radius)
+        if (Vector3.Distance(transform.position, destination) <= 0)
             OnArried?.Invoke();
     }
 
@@ -33,6 +33,8 @@ public class Agent : MonoBehaviour
     public void MoveToDestination(Vector3 destination)
     {
         isStop = false;
+
+        Vector3 dir = (destination - transform.position).normalized;
 
         transform.DOKill();
         transform.DOMove(destination, GameUtilities.TimeToDestination(transform.position, destination, speed))

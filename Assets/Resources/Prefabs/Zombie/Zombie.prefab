@@ -188,9 +188,10 @@ MonoBehaviour:
   nodesPath: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
+  sr: {fileID: 6301178917327972317}
   agent: {fileID: 4765071782585938415}
   col: {fileID: 6580436228067334765}
-  isDebuff: 0
+  Armour: 0
 --- !u!114 &4765071782585938415
 MonoBehaviour:
   m_ObjectHideFlags: 0

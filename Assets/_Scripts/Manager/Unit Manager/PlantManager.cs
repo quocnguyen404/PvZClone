@@ -18,7 +18,7 @@ public class PlantManager : UnitManager
         plant.OnGetNode = PlantGetNode;
         plant.OnGetPath = PlantGetPath;
         plant.OnGetArea = PlantGetArea;
-        plant.OnGetProduct = GetProjectile;
+        plant.OnGetProduct = GetProduct;
     }
 
     private Plant PUnitCast(IUnit unit)
@@ -27,7 +27,7 @@ public class PlantManager : UnitManager
         return pUnit;
     }
 
-    private IProduct GetProjectile(Data.UnitData data)
+    private IProduct GetProduct(Data.UnitData data)
     {
         return OnUnitGetProduct?.Invoke(data);
     }

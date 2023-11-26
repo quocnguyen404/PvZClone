@@ -6,14 +6,16 @@ using System.Linq;
 
 public class Zombie : IUnit
 {
+    [SerializeField] protected SpriteRenderer sr = null;
     [SerializeField] protected Agent agent = null;
     [SerializeField] protected CapsuleCollider col = null;
 
-    protected int currentNodeIndex;
+    [SerializeField] protected int currentNodeIndex;
     protected float attackTimer = 0;
     protected bool arried = true;
 
     public override bool IsAlive => currentHealth > 0 || Armour > 0;
+    public virtual bool IsInitialize => nodesPath.Count > 0;
 
 
     #region Event
@@ -23,39 +25,12 @@ public class Zombie : IUnit
     #endregion
 
     #region Attributes
-    protected float unitSpeed = -1f;
-    public float UnitSpeed
-    {
-        get
-        {
-            if (unitSpeed <= 0f)
-                unitSpeed = UnitData.attributes[(int)Data.AttributeType.SP].value;
+    protected float maxUnitSpeed => UnitData.attributes[(int)Data.AttributeType.SP].value;
+    public float UnitSpeed = 0f;
 
-            return unitSpeed;
-        }
-
-        set
-        {
-            unitSpeed = value;
-        }
-    }
-
-    protected float armour;
-    public float Armour
-    {
-        get
-        {
-            if (armour == 0f)
-                armour = UnitData.attributes[(int)Data.AttributeType.DFS].value;
-
-            return armour;
-        }
-
-        set
-        {
-            armour = value;
-        }
-    }
+    
+    protected float maxArmour => UnitData.attributes[(int)Data.AttributeType.DFS].value;
+    public float Armour = 0f;
     #endregion
 
     #region Debuff Handle
@@ -105,11 +80,14 @@ public class Zombie : IUnit
         nodesPath = OnGetPath?.Invoke(row);
 
         transform.eulerAngles = Helper.Cam.transform.eulerAngles;
+        UnitSpeed = maxUnitSpeed;
+        Armour = maxArmour;
 
         attackTimer = UnitData.attributes[(int)Data.AttributeType.AAI].value;
         currentNodeIndex = GridPosition.y;
         agent.OnArried = Arried;
         arried = false;
+
         agent.Initialize(UnitSpeed, col.radius);
     }
 
@@ -117,7 +95,6 @@ public class Zombie : IUnit
     {
         if (!IsAlive)
         {
-            //StopAllCoroutines();
             return;
         }
 
@@ -154,6 +131,7 @@ public class Zombie : IUnit
             return;
         }
 
+        //MoveFoward();
         agent.SetDestination(nodesPath[currentNodeIndex].WorldPosition);
     }
 
@@ -167,8 +145,8 @@ public class Zombie : IUnit
             return;
         }
 
-        this.DelayCall(GameUtilities.TimeToDestination(transform.position, nodesPath[currentNodeIndex].WorldPosition, UnitSpeed), () =>
-        {
+        //this.DelayCall(GameUtilities.TimeToDestination(transform.position, nodesPath[currentNodeIndex].WorldPosition, UnitSpeed), () =>
+        //{
             if (currentHealth > 0)
                 ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
             else if (Armour > 0)
@@ -197,7 +175,7 @@ public class Zombie : IUnit
             nodesPath[currentNodeIndex].AddUnit(this);
 
             arried = false;
-        });
+        //});
     }
 
     public virtual bool CanAttack()
@@ -225,10 +203,11 @@ public class Zombie : IUnit
         {
             case DebuffType.Slow:
 
-                if (UnitSpeed == UnitSpeed - debuffValue)
+                if (UnitSpeed == UnitSpeed + debuffValue)
                     return;
-                UnitSpeed -= debuffValue;
 
+                sr.color = Color.blue;
+                UnitSpeed += debuffValue;
                 break;
 
             case DebuffType.Burn:
@@ -244,6 +223,9 @@ public class Zombie : IUnit
     public virtual void CountDownDebuff(DebuffType type)
     {
         dictDebuff[type] -= Time.deltaTime;
+
+        if (dictDebuff[type] <= 0)
+            ResetDebug(type);
     }
 
 
@@ -287,6 +269,21 @@ public class Zombie : IUnit
     }
 
 
+    public virtual void ResetDebug(DebuffType type)
+    {
+        switch(type)
+        {
+            case DebuffType.Slow:
+                sr.color = Color.white;
+                dictDebuff[type] = 0f;
+                break;
+
+            case DebuffType.Burn:
+                sr.color = Color.white;
+                dictDebuff[type] = 0f;
+                break;
+        }
+    }
 
     public override void Dead()
     {
@@ -294,8 +291,9 @@ public class Zombie : IUnit
         col.enabled = false;
         DOVirtual.DelayedCall(1f, () =>
         {
-            //transform.position = PoolPosition;
+            transform.position = PoolPosition;
             nodesPath[currentNodeIndex].RemoveUnit(this);
+            nodesPath.Clear();
             OnZombieDie?.Invoke();
 
         }).SetAutoKill();

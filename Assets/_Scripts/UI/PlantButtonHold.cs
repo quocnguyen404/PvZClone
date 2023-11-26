@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlantButtonHold : MonoBehaviour
 {
@@ -26,8 +27,8 @@ public class PlantButtonHold : MonoBehaviour
         emptySlot.GetUnitButton(unitButton.unitData);
         unitButton.slotOnHold = emptySlot;
 
-        unitButton.transform.parent = emptySlot.transform;
-        unitButton.transform.localPosition = Vector3.zero;
+        unitButton.transform.SetParent(emptySlot.transform);
+        unitButton.transform.DOLocalMove(Vector3.zero, GameConstant.TIME_BUTTON_MOVE).SetAutoKill();
 
         unitButton.OnUnitButtonClick = UnitButtonClick;
     }

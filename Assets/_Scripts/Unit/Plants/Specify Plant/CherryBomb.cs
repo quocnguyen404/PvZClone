@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CherryBomb : IExplosePlant
 {
@@ -9,22 +10,15 @@ public class CherryBomb : IExplosePlant
     public override void PlaceUnitOnNode(Node node)
     {
         base.PlaceUnitOnNode(node);
-        Explose();
+        ator.SetPlantMove(UnitAnimator.PlantStateType.Attack, Explose);
     }
 
     protected override void Explose()
     {
-        ator.SetPlantMove(UnitAnimator.PlantStateType.Attack);
-        this.DelayCall(0.25f, () =>
-        {
-            col.enabled = true;
+        currentHealth = Mathf.Infinity;
+        col.enabled = true;
 
-            this.DelayCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
-            {
-                Dead();
-                StopAllCoroutines();
-            });
-        });
+        Dead();
     }
 
     protected void OnTriggerEnter(Collider other)

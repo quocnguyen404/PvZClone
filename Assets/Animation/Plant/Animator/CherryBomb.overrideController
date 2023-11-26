@@ -9,5 +9,5 @@ AnimatorOverrideController:
   m_Name: CherryBomb
   m_Controller: {fileID: 9100000, guid: f08daee76b80deb40b6db6d9eb3dd85f, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 6d080bba49da4fa488b146e62a463bf9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dab7a6cbf24af1149adfde3a489aba66, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: f28a6b85ee9f74d488a9f4c135b3437f, type: 2}

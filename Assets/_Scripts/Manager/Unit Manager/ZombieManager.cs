@@ -46,7 +46,6 @@ public class ZombieManager : UnitManager
     private List<Node> ZombieGetPath(int row)
     {
         List<Node> nodepaths = new List<Node>(OnZombieGetPath?.Invoke(row));
-        //nodepaths.AddRange(gridManager.GetRow(row));
         return nodepaths;
     }
 

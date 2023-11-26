@@ -34,8 +34,9 @@ public class Plant : IUnit
 
     public override void Dead()
     {
+        nodesPath.Find(n => n.GridPosition == GridPosition).RemoveUnit(this);
+        nodesPath.Clear();
         transform.position = PoolPosition;
         gameObject.SetActive(false);
-        nodesPath.Find(n => n.GridPosition == GridPosition).RemoveUnit(this);
     }
 }

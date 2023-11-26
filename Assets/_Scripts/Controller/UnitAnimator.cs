@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class UnitAnimator : MonoBehaviour
 {
     [SerializeField] protected Animator ator = null;
@@ -78,7 +78,39 @@ public class UnitAnimator : MonoBehaviour
 
         pCurrentState = movement;
 
-        ator.Play(movement.ToString());
+        ator.Play(movement.ToString(), 0);
+    }
+
+    public void SetPlantMove(PlantStateType movement, System.Action action)
+    {
+        if (movement == pCurrentState)
+            return;
+
+        Debug.Log(movement.ToString());
+
+        pCurrentState = movement;
+
+        float animLength = GetAnimationClipsLength(movement.ToString());
+
+        ator.Play(movement.ToString(), 0);
+        DOVirtual.DelayedCall(animLength, () => { action?.Invoke(); }).SetAutoKill();
+    }
+
+    public float GetAnimationClipsLength(string animName)
+    {
+        //may get bugs
+        foreach (AnimationClip clip in ator.runtimeAnimatorController.animationClips)
+        {
+            if (animName == clip.name)
+                return clip.length;
+        }
+
+        return 0;
+    }
+
+    public void SetTrigger(string anim)
+    {
+        ator.SetTrigger(anim);
     }
 
 

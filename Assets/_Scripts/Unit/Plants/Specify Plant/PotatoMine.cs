@@ -33,7 +33,7 @@ public class PotatoMine : IExplosePlant
         //do growth anim
         Debug.Log("Growth");
         ator.SetPlantMove(UnitAnimator.PlantStateType.Idle1);
-        col.enabled = true;
+        DOVirtual.DelayedCall(1f, () => { col.enabled = true; }).SetAutoKill();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,15 +42,18 @@ public class PotatoMine : IExplosePlant
 
         if (zombie != null)
         {
+            currentHealth = Mathf.Infinity;
             zombie.Explose(UnitData.attributes[(int)Data.AttributeType.ATK].value);
-            Dead();
+            ator.SetPlantMove(UnitAnimator.PlantStateType.Attack);
+            col.enabled = false;
+
+            DOVirtual.DelayedCall(1f, () => { Dead(); }).SetAutoKill();
         }
     }
 
     public override void Dead()
     {
-        ator.SetPlantMove(UnitAnimator.PlantStateType.Attack);
-        col.enabled = false;
+
         base.Dead();
     }
 }
