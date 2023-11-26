@@ -6,50 +6,76 @@ public class Chomper : Plant
 {
     [SerializeField] protected int maxRange;
 
-    protected float timer = 0;
+    protected float attackTimer = 0;
 
     public bool IsChewing
     {
         get
         {
-            return timer != 0;
+            return attackTimer > 0;
         }
     }
 
     public override void Update()
     {
+        if (!IsOnNode)
+            return;
 
-        if (DetectEnemy())
+        attackTimer -= Time.deltaTime;
+
+        
+
+        if (DetectEnemy() && !IsChewing)
+        {
             Attack();
+            return;
+        }
+
+        if (!IsChewing)
+            ator.SetPlantMove(UnitAnimator.PlantStateType.Idle);
     }
 
     protected bool DetectEnemy()
     {
         bool value = false;
 
-        value = nodesPath[GridPosition.y].HasZombie() || nodesPath[GridPosition.y + 1].HasZombie();
+        value = nodesPath[GridPosition.y].HasZombie() || nodesPath[GridPosition.y+maxRange].HasZombie();
 
         return value;
     }
 
     protected void Attack()
     {
-        if (timer == 0)
+        if (attackTimer <= 0)
         {
             Zombie zombie = null;
 
-            for (int i = maxRange - 1; i >= 0; i++)
+            for (int i = maxRange + GridPosition.y; i <= GridPosition.y; i--)
             {
-                if (nodesPath[GridPosition.y + i].HasZombie())
-                    zombie = nodesPath[GridPosition.y + i].GetZombieFromNode();
+                if (nodesPath[i].HasZombie())
+                    zombie = nodesPath[i].GetZombieFromNode();
             }
 
+            zombie = nodesPath[GridPosition.y+1].GetZombieFromNode();
+
+            ator.SetPlantMove(UnitAnimator.PlantStateType.Idle);
+
+            if (zombie == null)
+                return;
+
+            ator.SetPlantMove(UnitAnimator.PlantStateType.Attack, () =>
+            {
+                zombie.GetBite(UnitData.attributes[(int)Data.AttributeType.ATK].value);
+
+                if (!zombie.IsAlive)
+                    ator.SetPlantMove(UnitAnimator.PlantStateType.Idle1);
+                else if (zombie.IsAlive)
+                    ator.SetPlantMove(UnitAnimator.PlantStateType.Idle);
+            });
+
+            attackTimer = UnitData.attributes[(int)Data.AttributeType.AAI].value;
         }
 
-        timer += Time.deltaTime;
-
-        if (timer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
-            timer = 0;
     }
 
 }

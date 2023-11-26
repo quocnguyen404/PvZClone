@@ -12,7 +12,8 @@ public class SunProducing : Plant
 
     public override void Update()
     {
-        base.Update();
+        if (!IsOnNode)
+            return;
 
         ProduceSun();
     }

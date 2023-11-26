@@ -10,6 +10,7 @@ public class Agent : MonoBehaviour
     public bool isStop = true;
 
     public System.Action OnArried = null;
+    public System.Action OnMoveAnimation = null;
 
 
     public void Initialize(float speed, float radius)
@@ -24,8 +25,9 @@ public class Agent : MonoBehaviour
         isStop = false;
 
         MoveToDestination(destination);
+        OnMoveAnimation?.Invoke();
 
-        if (Vector3.Distance(transform.position, destination) <= 0)
+        if (Vector3.Distance(transform.position, destination) <= GameConstant.SMALL_DISTANCE)
             OnArried?.Invoke();
     }
 

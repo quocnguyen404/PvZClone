@@ -22,5 +22,6 @@ public static class GameConstant
     public const float TIME_START_MATCH = 4f;
 
     public const float TIME_BUTTON_MOVE = 0.5f;
+    public const float SMALL_DISTANCE = 0.1f;
 }
 

@@ -68,7 +68,6 @@ public class UnitAnimator : MonoBehaviour
         }
     }
 
-
     public void SetPlantMove(PlantStateType movement)
     {
         if (movement == pCurrentState)
@@ -78,7 +77,7 @@ public class UnitAnimator : MonoBehaviour
 
         pCurrentState = movement;
 
-        ator.Play(movement.ToString(), 0);
+        ator.Play(movement.ToString());
     }
 
     public void SetPlantMove(PlantStateType movement, System.Action action)
@@ -108,11 +107,29 @@ public class UnitAnimator : MonoBehaviour
         return 0;
     }
 
-    public void SetTrigger(string anim)
+    public  void TriggerZombieMove(ZombieStateType movement)
     {
-        ator.SetTrigger(anim);
+        if (movement == zCurrentState)
+            return;
+
+        Debug.Log($"Trigger Zombie {movement.ToString()}");
+
+        zCurrentState = movement;
+
+        ator.SetTrigger(movement.ToString());
     }
 
+    public void TriggerPlantMove(PlantStateType movement)
+    {
+        if (movement == pCurrentState)
+            return;
+
+        Debug.Log($"Trigger Zombie {movement.ToString()}");
+
+        pCurrentState = movement;
+
+        ator.SetTrigger(movement.ToString());
+    }
 
     public void Reset()
     {

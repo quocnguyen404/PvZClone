@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638359636513958390
-    m_Hash: 3647346651
+      ticks: 638366094360303384
+    m_Hash: 3905279741
   m_LockFileStatus:
     m_FilePath: C:/projects/Unity Game/PvZClone/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638359636514256075
-    m_Hash: 4025564435
+      ticks: 638366094360494615
+    m_Hash: 649100672
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -4664,6 +4664,7 @@ m_ResolvedPackages:
     - 1.8.8
     - 1.8.9
     - 1.8.10
+    - 1.8.11
     compatible:
     - 1.6.6
     - 1.7.0-pre.1
@@ -4683,6 +4684,7 @@ m_ResolvedPackages:
     - 1.8.8
     - 1.8.9
     - 1.8.10
+    - 1.8.11
     verified: 1.6.6
   dependencies:
   - name: com.unity.mathematics

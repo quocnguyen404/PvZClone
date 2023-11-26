@@ -71,7 +71,6 @@ public class Zombie : IUnit
         dictDebuff[DebuffType.Slow] = 0f;
         dictDebuff[DebuffType.Bleed] = 0f;
         dictDebuff[DebuffType.Burn] = 0f;
-        col.enabled = true;
         ator.ZInitialize();
     }
 
@@ -82,10 +81,18 @@ public class Zombie : IUnit
         transform.eulerAngles = Helper.Cam.transform.eulerAngles;
         UnitSpeed = maxUnitSpeed;
         Armour = maxArmour;
+        col.enabled = true;
 
         attackTimer = UnitData.attributes[(int)Data.AttributeType.AAI].value;
         currentNodeIndex = GridPosition.y;
         agent.OnArried = Arried;
+        agent.OnMoveAnimation = () => 
+        {
+            if (currentHealth > 0)
+                ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
+            else if (Armour > 0)
+                ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHeadWalk);
+        };
         arried = false;
 
         agent.Initialize(UnitSpeed, col.radius);
@@ -131,7 +138,6 @@ public class Zombie : IUnit
             return;
         }
 
-        //MoveFoward();
         agent.SetDestination(nodesPath[currentNodeIndex].WorldPosition);
     }
 
@@ -140,42 +146,31 @@ public class Zombie : IUnit
         arried = true;
 
         if (!IsAlive)
+            return;
+
+        nodesPath[currentNodeIndex].RemoveUnit(this);
+        currentNodeIndex--;
+
+        if (currentNodeIndex < 0)
         {
-            //
+            Vector3 housePos = (Vector3)OnGetHousePosition?.Invoke();
+            agent.OnArried = null;
+            agent.SetDestination(housePos);
+            arried = true;
+
+            this.DelayCall(GameUtilities.TimeToDestination(transform.position, housePos, UnitSpeed), () =>
+            {
+                ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
+                OnZombieGetInHouse?.Invoke();
+                StopAllCoroutines();
+            });
+
             return;
         }
 
-        //this.DelayCall(GameUtilities.TimeToDestination(transform.position, nodesPath[currentNodeIndex].WorldPosition, UnitSpeed), () =>
-        //{
-            if (currentHealth > 0)
-                ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
-            else if (Armour > 0)
-                ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHeadWalk);
+        nodesPath[currentNodeIndex].AddUnit(this);
 
-            nodesPath[currentNodeIndex].RemoveUnit(this);
-            currentNodeIndex--;
-
-            if (currentNodeIndex < 0)
-            {
-                Vector3 housePos = (Vector3)OnGetHousePosition?.Invoke();
-                agent.OnArried = null;
-                agent.SetDestination(housePos);
-                arried = true;
-
-                this.DelayCall(GameUtilities.TimeToDestination(transform.position, housePos, UnitSpeed), () =>
-                {
-                    ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
-                    OnZombieGetInHouse?.Invoke();
-                    StopAllCoroutines();
-                });
-
-                return;
-            }
-
-            nodesPath[currentNodeIndex].AddUnit(this);
-
-            arried = false;
-        //});
+        arried = false;
     }
 
     public virtual bool CanAttack()
@@ -228,18 +223,15 @@ public class Zombie : IUnit
             ResetDebug(type);
     }
 
-
-    public override void TakeDamage(float damge)
+    public override void TakeDamage(float damage)
     {
         if (currentHealth > 0)
-            currentHealth -= damge;
+            currentHealth -= damage;
         else if (currentHealth <= 0)
-            Armour -= damge;
+            Armour -= damage;
 
         if (currentHealth <= 0)
-        {
             ator.SetZombieLostHead();
-        }
 
         if (currentHealth <= 0 && Armour <= 0)
         {
@@ -248,24 +240,30 @@ public class Zombie : IUnit
         }
     }
 
-    public virtual void Explose(float damge)
+    public virtual void Explose(float damage)
     {
-        if (currentHealth + Armour - damge <= 0)
+        if (currentHealth + Armour - damage <= 0)
         {
             currentHealth = 0;
             Armour = 0;
-        }
-        else
-        {
-            TakeDamage(damge);
-        }
-
-
-        if (currentHealth <= 0 && Armour <= 0)
-        {
             ator.SetZombieMove(UnitAnimator.ZombieStateType.BombDie);
             Dead();
         }
+        else
+            TakeDamage(damage);
+    }
+
+    public virtual void GetBite(float damage)
+    {
+        if (currentHealth + Armour - damage <= 0)
+        {
+            currentHealth = 0;
+            Armour = 0;
+
+            InstantDead();
+        }
+        else
+            TakeDamage(damage);
     }
 
 
@@ -282,6 +280,11 @@ public class Zombie : IUnit
                 sr.color = Color.white;
                 dictDebuff[type] = 0f;
                 break;
+
+            case DebuffType.Bleed:
+                sr.color = Color.white;
+                dictDebuff[type] = 0f;
+                break;
         }
     }
 
@@ -295,8 +298,17 @@ public class Zombie : IUnit
             nodesPath[currentNodeIndex].RemoveUnit(this);
             nodesPath.Clear();
             OnZombieDie?.Invoke();
-
         }).SetAutoKill();
+    }
+
+    public virtual void InstantDead()
+    {
+        agent.Stop();
+        col.enabled = false;
+        transform.position = PoolPosition;
+        nodesPath[currentNodeIndex].RemoveUnit(this);
+        nodesPath.Clear();
+        OnZombieDie?.Invoke();
     }
 
 }
