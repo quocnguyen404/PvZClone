@@ -9,7 +9,7 @@ public class Repeater : ProjectileShooter
     {
         ShotProjectile();
 
-        DOVirtual.DelayedCall(0.2f, () =>
+        DOVirtual.DelayedCall(0.4f, () =>
         {
             ShotProjectile();
         }).SetAutoKill();

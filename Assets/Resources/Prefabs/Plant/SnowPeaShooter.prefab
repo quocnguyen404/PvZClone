@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6546350052851181167, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6546350052851181167, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
       propertyPath: m_LocalPosition.y
@@ -173,5 +173,5 @@ MonoBehaviour:
   nodesPath: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
+  MaxRange: 9
   spawnPoint: {fileID: 7591463768868133568}
-  MaxRange: 10

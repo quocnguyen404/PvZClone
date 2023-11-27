@@ -5,7 +5,8 @@ public static class GameConstant
     public const string PLANT_PREFAB_PATH = "Prefabs/Plant/{0}";
     public const string ZOMBIE_PREFAB_PATH = "Prefabs/Zombie/{0}";
     public const string PROJECTILE_PREFAB_PATH = "Prefabs/Product/{0}";
-    public const string GAMECONFIG_PATH = "Game Config/GameConfig";
+    public const string GAMECONFIG_PATH = "GameConfig/GameConfig";
+    public const string PROJECTILE_BLOCK = "ProjectileBlock";
 
     public const int PLANT_AMOUNT = 44;
     public const int GARDEN_ROW = 5;

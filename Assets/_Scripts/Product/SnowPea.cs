@@ -6,6 +6,12 @@ public class SnowPea : Projectile
 {
     protected override void OnTriggerEnter(Collider other)
     {
+        if (other.tag.Equals(GameConstant.PROJECTILE_BLOCK))
+        {
+            ReturnPool();
+            return;
+        }
+
         IUnit unit = other.gameObject.GetComponent<Zombie>();
 
         if (unit != null)

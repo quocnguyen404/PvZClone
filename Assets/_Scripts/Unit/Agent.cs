@@ -20,26 +20,34 @@ public class Agent : MonoBehaviour
         isStop = true;
     }
 
+    public void OnTurnOff()
+    {
+        speed = 0;
+        radius = 0;
+        isStop = true;
+        OnArried = null;
+        OnMoveAnimation = null;
+    }
+
+
     public void SetDestination(Vector3 destination)
     {
         isStop = false;
 
         MoveToDestination(destination);
-        OnMoveAnimation?.Invoke();
 
         if (Vector3.Distance(transform.position, destination) <= GameConstant.SMALL_DISTANCE)
             OnArried?.Invoke();
     }
 
-
+    private Tween moveTween = null;
     public void MoveToDestination(Vector3 destination)
     {
         isStop = false;
 
-        Vector3 dir = (destination - transform.position).normalized;
-
         transform.DOKill();
-        transform.DOMove(destination, GameUtilities.TimeToDestination(transform.position, destination, speed))
+        OnMoveAnimation?.Invoke();
+        moveTween = transform.DOMove(destination, GameUtilities.TimeToDestination(transform.position, destination, speed))
             .SetEase(Ease.Linear)
             .SetAutoKill();
     }
@@ -49,8 +57,7 @@ public class Agent : MonoBehaviour
         if (isStop)
             return;
 
-        transform.DOKill();
-        isStop = true;
+        moveTween.Kill();
     }
 
     public void Stop()
@@ -59,7 +66,8 @@ public class Agent : MonoBehaviour
             return;
 
         OnArried?.Invoke();
-        transform.DOKill();
+        moveTween.Kill();
         isStop = true;
     }
+
 }

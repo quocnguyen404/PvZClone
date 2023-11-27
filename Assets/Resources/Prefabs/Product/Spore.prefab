@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e06eebd184032f4aad41cbc13cf3994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ator: {fileID: 0}
   productName: Spore
-  existTime: 0
+  existTime: 4
   rgBody: {fileID: 87883747872329941}
   DebuffValue: 0
   DebuffDuration: 0

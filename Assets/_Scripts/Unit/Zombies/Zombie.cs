@@ -28,7 +28,7 @@ public class Zombie : IUnit
     protected float maxUnitSpeed => UnitData.attributes[(int)Data.AttributeType.SP].value;
     public float UnitSpeed = 0f;
 
-    
+
     protected float maxArmour => UnitData.attributes[(int)Data.AttributeType.DFS].value;
     public float Armour = 0f;
     #endregion
@@ -71,12 +71,14 @@ public class Zombie : IUnit
         dictDebuff[DebuffType.Slow] = 0f;
         dictDebuff[DebuffType.Bleed] = 0f;
         dictDebuff[DebuffType.Burn] = 0f;
-        ator.ZInitialize();
     }
 
     public virtual void InitializeRow(int row)
     {
         nodesPath = OnGetPath?.Invoke(row);
+
+        ator.ZInitialize();
+        ator.OnAgentStop = agent.Stop;
 
         transform.eulerAngles = Helper.Cam.transform.eulerAngles;
         UnitSpeed = maxUnitSpeed;
@@ -85,25 +87,23 @@ public class Zombie : IUnit
 
         attackTimer = UnitData.attributes[(int)Data.AttributeType.AAI].value;
         currentNodeIndex = GridPosition.y;
+
+        agent.Initialize(UnitSpeed, col.radius);
         agent.OnArried = Arried;
-        agent.OnMoveAnimation = () => 
+        agent.OnMoveAnimation = () =>
         {
             if (currentHealth > 0)
                 ator.SetZombieMove(UnitAnimator.ZombieStateType.Walk);
             else if (Armour > 0)
-                ator.SetZombieMove(UnitAnimator.ZombieStateType.LostHeadWalk);
+                ator.SetZombieLostHead();
         };
         arried = false;
-
-        agent.Initialize(UnitSpeed, col.radius);
     }
 
     public override void Update()
     {
         if (!IsAlive)
-        {
             return;
-        }
 
         if (IsDebuff)
         {
@@ -145,12 +145,13 @@ public class Zombie : IUnit
     {
         arried = true;
 
-        if (!IsAlive)
+        if (currentHealth < 0)
             return;
 
         nodesPath[currentNodeIndex].RemoveUnit(this);
         currentNodeIndex--;
 
+        //Zombie go out
         if (currentNodeIndex < 0)
         {
             Vector3 housePos = (Vector3)OnGetHousePosition?.Invoke();
@@ -175,7 +176,8 @@ public class Zombie : IUnit
 
     public virtual bool CanAttack()
     {
-        return nodesPath[currentNodeIndex].HasPlant()
+        return currentHealth > 0
+            && nodesPath[currentNodeIndex].HasPlant()
             && Vector3.Distance(transform.position, nodesPath[currentNodeIndex].WorldPosition)
             <= (col.radius /*+ GameConstant.NODE_LENGTH/2*/);
     }
@@ -269,7 +271,7 @@ public class Zombie : IUnit
 
     public virtual void ResetDebug(DebuffType type)
     {
-        switch(type)
+        switch (type)
         {
             case DebuffType.Slow:
                 sr.color = Color.white;
@@ -291,19 +293,26 @@ public class Zombie : IUnit
     public override void Dead()
     {
         agent.Stop();
-        col.enabled = false;
+        agent.OnTurnOff();
         DOVirtual.DelayedCall(1f, () =>
         {
-            transform.position = PoolPosition;
-            nodesPath[currentNodeIndex].RemoveUnit(this);
-            nodesPath.Clear();
-            OnZombieDie?.Invoke();
+            DeadAction();
         }).SetAutoKill();
     }
 
     public virtual void InstantDead()
     {
         agent.Stop();
+        agent.OnTurnOff();
+        DeadAction();
+    }
+
+    public virtual void DeadAction()
+    {
+        foreach (DebuffType type in currentDebuffs)
+            ResetDebug(type);
+
+        ator.OnTurnOff();
         col.enabled = false;
         transform.position = PoolPosition;
         nodesPath[currentNodeIndex].RemoveUnit(this);

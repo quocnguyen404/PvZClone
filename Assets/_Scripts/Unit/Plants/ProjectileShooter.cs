@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ProjectileShooter : Plant
 {
+    public int MaxRange;
+
     [SerializeField] protected Transform spawnPoint = null;
-    [SerializeField] protected int MaxRange;
+    protected float attackTimer = 0;
+    protected Projectile projectTile = null;
 
     protected int maxRange = 0;
-    protected float attackTimer = 0;
-
-    protected Projectile projectTile = null;
 
     protected void OnDisable()
     {
@@ -41,7 +41,7 @@ public class ProjectileShooter : Plant
 
     protected virtual bool DetectEnemy()
     {
-        if (maxRange == 0)
+        if (MaxRange == 0)
             return false;
 
         if (nodesPath == null)
@@ -49,7 +49,7 @@ public class ProjectileShooter : Plant
 
         bool value = false;
 
-        Node checkNode = nodesPath.Find(n => n.HasZombie() && n.GridPosition.y < GameConstant.GARDEN_COLOUMN && n.GridPosition.y >= GridPosition.y);
+        Node checkNode = nodesPath.Find(n => n.HasZombie() && n.GridPosition.y < GameConstant.GARDEN_COLOUMN && n.GridPosition.y >= GridPosition.y && n.GridPosition.y <= maxRange);
 
         value = checkNode != null;
 
@@ -73,12 +73,10 @@ public class ProjectileShooter : Plant
 
     protected virtual void RangeCalculate(Node node)
     {
-        maxRange = MaxRange + node.GridPosition.y;
-
-        if (maxRange > GameConstant.GARDEN_COLOUMN)
-        {
-
-        }
+        if (MaxRange + GridPosition.y >= GameConstant.GARDEN_COLOUMN)
+            maxRange = GameConstant.GARDEN_COLOUMN;
+        else
+            maxRange = MaxRange + GridPosition.y;
     }
 
     public override void Dead()

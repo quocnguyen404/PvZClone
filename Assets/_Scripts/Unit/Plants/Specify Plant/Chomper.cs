@@ -23,7 +23,7 @@ public class Chomper : Plant
 
         attackTimer -= Time.deltaTime;
 
-        
+
 
         if (DetectEnemy() && !IsChewing)
         {
@@ -39,7 +39,9 @@ public class Chomper : Plant
     {
         bool value = false;
 
-        value = nodesPath[GridPosition.y].HasZombie() || nodesPath[GridPosition.y+maxRange].HasZombie();
+        value = nodesPath[GridPosition.y].HasZombie()
+            || (nodesPath[GridPosition.y + maxRange].HasZombie()
+            && Vector3.Distance(transform.position, nodesPath[GridPosition.y + maxRange].GetZombieFromNode().transform.position) <= (3f / 2f) * GameConstant.NODE_LENGTH);
 
         return value;
     }
@@ -56,7 +58,7 @@ public class Chomper : Plant
                     zombie = nodesPath[i].GetZombieFromNode();
             }
 
-            zombie = nodesPath[GridPosition.y+1].GetZombieFromNode();
+            zombie = nodesPath[GridPosition.y + 1].GetZombieFromNode();
 
             ator.SetPlantMove(UnitAnimator.PlantStateType.Idle);
 

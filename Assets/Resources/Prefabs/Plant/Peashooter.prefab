@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6374614616769968931, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
       propertyPath: m_Name
-      value: PeaShooter
+      value: Peashooter
       objectReference: {fileID: 0}
     - target: {fileID: 6374614616769968935, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
       propertyPath: m_RootOrder
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6546350052851181167, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6546350052851181167, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
       propertyPath: m_LocalPosition.y
@@ -116,8 +116,8 @@ MonoBehaviour:
   nodesPath: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
-  spawnPoint: {fileID: 659346788042748840}
   MaxRange: 9
+  spawnPoint: {fileID: 659346788042748840}
 --- !u!1 &3814784321683417903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7426401668095524584, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}

@@ -8,6 +8,8 @@ public class UnitAnimator : MonoBehaviour
     [SerializeField] protected ZombieStateType zCurrentState;
     [SerializeField] protected PlantStateType pCurrentState;
 
+    public System.Action OnAgentStop = null;
+
     public enum ZombieStateType
     {
         Idle,
@@ -40,6 +42,12 @@ public class UnitAnimator : MonoBehaviour
         SetPlantMove(PlantStateType.Idle);
     }
 
+    public void OnTurnOff()
+    {
+        SetZombieMove(ZombieStateType.Idle);
+        SetPlantMove(PlantStateType.Idle);
+        OnAgentStop = null;
+    }
 
     public void SetZombieMove(ZombieStateType movement)
     {
@@ -53,6 +61,21 @@ public class UnitAnimator : MonoBehaviour
         ator.Play(movement.ToString());
     }
 
+    public void SetZombieMove(ZombieStateType movement, System.Action action)
+    {
+        if (movement == zCurrentState)
+            return;
+
+        Debug.Log(movement.ToString());
+
+        zCurrentState = movement;
+
+        float animLength = GetAnimationClipsLength(movement.ToString());
+
+        ator.Play(movement.ToString(), 0);
+        DOVirtual.DelayedCall(animLength, () => { action?.Invoke(); }).SetAutoKill();
+    }
+
     public void SetZombieLostHead()
     {
         switch (zCurrentState)
@@ -64,6 +87,7 @@ public class UnitAnimator : MonoBehaviour
 
             case ZombieStateType.Attack:
                 SetZombieMove(ZombieStateType.LostHeadAttackState);
+                OnAgentStop?.Invoke();
                 break;
         }
     }
@@ -107,7 +131,7 @@ public class UnitAnimator : MonoBehaviour
         return 0;
     }
 
-    public  void TriggerZombieMove(ZombieStateType movement)
+    public void TriggerZombieMove(ZombieStateType movement)
     {
         if (movement == zCurrentState)
             return;
@@ -124,12 +148,14 @@ public class UnitAnimator : MonoBehaviour
         if (movement == pCurrentState)
             return;
 
-        Debug.Log($"Trigger Zombie {movement.ToString()}");
+        Debug.Log($"Trigger Plant {movement.ToString()}");
 
         pCurrentState = movement;
 
         ator.SetTrigger(movement.ToString());
     }
+
+
 
     public void Reset()
     {

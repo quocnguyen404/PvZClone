@@ -35,6 +35,12 @@ public class Projectile : IProduct
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        if (other.tag.Equals(GameConstant.PROJECTILE_BLOCK))
+        {
+            ReturnPool();
+            return;
+        }
+
         IUnit unit = other.gameObject.GetComponent<Zombie>();
 
         if (unit != null)

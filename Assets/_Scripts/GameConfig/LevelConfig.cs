@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelConfig
 {
     public int levelIndex;
-    public float timeBetweenPhase = 5f;
     public List<PhaseData> phases;
 
     public LevelConfig()
