@@ -19,7 +19,8 @@ public class ProjectileShooter : Plant
 
     public override void Update()
     {
-        base.Update();
+        if (IsEndGame)
+            return;
 
         if (!DetectEnemy())
             return;

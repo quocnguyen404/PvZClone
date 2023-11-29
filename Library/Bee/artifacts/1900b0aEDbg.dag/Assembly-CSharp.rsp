@@ -391,6 +391,7 @@
 "Assets/_Scripts/GameConfig/PhaseData.cs"
 "Assets/_Scripts/GameConfig/UserData.cs"
 "Assets/_Scripts/Grid/Node.cs"
+"Assets/_Scripts/Item/Car.cs"
 "Assets/_Scripts/Manager/CurrencyManager.cs"
 "Assets/_Scripts/Manager/GameManager.cs"
 "Assets/_Scripts/Manager/GridManager.cs"

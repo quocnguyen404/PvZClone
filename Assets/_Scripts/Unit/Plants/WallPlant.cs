@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class WallPlant : Plant
 {
-    
+    public override void Update()
+    {
+        base.Update();
+
+        if (IsEndGame)
+            return;
+    }
+
     public override void TakeDamage(float damge)
     {
         base.TakeDamage(damge);
@@ -14,6 +21,6 @@ public class WallPlant : Plant
         else if (currentHealth <= maxHealth * (2f / 3f))
             ator.SetPlantMove(UnitAnimator.PlantStateType.Idle1);
 
-        
+
     }
 }

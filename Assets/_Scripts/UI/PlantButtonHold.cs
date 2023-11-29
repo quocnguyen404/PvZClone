@@ -27,6 +27,7 @@ public class PlantButtonHold : MonoBehaviour
         emptySlot.GetUnitButton(unitButton.unitData);
         unitButton.slotOnHold = emptySlot;
 
+        unitButton.transform.DOKill();
         unitButton.transform.SetParent(emptySlot.transform);
         unitButton.transform.DOLocalMove(Vector3.zero, GameConstant.TIME_BUTTON_MOVE).SetAutoKill();
 

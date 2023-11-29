@@ -21,6 +21,14 @@ public class CherryBomb : IExplosePlant
         Dead();
     }
 
+    public override void Update()
+    {
+        base.Update();
+
+        if (IsEndGame)
+            return;
+    }
+
     protected void OnTriggerEnter(Collider other)
     {
         Zombie zombie = other.GetComponent<Zombie>();

@@ -18,6 +18,9 @@ public class Chomper : Plant
 
     public override void Update()
     {
+        if (IsEndGame)
+            return;
+
         if (!IsOnNode)
             return;
 

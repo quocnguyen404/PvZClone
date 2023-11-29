@@ -29,8 +29,12 @@ public class GameManager : MonoBehaviour
     [Space]
     [SerializeField] private Button playButton = null;
 
+
+    public static bool IsEndGame { get; private set; }
+
     private void Awake()
     {
+        IsEndGame = false;
         gridManager.Initialize(GameConstant.GARDEN_ROW, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN, GameConstant.NODE_LENGTH);
 
         playButton.onClick.AddListener(() => { StartGame(); });
@@ -93,10 +97,17 @@ public class GameManager : MonoBehaviour
     private void Win()
     {
         Debug.Log("Win");
+        EndGame();
     }
 
     private void Lose()
     {
         Debug.Log("Lose");
+        EndGame();
+    }
+
+    private void EndGame()
+    {
+        IsEndGame = true;
     }
 }

@@ -164,6 +164,6 @@ MonoBehaviour:
   productName: SnowPea
   existTime: 20
   rgBody: {fileID: -3876338795387153078}
-  DebuffValue: 1
+  DebuffValue: 2
   DebuffDuration: 5
   Type: 1

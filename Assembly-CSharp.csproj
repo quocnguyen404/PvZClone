@@ -112,6 +112,7 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
+    <Compile Include="Assets\_Scripts\Item\Car.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

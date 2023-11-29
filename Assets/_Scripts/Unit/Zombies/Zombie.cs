@@ -12,6 +12,7 @@ public class Zombie : IUnit
 
     [SerializeField] protected int currentNodeIndex;
     protected float attackTimer = 0;
+    protected float bleedTimer = 0;
     protected bool arried = true;
 
     public override bool IsAlive => currentHealth > 0 || Armour > 0;
@@ -102,8 +103,18 @@ public class Zombie : IUnit
 
     public override void Update()
     {
+        base.Update();
+
         if (!IsAlive)
             return;
+
+        if (currentHealth <= 0 && bleedTimer == 1f)
+        {
+            Armour -= 1;
+            bleedTimer = 0f;
+        }
+
+        bleedTimer += Time.deltaTime;
 
         if (IsDebuff)
         {
@@ -200,11 +211,11 @@ public class Zombie : IUnit
         {
             case DebuffType.Slow:
 
-                if (UnitSpeed == UnitSpeed + debuffValue)
+                if (UnitSpeed >= maxUnitSpeed + debuffValue)
                     return;
 
                 sr.color = Color.blue;
-                UnitSpeed += debuffValue;
+                UpdateZombieSpeed(UnitSpeed += debuffValue);
                 break;
 
             case DebuffType.Burn:
@@ -268,6 +279,11 @@ public class Zombie : IUnit
             TakeDamage(damage);
     }
 
+    public virtual void UpdateZombieSpeed(float speed)
+    {
+        UnitSpeed = speed;
+        agent.ChangeSpeed(speed);
+    }
 
     public virtual void ResetDebug(DebuffType type)
     {
@@ -276,6 +292,7 @@ public class Zombie : IUnit
             case DebuffType.Slow:
                 sr.color = Color.white;
                 dictDebuff[type] = 0f;
+                UpdateZombieSpeed(maxUnitSpeed);
                 break;
 
             case DebuffType.Burn:

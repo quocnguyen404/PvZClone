@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class Repeater : ProjectileShooter
 {
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (IsEndGame)
+            return;
+    }
+
     protected override void Attack()
     {
         ShotProjectile();

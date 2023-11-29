@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class SnowPeaShooter : ProjectileShooter
 {
-    
+    public override void Update()
+    {
+        base.Update();
+
+        if (IsEndGame)
+            return;
+    }
 }

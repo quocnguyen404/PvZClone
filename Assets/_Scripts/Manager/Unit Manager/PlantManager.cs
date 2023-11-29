@@ -46,5 +46,4 @@ public class PlantManager : UnitManager
     {
         return OnPlantGetArea?.Invoke(row, col);
     }
-
 }

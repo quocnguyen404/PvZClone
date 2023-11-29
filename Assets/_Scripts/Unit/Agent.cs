@@ -20,6 +20,11 @@ public class Agent : MonoBehaviour
         isStop = true;
     }
 
+    public void ChangeSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
     public void OnTurnOff()
     {
         speed = 0;

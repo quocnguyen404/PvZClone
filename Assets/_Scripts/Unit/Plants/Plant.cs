@@ -9,12 +9,6 @@ public class Plant : IUnit
         nodesPath = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
     }
 
-    public override void Update()
-    {
-        if (!IsOnNode)
-            return;
-    }
-
     public override void Initialize(Vector2Int pos)
     {
         base.Initialize(pos);

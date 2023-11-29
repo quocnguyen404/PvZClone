@@ -22,8 +22,8 @@ public abstract class IUnit : MonoBehaviour
     protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
     protected float currentHealth;
     public virtual bool IsAlive => currentHealth > 0;
-
     public bool IsOnNode => nodesPath.Count > 0;
+    public bool IsEndGame => GameManager.IsEndGame;
 
     public Vector3 PoolPosition = Vector3.zero;
     public Vector2Int GridPosition;
@@ -35,7 +35,6 @@ public abstract class IUnit : MonoBehaviour
     public System.Func<int, int, List<Node>> OnGetArea = null;
     public System.Func<Data.UnitData, IProduct> OnGetProduct = null;
     #endregion
-
 
     public virtual void Initialize(Vector2Int pos)
     {

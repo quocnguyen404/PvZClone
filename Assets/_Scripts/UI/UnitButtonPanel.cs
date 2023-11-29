@@ -55,8 +55,9 @@ public class UnitButtonPanel : MonoBehaviour
     {
         Slot slotOnPanel = unitButton.slotOnPanel;
 
+        unitButton.transform.DOKill();
         unitButton.transform.SetParent(slotOnPanel.transform);
-        unitButton.transform.DOLocalMove(Vector3.zero, GameConstant.TIME_BUTTON_MOVE/2).SetAutoKill();
+        unitButton.transform.DOLocalMove(Vector3.zero, GameConstant.TIME_BUTTON_MOVE / 2).SetAutoKill();
 
         unitButton.slotOnHold.EmptySlotData();
         unitButton.slotOnHold = null;
