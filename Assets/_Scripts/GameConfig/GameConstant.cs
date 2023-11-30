@@ -1,12 +1,13 @@
 
 public static class GameConstant
 {
-    public const string CARDS_PATH = "Cards/{0}";
+    public const string CARDS_SPRITES_PATH = "Cards/{0}";
     public const string PLANT_PREFAB_PATH = "Prefabs/Plant/{0}";
     public const string ZOMBIE_PREFAB_PATH = "Prefabs/Zombie/{0}";
     public const string PROJECTILE_PREFAB_PATH = "Prefabs/Product/{0}";
+    public const string ITEM_PREFAB_PATH = "Prefabs/Item/{0}";
     public const string GAMECONFIG_PATH = "GameConfig/GameConfig";
-    public const string PROJECTILE_BLOCK = "ProjectileBlock";
+    public const string PROJECTILE_BLOCK_TAG = "ProjectileBlock";
 
     public const int PLANT_AMOUNT = 44;
     public const int GARDEN_ROW = 5;
@@ -19,10 +20,10 @@ public static class GameConstant
     public const float TIME_SUN_MOVE = 2f;
     public const float TIME_SUN_DISARPEAR = 4f;
     public const float TIME_SUN_DROP = 15f;
+    public const int SUN_START_COST = 50;
     public const int SUN_DROP_COST = 25;
     public const float TIME_START_MATCH = 4f;
 
     public const float TIME_BUTTON_MOVE = 0.5f;
-    public const float SMALL_DISTANCE = 0.1f;
 }
 

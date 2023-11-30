@@ -12,6 +12,7 @@ public class UnitButton : MonoBehaviour
     [SerializeField] private TMP_Text costText;
     [SerializeField] private Image recharge = null;
 
+    private bool isRecharge = false;
     public Slot slotOnPanel = null;
     public Slot slotOnHold = null;
 
@@ -23,22 +24,31 @@ public class UnitButton : MonoBehaviour
         button.onClick.AddListener(() => { OnUnitButtonClick?.Invoke(this); });
     }
 
+    private void FixedUpdate()
+    {
+        if (!GameManager.IsStartGame)
+            return;
+
+        button.interactable = (unitData.cost <= SunInGameManager.CurrentSun) && !isRecharge;
+    }
+
     public void Initialize(Data.UnitData unitData)
     {
         this.unitData = unitData;
-        icon.sprite = Resources.Load<Sprite>(string.Format(GameConstant.CARDS_PATH, unitData.unitName));
+        icon.sprite = Resources.Load<Sprite>(string.Format(GameConstant.CARDS_SPRITES_PATH, unitData.unitName));
         costText.text = unitData.cost.ToString();
     }
 
     public void Recharge(float time)
     {
         recharge.fillAmount = 1;
-        button.interactable = false;
+        isRecharge = true;
 
+        recharge.DOKill();
         recharge.DOFillAmount(0f, time)
             .OnComplete(() =>
             {
-                button.interactable = true;
+                isRecharge = false;
             })
             .SetAutoKill();
     }

@@ -25,16 +25,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlantManager plantManager = null;
     [SerializeField] private ZombieManager zombieManager = null;
     [SerializeField] private SunManager sunManager = null;
+    [SerializeField] private CarManager carManager = null;
 
     [Space]
     [SerializeField] private Button playButton = null;
 
 
     public static bool IsEndGame { get; private set; }
+    public static bool IsStartGame { get; private set; }
 
     private void Awake()
     {
         IsEndGame = false;
+        IsStartGame = false;
         gridManager.Initialize(GameConstant.GARDEN_ROW, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN, GameConstant.NODE_LENGTH);
 
         playButton.onClick.AddListener(() => { StartGame(); });
@@ -48,12 +51,15 @@ public class GameManager : MonoBehaviour
         plantManager.OnPlantGetNode = gridManager.GetNode;
         plantManager.OnPlantGetPath = gridManager.GetRow;
         plantManager.OnPlantGetArea = gridManager.GetArea;
+        carManager.OnGetColumn = gridManager.GetColumn;
+        carManager.OnGetRow = gridManager.GetRow;
         pickUnitManager.OnGetPlant = plantObjectPool.GetPlant;
 
         zombieManager.gridManager = gridManager;
         zombieManager.Initialize();
         plantManager.Initialize();
         zombieObjectPool.InitializePool(ConfigHelper.GetCurrentLevelConfig());
+        carManager.Initialize(GameConstant.GARDEN_ROW);
     }
 
     private void StartGame()
@@ -61,9 +67,10 @@ public class GameManager : MonoBehaviour
         if (!pickUnitManager.PickFull())
         {
             //player pick plan not done
-
             return;
         }
+
+        IsStartGame = true;
 
         pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
         sunManager.OnSunClick = placementManager.PickUpSun;
@@ -108,6 +115,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
+        IsStartGame = false;
         IsEndGame = true;
     }
 }

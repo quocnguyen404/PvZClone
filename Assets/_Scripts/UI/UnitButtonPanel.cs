@@ -40,6 +40,7 @@ public class UnitButtonPanel : MonoBehaviour
 
             newUnitButton.Initialize(data);
             slots[count].GetUnitButton(data);
+            slots[count].NotEmptySlot();
             newUnitButton.slotOnPanel = slots[count];
 
             newUnitButton.transform.SetParent(slots[count].transform);

@@ -6,7 +6,7 @@ public class SnowPea : Projectile
 {
     protected override void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals(GameConstant.PROJECTILE_BLOCK))
+        if (other.tag.Equals(GameConstant.PROJECTILE_BLOCK_TAG))
         {
             ReturnPool();
             return;

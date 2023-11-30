@@ -8,45 +8,78 @@ public class Car : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float speed;
     [SerializeField] private float radius;
-
+    
     private int currentNodeIndex = 0;
     private List<Node> nodePaths = null;
     private bool arried = false;
 
-    public bool isTrigger => nodePaths != null && nodePaths[0].HasZombie();
+    public bool isTrigger = false;
+    public bool IsTrigger
+    {
+        get
+        {
+            if (!isTrigger)
+                isTrigger = nodePaths[0].HasZombie() &&
+                Vector3.Distance(nodePaths[0].GetZombieFromNode().transform.position, transform.position) <= radius;
+
+            return isTrigger;
+        }
+    }
+
+    public Vector3 PoolPosition;
 
     public void Initialize(Vector3 position, List<Node> nodes)
     {
+        gameObject.SetActive(true);
+        transform.position = position;
         transform.eulerAngles = Helper.Cam.transform.eulerAngles;
         nodePaths = new List<Node>(nodes);
         agent.Initialize(speed, radius);
         agent.OnArried = Arried;
+        arried = false;
     }
 
     private void Update()
     {
-        if (!isTrigger)
+        if (!IsTrigger)
             return;
 
         if (arried)
             return;
 
-
+        agent.SetDestination(new Vector3(nodePaths[currentNodeIndex].WorldPosition.x + GameConstant.NODE_LENGTH / 2f,
+                                         nodePaths[currentNodeIndex].WorldPosition.y,
+                                         nodePaths[currentNodeIndex].WorldPosition.z));
     }
 
     private void Arried()
     {
         arried = true;
 
+        if (nodePaths[currentNodeIndex].HasZombie())
+        {
+            foreach (Zombie zombie in nodePaths[currentNodeIndex].GetAllZobmie())
+                zombie.InstantDead();
+        }
+
         currentNodeIndex++;
 
         if (currentNodeIndex >= nodePaths.Count)
         {
-
+            Dead();
             return;
         }
+
+
 
         arried = false;
     }
 
+
+
+    private void Dead()
+    {
+        gameObject.SetActive(false);
+        transform.position = PoolPosition;
+    }
 }

@@ -16,7 +16,7 @@ public class Zombie : IUnit
     protected bool arried = true;
 
     public override bool IsAlive => currentHealth > 0 || Armour > 0;
-    public virtual bool IsInitialize => nodesPath.Count > 0;
+    public virtual bool IsInitialize => nodePaths.Count > 0;
 
 
     #region Event
@@ -76,7 +76,7 @@ public class Zombie : IUnit
 
     public virtual void InitializeRow(int row)
     {
-        nodesPath = OnGetPath?.Invoke(row);
+        nodePaths = OnGetPath?.Invoke(row);
 
         ator.ZInitialize();
         ator.OnAgentStop = agent.Stop;
@@ -142,14 +142,16 @@ public class Zombie : IUnit
 
             if (attackTimer >= UnitData.attributes[(int)Data.AttributeType.AAI].value)
             {
-                Attack(nodesPath[currentNodeIndex].GetPlantFromNode());
+                Attack(nodePaths[currentNodeIndex].GetPlantFromNode());
                 attackTimer = 0;
             }
 
             return;
         }
 
-        agent.SetDestination(nodesPath[currentNodeIndex].WorldPosition);
+        agent.SetDestination(new Vector3(nodePaths[currentNodeIndex].WorldPosition.x - GameConstant.NODE_LENGTH / 2f,
+                                         nodePaths[currentNodeIndex].WorldPosition.y,
+                                         nodePaths[currentNodeIndex].WorldPosition.z));
     }
 
     protected virtual void Arried()
@@ -159,28 +161,27 @@ public class Zombie : IUnit
         if (currentHealth < 0)
             return;
 
-        nodesPath[currentNodeIndex].RemoveUnit(this);
+        nodePaths[currentNodeIndex].RemoveUnit(this);
         currentNodeIndex--;
 
         //Zombie go out
         if (currentNodeIndex < 0)
         {
             Vector3 housePos = (Vector3)OnGetHousePosition?.Invoke();
-            agent.OnArried = null;
-            agent.SetDestination(housePos);
-            arried = true;
-
-            this.DelayCall(GameUtilities.TimeToDestination(transform.position, housePos, UnitSpeed), () =>
+            agent.OnArried = () =>
             {
                 ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
                 OnZombieGetInHouse?.Invoke();
                 StopAllCoroutines();
-            });
+            };
+
+            agent.SetDestination(housePos);
+            arried = true;
 
             return;
         }
 
-        nodesPath[currentNodeIndex].AddUnit(this);
+        nodePaths[currentNodeIndex].AddUnit(this);
 
         arried = false;
     }
@@ -188,8 +189,8 @@ public class Zombie : IUnit
     public virtual bool CanAttack()
     {
         return currentHealth > 0
-            && nodesPath[currentNodeIndex].HasPlant()
-            && Vector3.Distance(transform.position, nodesPath[currentNodeIndex].WorldPosition)
+            && nodePaths[currentNodeIndex].HasPlant()
+            && Vector3.Distance(transform.position, nodePaths[currentNodeIndex].WorldPosition)
             <= (col.radius /*+ GameConstant.NODE_LENGTH/2*/);
     }
 
@@ -270,8 +271,8 @@ public class Zombie : IUnit
     {
         if (currentHealth + Armour - damage <= 0)
         {
-            currentHealth = 0;
-            Armour = 0;
+            //currentHealth = 0;
+            //Armour = 0;
 
             InstantDead();
         }
@@ -307,11 +308,12 @@ public class Zombie : IUnit
         }
     }
 
+    private Tween deadTween = null;
     public override void Dead()
     {
         agent.Stop();
         agent.OnTurnOff();
-        DOVirtual.DelayedCall(1f, () =>
+        deadTween = DOVirtual.DelayedCall(1.4f, () =>
         {
             DeadAction();
         }).SetAutoKill();
@@ -329,12 +331,32 @@ public class Zombie : IUnit
         foreach (DebuffType type in currentDebuffs)
             ResetDebug(type);
 
+        currentHealth = 0;
+        Armour = 0;
+
         ator.OnTurnOff();
         col.enabled = false;
         transform.position = PoolPosition;
-        nodesPath[currentNodeIndex].RemoveUnit(this);
-        nodesPath.Clear();
+
+        if (currentNodeIndex >= 0)
+            nodePaths[currentNodeIndex].RemoveUnit(this);
+
+        nodePaths.Clear();
         OnZombieDie?.Invoke();
+
+        deadTween.Kill();
     }
 
+
+    private void OnDrawGizmos()
+    {
+        if (currentNodeIndex <= 0 || currentNodeIndex >= nodePaths.Count)
+            return;
+
+        Gizmos.color = Color.black;
+
+        Gizmos.DrawLine(transform.position, new Vector3(nodePaths[currentNodeIndex].WorldPosition.x - GameConstant.NODE_LENGTH / 2f,
+                                         nodePaths[currentNodeIndex].WorldPosition.y,
+                                         nodePaths[currentNodeIndex].WorldPosition.z));
+    }
 }

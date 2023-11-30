@@ -9,8 +9,8 @@ public class PotatoMine : IExplosePlant
     public override void InitializeRange()
     {
         Node node = OnGetNode?.Invoke(GridPosition.x, GridPosition.y);
-        nodesPath = new List<Node>();
-        nodesPath.Add(node);
+        nodePaths = new List<Node>();
+        nodePaths.Add(node);
     }
 
     public override void PlaceUnitOnNode(Node node)

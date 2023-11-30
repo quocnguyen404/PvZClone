@@ -7,7 +7,7 @@ public abstract class IUnit : MonoBehaviour
 {
     #region Composition Reference
     [SerializeField] protected UnitAnimator ator = null;
-    [SerializeField] protected List<Node> nodesPath = null;
+    [SerializeField] protected List<Node> nodePaths = null;
     #endregion
 
     #region Unit Data
@@ -22,7 +22,7 @@ public abstract class IUnit : MonoBehaviour
     protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
     protected float currentHealth;
     public virtual bool IsAlive => currentHealth > 0;
-    public bool IsOnNode => nodesPath.Count > 0;
+    public bool IsOnNode => nodePaths.Count > 0;
     public bool IsEndGame => GameManager.IsEndGame;
 
     public Vector3 PoolPosition = Vector3.zero;

@@ -42,9 +42,9 @@ public class Chomper : Plant
     {
         bool value = false;
 
-        value = nodesPath[GridPosition.y].HasZombie()
-            || (nodesPath[GridPosition.y + maxRange].HasZombie()
-            && Vector3.Distance(transform.position, nodesPath[GridPosition.y + maxRange].GetZombieFromNode().transform.position) <= (3f / 2f) * GameConstant.NODE_LENGTH);
+        value = nodePaths[GridPosition.y].HasZombie()
+            || (nodePaths[GridPosition.y + maxRange].HasZombie()
+            && Vector3.Distance(transform.position, nodePaths[GridPosition.y + maxRange].GetZombieFromNode().transform.position) <= (3f / 2f) * GameConstant.NODE_LENGTH);
 
         return value;
     }
@@ -57,11 +57,11 @@ public class Chomper : Plant
 
             for (int i = maxRange + GridPosition.y; i <= GridPosition.y; i--)
             {
-                if (nodesPath[i].HasZombie())
-                    zombie = nodesPath[i].GetZombieFromNode();
+                if (nodePaths[i].HasZombie())
+                    zombie = nodePaths[i].GetZombieFromNode();
             }
 
-            zombie = nodesPath[GridPosition.y + 1].GetZombieFromNode();
+            zombie = nodePaths[GridPosition.y + 1].GetZombieFromNode();
 
             ator.SetPlantMove(UnitAnimator.PlantStateType.Idle);
 

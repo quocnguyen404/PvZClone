@@ -12,6 +12,7 @@ public class GridManager : MonoBehaviour
     private int column;
     private float nodeLeng;
     private Dictionary<int, List<Node>> rows;
+    private Dictionary<int, List<Node>> columns;
 
     [Space]
     public bool draw = false;
@@ -35,12 +36,19 @@ public class GridManager : MonoBehaviour
     {
         nodes = new Node[row, column];
         rows = new Dictionary<int, List<Node>>();
+        columns = new Dictionary<int, List<Node>>();
+
+        for (int i = 0; i < column; i++)
+            columns[i] = new List<Node>();
+
 
         for (int i = 0; i < row; i++)
         {
             rows[i] = new List<Node>();
+
             for (int j = 0; j < column; j++)
             {
+
                 float x = nodeBottom.x + j * nodeLeng;
                 float z = nodeBottom.z + i * nodeLeng;
                 Node newNode = Instantiate(nodePrefab, new Vector3(x, transform.position.y, z), Quaternion.identity);
@@ -58,6 +66,7 @@ public class GridManager : MonoBehaviour
 
                 nodes[i, j] = newNode;
                 rows[i].Add(newNode);
+                columns[j].Add(newNode);
             }
         }
     }
@@ -70,6 +79,11 @@ public class GridManager : MonoBehaviour
     public List<Node> GetRow(int row)
     {
         return rows[row];
+    }
+
+    public List<Node> GetColumn(int column)
+    {
+        return columns[column];
     }
 
     public List<Node> GetArea(int row, int column)

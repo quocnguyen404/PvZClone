@@ -6,7 +6,7 @@ public class Plant : IUnit
 {
     public virtual void InitializeRange()
     {
-        nodesPath = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
+        nodePaths = new List<Node>(OnGetPath?.Invoke(GridPosition.x));
     }
 
     public override void Initialize(Vector2Int pos)
@@ -28,8 +28,8 @@ public class Plant : IUnit
 
     public override void Dead()
     {
-        nodesPath.Find(n => n.GridPosition == GridPosition).RemoveUnit(this);
-        nodesPath.Clear();
+        nodePaths.Find(n => n.GridPosition == GridPosition).RemoveUnit(this);
+        nodePaths.Clear();
         transform.position = PoolPosition;
         gameObject.SetActive(false);
     }

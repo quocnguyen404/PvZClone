@@ -45,12 +45,12 @@ public class ProjectileShooter : Plant
         if (MaxRange == 0)
             return false;
 
-        if (nodesPath == null)
+        if (nodePaths == null)
             return false;
 
         bool value = false;
 
-        Node checkNode = nodesPath.Find(n => n.HasZombie() && n.GridPosition.y < GameConstant.GARDEN_COLOUMN && n.GridPosition.y >= GridPosition.y && n.GridPosition.y <= maxRange);
+        Node checkNode = nodePaths.Find(n => n.HasZombie() && n.GridPosition.y < GameConstant.GARDEN_COLOUMN && n.GridPosition.y >= GridPosition.y && n.GridPosition.y <= maxRange);
 
         value = checkNode != null;
 
