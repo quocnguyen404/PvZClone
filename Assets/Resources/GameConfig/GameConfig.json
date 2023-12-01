@@ -52,37 +52,9 @@
 				},
 				{
 					"type" : 4,
-					"value" : 5
+					"value" : 24.25
 				}
-			],
-			"Peashooter" : {
-				"unitName" : "Peashooter",
-				"productName" : "Pea",
-				"cost" : 100,
-				"rechargeTime" : 7.5,
-				"attributes" : [
-					{
-						"type" : 0,
-						"value" : 300
-					},
-					{
-						"type" : 1,
-						"value" : 20
-					},
-					{
-						"type" : 2,
-						"value" : 5
-					},
-					{
-						"type" : 3,
-						"value" : 5
-					},
-					{
-						"type" : 4,
-						"value" : 1.425
-					}
-				]
-			}
+			]
 		},
 		"CherryBomb" : {
 			"unitName" : "CherryBomb",
@@ -344,21 +316,21 @@
 					"phaseIndex" : 0,
 					"timeBetweenSpawn" : 3,
 					"zombies" : {
-						"1" : "Zombie"
+						"2" : "Zombie"
 					}
 				},
 				{
 					"phaseIndex" : 1,
 					"timeBetweenSpawn" : 3,
 					"zombies" : {
-						"2" : "Zombie"
+						"1" : "Zombie"
 					}
 				},
 				{
 					"phaseIndex" : 2,
 					"timeBetweenSpawn" : 3,
 					"zombies" : {
-						"2" : "Zombie"
+						"1" : "Zombie"
 					}
 				}
 			]

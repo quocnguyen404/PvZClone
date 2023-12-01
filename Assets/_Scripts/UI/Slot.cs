@@ -7,6 +7,9 @@ public class Slot : MonoBehaviour
 {
     [SerializeField] private Image img = null;
 
+    private Color emptyColor = new Color(1, 1, 1, 10f/255f);
+
+
     public Data.UnitData unitData
     {
         get; private set;
@@ -25,5 +28,6 @@ public class Slot : MonoBehaviour
     public void EmptySlotData()
     {
         unitData = null;
+        img.color = emptyColor;
     }
 }

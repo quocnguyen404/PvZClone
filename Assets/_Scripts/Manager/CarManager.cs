@@ -25,9 +25,9 @@ public class CarManager : MonoBehaviour
             tempCar = Instantiate(carPref, transform);
 
             Vector3 carPos = 
-                new Vector3(firstColumn[i].WorldPosition.x - GameConstant.NODE_LENGTH / 2f,
+                new Vector3(firstColumn[i].WorldPosition.x - GameConstant.NODE_LENGTH*0.75f,
                 firstColumn[i].WorldPosition.y,
-                firstColumn[i].WorldPosition.z);
+                firstColumn[i].WorldPosition.z - GameConstant.NODE_LENGTH*0.25f);
 
             tempCar.Initialize(carPos, OnGetRow?.Invoke(i));
             tempCar.PoolPosition = transform.position;

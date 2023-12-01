@@ -26,6 +26,7 @@ public class PlantButtonHold : MonoBehaviour
 
         emptySlot.GetUnitButton(unitButton.unitData);
         unitButton.slotOnHold = emptySlot;
+        unitButton.slotOnPanel.EmptySlotData();
 
         unitButton.transform.DOKill();
         unitButton.transform.SetParent(emptySlot.transform);

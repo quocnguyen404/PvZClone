@@ -27,8 +27,6 @@ public class PhaseManager : MonoBehaviour
     private int killCount = 0;
     private int maxKillCount = 0;
 
-
-
     public void StartLevel()
     {
         phaseIndex = 0;
@@ -69,7 +67,6 @@ public class PhaseManager : MonoBehaviour
 
     private void CallZombie(string zombieName)
     {
-        //zombieCount++;
         OnZombieDispatcher?.Invoke(zombieName);
     }
 
@@ -84,6 +81,7 @@ public class PhaseManager : MonoBehaviour
             maxKillCount = 0;
             CallNextPhase();
         }
+
     }
 
     private void CallNextPhase()

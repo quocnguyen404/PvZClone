@@ -75,6 +75,7 @@
     <Compile Include="Assets\_Scripts\Product\Projectile.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\PeaShooter.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\ConfigHelper.cs" />
+    <Compile Include="Assets\_Scripts\Manager\CarManager.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButtonPanel.cs" />
     <Compile Include="Assets\_Scripts\Unit\IUnit.cs" />
     <Compile Include="Assets\_Scripts\Unit\Attribute.cs" />
@@ -113,7 +114,6 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
-    <Compile Include="Assets\_Scripts\Manager\CarManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
