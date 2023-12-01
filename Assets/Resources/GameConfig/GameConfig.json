@@ -315,46 +315,36 @@
 				{
 					"phaseIndex" : 0,
 					"timeBetweenSpawn" : 3,
-					"zombies" : {
-						"2" : "Zombie"
-					}
+					"zombies" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie"
+						},
+						{
+							"amount" : 1,
+							"name" : "Zombie"
+						}
+					]
 				},
 				{
 					"phaseIndex" : 1,
 					"timeBetweenSpawn" : 3,
-					"zombies" : {
-						"1" : "Zombie"
-					}
+					"zombies" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie"
+						}
+					]
 				},
 				{
 					"phaseIndex" : 2,
 					"timeBetweenSpawn" : 3,
-					"zombies" : {
-						"1" : "Zombie"
-					}
-				}
-			]
-		},
-		"2" : {
-			"levelIndex" : 2,
-			"phases" : [
-				{
-					"phaseIndex" : 1,
-					"zombieAmount" : 5,
-					"timeBetweenSpawn" : 2,
-					"zombies" : {
-						"2" : "Zombie",
-						"1" : "Flag Zombie"
-					}
-				},
-				{
-					"phaseIndex" : 2,
-					"zombieAmount" : 5,
-					"timeBetweenSpawn" : 2,
-					"zombies" : {
-						"2" : "Zombie",
-						"1" : "Conehead Zombie"
-					}
+					"zombies" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie"
+						}
+					]
 				}
 			]
 		}

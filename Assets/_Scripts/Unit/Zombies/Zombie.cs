@@ -29,7 +29,6 @@ public class Zombie : IUnit
     protected float maxUnitSpeed => UnitData.attributes[(int)Data.AttributeType.SP].value;
     public float UnitSpeed = 0f;
 
-
     protected float maxArmour => UnitData.attributes[(int)Data.AttributeType.DFS].value;
     public float Armour = 0f;
     #endregion
@@ -52,13 +51,7 @@ public class Zombie : IUnit
             return d;
         }
     }
-    public bool IsDebuff
-    {
-        get
-        {
-            return currentDebuffs.Count > 0;
-        }
-    }
+    public bool IsDebuff => currentDebuffs.Count > 0;
     protected float debuffTimer = 0f;
     #endregion
 

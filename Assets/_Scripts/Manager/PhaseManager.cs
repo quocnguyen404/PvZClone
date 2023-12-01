@@ -7,93 +7,83 @@ using UnityEngine;
 
 public class PhaseManager : MonoBehaviour
 {
-    public LevelConfig CurrentLevel
-    {
-        get
-        {
-            return ConfigHelper.GetCurrentLevelConfig();
-        }
-    }
-
+    public LevelConfig CurrentLevel => ConfigHelper.GetCurrentLevelConfig();
 
     public System.Action<string> OnZombieDispatcher = null;
     public System.Action OnWin = null;
 
-    private List<int> zombieAmount = null;
-
     private int phaseIndex = 0;
-    private int maxPhaseAmount = 0;
+
+    private int batchKeyIndex = 0;
+    private List<int> batchKey = null;
 
     private int killCount = 0;
-    private int maxKillCount = 0;
 
     public void StartLevel()
     {
         phaseIndex = 0;
-        maxPhaseAmount = CurrentLevel.phases.Count - 1;
-        zombieAmount = new List<int>();
 
-
-        DOVirtual.DelayedCall(GameConstant.TIME_START_MATCH, () =>
-        {
-            StartPhase(CurrentLevel.phases[phaseIndex]);
-
-        }).SetAutoKill();
+        DOVirtual.DelayedCall(GameConstant.TIME_START_MATCH, () => { StartPhase(); }).SetAutoKill();
     }
 
-    private void StartPhase(PhaseData phase)
+    public void StartPhase()
     {
-        phaseIndex = phase.phaseIndex;
         killCount = 0;
+        batchKeyIndex = 0;
+        batchKey = new List<int>();
 
-        foreach (var zombie in phase.zombies)
-        {
-            zombieAmount.Add(zombie.Key);
-            maxKillCount += zombie.Key;
-        }
+        foreach (ElementData batch in CurrentLevel.phases[phaseIndex].zombies)
+            batchKey.Add(batch.amount);
 
-        StartCoroutine(IECallZombie(phase));
+        CallBatch();
     }
 
-    private IEnumerator IECallZombie(PhaseData phase)
+    private void CallBatch()
     {
-        int count = zombieAmount[phaseIndex];
-        for (int i = 0; i < count; i++)
-        {
-            CallZombie(phase.zombies[count]);
-            yield return Helper.GetWait(phase.timeBetweenSpawn);
-        }
+        killCount = 0;
+        int amount = CurrentLevel.phases[phaseIndex].zombies[batchKeyIndex].amount;
+        string zombieName = CurrentLevel.phases[phaseIndex].zombies[batchKeyIndex].name;
+        StartBatch(amount, zombieName);
     }
 
-    private void CallZombie(string zombieName)
+    private void StartBatch(int amount, string zombieName)
     {
-        OnZombieDispatcher?.Invoke(zombieName);
+        for (int i = 0; i < amount; i++)
+            OnZombieDispatcher?.Invoke(zombieName);
     }
 
     public void ZombieDie()
     {
         killCount++;
-        Debug.Log(killCount);
 
-        if (killCount >= maxKillCount)
-        {
-            killCount = 0;
-            maxKillCount = 0;
-            CallNextPhase();
-        }
-
+        if (killCount == CurrentLevel.phases[phaseIndex].zombies[batchKeyIndex].amount)
+            EndABatch();
     }
 
-    private void CallNextPhase()
+    private void EndABatch()
     {
-        if (phaseIndex >= maxPhaseAmount)
+        if (batchKeyIndex + 1 == batchKey.Count)
         {
-            OnWin?.Invoke();
-            StopAllCoroutines();
+            EndAPhase();
             return;
         }
+        else
+            batchKeyIndex++;
 
-        phaseIndex++;
-        StartPhase(CurrentLevel.phases[phaseIndex]);
+        CallBatch();
     }
+
+    private void EndAPhase()
+    {
+        if (phaseIndex + 1 == CurrentLevel.phases.Count)
+        {
+            OnWin?.Invoke();
+            return;
+        }
+        else
+            phaseIndex++;
+
+        StartPhase();
+    }
+
 }
