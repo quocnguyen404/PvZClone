@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ator: {fileID: 803848715787299859}
-  nodesPath: []
+  nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   col: {fileID: 2115065636}

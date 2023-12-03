@@ -9,19 +9,18 @@ public class InputManager : MonoBehaviour
 
     private Vector3 lastPosition;
 
-    public Vector3 GetSelectedPlanePosition()
+    public bool IsOverPlane()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        Node sNode = GetSelectedNode();
 
+        return sNode != null && !sNode.HasPlant() && sNode.GridPosition.y < GameConstant.GARDEN_COLOUMN;
+    }
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer))
-        {
-            lastPosition = hit.point;
-            Debug.DrawLine(ray.origin, lastPosition);
-        }
+    public Vector3 GetSelectedNodePosition()
+    {
+        Node sNode = GetSelectedNode();
 
-        return lastPosition;
+        return sNode.WorldPosition;
     }
 
     public Node GetSelectedNode()
@@ -35,10 +34,7 @@ public class InputManager : MonoBehaviour
             Debug.DrawLine(ray.origin, lastPosition, Color.red);
             return hit.collider.GetComponent<Node>();
         }
-
-        else return null;
+        else 
+            return null;
     }
-
-
-
 }

@@ -8,8 +8,9 @@ public class PlacementManager : MonoBehaviour
     [Header("Component Reference")]
     [SerializeField] private InputManager inputManager = null;
     [SerializeField] private SunInGameManager currencyManager = null;
-    //[SerializeField] private Button shovelButton = null;
     [SerializeField] private Transform dropSunPosition = null;
+    [SerializeField] private Button shovelButton = null;
+    [SerializeField] private MouseIndicator mouseIndicator = null;
 
     public System.Action<IUnit> OnPlaceUnit = null;
     public System.Func<Data.UnitData, IProduct> OnGetSun = null;
@@ -22,6 +23,10 @@ public class PlacementManager : MonoBehaviour
     private Sun sunPre = null;
     private float timer = 0;
 
+    private void Awake()
+    {
+        mouseIndicator.transform.eulerAngles = Helper.Cam.transform.eulerAngles;
+    }
 
     public void Initialize()
     {
@@ -42,6 +47,13 @@ public class PlacementManager : MonoBehaviour
             timer = 0;
         }
 
+        if (inputManager.IsOverPlane() && selectedUnit != null)
+        {
+            TurnOnMouseIndicator();
+            mouseIndicator.transform.position = inputManager.GetSelectedNodePosition();
+        }
+        else
+            TurnOffMouseIndicator();
 
         if (Input.GetMouseButtonDown(0) && selectedUnit != null)
         {
@@ -49,6 +61,9 @@ public class PlacementManager : MonoBehaviour
 
             if (selectedNode == null)
             {
+                TurnOffMouseIndicator();
+                mouseIndicator.ChangeMouseIndicatorSprite(null);
+
                 selectedUnit.gameObject.SetActive(false);
                 selectedUnit = null;
                 return;
@@ -72,6 +87,9 @@ public class PlacementManager : MonoBehaviour
         currencyManager.BuyPlant(selectedUnit.UnitData);
         selectedButton.Recharge(selectedUnit.UnitData.rechargeTime);
 
+        TurnOffMouseIndicator();
+        mouseIndicator.ChangeMouseIndicatorSprite(null);
+
         selectedUnit = null;
         selectedButton = null;
     }
@@ -84,6 +102,8 @@ public class PlacementManager : MonoBehaviour
             return;
         }
 
+
+        mouseIndicator.ChangeMouseIndicatorSprite(unitButton.GetUnitSprite());
         selectedUnit = unit;
         selectedButton = unitButton;
     }
@@ -106,5 +126,18 @@ public class PlacementManager : MonoBehaviour
         sunPre.Fall(target);
 
         sunPre = null;
+    }
+
+
+    private void TurnOnMouseIndicator()
+    {
+        mouseIndicator.gameObject.SetActive(true);
+        Cursor.visible = false;
+    }
+
+    private void TurnOffMouseIndicator()
+    {
+        mouseIndicator.gameObject.SetActive(false);
+        Cursor.visible = true;
     }
 }

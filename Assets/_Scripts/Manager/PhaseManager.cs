@@ -32,7 +32,7 @@ public class PhaseManager : MonoBehaviour
         batchKeyIndex = 0;
         batchKey = new List<int>();
 
-        foreach (ElementData batch in CurrentLevel.phases[phaseIndex].zombies)
+        foreach (Batch batch in CurrentLevel.phases[phaseIndex].batchs)
             batchKey.Add(batch.amount);
 
         CallBatch();
@@ -41,8 +41,8 @@ public class PhaseManager : MonoBehaviour
     private void CallBatch()
     {
         killCount = 0;
-        int amount = CurrentLevel.phases[phaseIndex].zombies[batchKeyIndex].amount;
-        string zombieName = CurrentLevel.phases[phaseIndex].zombies[batchKeyIndex].name;
+        int amount = CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].amount;
+        string zombieName = CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].name;
         StartBatch(amount, zombieName);
     }
 
@@ -56,7 +56,7 @@ public class PhaseManager : MonoBehaviour
     {
         killCount++;
 
-        if (killCount == CurrentLevel.phases[phaseIndex].zombies[batchKeyIndex].amount)
+        if (killCount == CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].amount)
             EndABatch();
     }
 

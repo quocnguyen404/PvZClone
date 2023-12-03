@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlacementManager placementManager = null;
     [SerializeField] private GridManager gridManager = null;
     [SerializeField] private PhaseManager phaseManager = null;
+    [SerializeField] private UIManager uiManager = null;
 
     [Space]
     [Header("Object Pooling Reference")]
@@ -38,6 +39,12 @@ public class GameManager : MonoBehaviour
     {
         IsEndGame = false;
         IsStartGame = false;
+
+        StartPickPlant();
+    }
+
+    private void StartPickPlant()
+    {
         gridManager.Initialize(GameConstant.GARDEN_ROW, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN, GameConstant.NODE_LENGTH);
 
         playButton.onClick.AddListener(() => { StartGame(); });
@@ -117,5 +124,11 @@ public class GameManager : MonoBehaviour
     {
         IsStartGame = false;
         IsEndGame = true;
+    }
+
+    private void OnDestroy()
+    {
+        IsEndGame = false;
+        IsStartGame = false;
     }
 }

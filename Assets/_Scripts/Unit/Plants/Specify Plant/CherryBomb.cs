@@ -13,10 +13,16 @@ public class CherryBomb : IExplosePlant
         ator.SetPlantMove(UnitAnimator.PlantStateType.Attack, Explose);
     }
 
+    private Tween deadTween = null;
     protected override void Explose()
     {
         currentHealth = Mathf.Infinity;
         col.enabled = true;
+
+        if (deadTween != null)
+            deadTween.Kill();
+
+        ator.SetPlantMove(UnitAnimator.PlantStateType.Ready);
 
         Dead();
     }
@@ -41,7 +47,11 @@ public class CherryBomb : IExplosePlant
 
     public override void Dead()
     {
-        base.Dead();
-        col.enabled = false;
+        deadTween = DOVirtual.DelayedCall(UnitData.attributes[(int)Data.AttributeType.AAI].value, () =>
+        {
+            base.Dead();
+            col.enabled = false;
+
+        }).SetAutoKill();
     }
 }

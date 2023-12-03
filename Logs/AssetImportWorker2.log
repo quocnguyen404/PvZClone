@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.3/release' branch; Version is '2021.3.17f1 (3e8111cac19d) revision 4096273'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'en' Physical Memory: 16237 MB
+OS: 'Windows 11  (10.0.22621) 64bit CoreSingleLanguage' Language: 'en' Physical Memory: 6030 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.3.17f1\Editor\Unity.exe
 -name
 AssetImportWorker2
 -projectPath
-C:/Insight Files/Unity/PvZClone
+C:/projects/Unity Game/PvZClone
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-51655
-Successfully changed project path to: C:/Insight Files/Unity/PvZClone
-C:/Insight Files/Unity/PvZClone
+51583
+Successfully changed project path to: C:/projects/Unity Game/PvZClone
+C:/projects/Unity Game/PvZClone
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,341 +47,65 @@ C:/Insight Files/Unity/PvZClone
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [24060] Host "[IP] 192.168.4.62 [Port] 0 [Flags] 2 [Guid] 1750947564 [EditorId] 1750947564 [Version] 1048832 [Id] WindowsEditor(7,PC04) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [12036] Host "[IP] 192.168.1.26 [Port] 0 [Flags] 2 [Guid] 2398596724 [EditorId] 2398596724 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-G31D5O0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [24060] Host "[IP] 192.168.4.62 [Port] 0 [Flags] 2 [Guid] 1750947564 [EditorId] 1750947564 [Version] 1048832 [Id] WindowsEditor(7,PC04) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [12036] Host "[IP] 192.168.1.26 [Port] 0 [Flags] 2 [Guid] 2398596724 [EditorId] 2398596724 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-G31D5O0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 91.30 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 248.24 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.17f1 (3e8111cac19d)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Insight Files/Unity/PvZClone/Assets
+[Subsystems] Discovering subsystems at path C:/projects/Unity Game/PvZClone/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1660 SUPER (ID=0x21c4)
-    Vendor:   NVIDIA
-    VRAM:     5992 MB
-    Driver:   30.0.15.1215
+    Renderer: AMD Radeon(TM) Graphics (ID=0x15d8)
+    Vendor:   ATI
+    VRAM:     3015 MB
+    Driver:   31.0.12028.2
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56776
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56124
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003546 seconds.
+Registered in 0.020194 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 158 ms
-Refreshing native plugins compatible for Editor in 71.68 ms, found 4 plugins.
+Android Extension - Scanning For ADB Devices 796 ms
+Refreshing native plugins compatible for Editor in 241.38 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.657 seconds
+- Completed reload, in  2.695 seconds
 Domain Reload Profiling:
-	ReloadAssembly (657ms)
-		BeginReloadAssembly (60ms)
+	ReloadAssembly (2697ms)
+		BeginReloadAssembly (248ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (519ms)
-			LoadAssemblies (59ms)
+			CreateAndSetChildDomain (2ms)
+		EndReloadAssembly (2125ms)
+			LoadAssemblies (242ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (79ms)
+			SetupTypeCache (306ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (22ms)
-			SetupLoadedEditorAssemblies (378ms)
+			RebuildScriptCaches (82ms)
+			SetupLoadedEditorAssemblies (1584ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (206ms)
+				InitializePlatformSupportModulesInManaged (988ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (72ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (67ms)
-				ProcessInitializeOnLoadMethodAttributes (32ms)
+				RefreshPlugins (242ms)
+				BeforeProcessingInitializeOnLoad (3ms)
+				ProcessInitializeOnLoadAttributes (219ms)
+				ProcessInitializeOnLoadMethodAttributes (131ms)
 				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (0ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005001 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Insight Files\Unity\PvZClone\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Insight Files\Unity\PvZClone\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 82.74 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.954 seconds
-Domain Reload Profiling:
-	ReloadAssembly (955ms)
-		BeginReloadAssembly (88ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (784ms)
-			LoadAssemblies (86ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (219ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (46ms)
-			SetupLoadedEditorAssemblies (397ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (13ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (83ms)
-				BeforeProcessingInitializeOnLoad (88ms)
-				ProcessInitializeOnLoadAttributes (183ms)
-				ProcessInitializeOnLoadMethodAttributes (27ms)
-				AfterProcessingInitializeOnLoad (3ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (4ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.68 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4129 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 40 unused Assets / (56.3 KB). Loaded Objects now: 4594.
-Memory consumption went from 157.1 MB to 157.1 MB.
-Total: 2.631400 ms (FindLiveObjects: 0.249000 ms CreateObjectMapping: 0.117500 ms MarkObjects: 2.197900 ms  DeleteObjects: 0.066300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 8464.089553 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_0.png
-  artifactKey: Guid(a15d37f3c99e0204f8f2e777b7035d8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_0.png using Guid(a15d37f3c99e0204f8f2e777b7035d8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e876eece9bacd7eba8dad29a8dbf3914') in 0.091366 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.491661 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_1.png
-  artifactKey: Guid(69ab8f865e322bb47b017048cc553403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_1.png using Guid(69ab8f865e322bb47b017048cc553403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '937893da2844ddc706a9e3a851fa4c72') in 0.020207 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_9.png
-  artifactKey: Guid(81bef49d0af78be4486243059a084fce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_9.png using Guid(81bef49d0af78be4486243059a084fce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '615ba680fbe6e752e051a851ae3d44b7') in 0.011429 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_5.png
-  artifactKey: Guid(7bbb7bc5f9230b142bb4de7605bdb29e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieDie/ZombieDie_5.png using Guid(7bbb7bc5f9230b142bb4de7605bdb29e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1dd42a91edf07c40dbe1a5c50a885a1') in 0.013656 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.154549 seconds.
-  path: Assets/Animation/Zombie/NormalZombie/NormalZombie-Attack.anim
-  artifactKey: Guid(48fab8d6819652d4f9c48d66f6097baf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation/Zombie/NormalZombie/NormalZombie-Attack.anim using Guid(48fab8d6819652d4f9c48d66f6097baf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03b611453ea51b51cd946320afa4c80e') in 0.003998 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_0.png
-  artifactKey: Guid(069de2903a4c043468c54b401f055f68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_0.png using Guid(069de2903a4c043468c54b401f055f68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4142f2f22d83fa02198e7a97689862a') in 0.033973 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_8.png
-  artifactKey: Guid(88b7a568e7b74ee4ba2ee4d85ff3b6aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_8.png using Guid(88b7a568e7b74ee4ba2ee4d85ff3b6aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bac0b4298b68e7bb0d2ec50302b5d3f') in 0.044357 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000073 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_20.png
-  artifactKey: Guid(0bb8f4a0402c8b44385fb20bd9677812) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_20.png using Guid(0bb8f4a0402c8b44385fb20bd9677812) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c33f0ec9cc0f65ec8f20255edbb460a') in 0.019731 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_7.png
-  artifactKey: Guid(6292e3743b752354eade39dcb4859665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_7.png using Guid(6292e3743b752354eade39dcb4859665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85b806011a1b64c38922359bc3f67053') in 0.047472 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_16.png
-  artifactKey: Guid(7977f2699bd1f144d865a806b701df18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_16.png using Guid(7977f2699bd1f144d865a806b701df18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad06d642bcec83f1fddbdb87e70e58c2') in 0.018462 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_18.png
-  artifactKey: Guid(6ec04b815d1d82340985a4dccc6b2962) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieAttack/ZombieAttack_18.png using Guid(6ec04b815d1d82340985a4dccc6b2962) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '143712a63a2d44f0d9304b69c553a9fa') in 0.026654 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.074248 seconds.
-  path: Assets/Animation/Zombie/NormalZombie/NormalZombie-BombDie.anim
-  artifactKey: Guid(a4aa5e18f273d434fa79a3f82faf52c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation/Zombie/NormalZombie/NormalZombie-BombDie.anim using Guid(a4aa5e18f273d434fa79a3f82faf52c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0004efc46f6af04b064d19d8eb8aa36c') in 0.001805 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 25.436230 seconds.
-  path: Assets/Animation/Zombie/NormalZombie/NormalZombie-LostHeadAttack.anim
-  artifactKey: Guid(7ee010d88d794c442b09bf5809709aec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation/Zombie/NormalZombie/NormalZombie-LostHeadAttack.anim using Guid(7ee010d88d794c442b09bf5809709aec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04bf4f7c8fb45813f118530b7c356d7c') in 0.001718 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.003236 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieLostHeadAttack/ZombieLostHeadAttack_0.png
-  artifactKey: Guid(f77a0899f31621547bdfd71ded54bcf8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieLostHeadAttack/ZombieLostHeadAttack_0.png using Guid(f77a0899f31621547bdfd71ded54bcf8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a80cf7f55a959be061516637cec85436') in 0.031554 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000052 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieLostHeadAttack/ZombieLostHeadAttack_4.png
-  artifactKey: Guid(539ae54cc02a45e4f95ff69a3dfa2ff5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieLostHeadAttack/ZombieLostHeadAttack_4.png using Guid(539ae54cc02a45e4f95ff69a3dfa2ff5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14a06ef38a93054814e5a1292f6260f8') in 0.047280 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieLostHeadAttack/ZombieLostHeadAttack_6.png
-  artifactKey: Guid(7ec243bdc890e4349bb0e6207d9f8e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieLostHeadAttack/ZombieLostHeadAttack_6.png using Guid(7ec243bdc890e4349bb0e6207d9f8e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d97f9fdd22a6db4a5abffab022c9136') in 0.019763 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 10.034155 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_0.png
-  artifactKey: Guid(32abd102c05bd4e46ac4c2bb524c13e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_0.png using Guid(32abd102c05bd4e46ac4c2bb524c13e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb9988c0b80d3d7c318c13eeab80b57a') in 0.016705 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_6.png
-  artifactKey: Guid(7e3d1621f31a9b04a9e063c966695e95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_6.png using Guid(7e3d1621f31a9b04a9e063c966695e95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fe5116daa197b89e7bdd07b2b5edd3e') in 0.010632 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_4.png
-  artifactKey: Guid(0ece021086052ce4f8bc54f899aafc75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_4.png using Guid(0ece021086052ce4f8bc54f899aafc75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf239b73965dc15d8ab5d5bf01a716d3') in 0.012460 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.968417 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_1.png
-  artifactKey: Guid(8a79b8650bc2f5a42b40b79b26f49662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_1.png using Guid(8a79b8650bc2f5a42b40b79b26f49662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60fdcfa8b1ccfc70c6dc59fb18959de5') in 0.041298 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_6.png
-  artifactKey: Guid(50f907a4e655c2e429cc4274f6225a8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_6.png using Guid(50f907a4e655c2e429cc4274f6225a8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73221652ec2f54f0eb55c650192fcb05') in 0.013018 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_9.png
-  artifactKey: Guid(7d616639f1bebc944ad1a2a8c5a6a3c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_9.png using Guid(7d616639f1bebc944ad1a2a8c5a6a3c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '280841e085632e3187b7d827a8e75519') in 0.012285 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 38.593850 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieHead/ZombieHead_0.png
-  artifactKey: Guid(33e03432c3a470c44922aa3982993069) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieHead/ZombieHead_0.png using Guid(33e03432c3a470c44922aa3982993069) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aee256930973c2d4cb44ebe9e3c5fb60') in 0.048441 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieHead/ZombieHead_5.png
-  artifactKey: Guid(29159c2504adcb94bb0fa09017f31c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieHead/ZombieHead_5.png using Guid(29159c2504adcb94bb0fa09017f31c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5712be2659619e5e50335a1ea2cc6aa') in 0.015912 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Sprites/Zombie/NormalZombie/ZombieHead/ZombieHead_9.png
-  artifactKey: Guid(129d967075fb0bc4d9d16914e7d0c877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/NormalZombie/ZombieHead/ZombieHead_9.png using Guid(129d967075fb0bc4d9d16914e7d0c877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e17a191cf97f72ff0d9202b4ba665548') in 0.053913 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 140.374481 seconds.
-  path: Assets/Animation/Zombie/NormalZombie/NormalZombie-Idle.anim
-  artifactKey: Guid(a5265c15ce13d05438f00a699a4d5951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation/Zombie/NormalZombie/NormalZombie-Idle.anim using Guid(a5265c15ce13d05438f00a699a4d5951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a69f234f7eec4405399b797f53fb193') in 0.001707 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 46.750862 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_0.png
-  artifactKey: Guid(51463f34ce838694b85ef4c2b9a63405) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_0.png using Guid(51463f34ce838694b85ef4c2b9a63405) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2acae09a3daeee7e18ea540274cf6cac') in 0.015677 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_4.png
-  artifactKey: Guid(d97157da25aac744194871f505f7e0f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_4.png using Guid(d97157da25aac744194871f505f7e0f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6dc194d4f791a32c8aff999f669cf54') in 0.010298 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_6.png
-  artifactKey: Guid(430ffdac1d806e840bdb3a54a6ab0091) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_6.png using Guid(430ffdac1d806e840bdb3a54a6ab0091) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78149cc33e885e4646ce84d9b4e49b5b') in 0.017210 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_11.png
-  artifactKey: Guid(87ba41cdb97ce0c48b9c02b383dd6bf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_11.png using Guid(87ba41cdb97ce0c48b9c02b383dd6bf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67d4cb6ed1aa4ef1f5f047454b807d4f') in 0.014243 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_3.png
-  artifactKey: Guid(2cb342f47e2b2314f8890f9f51167014) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/WalkLostHead/FlagZombieLostHead_3.png using Guid(2cb342f47e2b2314f8890f9f51167014) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b1efd82cffbf532604d7098369ba0f3') in 0.012307 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 33.182201 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_1.png
-  artifactKey: Guid(ce66be4e293aa58498567b23b084ae4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_1.png using Guid(ce66be4e293aa58498567b23b084ae4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e08553a8c8660d5fed7be3128f1422e') in 0.016744 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_6.png
-  artifactKey: Guid(b73f276cbfeae9c43bbfdb247b0368fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_6.png using Guid(b73f276cbfeae9c43bbfdb247b0368fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10cb3aa9e9748aebeb74e17b27e06cb9') in 0.012237 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_10.png
-  artifactKey: Guid(c2e174dc471b4fb4ab091368787c555a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_10.png using Guid(c2e174dc471b4fb4ab091368787c555a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e425497bde4a8e30260375d76b939764') in 0.017623 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_8.png
-  artifactKey: Guid(b2af0f46f1ef52043881ccbed57a8aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_8.png using Guid(b2af0f46f1ef52043881ccbed57a8aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9dcf4756186146664c57854f5889523') in 0.017313 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_5.png
-  artifactKey: Guid(955984b823e009e46afbb3661b8862ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Zombie/FlagZombie/Walk/FlagZombie_5.png using Guid(955984b823e009e46afbb3661b8862ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1c381c2e8104717c90f807ba683ee32') in 0.011444 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+Registered in 0.038552 seconds.

@@ -36,6 +36,7 @@ public class ZombieManager : UnitManager
         zombie.OnZombieGetInHouse = ZombieGetInHouse;
         zombie.Initialize(new Vector2Int(row, column));
         zombie.transform.position = gridManager.GetRow(row)[column].WorldPosition;
+        zombie.transform.eulerAngles = Helper.Cam.transform.eulerAngles;
     }
 
     public override void RemoveUnit(IUnit unit)

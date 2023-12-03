@@ -12,6 +12,8 @@ public class UnitButton : MonoBehaviour
     [SerializeField] private TMP_Text costText;
     [SerializeField] private Image recharge = null;
 
+    private Sprite plantSprite = null;
+
     private bool isRecharge = false;
     public Slot slotOnPanel = null;
     public Slot slotOnHold = null;
@@ -36,6 +38,7 @@ public class UnitButton : MonoBehaviour
     {
         this.unitData = unitData;
         icon.sprite = Resources.Load<Sprite>(string.Format(GameConstant.CARDS_SPRITES_PATH, unitData.unitName));
+        plantSprite = Resources.Load<Sprite>(string.Format(GameConstant.PLANT_SPRITES_PATH, unitData.unitName));
         costText.text = unitData.cost.ToString();
     }
 
@@ -51,5 +54,16 @@ public class UnitButton : MonoBehaviour
                 isRecharge = false;
             })
             .SetAutoKill();
+    }
+
+    public Sprite GetUnitSprite()
+    {
+        if (plantSprite == null)
+        {
+            Debug.Log("Sprite of button is null");
+            return null;
+        }
+
+        return plantSprite;
     }
 }

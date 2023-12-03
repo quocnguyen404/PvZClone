@@ -80,7 +80,7 @@
 				},
 				{
 					"type" : 4,
-					"value" : 1.2
+					"value" : 2
 				}
 			]
 		},
@@ -233,7 +233,7 @@
 			"attributes" : [
 				{
 					"type" : 0,
-					"value" : 181
+					"value" : 180
 				},
 				{
 					"type" : 1,
@@ -241,7 +241,7 @@
 				},
 				{
 					"type" : 2,
-					"value" : 32
+					"value" : 31
 				},
 				{
 					"type" : 3,
@@ -253,14 +253,14 @@
 				}
 			]
 		},
-		"Flag Zombie" : {
-			"unitName" : "Flag Zombie",
+		"FlagZombie" : {
+			"unitName" : "FlagZombie",
 			"cost" : 0,
 			"rechargeTime" : 7.5,
 			"attributes" : [
 				{
 					"type" : 0,
-					"value" : 10
+					"value" : 180
 				},
 				{
 					"type" : 1,
@@ -268,38 +268,11 @@
 				},
 				{
 					"type" : 2,
-					"value" : 5
+					"value" : 31
 				},
 				{
 					"type" : 3,
-					"value" : 4.7
-				},
-				{
-					"type" : 4,
-					"value" : 1
-				}
-			]
-		},
-		"Conehead Zombie" : {
-			"unitName" : "Conehead Zombie",
-			"cost" : 0,
-			"rechargeTime" : 7.5,
-			"attributes" : [
-				{
-					"type" : 0,
-					"value" : 551
-				},
-				{
-					"type" : 1,
-					"value" : 100
-				},
-				{
-					"type" : 2,
-					"value" : 5
-				},
-				{
-					"type" : 3,
-					"value" : 4.7
+					"value" : 3.7
 				},
 				{
 					"type" : 4,
@@ -315,13 +288,17 @@
 				{
 					"phaseIndex" : 0,
 					"timeBetweenSpawn" : 3,
-					"zombies" : [
+					"batchs" : [
 						{
 							"amount" : 1,
+							"name" : "FlagZombie"
+						},
+						{
+							"amount" : 2,
 							"name" : "Zombie"
 						},
 						{
-							"amount" : 1,
+							"amount" : 2,
 							"name" : "Zombie"
 						}
 					]
@@ -329,19 +306,35 @@
 				{
 					"phaseIndex" : 1,
 					"timeBetweenSpawn" : 3,
-					"zombies" : [
+					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "Zombie"
+							"name" : "FlagZombie"
+						},
+						{
+							"amount" : 1,
+							"name" : "FlagZombie"
+						},
+						{
+							"amount" : 1,
+							"name" : "FlagZombie"
 						}
 					]
 				},
 				{
 					"phaseIndex" : 2,
 					"timeBetweenSpawn" : 3,
-					"zombies" : [
+					"batchs" : [
 						{
-							"amount" : 1,
+							"amount" : 2,
+							"name" : "Zombie"
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie"
+						},
+						{
+							"amount" : 2,
 							"name" : "Zombie"
 						}
 					]

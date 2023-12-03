@@ -215,13 +215,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40b4fdebe36a0443bc7b3a5214c0341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ator: {fileID: 0}
+  ator: {fileID: 2591124908343928881}
   nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
-  sr: {fileID: 0}
-  agent: {fileID: 0}
-  col: {fileID: 0}
+  sr: {fileID: 4661211800001206162}
+  agent: {fileID: 6196201239045751200}
+  col: {fileID: 5516870347682310690}
   currentNodeIndex: 0
   UnitSpeed: 0
   Armour: 0

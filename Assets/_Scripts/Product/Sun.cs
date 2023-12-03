@@ -20,8 +20,12 @@ public class Sun : IProduct
         this.value = value;
     }
 
+    private Tween sunTween = null;
     public void TossSun(Vector3 parentPos)
     {
+        if (sunTween != null)
+            sunTween.Kill();
+
         float x = Random.Range(-100, 100);
         float z = Random.Range(-100, 100);
 
@@ -34,7 +38,7 @@ public class Sun : IProduct
 
         Vector3 jumpTarget = transform.position + dir * jumpForce;
 
-        transform.DOJump(jumpTarget, jumpForce, 1, jumpTime).SetEase(Ease.OutCubic)
+        sunTween = transform.DOJump(jumpTarget, jumpForce, 1, jumpTime).SetEase(Ease.OutCubic)
             .OnComplete(() => 
             { 
                 ReturnPool(4f);
@@ -44,7 +48,11 @@ public class Sun : IProduct
 
     public void Fall(Vector3 ground)
     {
-        transform.DOMoveY(ground.y, 9f)
+
+        if (sunTween != null)
+            sunTween.Kill();
+
+        sunTween = transform.DOMoveY(ground.y, 9f)
             .OnComplete(() => 
             {
                 ReturnPool(4f);

@@ -48,4 +48,10 @@ public class PickUnitManager : MonoBehaviour
         IUnit unit = OnGetPlant?.Invoke(unitButton.unitData);
         OnPickedUnit?.Invoke(unit, unitButton);
     }
+
+    private void OnDestroy()
+    {
+        OnPickedUnit = null;
+        OnGetPlant = null;
+    }
 }
