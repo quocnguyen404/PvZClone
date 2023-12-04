@@ -11,14 +11,8 @@ public abstract class IUnit : MonoBehaviour
     #endregion
 
     #region Unit Data
-    public Data.UnitData UnitData = null;
-    public string Name
-    {
-        get
-        {
-            return UnitData.unitName;
-        }
-    }
+    public Data.UnitData UnitData { get; set; }
+    public string Name => UnitData.unitName;
     protected float maxHealth => UnitData.attributes[(int)Data.AttributeType.HP].value;
     protected float currentHealth;
     public virtual bool IsAlive => currentHealth > 0;

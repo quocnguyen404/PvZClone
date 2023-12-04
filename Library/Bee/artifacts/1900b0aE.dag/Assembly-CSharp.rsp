@@ -401,6 +401,8 @@
 "Assets/_Scripts/Manager/Product Manager/ProductManager.cs"
 "Assets/_Scripts/Manager/Product Manager/SunManager.cs"
 "Assets/_Scripts/Manager/SunInGameManager.cs"
+"Assets/_Scripts/Manager/TransitionManager.cs"
+"Assets/_Scripts/Manager/UIManager.cs"
 "Assets/_Scripts/Manager/Unit Manager/PlantManager.cs"
 "Assets/_Scripts/Manager/Unit Manager/UnitManager.cs"
 "Assets/_Scripts/Manager/Unit Manager/ZombieManager.cs"
@@ -436,6 +438,7 @@
 "Assets/_Scripts/Unit/Plants/SunProducing.cs"
 "Assets/_Scripts/Unit/Plants/WallPlant.cs"
 "Assets/_Scripts/Unit/UnitData.cs"
+"Assets/_Scripts/Unit/Zombies/FlagZombie.cs"
 "Assets/_Scripts/Unit/Zombies/Zombie.cs"
 -langversion:9.0
 

@@ -9,8 +9,8 @@ public class Zombie : IUnit
     [SerializeField] protected SpriteRenderer sr = null;
     [SerializeField] protected Agent agent = null;
     [SerializeField] protected CapsuleCollider col = null;
-
     [SerializeField] protected int currentNodeIndex;
+
     protected float attackTimer = 0;
     protected float bleedTimer = 0;
     protected bool arried = true;
@@ -20,7 +20,7 @@ public class Zombie : IUnit
 
 
     #region Event
-    public System.Action OnZombieDie = null;
+    public System.Action<Zombie> OnZombieDie = null;
     public System.Action OnZombieGetInHouse = null;
     public System.Func<Vector3> OnGetHousePosition = null;
     #endregion
@@ -264,9 +264,6 @@ public class Zombie : IUnit
     {
         if (currentHealth + Armour - damage <= 0)
         {
-            //currentHealth = 0;
-            //Armour = 0;
-
             InstantDead();
         }
         else
@@ -330,14 +327,24 @@ public class Zombie : IUnit
         ator.OnTurnOff();
         col.enabled = false;
         transform.position = PoolPosition;
+        arried = true;
+
+        OnZombieDie?.Invoke(this);
+        deadTween.Kill();
 
         if (currentNodeIndex >= 0)
-            nodePaths[currentNodeIndex].RemoveUnit(this);
+        {
+            try
+            {
+                nodePaths[currentNodeIndex].RemoveUnit(this);
+            }
+            catch
+            {
+                Debug.Log("nodePaths have been delete");
+            }
+        }
 
         nodePaths.Clear();
-        OnZombieDie?.Invoke();
-
-        deadTween.Kill();
     }
 
 

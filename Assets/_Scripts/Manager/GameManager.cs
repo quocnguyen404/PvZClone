@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         zombieManager.gridManager = gridManager;
         zombieManager.Initialize();
         plantManager.Initialize();
-        zombieObjectPool.InitializePool(ConfigHelper.GetCurrentLevelConfig());
+        zombieObjectPool.InitializePool();
         carManager.Initialize(GameConstant.GARDEN_ROW);
     }
 

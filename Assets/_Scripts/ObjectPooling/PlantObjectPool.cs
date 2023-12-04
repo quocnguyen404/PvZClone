@@ -31,7 +31,7 @@ public class PlantObjectPool : ObjectPoolBase
 
     public Plant GetPlant(Data.UnitData unitData)
     {
-        Plant plant = plants.Find(p => !p.gameObject.activeInHierarchy && p.UnitData.unitName == unitData.unitName);
+        Plant plant = plants.Find(p => !p.gameObject.activeInHierarchy && p.Name == unitData.unitName);
 
         if (plant != null)
         {

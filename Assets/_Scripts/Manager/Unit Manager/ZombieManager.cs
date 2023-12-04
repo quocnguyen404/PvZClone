@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,10 +26,16 @@ public class ZombieManager : UnitManager
 
     public override void AddUnit(IUnit unit)
     {
+        base.AddUnit(unit);
+
+        SetUnitRandomOnArea(unit);
+    }
+
+    private void SetUnitRandomOnArea(IUnit unit)
+    {
         int row = Random.Range(0, GameConstant.ZOMBIE_ROW);
         int column = Random.Range(GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN - 3, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN);
 
-        base.AddUnit(unit);
         Zombie zombie = ZUnitCast(unit);
         zombie.OnZombieDie = ZombieDie;
         zombie.OnGetPath = ZombieGetPath;
@@ -50,9 +57,23 @@ public class ZombieManager : UnitManager
         return nodepaths;
     }
 
-    private void ZombieDie()
+    private void ZombieDie(Zombie zombie)
     {
+        zombie.OnZombieDie = null;
+        zombie.OnGetPath = null;
+        zombie.OnGetHousePosition = null;
+        zombie.OnZombieGetInHouse = null;
+
         OnZombieDie?.Invoke();
+
+        if (!GameManager.IsEndGame)
+        {
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                SetUnitRandomOnArea(zombie);
+            });
+
+        }
     }
 
     private void ZombieGetInHouse()
@@ -73,6 +94,6 @@ public class ZombieManager : UnitManager
 
     private Zombie GetZombieAlive(string zombieName)
     {
-        return ZUnitCast(units.Find(z => ZUnitCast(z).IsAlive && !ZUnitCast(z).IsOnNode && z.UnitData.unitName == zombieName));
+        return ZUnitCast(units.Find(z => ZUnitCast(z).IsAlive && !ZUnitCast(z).IsOnNode && z.Name == zombieName));
     }
 }

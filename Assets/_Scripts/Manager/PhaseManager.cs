@@ -43,13 +43,24 @@ public class PhaseManager : MonoBehaviour
         killCount = 0;
         int amount = CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].amount;
         string zombieName = CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].name;
-        StartBatch(amount, zombieName);
+        float timeBetweenSpawn = CurrentLevel.phases[phaseIndex].timeBetweenSpawn;
+        StartBatch(amount, zombieName, timeBetweenSpawn);
     }
 
-    private void StartBatch(int amount, string zombieName)
+    private void StartBatch(int amount, string zombieName, float time)
     {
         for (int i = 0; i < amount; i++)
-            OnZombieDispatcher?.Invoke(zombieName);
+        {
+            try
+            {
+                CallZombie(time, () => { OnZombieDispatcher?.Invoke(zombieName); });
+            }
+            catch
+            {
+                Debug.Log("Bacth is null");
+            }
+        }
+
     }
 
     public void ZombieDie()
@@ -86,4 +97,16 @@ public class PhaseManager : MonoBehaviour
         StartPhase();
     }
 
+
+    private void CallZombie(float time, System.Action action)
+    {
+        StartCoroutine(IECallZombie(time, action));
+    }
+
+    private IEnumerator IECallZombie(float time, System.Action action)
+    {
+        action?.Invoke();
+
+        yield return Helper.GetWait(time);
+    }
 }

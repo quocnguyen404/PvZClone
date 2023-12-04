@@ -9,19 +9,18 @@ public class ZombieObjectPool : ObjectPoolBase
 
     private Zombie zombiePrefab = null;
     private readonly List<Zombie> zombies = new List<Zombie>();
+    private Dictionary<string, int> minZombie;
 
     public System.Action<IUnit> OnSpawnUnit = null;
 
-    public void InitializePool(LevelConfig levelConfig)
+    public void InitializePool()
     {
-        foreach (PhaseData phase in levelConfig.phases)
-        {
-            foreach (Batch zombie in phase.batchs)  
-            {
-                zombiePrefab = Resources.Load<Zombie>(string.Format(GameConstant.ZOMBIE_PREFAB_PATH, zombie.name));
+        CalculateMinimumZombie();
 
-                GenerateZombie(ConfigHelper.GameConfig.zombies[zombie.name], zombie.amount);
-            }
+        foreach (var zombie in minZombie)
+        {
+            zombiePrefab = Resources.Load<Zombie>(string.Format(GameConstant.ZOMBIE_PREFAB_PATH, zombie.Key));
+            GenerateZombie(ConfigHelper.GameConfig.zombies[zombie.Key], zombie.Value);
         }
     }
 
@@ -39,9 +38,28 @@ public class ZombieObjectPool : ObjectPoolBase
         }
     }
 
+    private void CalculateMinimumZombie()
+    {
+        minZombie = new Dictionary<string, int>();
+
+        foreach (PhaseData phase in ConfigHelper.GetCurrentLevelConfig().phases)
+        {
+            foreach (Batch zombie in phase.batchs)
+            {
+                if (minZombie.ContainsKey(zombie.name))
+                {
+                    if (zombie.amount > minZombie[zombie.name] - 1)
+                        minZombie[zombie.name] = zombie.amount + 1;
+                }
+                else
+                    minZombie.Add(zombie.name, zombie.amount);
+            }
+        }
+    }
+
     public Zombie GetZombie(Data.UnitData unitData)
     {
-        Zombie zombie = zombies.Find(p => !p.gameObject.activeInHierarchy && p.UnitData.unitName == unitData.unitName);
+        Zombie zombie = zombies.Find(p => !p.gameObject.activeInHierarchy && p.Name == unitData.unitName);
 
         if (zombie != null)
         {
@@ -62,4 +80,5 @@ public class ZombieObjectPool : ObjectPoolBase
 
         return null;
     }
+
 }

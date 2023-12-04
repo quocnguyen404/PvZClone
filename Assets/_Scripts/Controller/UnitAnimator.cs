@@ -54,7 +54,7 @@ public class UnitAnimator : MonoBehaviour
         if (movement == zCurrentState)
             return;
 
-        Debug.Log(movement.ToString());
+        //Debug.Log(movement.ToString());
 
         zCurrentState = movement;
 
@@ -66,7 +66,7 @@ public class UnitAnimator : MonoBehaviour
         if (movement == zCurrentState)
             return;
 
-        Debug.Log(movement.ToString());
+        //Debug.Log(movement.ToString());
 
         zCurrentState = movement;
 
@@ -97,7 +97,7 @@ public class UnitAnimator : MonoBehaviour
         if (movement == pCurrentState)
             return;
 
-        Debug.Log(movement.ToString());
+        //Debug.Log(movement.ToString());
 
         pCurrentState = movement;
 
@@ -109,13 +109,14 @@ public class UnitAnimator : MonoBehaviour
         if (movement == pCurrentState)
             return;
 
-        Debug.Log(movement.ToString());
+        //Debug.Log(movement.ToString());
 
         pCurrentState = movement;
 
         float animLength = GetAnimationClipsLength(movement.ToString());
 
         ator.Play(movement.ToString(), 0);
+
         DOVirtual.DelayedCall(animLength, () => { action?.Invoke(); }).SetAutoKill();
     }
 
@@ -136,7 +137,7 @@ public class UnitAnimator : MonoBehaviour
         if (movement == zCurrentState)
             return;
 
-        Debug.Log($"Trigger Zombie {movement.ToString()}");
+        //Debug.Log($"Trigger Zombie {movement.ToString()}");
 
         zCurrentState = movement;
 
@@ -148,7 +149,7 @@ public class UnitAnimator : MonoBehaviour
         if (movement == pCurrentState)
             return;
 
-        Debug.Log($"Trigger Plant {movement.ToString()}");
+        //Debug.Log($"Trigger Plant {movement.ToString()}");
 
         pCurrentState = movement;
 

@@ -7,14 +7,7 @@ public class Chomper : Plant
     [SerializeField] protected int maxRange;
 
     protected float attackTimer = 0;
-
-    public bool IsChewing
-    {
-        get
-        {
-            return attackTimer > 0;
-        }
-    }
+    public bool IsChewing => attackTimer > 0;
 
     public override void Update()
     {
