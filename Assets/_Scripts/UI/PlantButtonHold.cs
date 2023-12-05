@@ -6,8 +6,8 @@ using DG.Tweening;
 public class PlantButtonHold : MonoBehaviour
 {
     //[SerializeField] private Transform content = null;
-    public List<Slot> slots;
-    public List<Data.UnitData> unitDatas;
+    public List<Slot> slots { get; private set; }
+    public List<Data.UnitData> unitDatas { get; private set; }
 
     public System.Action<UnitButton> OnUnitButtonClick;
 
@@ -55,5 +55,12 @@ public class PlantButtonHold : MonoBehaviour
         {
             unitDatas.Add(slot.unitData);
         }
+    }
+
+    public void Deconstructor()
+    {
+        slots.Clear();
+        unitDatas.Clear();
+        OnUnitButtonClick = null;
     }
 }

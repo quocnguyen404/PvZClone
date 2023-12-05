@@ -25,7 +25,7 @@ public class PickUnitManager : MonoBehaviour
     {
         buttonPanel.Hide();
         buttonHold.InitializeUnitData();
-        buttonHold.OnUnitButtonClick = SeletedUnit;
+        buttonHold.OnUnitButtonClick = PickUnit;
     }
 
     public void InitializeUnitDataLimitPlant()
@@ -43,15 +43,10 @@ public class PickUnitManager : MonoBehaviour
         return buttonHold.unitDatas;
     }
 
-    private void SeletedUnit(UnitButton unitButton)
+    private void PickUnit(UnitButton unitButton)
     {
         IUnit unit = OnGetPlant?.Invoke(unitButton.unitData);
         OnPickedUnit?.Invoke(unit, unitButton);
     }
 
-    private void OnDestroy()
-    {
-        OnPickedUnit = null;
-        OnGetPlant = null;
-    }
 }

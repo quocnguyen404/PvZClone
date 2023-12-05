@@ -20,10 +20,6 @@ public class UnitButton : MonoBehaviour
     public System.Action<UnitButton> OnUnitButtonClick;
     public Data.UnitData unitData { get; private set; }
 
-    private void Awake()
-    {
-        button.onClick.AddListener(() => { OnUnitButtonClick?.Invoke(this); });
-    }
 
     private void FixedUpdate()
     {
@@ -36,17 +32,24 @@ public class UnitButton : MonoBehaviour
     public void Initialize(Data.UnitData unitData)
     {
         this.unitData = unitData;
+        button.onClick.AddListener(() => { OnUnitButtonClick?.Invoke(this); });
         icon.sprite = Resources.Load<Sprite>(string.Format(GameConstant.CARDS_SPRITES_PATH, unitData.unitName));
         plantSprite = Resources.Load<Sprite>(string.Format(GameConstant.PLANT_SPRITES_PATH, unitData.unitName));
     }
 
+    private Tween rechargeTween = null;
     public void Recharge(float time)
     {
         recharge.fillAmount = 1;
         isRecharge = true;
 
-        recharge.DOKill();
-        recharge.DOFillAmount(0f, time)
+        if (rechargeTween != null)
+        {
+            rechargeTween.Kill();
+            Debug.Log("Kill recharge button unit tween");
+        }
+
+        rechargeTween = recharge.DOFillAmount(0f, time)
             .OnComplete(() =>
             {
                 isRecharge = false;
@@ -63,5 +66,13 @@ public class UnitButton : MonoBehaviour
         }
 
         return plantSprite;
+    }
+
+    private void OnDestroy()
+    {
+        unitData = null;
+        button.onClick.RemoveAllListeners();
+        icon.sprite = null;
+        plantSprite = null;
     }
 }
