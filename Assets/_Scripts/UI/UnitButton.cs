@@ -18,7 +18,7 @@ public class UnitButton : MonoBehaviour
     public Slot slotOnHold = null;
 
     public System.Action<UnitButton> OnUnitButtonClick;
-    public Data.UnitData unitData { get; private set; }
+    public Data.UnitData unitData = null;
 
 
     private void FixedUpdate()
@@ -68,11 +68,11 @@ public class UnitButton : MonoBehaviour
         return plantSprite;
     }
 
-    private void OnDestroy()
-    {
-        unitData = null;
-        button.onClick.RemoveAllListeners();
-        icon.sprite = null;
-        plantSprite = null;
-    }
+    //private void OnDestroy()
+    //{
+    //    unitData = null;
+    //    button.onClick.RemoveAllListeners();
+    //    icon.sprite = null;
+    //    plantSprite = null;
+    //}
 }

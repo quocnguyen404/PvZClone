@@ -95,6 +95,7 @@
     <Compile Include="Assets\_Scripts\GameConfig\GameConstant.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\GameConfig.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\WallPlant.cs" />
+    <Compile Include="Assets\_Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\_Scripts\Controller\UnitAnimator.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\IExplosePlant.cs" />
     <Compile Include="Assets\_Scripts\Product\SnowPea.cs" />
@@ -117,7 +118,6 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
-    <Compile Include="Assets\_Scripts\Manager\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -79,6 +79,11 @@ PrefabInstance:
     - {fileID: 5649815106940224623, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
     - {fileID: 7668615423304728447, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
+--- !u!82 &373383700238186555 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
+  m_PrefabInstance: {fileID: 6052616731700549063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &596042283510789254 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6609779665493893441, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
@@ -113,7 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ator: {fileID: 596042283510789254}
-  nodesPath: []
+  audioSource: {fileID: 373383700238186555}
+  nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   MaxRange: 9

@@ -19,6 +19,7 @@ public class PlantManager : UnitManager
         plant.OnGetPath = PlantGetPath;
         plant.OnGetArea = PlantGetArea;
         plant.OnGetProduct = GetProduct;
+        plant.OnGetSound = GetSound;
     }
 
     private Plant PUnitCast(IUnit unit)
@@ -31,6 +32,8 @@ public class PlantManager : UnitManager
     {
         return OnUnitGetProduct?.Invoke(data);
     }
+
+
 
     private Node PlantGetNode(int row, int column)
     {

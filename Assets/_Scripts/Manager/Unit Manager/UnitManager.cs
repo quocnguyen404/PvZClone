@@ -9,8 +9,7 @@ public class UnitManager : MonoBehaviour
     public List<IUnit> units = null;
     public Dictionary<int, List<IUnit>> rows = null;
     public System.Func<Data.UnitData, IProduct> OnUnitGetProduct = null;
-
-
+    public System.Func<Sound, AudioClip> OnUnitGetSound = null;
     public virtual void Initialize()
     {
         units = new List<IUnit>();
@@ -29,4 +28,8 @@ public class UnitManager : MonoBehaviour
         rows[unit.GridPosition.x].Remove(unit);
     }
 
+    protected virtual AudioClip GetSound(Sound soundType)
+    {
+        return OnUnitGetSound?.Invoke(soundType);
+    }
 }

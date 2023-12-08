@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ator: {fileID: 3987626368633035240}
-  nodesPath: []
+  audioSource: {fileID: 4196776775025530197}
+  nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   maxRange: 1
@@ -157,3 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f257da7bc8a5a5047984897fa8f77bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &4196776775025530197 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
+  m_PrefabInstance: {fileID: 7848721487879436457}
+  m_PrefabAsset: {fileID: 0}

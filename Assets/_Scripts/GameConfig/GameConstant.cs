@@ -7,8 +7,8 @@ public static class GameConstant
     public const string ZOMBIE_PREFAB_PATH = "Prefabs/Zombie/{0}";
     public const string PROJECTILE_PREFAB_PATH = "Prefabs/Product/{0}";
     public const string ITEM_PREFAB_PATH = "Prefabs/Item/{0}";
-    public const string SOUND_PATH = "Audio/Sound/";
-    public const string MUSIC_PATH = "Audio/Music/";
+    public const string SOUND_PATH = "Audio/Sound/{0}";
+    public const string MUSIC_PATH = "Audio/Music/{0}";
     public const string GAMECONFIG_PATH = "GameConfig/GameConfig";
     public const string PROJECTILE_BLOCK_TAG = "ProjectileBlock";
 

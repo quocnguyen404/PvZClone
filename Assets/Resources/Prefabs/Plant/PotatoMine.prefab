@@ -166,7 +166,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ator: {fileID: 3570514630043251244}
-  nodesPath: []
+  audioSource: {fileID: 4388215849568960145}
+  nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   col: {fileID: 63749109}
+--- !u!82 &4388215849568960145 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
+  m_PrefabInstance: {fileID: 7653766096239793005}
+  m_PrefabAsset: {fileID: 0}

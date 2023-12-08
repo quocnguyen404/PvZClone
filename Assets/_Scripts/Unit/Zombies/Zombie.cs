@@ -176,7 +176,21 @@ public class Zombie : IUnit
 
         nodePaths[currentNodeIndex].AddUnit(this);
 
+        Groan();
+
         arried = false;
+    }
+
+    public virtual void Groan()
+    {
+        GameUtilities.RandomBehaviour(() =>
+        {
+            Sound sound = GameUtilities.RandomSound(Sound.ZombieGroan, Sound.ZombieGroan2);
+
+            AudioClip clip = OnGetSound?.Invoke(sound);
+
+            audioSource.PlayOneShot(clip, 1);
+        });
     }
 
     public virtual bool CanAttack()
@@ -191,6 +205,9 @@ public class Zombie : IUnit
     {
         ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
         target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
+
+        if (!target.IsAlive)
+            audioSource.PlayOneShot(OnGetSound?.Invoke(Sound.ZombieEat));
     }
 
     public virtual void TakeDebuff(float duration, DebuffType type, float debuffValue)
@@ -303,6 +320,10 @@ public class Zombie : IUnit
     {
         agent.Stop();
         agent.OnTurnOff();
+
+        if (deadTween != null)
+            deadTween.Kill();
+
         deadTween = DOVirtual.DelayedCall(1.4f, () =>
         {
             DeadAction();

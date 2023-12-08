@@ -4,15 +4,71 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource musics = null;
-    [SerializeField] private AudioSource sounds = null;
+    public static AudioManager Instance = null;
 
-    private Dictionary<string, AudioClip> soundClips;
-    private Dictionary<string, AudioClip> musicClips;
+    [SerializeField] private AudioSource music = null;
+    [SerializeField] private AudioSource sound = null;
 
-    public void InitializeAudioClip()
+    private Dictionary<Sound, AudioClip> soundClips;
+    private Dictionary<Music, AudioClip> musicClips;
+
+    private void Awake()
     {
-        //soundClips = Resources.LoadAll(GameConstant.SOUND_PATH, typeof(AudioClip))
+        if (Instance != null)
+            Destroy(gameObject);
+        else
+            Instance = this;
+
+        Initialize();
     }
 
+    public void Initialize()
+    {
+        soundClips = new Dictionary<Sound, AudioClip>();
+        musicClips = new Dictionary<Music, AudioClip>();
+    }
+
+    public void PlaySound(Sound soundType)
+    {
+        sound.PlayOneShot(GetSound(soundType));
+    }
+
+    public void PlayMusic(Music musicType)
+    {
+        music.PlayOneShot(GetMusic(musicType));
+    }
+
+    public AudioClip GetSound(Sound soundType)
+    {
+        if (!soundClips.ContainsKey(soundType))
+        {
+            AudioClip clip = LoadAudioClip(soundType.ToString());
+            soundClips.Add(soundType, clip);
+        }
+
+        return soundClips[soundType];
+    }
+
+    public AudioClip GetMusic(Music musicType)
+    {
+        if (!musicClips.ContainsKey(musicType))
+        {
+            AudioClip clip = LoadAudioClip(musicType.ToString());
+            musicClips.Add(musicType, clip);
+        }
+
+        return musicClips[musicType];
+    }
+
+    private AudioClip LoadAudioClip(string clipName)
+    {
+        return Resources.Load<AudioClip>(string.Format(GameConstant.SOUND_PATH, clipName));
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 }
+
+

@@ -7,6 +7,7 @@ public abstract class IUnit : MonoBehaviour
 {
     #region Composition Reference
     [SerializeField] protected UnitAnimator ator = null;
+    [SerializeField] protected AudioSource audioSource = null;
     [SerializeField] protected List<Node> nodePaths = null;
     #endregion
 
@@ -28,6 +29,7 @@ public abstract class IUnit : MonoBehaviour
     public System.Func<int, List<Node>> OnGetPath = null;
     public System.Func<int, int, List<Node>> OnGetArea = null;
     public System.Func<Data.UnitData, IProduct> OnGetProduct = null;
+    public System.Func<Sound, AudioClip> OnGetSound = null;
     #endregion
 
     public virtual void Initialize(Vector2Int pos)

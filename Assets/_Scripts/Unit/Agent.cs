@@ -68,8 +68,8 @@ public class Agent : MonoBehaviour
 
     public void Stop()
     {
-        if (isStop)
-            return;
+        //if (isStop)
+        //    return;
 
         OnArried?.Invoke();
         moveTween.Kill();

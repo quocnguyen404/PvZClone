@@ -136,6 +136,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &7301093684092146003 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
+  m_PrefabInstance: {fileID: 3711813421133462703}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7510215505407565294 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6609779665493893441, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
@@ -170,7 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ator: {fileID: 7510215505407565294}
-  nodesPath: []
+  audioSource: {fileID: 7301093684092146003}
+  nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
   MaxRange: 9

@@ -41,6 +41,7 @@ public class ZombieManager : UnitManager
         zombie.OnGetPath = ZombieGetPath;
         zombie.OnGetHousePosition = ZombieGetHousePosition;
         zombie.OnZombieGetInHouse = ZombieGetInHouse;
+        zombie.OnGetSound = GetSound;
         zombie.Initialize(new Vector2Int(row, column));
         zombie.transform.position = gridManager.GetRow(row)[column].WorldPosition;
         zombie.transform.eulerAngles = Helper.Cam.transform.eulerAngles;
@@ -63,6 +64,7 @@ public class ZombieManager : UnitManager
         zombie.OnGetPath = null;
         zombie.OnGetHousePosition = null;
         zombie.OnZombieGetInHouse = null;
+        zombie.OnGetSound = null;
 
         OnZombieDie?.Invoke();
 
