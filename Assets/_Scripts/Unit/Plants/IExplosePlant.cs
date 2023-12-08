@@ -6,7 +6,7 @@ using UnityEngine;
 public class IExplosePlant : Plant
 {
 
-    public override void InitializeRange()
+    public override void InitializeNodePath()
     {
         nodePaths = new List<Node>(OnGetArea?.Invoke(GridPosition.x, GridPosition.y));
     }

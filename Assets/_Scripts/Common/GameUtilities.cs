@@ -4,6 +4,14 @@ using UnityEngine;
 
 public static class GameUtilities
 {
+    public static Date GetDate()
+    {
+        if (ConfigHelper.GetCurrentLevelConfig().levelIndex < 10)
+            return Date.Day;
+        else
+            return Date.Night;
+    }
+
     public static void RandomBehaviour(System.Action action)
     {
         int ran = Random.Range(0, 10);

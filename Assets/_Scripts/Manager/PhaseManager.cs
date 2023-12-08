@@ -18,6 +18,7 @@ public class PhaseManager : MonoBehaviour
     private List<int> batchKey = null;
 
     private int killCount = 0;
+    private int batchKillCount = 0;
 
     public void StartLevel()
     {
@@ -29,6 +30,7 @@ public class PhaseManager : MonoBehaviour
     public void StartPhase()
     {
         killCount = 0;
+        batchKillCount = 0;
         batchKeyIndex = 0;
         batchKey = new List<int>();
 
@@ -61,6 +63,10 @@ public class PhaseManager : MonoBehaviour
             }
         }
 
+
+        //try to start next batch if zombie in this batch is not die after a specify time
+        //add a variable that count zombie in current calling batch
+        //batchsAmount = 
     }
 
     public void ZombieDie()

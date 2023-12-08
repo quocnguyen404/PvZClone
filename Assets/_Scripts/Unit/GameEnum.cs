@@ -11,6 +11,12 @@ namespace Data
     }
 }
 
+public enum Date
+{
+    Day,
+    Night
+}
+
 public enum DebuffType
 {
     None,
@@ -54,7 +60,4 @@ public enum Sound
     ZombieLoading,
     ZombieGroan3,
 }
-
-
-
 

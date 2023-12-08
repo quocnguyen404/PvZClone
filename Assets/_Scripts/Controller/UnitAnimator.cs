@@ -23,13 +23,19 @@ public class UnitAnimator : MonoBehaviour
         BombDie,
     }
 
+
+    /*
+     * Wall plant have 3 idle
+     * Night plant have 2 idle -> Idle: normal idle -> Idle1: sleep idle
+     * Night plant ready is wake up
+    */
     public enum PlantStateType
     {
-        Idle,
-        Idle1,
+        Idle, //normal idle
+        Idle1, //sleep
         Idle2,
-        Ready,
-        Attack,
+        Ready, //ready or wakeup
+        Attack, //attack or explose
     }
 
     public void ZInitialize()

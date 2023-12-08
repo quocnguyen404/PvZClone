@@ -6,7 +6,7 @@ using DG.Tweening;
 public class PotatoMine : IExplosePlant
 {
     [SerializeField] private Collider col = null;
-    public override void InitializeRange()
+    public override void InitializeNodePath()
     {
         Node node = OnGetNode?.Invoke(GridPosition.x, GridPosition.y);
         nodePaths = new List<Node>();

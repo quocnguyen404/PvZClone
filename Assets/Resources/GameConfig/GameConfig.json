@@ -223,6 +223,34 @@
 					"value" : 1.425
 				}
 			]
+		},
+		"PuffShroom" : {
+			"unitName" : "PuffShroom",
+			"productName" : "Spore",
+			"cost" : 0,
+			"rechargeTime" : 7.5,
+			"attributes" : [
+				{
+					"type" : 0,
+					"value" : 300
+				},
+				{
+					"type" : 1,
+					"value" : 20
+				},
+				{
+					"type" : 2,
+					"value" : 5
+				},
+				{
+					"type" : 3,
+					"value" : 90
+				},
+				{
+					"type" : 4,
+					"value" : 1.425
+				}
+			]
 		}
 	},
 	"zombies" : {
@@ -291,7 +319,8 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie"
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
 						},
 						{
 							"amount" : 2,

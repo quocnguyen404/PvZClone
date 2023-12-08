@@ -189,6 +189,9 @@ public class Zombie : IUnit
 
             AudioClip clip = OnGetSound?.Invoke(sound);
 
+            if (clip == null)
+                return;
+
             audioSource.PlayOneShot(clip, 1);
         });
     }
