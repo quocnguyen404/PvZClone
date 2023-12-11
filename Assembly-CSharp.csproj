@@ -71,7 +71,7 @@
     <Compile Include="Assets\_Scripts\Grid\Node.cs" />
     <Compile Include="Assets\_Scripts\Product\Pea.cs" />
     <Compile Include="Assets\_Scripts\Manager\Product Manager\ProductManager.cs" />
-    <Compile Include="Assets\_Scripts\Manager\TransitionManager.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Plants\INightPlant.cs" />
     <Compile Include="Assets\_Scripts\Unit\UnitData.cs" />
     <Compile Include="Assets\_Scripts\Product\Projectile.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\PeaShooter.cs" />
@@ -83,6 +83,7 @@
     <Compile Include="Assets\_Scripts\Common\Helper.cs" />
     <Compile Include="Assets\_Scripts\Manager\PlacementManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\_Scripts\Unit\Plants\NightPlantComposite.cs" />
     <Compile Include="Assets\_Scripts\Product\Sun.cs" />
     <Compile Include="Assets\_Scripts\Manager\UIManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\Puffshroom.cs" />
@@ -118,8 +119,7 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
-    <Compile Include="Assets\_Scripts\Unit\Plants\NightPlantComposite.cs" />
-    <Compile Include="Assets\_Scripts\Unit\Plants\INightPlant.cs" />
+    <Compile Include="Assets\_Scripts\UI\UIHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

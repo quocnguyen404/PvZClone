@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PlantButtonHold : MonoBehaviour
+public class PlantButtonHold : UIHandler
 {
-    //[SerializeField] private Transform content = null;
     public List<Slot> slots;
     public List<Data.UnitData> unitDatas;
 

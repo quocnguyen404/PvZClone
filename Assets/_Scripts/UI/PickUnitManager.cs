@@ -23,7 +23,6 @@ public class PickUnitManager : MonoBehaviour
 
     public void InitializeUnitData()
     {
-        buttonPanel.Hide();
         buttonHold.InitializeUnitData();
         buttonHold.OnUnitButtonClick = PickUnit;
     }

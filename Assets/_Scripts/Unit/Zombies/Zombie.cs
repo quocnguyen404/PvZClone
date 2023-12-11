@@ -318,16 +318,17 @@ public class Zombie : IUnit
         }
     }
 
-    private Tween deadTween = null;
+    //private Tween deadTween = null;
     public override void Dead()
     {
         agent.Stop();
         agent.OnTurnOff();
 
-        if (deadTween != null)
-            deadTween.Kill();
+        //if (deadTween != null)
+        //    deadTween.Kill();
 
-        deadTween = DOVirtual.DelayedCall(1.4f, () =>
+        /*deadTween = */
+        DOVirtual.DelayedCall(1.4f, () =>
         {
             DeadAction();
         }).SetAutoKill();
@@ -354,7 +355,7 @@ public class Zombie : IUnit
         arried = true;
 
         OnZombieDie?.Invoke(this);
-        deadTween.Kill();
+        //deadTween.Kill();
 
         if (currentNodeIndex >= 0)
         {

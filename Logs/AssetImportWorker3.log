@@ -1,0 +1,303 @@
+Using pre-set license
+Built from '2021.3/release' branch; Version is '2021.3.17f1 (3e8111cac19d) revision 4096273'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'en' Physical Memory: 16237 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.17f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+C:/Insight Files/Unity/PvZClone
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+51778
+Successfully changed project path to: C:/Insight Files/Unity/PvZClone
+C:/Insight Files/Unity/PvZClone
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [21304] Host "[IP] 192.168.4.62 [Port] 0 [Flags] 2 [Guid] 127533965 [EditorId] 127533965 [Version] 1048832 [Id] WindowsEditor(7,PC04) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [21304] Host "[IP] 192.168.4.62 [Port] 0 [Flags] 2 [Guid] 127533965 [EditorId] 127533965 [Version] 1048832 [Id] WindowsEditor(7,PC04) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 98.18 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.17f1 (3e8111cac19d)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Insight Files/Unity/PvZClone/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 SUPER (ID=0x21c4)
+    Vendor:   NVIDIA
+    VRAM:     5992 MB
+    Driver:   30.0.15.1215
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56876
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003403 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 173 ms
+Refreshing native plugins compatible for Editor in 77.65 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.711 seconds
+Domain Reload Profiling:
+	ReloadAssembly (712ms)
+		BeginReloadAssembly (73ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (557ms)
+			LoadAssemblies (72ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (84ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (409ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (227ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (78ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (69ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004203 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Insight Files\Unity\PvZClone\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Insight Files\Unity\PvZClone\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 74.11 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.086 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1087ms)
+		BeginReloadAssembly (101ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (20ms)
+		EndReloadAssembly (898ms)
+			LoadAssemblies (101ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (325ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (50ms)
+			SetupLoadedEditorAssemblies (388ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (74ms)
+				BeforeProcessingInitializeOnLoad (78ms)
+				ProcessInitializeOnLoadAttributes (190ms)
+				ProcessInitializeOnLoadMethodAttributes (30ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (3ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.41 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4134 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 40 unused Assets / (56.3 KB). Loaded Objects now: 4599.
+Memory consumption went from 157.3 MB to 157.2 MB.
+Total: 3.318600 ms (FindLiveObjects: 0.453100 ms CreateObjectMapping: 0.148400 ms MarkObjects: 2.621400 ms  DeleteObjects: 0.095100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 4869.407603 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/ChomperAttack/ChomperAttack_6.png
+  artifactKey: Guid(b59ce3b0ab29bec4696fd28ca08abd3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/ChomperAttack/ChomperAttack_6.png using Guid(b59ce3b0ab29bec4696fd28ca08abd3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f18bbfc99d085c4914250e963963e853') in 0.104629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_1.png
+  artifactKey: Guid(cc208ea7343d6124a80aebc8f6ec5a75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_1.png using Guid(cc208ea7343d6124a80aebc8f6ec5a75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75e5bdd02e66f275216fbe9af1747ed6') in 0.017548 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Sprites/Plant Animation/CherryBomb/CherryBomb_1.png
+  artifactKey: Guid(276f242eb2d38c14b941b60fe0e6a9ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/CherryBomb/CherryBomb_1.png using Guid(276f242eb2d38c14b941b60fe0e6a9ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa8209a9e9e9c6b406773c6e3c40e66') in 0.015888 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Packages/com.unity.2d.psdimporter/Editor/Assets/Icons/Light/Layers Collapsed@4x.png
+  artifactKey: Guid(5dbd5be3ef1574c7e97b880d54c1fa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.psdimporter/Editor/Assets/Icons/Light/Layers Collapsed@4x.png using Guid(5dbd5be3ef1574c7e97b880d54c1fa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e53df71b62f1c55bde808b7c26ea5a7d') in 0.019557 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Packages/com.unity.2d.psdimporter/Editor/Assets/Icons/Selected/Layers Collapsed@2x.png
+  artifactKey: Guid(68f9e990182e8491b9c0f3dc88cd0158) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.psdimporter/Editor/Assets/Icons/Selected/Layers Collapsed@2x.png using Guid(68f9e990182e8491b9c0f3dc88cd0158) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59f2e469e87769cc60d3a7860f9c61b7') in 0.011104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Create_Vertex.png
+  artifactKey: Guid(efe4b927ec825b242bf70d64c4258c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Create_Vertex.png using Guid(efe4b927ec825b242bf70d64c4258c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28450f909d32f875aeee99402469f552') in 0.010689 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_7.png
+  artifactKey: Guid(ba110124902e26b4dac4f69dcb63dd75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_7.png using Guid(ba110124902e26b4dac4f69dcb63dd75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6247307a8435702ab59cc84ea5e4c8e4') in 0.012429 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/ChomperDigest/ChomperDigest_3.png
+  artifactKey: Guid(ad0ff8e852b4d2741a6454c48f97d2c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/ChomperDigest/ChomperDigest_3.png using Guid(ad0ff8e852b4d2741a6454c48f97d2c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbfef86d0f57f97aa21b46df6bf904a0') in 0.010903 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_11.png
+  artifactKey: Guid(4f90500b8199c234f80bf18388d3e010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_11.png using Guid(4f90500b8199c234f80bf18388d3e010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57290c35d64d42e33cc283bf6c0ea613') in 0.012791 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Create Bones@3x.png
+  artifactKey: Guid(6e2c347c12b3fe04b94007ad25ace23a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Create Bones@3x.png using Guid(6e2c347c12b3fe04b94007ad25ace23a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6632e0ce86a1c45be4c9c92e4465307b') in 0.012020 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_10.png
+  artifactKey: Guid(79e7cc57c11093f40ba402d7357396f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_10.png using Guid(79e7cc57c11093f40ba402d7357396f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c57ae213e071aef36feaf66b51c5212') in 0.011810 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_2.png
+  artifactKey: Guid(4d331716773bf3f4aa147f48088a055e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_2.png using Guid(4d331716773bf3f4aa147f48088a055e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b07963e1d0d587ade9f7afae65728b1') in 0.012184 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Sprites/Plant Animation/CherryBomb/CherryBomb_4.png
+  artifactKey: Guid(46fef5d78d2183b41bd08a8dc40c77bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/CherryBomb/CherryBomb_4.png using Guid(46fef5d78d2183b41bd08a8dc40c77bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4249267cc2e68737367c46508a46a215') in 0.009306 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/ChomperDigest/ChomperDigest_0.png
+  artifactKey: Guid(9c2dde8cef0918d45b9d7f287d89c8e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/ChomperDigest/ChomperDigest_0.png using Guid(9c2dde8cef0918d45b9d7f287d89c8e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e63442b263f67d4aba809290f65313e') in 0.009978 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_10.png
+  artifactKey: Guid(ab50b5c04fb9ac1499055da325452ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_10.png using Guid(ab50b5c04fb9ac1499055da325452ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb503e8d083b0543a48aaa49dd5bd844') in 0.012877 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_1.png
+  artifactKey: Guid(8a79b8650bc2f5a42b40b79b26f49662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_1.png using Guid(8a79b8650bc2f5a42b40b79b26f49662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8c876853d6840f94259b9e79a5a6559') in 0.012909 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Sprite_Influence@4x.png
+  artifactKey: Guid(58702b682724446469909705bca1de62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Sprite_Influence@4x.png using Guid(58702b682724446469909705bca1de62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e353454366e6383365c7b2c363822d2') in 0.009113 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_7.png
+  artifactKey: Guid(4bb9caeb7accb07459d913ef85eb2a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Zombie/FlagZombie/AttackLostHead/FlagZombieLostHeadAttack_7.png using Guid(4bb9caeb7accb07459d913ef85eb2a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51a12facf40509584e3a25b2f77f0609') in 0.010668 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_10.png
+  artifactKey: Guid(e93120a00baa9af40a2364f340e08815) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Zombie/FlagZombie/Attack/FlagZombieAttack_10.png using Guid(e93120a00baa9af40a2364f340e08815) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3d5d9860e0af13e00981fc29a8ffd07') in 0.012855 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Edit_Geometry@2x.png
+  artifactKey: Guid(2d2e8c77fdf4f364c83224444f65fb4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Edit_Geometry@2x.png using Guid(2d2e8c77fdf4f364c83224444f65fb4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0e560f76b4390f521d691deca0ddd02') in 0.010081 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_6.png
+  artifactKey: Guid(81da39b752eaebc4eb4f48911836c8b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Plant Animation/Chomper/Chomper/Chomper_6.png using Guid(81da39b752eaebc4eb4f48911836c8b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6df018a855c02e7073a22e08c60ff49a') in 0.011674 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000093 seconds.
+  path: Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Copy@3x.png
+  artifactKey: Guid(3b5ad4dfc78124a489bb5c48a4b57195) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Dark/d_Copy@3x.png using Guid(3b5ad4dfc78124a489bb5c48a4b57195) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17fec45c2378f379829339f3f2fd6c7f') in 0.010738 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
