@@ -209,8 +209,8 @@ public class Zombie : IUnit
         ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
         target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
 
-        if (!target.IsAlive)
-            audioSource.PlayOneShot(OnGetSound?.Invoke(Sound.ZombieEat));
+        //if (target.IsAlive)
+        //    audioSource.PlayOneShot(OnGetSound?.Invoke(Sound.ZombieEat));
     }
 
     public virtual void TakeDebuff(float duration, DebuffType type, float debuffValue)

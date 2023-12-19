@@ -323,12 +323,19 @@
 							"timeCallNext" : 1
 						},
 						{
-							"amount" : 2,
-							"name" : "Zombie"
+							"amount" : 5,
+							"name" : "Zombie",
+							"timeCallNext" : 50
+						},
+						{
+							"amount" : 3,
+							"name" : "Zombie",
+							"timeCallNext" : 30
 						},
 						{
 							"amount" : 2,
-							"name" : "Zombie"
+							"name" : "Zombie",
+							"timeCallNext" : 10
 						}
 					]
 				},
@@ -338,15 +345,13 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie"
+							"name" : "Zombie",
+							"timeCallNext" : 1
 						},
 						{
-							"amount" : 1,
-							"name" : "FlagZombie"
-						},
-						{
-							"amount" : 1,
-							"name" : "FlagZombie"
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : 3
 						}
 					]
 				},
@@ -355,16 +360,14 @@
 					"timeBetweenSpawn" : 3,
 					"batchs" : [
 						{
-							"amount" : 2,
-							"name" : "Zombie"
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
 						},
 						{
 							"amount" : 2,
-							"name" : "Zombie"
-						},
-						{
-							"amount" : 2,
-							"name" : "Zombie"
+							"name" : "Zombie",
+							"timeCallNext" : 3
 						}
 					]
 				}

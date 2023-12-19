@@ -42,18 +42,35 @@ public class ZombieObjectPool : ObjectPoolBase
     {
         minZombie = new Dictionary<string, int>();
 
+        Dictionary<string, int[]> map = new Dictionary<string, int[]>();
+
         foreach (PhaseData phase in ConfigHelper.GetCurrentLevelConfig().phases)
         {
-            foreach (Batch zombie in phase.batchs)
+            foreach (Batch batch in phase.batchs)
             {
-                if (minZombie.ContainsKey(zombie.name))
+                if (map.ContainsKey(batch.name))
                 {
-                    if (zombie.amount > minZombie[zombie.name] - 1)
-                        minZombie[zombie.name] = zombie.amount + 1;
+                    if (batch.amount > map[batch.name][0])
+                    {
+                        map[batch.name][1] = map[batch.name][0];
+                        map[batch.name][0] = batch.amount;
+                    }
+                    else if (batch.amount > map[batch.name][1])
+                        map[batch.name][1] = batch.amount;
                 }
                 else
-                    minZombie.Add(zombie.name, zombie.amount);
+                {
+                    map.Add(batch.name, new int[2]);
+                    map[batch.name][0] = batch.amount;
+                }
             }
+        }
+
+        foreach (var m in map)
+        {
+            int amount = m.Value[0] + m.Value[1];
+
+            minZombie.Add(m.Key, amount);
         }
     }
 

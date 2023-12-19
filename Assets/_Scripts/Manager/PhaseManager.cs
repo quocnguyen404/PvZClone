@@ -42,20 +42,24 @@ public class PhaseManager : MonoBehaviour
 
     private void CallBatch()
     {
-        killCount = 0;
+        //killCount = 0;
         int amount = CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].amount;
         string zombieName = CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].name;
+        float timeCallNext = CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].timeCallNext;
         float timeBetweenSpawn = CurrentLevel.phases[phaseIndex].timeBetweenSpawn;
-        StartBatch(amount, zombieName, timeBetweenSpawn);
+        StartBatch(amount, zombieName, timeBetweenSpawn, timeCallNext);
     }
 
-    private void StartBatch(int amount, string zombieName, float time)
+    Tween nextBatchTween = null;
+
+    private void StartBatch(int amount, string zombieName, float time, float timeCallNext)
     {
+        batchKillCount += amount;
         for (int i = 0; i < amount; i++)
         {
             try
             {
-                CallZombie(time, () => { OnZombieDispatcher?.Invoke(zombieName); });
+                DelayedCall(time, () => { OnZombieDispatcher?.Invoke(zombieName); });
             }
             catch
             {
@@ -63,6 +67,19 @@ public class PhaseManager : MonoBehaviour
             }
         }
 
+        if (nextBatchTween != null)
+            nextBatchTween.Kill();
+
+        nextBatchTween = DOVirtual.DelayedCall(timeCallNext, () =>
+        {
+            if (batchKeyIndex + 1 >= batchKey.Count)
+                return;
+
+            batchKeyIndex++;
+            CallBatch();
+        });
+
+        
 
         //try to start next batch if zombie in this batch is not die after a specify time
         //add a variable that count zombie in current calling batch
@@ -73,13 +90,16 @@ public class PhaseManager : MonoBehaviour
     {
         killCount++;
 
-        if (killCount == CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].amount)
+        if (nextBatchTween != null)
+            nextBatchTween.Kill();
+
+        if (killCount == batchKillCount/* CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].amount*/)
             EndABatch();
     }
 
     private void EndABatch()
     {
-        if (batchKeyIndex + 1 == batchKey.Count)
+        if (batchKeyIndex + 1 >= batchKey.Count)
         {
             EndAPhase();
             return;
@@ -104,12 +124,21 @@ public class PhaseManager : MonoBehaviour
     }
 
 
-    private void CallZombie(float time, System.Action action)
+    private void DelayedCall(float time, System.Action action)
     {
-        StartCoroutine(IECallZombie(time, action));
+        try
+        {
+
+            StartCoroutine(IEDelayedCall(time, action));
+        }
+        catch
+        {
+            Debug.LogError("Null");
+        }
     }
 
-    private IEnumerator IECallZombie(float time, System.Action action)
+
+    private IEnumerator IEDelayedCall(float time, System.Action action)
     {
         action?.Invoke();
 
