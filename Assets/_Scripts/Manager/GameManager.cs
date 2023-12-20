@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         IsEndGame = false;
         IsStartGame = false;
 
+        uiManager.Initialize();
+        uiManager.BeginMatch();
         StartPickPlant();
     }
 
@@ -78,6 +80,8 @@ public class GameManager : MonoBehaviour
         }
 
         IsStartGame = true;
+
+        uiManager.StartGameTransition();
 
         pickUnitManager.OnPickedUnit = placementManager.GetSelectedUnitData;
         sunManager.OnSunClick = placementManager.PickUpSun;

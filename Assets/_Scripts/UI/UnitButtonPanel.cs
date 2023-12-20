@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class UnitButtonPanel : MonoBehaviour
+public class UnitButtonPanel : UIHandler
 {
     [SerializeField] private Transform grid = null;
 
@@ -78,8 +78,8 @@ public class UnitButtonPanel : MonoBehaviour
         OnUnitButtonClick?.Invoke(unitButton);
     }
 
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
+    //public void Hide()
+    //{
+    //    gameObject.SetActive(false);
+    //}
 }
