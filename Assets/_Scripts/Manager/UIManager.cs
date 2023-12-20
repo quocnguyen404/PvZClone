@@ -10,8 +10,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<float> camPos;
 
     [Space]
-    [Header("UI Element Reference")]
+    [Header("Toggle and Button")]
     [SerializeField] private Toggle viewZombieTg = null;
+
+    [Header("Panel")]
     [SerializeField] private UnitButtonPanel unitButtonPanel = null;
     [SerializeField] private PlantButtonHold plantButtonHold = null;
 
@@ -52,7 +54,6 @@ public class UIManager : MonoBehaviour
             });
 
         }).SetAutoKill(true);
-
     }
 
     public void StartGameTransition()
@@ -62,6 +63,10 @@ public class UIManager : MonoBehaviour
         MoveCamera(0.3f, null);
     }
 
+    public void WinTransition()
+    {
+
+    }
 
     private void ViewZombieCamera(bool isOn)
     {

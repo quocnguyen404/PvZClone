@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public static class GameUtilities
 {
+    public static void AddListener(this Button btn, UnityAction action)
+    {
+        if (btn == null)
+            return;
+
+        btn.onClick.AddListener(action);
+    }
+    
     public static Date GetDate()
     {
         if (ConfigHelper.GetCurrentLevelConfig().levelIndex < 10)
