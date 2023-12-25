@@ -34,12 +34,17 @@ public class SceneNavigator : MonoBehaviour
         StartCoroutine(LoadGamePlaySceneAsync(Scene.MenuScene));
     }
 
+    public void LoadScene(Scene scene)
+    {
+        StartCoroutine(LoadGamePlaySceneAsync(scene));
+    }
+
     public void ExitGame()
     {
         Application.Quit();
     }
 
-    IEnumerator LoadGamePlaySceneAsync(Scene sceneName)
+    private IEnumerator LoadGamePlaySceneAsync(Scene sceneName)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)sceneName);
 
