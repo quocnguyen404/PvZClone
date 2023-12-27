@@ -6,56 +6,30 @@ using UnityEngine.UI;
 
 public class LoadingHandler : MonoBehaviour
 {
-    [SerializeField] private Scrollbar scrollbar = null;
-    [SerializeField] private Image filledBG = null;
+    [SerializeField] private Slider slider = null;
 
-    private bool isLoadDone;
+    [SerializeField] [Range(0, 1)] private float progressAnimationMultiplier = 0.25f;
 
-    private void Awake()
-    {
-        isLoadDone = false;
-        StartCoroutine(LoadMenuScene());
-    }
+    private AsyncOperation loadOperation;
+    private float currentValue;
+    private float targetValue;
 
     private void Start()
     {
-        
+        slider.value = currentValue = targetValue = 0;
+        loadOperation = SceneManager.LoadSceneAsync(1);
+        loadOperation.allowSceneActivation = false;
     }
 
-    private IEnumerator LoadMenuScene()
+
+    private void Update()
     {
-        float countTime = 0f;
-        float duration = 1f;
-        while (!isLoadDone)
-        {
-            countTime += Time.deltaTime;
+        targetValue = loadOperation.progress / 0.9f;
 
-            scrollbar.value += 0.9f * (countTime/ duration);
-            filledBG.fillAmount += 0.9f * (countTime/ duration);
+        currentValue = Mathf.MoveTowards(currentValue, targetValue, progressAnimationMultiplier * Time.deltaTime * 2);
+        slider.value = currentValue;
 
-            if (countTime >= duration)
-            {
-                if (scrollbar.value >= 0.9)
-                    isLoadDone = true;
-
-                break;
-            }
-
-            yield return null;
-        }
-
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)SceneNavigator.Scene.MenuScene);
-
-        asyncLoad.allowSceneActivation = false;
-
-        while (!asyncLoad.isDone)
-        {
-            if (asyncLoad.progress >= 0.9f)
-                asyncLoad.allowSceneActivation = true;
-
-            yield return null;
-        }
-
-        yield return null;
+        if (Mathf.Approximately(currentValue, 1))
+            loadOperation.allowSceneActivation = true;
     }
 }

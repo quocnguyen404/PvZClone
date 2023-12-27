@@ -92,6 +92,7 @@
     <Compile Include="Assets\_Scripts\Product\Sun.cs" />
     <Compile Include="Assets\_Scripts\Manager\UIManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\Puffshroom.cs" />
+    <Compile Include="Assets\_Scripts\Item\Gift.cs" />
     <Compile Include="Assets\_Scripts\UI\PickUnitManager.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\PlantObjectPool.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\ProjectileShooter.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Assets\_Scripts\Manager\Unit Manager\PlantManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Plant.cs" />
     <Compile Include="Assets\_Scripts\Loading\LoadingHandler.cs" />
+    <Compile Include="Assets\_Scripts\Manager\RewardManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\GridManager.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\LevelConfig.cs" />
     <Compile Include="Assets\_Scripts\Product\IProduct.cs" />
@@ -127,8 +129,6 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
-    <Compile Include="Assets\_Scripts\Item\Gift.cs" />
-    <Compile Include="Assets\_Scripts\Manager\RewardManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
