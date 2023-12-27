@@ -14,6 +14,38 @@ public static class GameUtilities
         btn.onClick.AddListener(action);
     }
     
+    public static void GetGiftValue(Gift gift, out Data.UnitData unitData, out int amount)
+    {
+        if (gift.GiftType is GiftType.Currency)
+        {
+            try
+            {
+                amount = System.Int32.Parse(gift.Value);
+                unitData = null;
+            }
+            catch
+            {
+                unitData = null;
+                amount = 0;
+                Debug.LogError("Gift value is not valid");
+            }
+        }
+        else
+        {
+            try
+            {
+                amount = 0;
+                unitData = ConfigHelper.GameConfig.zombies[gift.Value];
+            }
+            catch
+            {
+                unitData = null;
+                amount = 0;
+                Debug.LogError("Gift value is not valid");
+            }
+        }
+    }
+
     public static Date GetDate()
     {
         if (ConfigHelper.GetCurrentLevelConfig().levelIndex < 10)

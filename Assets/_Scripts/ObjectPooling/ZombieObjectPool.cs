@@ -17,6 +17,7 @@ public class ZombieObjectPool : ObjectPoolBase
     {
         CalculateMinimumZombie();
 
+
         foreach (var zombie in minZombie)
         {
             zombiePrefab = Resources.Load<Zombie>(string.Format(GameConstant.ZOMBIE_PREFAB_PATH, zombie.Key));
@@ -42,35 +43,18 @@ public class ZombieObjectPool : ObjectPoolBase
     {
         minZombie = new Dictionary<string, int>();
 
-        Dictionary<string, int[]> map = new Dictionary<string, int[]>();
-
         foreach (PhaseData phase in ConfigHelper.GetCurrentLevelConfig().phases)
         {
             foreach (Batch batch in phase.batchs)
             {
-                if (map.ContainsKey(batch.name))
+                if (minZombie.ContainsKey(batch.name))
                 {
-                    if (batch.amount > map[batch.name][0])
-                    {
-                        map[batch.name][1] = map[batch.name][0];
-                        map[batch.name][0] = batch.amount;
-                    }
-                    else if (batch.amount > map[batch.name][1])
-                        map[batch.name][1] = batch.amount;
+                    if (batch.amount > minZombie[batch.name])
+                        minZombie[batch.name] = batch.amount;
                 }
                 else
-                {
-                    map.Add(batch.name, new int[2]);
-                    map[batch.name][0] = batch.amount;
-                }
+                    minZombie.Add(batch.name, batch.amount);
             }
-        }
-
-        foreach (var m in map)
-        {
-            int amount = m.Value[0] + m.Value[1];
-
-            minZombie.Add(m.Key, amount);
         }
     }
 

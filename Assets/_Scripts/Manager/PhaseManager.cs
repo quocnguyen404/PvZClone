@@ -70,6 +70,9 @@ public class PhaseManager : MonoBehaviour
         if (nextBatchTween != null)
             nextBatchTween.Kill();
 
+        if (timeCallNext < 0)
+            return; ;
+
         nextBatchTween = DOVirtual.DelayedCall(timeCallNext, () =>
         {
             if (batchKeyIndex + 1 >= batchKey.Count)
@@ -78,8 +81,6 @@ public class PhaseManager : MonoBehaviour
             batchKeyIndex++;
             CallBatch();
         });
-
-        
 
         //try to start next batch if zombie in this batch is not die after a specify time
         //add a variable that count zombie in current calling batch
@@ -93,7 +94,7 @@ public class PhaseManager : MonoBehaviour
         if (nextBatchTween != null)
             nextBatchTween.Kill();
 
-        if (killCount == batchKillCount/* CurrentLevel.phases[phaseIndex].batchs[batchKeyIndex].amount*/)
+        if (killCount == batchKillCount)
             EndABatch();
     }
 
@@ -112,7 +113,7 @@ public class PhaseManager : MonoBehaviour
 
     private void EndAPhase()
     {
-        if (phaseIndex + 1 == CurrentLevel.phases.Count)
+        if (phaseIndex + 1 >= CurrentLevel.phases.Count)
         {
             OnWin?.Invoke();
             return;
@@ -123,12 +124,10 @@ public class PhaseManager : MonoBehaviour
         StartPhase();
     }
 
-
     private void DelayedCall(float time, System.Action action)
     {
         try
         {
-
             StartCoroutine(IEDelayedCall(time, action));
         }
         catch
@@ -136,7 +135,6 @@ public class PhaseManager : MonoBehaviour
             Debug.LogError("Null");
         }
     }
-
 
     private IEnumerator IEDelayedCall(float time, System.Action action)
     {

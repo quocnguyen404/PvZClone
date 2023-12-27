@@ -120,7 +120,7 @@ public class PlacementManager : MonoBehaviour
 
         Vector3 target = (Vector3)OnGetPosition?.Invoke();
 
-        Vector3 initPos = new Vector3(target.x, dropSunPosition.position.y, target.z);
+        Vector3 initPos = new Vector3(target.x, dropSunPosition.position.y + 0.1f, target.z);
 
         sunPre.Initialize(initPos, GameConstant.SUN_DROP_COST);
         sunPre.Fall(target);

@@ -11,6 +11,7 @@ public class ZombieManager : UnitManager
 
     public System.Action OnZombieWin = null;
     public System.Action OnZombieDie = null;
+    public System.Func<Data.UnitData, Zombie> OnGetZombie = null;
     public System.Func<int, List<Node>> OnZombieGetPath = null;
 
     public override void Initialize()
@@ -21,6 +22,10 @@ public class ZombieManager : UnitManager
     public void DispatcherZombie(string zombieName)
     {
         Zombie zombie = GetZombieAlive(zombieName);
+
+        if (zombie == null)
+            zombie = OnGetZombie?.Invoke(ConfigHelper.GameConfig.zombies[zombieName]);
+
         zombie.InitializeRow(zombie.GridPosition.x);
     }
 
@@ -60,7 +65,6 @@ public class ZombieManager : UnitManager
 
     private void ZombieDie(Zombie zombie)
     {
-        zombie.OnZombieDie = null;
         zombie.OnGetPath = null;
         zombie.OnGetHousePosition = null;
         zombie.OnZombieGetInHouse = null;

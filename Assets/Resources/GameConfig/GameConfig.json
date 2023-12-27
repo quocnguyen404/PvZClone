@@ -323,19 +323,9 @@
 							"timeCallNext" : 1
 						},
 						{
-							"amount" : 5,
-							"name" : "Zombie",
-							"timeCallNext" : 50
-						},
-						{
-							"amount" : 3,
-							"name" : "Zombie",
-							"timeCallNext" : 30
-						},
-						{
 							"amount" : 2,
 							"name" : "Zombie",
-							"timeCallNext" : 10
+							"timeCallNext" : -1
 						}
 					]
 				},
@@ -351,7 +341,7 @@
 						{
 							"amount" : 2,
 							"name" : "Zombie",
-							"timeCallNext" : 3
+							"timeCallNext" : -1
 						}
 					]
 				},
@@ -367,7 +357,7 @@
 						{
 							"amount" : 2,
 							"name" : "Zombie",
-							"timeCallNext" : 3
+							"timeCallNext" : -1
 						}
 					]
 				}

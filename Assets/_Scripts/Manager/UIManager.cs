@@ -11,11 +11,24 @@ public class UIManager : MonoBehaviour
 
     [Space]
     [Header("Toggle and Button")]
-    [SerializeField] private Toggle viewZombieTg = null;
+    public ButtonUIHandler PlayButton = null;
+    [SerializeField] private ToggleUIHandler viewZombieTg = null;
 
     [Header("Panel")]
     [SerializeField] private UnitButtonPanel unitButtonPanel = null;
     [SerializeField] private PlantButtonHold plantButtonHold = null;
+
+
+    [Header("UI Handler")]
+    [SerializeField] private WinUIHandler winUIHandler = null;
+    [SerializeField] private LoseUIHandler loseUIHandler = null;
+
+
+    #region Event
+    public System.Action<GameObject> OnTossGift = null;
+
+    #endregion
+
 
     //cam when play x = 0.3
     //cam when pick plant x = 2.5
@@ -25,11 +38,17 @@ public class UIManager : MonoBehaviour
 
     public void Awake()
     {
-        viewZombieTg.onValueChanged.AddListener(ViewZombieCamera);
-        viewZombieTg.gameObject.SetActive(false);
+        cam = Helper.Cam;
+        
+        viewZombieTg.AddListener(ViewZombieCamera);
+
+        viewZombieTg.SetVisuability(false);
+
+        PlayButton.SetVisuability(false);
         unitButtonPanel.SetVisuability(false);
         plantButtonHold.SetVisuability(false);
-        cam = Helper.Cam;
+
+
     }
 
     public void Initialize()
@@ -48,7 +67,8 @@ public class UIManager : MonoBehaviour
 
             camSeq.OnComplete(() =>
             {
-                viewZombieTg.gameObject.SetActive(true);
+                viewZombieTg.SetVisuability(true);
+                PlayButton.SetVisuability(true);
                 unitButtonPanel.TurnOn();
                 plantButtonHold.TurnOn();
             });
@@ -59,11 +79,16 @@ public class UIManager : MonoBehaviour
     public void StartGameTransition()
     {
         unitButtonPanel.TurnOff();
-        viewZombieTg.gameObject.SetActive(false);
+        viewZombieTg.SetVisuability(false);
         MoveCamera(0.3f, null);
     }
 
     public void WinTransition()
+    {
+
+    }
+
+    public void LoseTransition()
     {
 
     }
@@ -74,6 +99,7 @@ public class UIManager : MonoBehaviour
         {
             unitButtonPanel.TurnOff();
             plantButtonHold.TurnOff();
+            PlayButton.TurnOff();
 
             MoveCamera(6f, null);
         }
@@ -83,6 +109,7 @@ public class UIManager : MonoBehaviour
             {
                 unitButtonPanel.TurnOn();
                 plantButtonHold.TurnOn();
+                PlayButton.TurnOn();
             });
         }
     }
@@ -90,12 +117,12 @@ public class UIManager : MonoBehaviour
     private Tween cameraTwene = null;
     public void MoveCamera(float x, System.Action callback)
     {
-        viewZombieTg.interactable = false;
+        viewZombieTg.SetInteracable(false);
 
         cameraTwene = cam.transform.DOMoveX(x, 2.5f)
             .OnComplete(() =>
             {
-                viewZombieTg.interactable = true;
+                viewZombieTg.SetInteracable(true);
                 callback?.Invoke();
             })
             .SetAutoKill(true);

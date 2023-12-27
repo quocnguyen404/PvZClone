@@ -28,10 +28,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SunManager sunManager = null;
     [SerializeField] private CarManager carManager = null;
 
-    [Space]
-    [SerializeField] private Button playButton = null;
-
-
     public static bool IsEndGame { get; private set; }
     public static bool IsStartGame { get; private set; }
 
@@ -47,13 +43,16 @@ public class GameManager : MonoBehaviour
 
     private void StartPickPlant()
     {
-        gridManager.Initialize(GameConstant.GARDEN_ROW, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN, GameConstant.NODE_LENGTH);
+        gridManager.Initialize(GameConstant.GARDEN_ROW,
+                               GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN,
+                               GameConstant.NODE_LENGTH);
 
-        playButton.onClick.AddListener(() => { StartGame(); });
+        uiManager.PlayButton.AddListener(StartGame);
 
         placementManager.OnPlaceUnit = plantManager.AddUnit;
         zombieObjectPool.OnSpawnUnit = zombieManager.AddUnit;
         productObjectPool.OnSpawnProduct = sunManager.AddProduct;
+        zombieManager.OnGetZombie = zombieObjectPool.GetZombie;
 
         zombieManager.OnZombieGetPath = gridManager.GetRow;
         plantManager.PoolTransform = plantObjectPool.transform;
@@ -92,8 +91,8 @@ public class GameManager : MonoBehaviour
         plantObjectPool.InitilizePool(pickUnitManager.PlantDatas());
         productObjectPool.InitializePool(pickUnitManager.PlantDatas());
 
-        playButton.onClick.RemoveAllListeners();
-        playButton.gameObject.SetActive(false);
+        uiManager.PlayButton.RemoveAllListener();
+        uiManager.PlayButton.SetVisuability(false);
 
         placementManager.OnGetPosition = gridManager.GetRandomPosition;
         plantManager.OnUnitGetProduct = productObjectPool.GetProduct;

@@ -32,7 +32,7 @@ public class Sun : IProduct
         if (x == 0 && z == 0)
             x = 100;
 
-        Vector3 dir = new Vector3(x, 0, z);
+        Vector3 dir = new Vector3(x, 0.1f, z);
 
         dir = dir.normalized;
 
@@ -48,7 +48,6 @@ public class Sun : IProduct
 
     public void Fall(Vector3 ground)
     {
-
         if (sunTween != null)
             sunTween.Kill();
 
@@ -62,19 +61,12 @@ public class Sun : IProduct
 
     public void MoveToSunBar(Vector3 pos)
     {
-        //transform.DOMove(pos, GameConstant.TIME_SUN_MOVE)
-        //    .OnComplete(() =>
-        //    {
-        //        gameObject.SetActive(false);
-        //    })
-        //    .SetAutoKill();
-
         gameObject.SetActive(false);
     }
 
     private void OnMouseDown()
     {
-        transform.DOKill();
+        sunTween.Kill();
         OnClick?.Invoke(this);
     }
 }

@@ -17,6 +17,11 @@ public class LoadingHandler : MonoBehaviour
         StartCoroutine(LoadMenuScene());
     }
 
+    private void Start()
+    {
+        
+    }
+
     private IEnumerator LoadMenuScene()
     {
         float countTime = 0f;

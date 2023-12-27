@@ -17,6 +17,12 @@ public enum Date
     Night
 }
 
+public enum GiftType
+{
+    Currency,
+    Plant,
+}
+
 public enum DebuffType
 {
     None,

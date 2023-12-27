@@ -5,9 +5,7 @@ using Newtonsoft.Json;
 
 public static class ConfigHelper
 {
-
     private static GameConfig gameConfig = null;
-
     public static GameConfig GameConfig
     {
         get
