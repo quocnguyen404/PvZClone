@@ -11,6 +11,13 @@ namespace Data
     }
 }
 
+public enum Scene
+{
+    LoadingScene,
+    MenuScene,
+    GamePlayScene,
+}
+
 public enum Date
 {
     Day,

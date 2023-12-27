@@ -26,9 +26,7 @@ public class UIManager : MonoBehaviour
 
     #region Event
     public System.Action<GameObject> OnTossGift = null;
-
     #endregion
-
 
     //cam when play x = 0.3
     //cam when pick plant x = 2.5
@@ -36,24 +34,22 @@ public class UIManager : MonoBehaviour
 
     private Camera cam = null;
 
-    public void Awake()
+    public void Initialize()
     {
         cam = Helper.Cam;
-        
+
         viewZombieTg.AddListener(ViewZombieCamera);
 
         viewZombieTg.SetVisuability(false);
-
         PlayButton.SetVisuability(false);
         unitButtonPanel.SetVisuability(false);
         plantButtonHold.SetVisuability(false);
 
+        loseUIHandler.SetVisuability(false);
+        winUIHandler.SetVisuability(false);
 
-    }
-
-    public void Initialize()
-    {
-
+        loseUIHandler.Initialize();
+        winUIHandler.Initialize();
     }
 
     public void BeginMatch()
@@ -90,7 +86,7 @@ public class UIManager : MonoBehaviour
 
     public void LoseTransition()
     {
-
+        loseUIHandler.TurnOn();
     }
 
     private void ViewZombieCamera(bool isOn)
@@ -114,12 +110,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private Tween cameraTwene = null;
-    public void MoveCamera(float x, System.Action callback)
+    private Tween cameraTween = null;
+    public void MoveCamera(float xPos, System.Action callback)
     {
+        if (cameraTween != null)
+            cameraTween.Kill();
+
         viewZombieTg.SetInteracable(false);
 
-        cameraTwene = cam.transform.DOMoveX(x, 2.5f)
+        cameraTween = cam.transform.DOMoveX(xPos, 2.5f)
             .OnComplete(() =>
             {
                 viewZombieTg.SetInteracable(true);

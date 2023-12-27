@@ -42,6 +42,7 @@ public class ProductObjectPool : ObjectPoolBase
         if (projectile != null)
         {
             projectile.gameObject.SetActive(true);
+            projectile.gameObject.transform.SetAsLastSibling();
             return projectile;
         }
 

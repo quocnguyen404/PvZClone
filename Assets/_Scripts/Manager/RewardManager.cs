@@ -7,15 +7,22 @@ public class RewardManager : MonoBehaviour
 {
     public float jumpTime = 0.5f;
     public float jumpForce = 0.5f;
-    private Gift gift = null;
 
+    public System.Action OnGiftClick = null;
+
+    private Gift gift = null;
 
     public void Initialize()
     {
         gift = ConfigHelper.GetCurrentLevelConfig().gift;
-        gift.InitializeUI();
+        gift.Initialize();
+        gift.OnRewardGift = GiftClick;
     }
 
+    public void GiftClick()
+    {
+        OnGiftClick?.Invoke();
+    }
 
     private Tween giftTween = null;
     public void TossGift(Vector3 initPos)
@@ -39,5 +46,4 @@ public class RewardManager : MonoBehaviour
 
         giftTween = transform.DOJump(jumpTarget, jumpForce, 1, jumpTime).SetEase(Ease.OutCubic).SetAutoKill();
     }
-
 }

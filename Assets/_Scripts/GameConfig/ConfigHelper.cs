@@ -33,7 +33,7 @@ public static class ConfigHelper
                 userData = GetTestUserData();
                 ES3.Save(UserDataKey, userData);
             }
-            else
+            else if (userData == null)
                 userData = ES3.Load<UserData>(UserDataKey);
 
             return userData;

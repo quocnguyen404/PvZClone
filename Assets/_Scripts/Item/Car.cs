@@ -69,13 +69,8 @@ public class Car : MonoBehaviour
             Dead();
             return;
         }
-
-
-
         arried = false;
     }
-
-
 
     private void Dead()
     {

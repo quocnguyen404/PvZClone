@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GridManager gridManager = null;
     [SerializeField] private PhaseManager phaseManager = null;
     [SerializeField] private UIManager uiManager = null;
+    [SerializeField] private RewardManager rewardManager = null;
 
     [Space]
     [Header("Object Pooling Reference")]
@@ -28,11 +29,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SunManager sunManager = null;
     [SerializeField] private CarManager carManager = null;
 
+    [SerializeField] [Range(1, 10)] int timeScale;
+
     public static bool IsEndGame { get; private set; }
     public static bool IsStartGame { get; private set; }
 
     private void Awake()
     {
+        Time.timeScale = timeScale;
         IsEndGame = false;
         IsStartGame = false;
 
@@ -113,13 +117,13 @@ public class GameManager : MonoBehaviour
 
     private void Win()
     {
-        Debug.Log("Win");
+        uiManager.WinTransition();
         EndGame();
     }
 
     private void Lose()
     {
-        Debug.Log("Lose");
+        uiManager.LoseTransition();
         EndGame();
     }
 

@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SceneNavigator : MonoBehaviour
 {
-    public enum Scene
-    {
-        LoadingScene,
-        MenuScene,
-        GamePlayScene,
-    }
-
     [SerializeField] private Button playNextLevelBtn = null;
     [SerializeField] private Button returnMenuBtn = null;
     [SerializeField] private Button exitGameBtn = null;
@@ -26,34 +18,17 @@ public class SceneNavigator : MonoBehaviour
 
     public void LoadGamePlayScene()
     {
-        StartCoroutine(LoadGamePlaySceneAsync(Scene.GamePlayScene));
+        SceneDispatcher.Instance.LoadScene(Scene.GamePlayScene);
     }
 
     public void LoadMenuScene()
     {
-        StartCoroutine(LoadGamePlaySceneAsync(Scene.MenuScene));
-    }
-
-    public void LoadScene(Scene scene)
-    {
-        StartCoroutine(LoadGamePlaySceneAsync(scene));
+        SceneDispatcher.Instance.LoadScene(Scene.MenuScene);
     }
 
     public void ExitGame()
     {
         Application.Quit();
-    }
-
-    private IEnumerator LoadGamePlaySceneAsync(Scene sceneName)
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)sceneName);
-
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-
-        yield return null;
     }
 }
 

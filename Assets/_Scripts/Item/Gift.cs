@@ -11,7 +11,7 @@ public class Gift : MonoBehaviour
 
     public System.Action OnRewardGift = null;
 
-    public void InitializeUI()
+    public void Initialize()
     {
         if (GiftType is GiftType.Plant)
             giftSR.sprite = Resources.Load<Sprite>(string.Format(GameConstant.CARDS_SPRITES_PATH, Value));

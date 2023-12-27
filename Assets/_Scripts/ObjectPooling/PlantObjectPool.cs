@@ -36,6 +36,7 @@ public class PlantObjectPool : ObjectPoolBase
         if (plant != null)
         {
             plant.gameObject.SetActive(true);
+            plant.gameObject.transform.SetAsLastSibling();
             return plant;
         }
 

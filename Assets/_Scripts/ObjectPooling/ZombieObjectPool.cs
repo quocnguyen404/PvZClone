@@ -65,6 +65,7 @@ public class ZombieObjectPool : ObjectPoolBase
         if (zombie != null)
         {
             zombie.gameObject.SetActive(true);
+            zombie.gameObject.transform.SetAsLastSibling();
             return zombie;
         }
 
