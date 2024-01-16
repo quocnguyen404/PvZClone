@@ -327,7 +327,7 @@ public class Zombie : IUnit
         if (deadTween != null)
             deadTween.Kill();
 
-        deadTween = DOVirtual.DelayedCall(1.4f, () =>
+        deadTween = DOVirtual.DelayedCall(GameConstant.TIME_ZOMBIE_DIE, () =>
         {
             DeadAction();
         }).SetAutoKill();
@@ -347,14 +347,15 @@ public class Zombie : IUnit
 
         currentHealth = 0;
         Armour = 0;
+        
+        OnZombieDie?.Invoke(this);
 
         ator.OnTurnOff();
         col.enabled = false;
         transform.position = PoolPosition;
         arried = true;
 
-        OnZombieDie?.Invoke(this);
-        //deadTween.Kill();
+        deadTween.Kill();
 
         if (currentNodeIndex >= 0)
         {

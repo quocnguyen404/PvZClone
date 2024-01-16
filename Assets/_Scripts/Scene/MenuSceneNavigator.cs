@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SceneNavigator : MonoBehaviour
+public class MenuSceneNavigator : MonoBehaviour
 {
     [SerializeField] private Button playNextLevelBtn = null;
     [SerializeField] private Button returnMenuBtn = null;
@@ -14,6 +14,10 @@ public class SceneNavigator : MonoBehaviour
         playNextLevelBtn.AddListener(LoadGamePlayScene);
         returnMenuBtn.AddListener(LoadMenuScene);
         exitGameBtn.AddListener(ExitGame);
+
+        playNextLevelBtn.AddButtonSound();
+        returnMenuBtn.AddButtonSound();
+        exitGameBtn.AddButtonSound();
     }
 
     public void LoadGamePlayScene()

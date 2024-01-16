@@ -19,9 +19,21 @@ public class ToggleUIHandler : UIHandler
         }
     }
 
+    public Sound ToggleSound;
+
+    private void Awake()
+    {
+        AddToggleSound(ToggleSound);
+    }
+
     public void SetInteracable(bool value)
     {
         Togg.interactable = value;
+    }
+
+    public void AddToggleSound(Sound toggleSound)
+    {
+        Togg.onValueChanged.AddListener((value) => { AudioManager.Instance.PlaySound(toggleSound, 1f); });
     }
 
     public void AddListener(UnityAction<bool> action)

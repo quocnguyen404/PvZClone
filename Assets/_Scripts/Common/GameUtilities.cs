@@ -13,14 +13,22 @@ public static class GameUtilities
 
         btn.onClick.AddListener(action);
     }
+
+    public static void AddButtonSound(this Button btn)
+    {
+        if (btn == null)
+            return;
+
+        btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(Sound.ButtonClick, 1f); });
+    }
     
     public static void GetGiftValue(Gift gift, out Data.UnitData unitData, out int amount)
     {
-        if (gift.GiftType is GiftType.Currency)
+        if (gift.Data.GiftType is GiftType.Currency)
         {
             try
             {
-                amount = System.Int32.Parse(gift.Value);
+                amount = System.Int32.Parse(gift.Data.Value);
                 unitData = null;
             }
             catch
@@ -35,7 +43,7 @@ public static class GameUtilities
             try
             {
                 amount = 0;
-                unitData = ConfigHelper.GameConfig.zombies[gift.Value];
+                unitData = ConfigHelper.GameConfig.zombies[gift.Data.Value];
             }
             catch
             {

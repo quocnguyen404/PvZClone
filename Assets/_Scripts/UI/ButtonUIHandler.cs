@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class ButtonUIHandler : UIHandler
 {
     private Button btn = null;
@@ -16,6 +17,19 @@ public class ButtonUIHandler : UIHandler
 
             return btn;
         }
+    }
+
+    public Sound ButtonSound;
+
+
+    private void OnEnable()
+    {
+        AddButtonHandlerSound(ButtonSound);
+    }
+
+    public void AddButtonHandlerSound(Sound buttonSound)
+    {
+        btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(buttonSound, 1f); });
     }
 
     public void AddListener(UnityAction action)

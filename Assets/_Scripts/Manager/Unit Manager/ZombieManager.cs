@@ -10,7 +10,7 @@ public class ZombieManager : UnitManager
     public GridManager gridManager = null;
 
     public System.Action OnZombieWin = null;
-    public System.Action OnZombieDie = null;
+    public System.Action<Vector3> OnZombieDie = null;
     public System.Func<Data.UnitData, Zombie> OnGetZombie = null;
     public System.Func<int, List<Node>> OnZombieGetPath = null;
 
@@ -70,7 +70,7 @@ public class ZombieManager : UnitManager
         zombie.OnZombieGetInHouse = null;
         zombie.OnGetSound = null;
 
-        OnZombieDie?.Invoke();
+        OnZombieDie?.Invoke(zombie.transform.position);
 
         if (!GameManager.IsEndGame)
         {

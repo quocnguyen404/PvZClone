@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         plantManager.Initialize();
         zombieObjectPool.InitializePool();
         carManager.Initialize(GameConstant.GARDEN_ROW);
+        rewardManager.Initialize();
     }
 
     private void StartGame()
@@ -90,7 +91,6 @@ public class GameManager : MonoBehaviour
         sunManager.OnSunClick = placementManager.PickUpSun;
 
         pickUnitManager.InitializeUnitData();
-
         placementManager.Initialize();
         plantObjectPool.InitilizePool(pickUnitManager.PlantDatas());
         productObjectPool.InitializePool(pickUnitManager.PlantDatas());
@@ -115,8 +115,9 @@ public class GameManager : MonoBehaviour
         phaseManager.StartLevel();
     }
 
-    private void Win()
+    private void Win(Vector3 tossPos)
     {
+        rewardManager.TossGift(tossPos);
         uiManager.WinTransition();
         EndGame();
     }

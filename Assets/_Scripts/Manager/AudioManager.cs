@@ -6,11 +6,15 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance = null;
 
-    [SerializeField] private AudioSource music = null;
-    [SerializeField] private AudioSource sound = null;
+    public System.Action OnSoundMute = null;
+    public System.Action OnMusicMute = null;
+    public System.Action<float> OnVolumeChange = null;
 
-    private Dictionary<Sound, AudioClip> soundClips;
-    private Dictionary<Music, AudioClip> musicClips;
+    [SerializeField] private AudioSource audioSource = null;
+    public float VolumeScale => audioSource.volume;
+
+    private Dictionary<Sound, AudioClip> soundClips = new Dictionary<Sound, AudioClip>();
+    private Dictionary<Music, AudioClip> musicClips = new Dictionary<Music, AudioClip>();
 
     private void Awake()
     {
@@ -21,30 +25,31 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        Initialize();
+        //play background audio
     }
 
-    public void Initialize()
+    public void PlaySound(Sound soundType, float volumeScale)
     {
-        soundClips = new Dictionary<Sound, AudioClip>();
-        musicClips = new Dictionary<Music, AudioClip>();
+        AudioClip soundClip = GetSound(soundType);
+        audioSource.PlayOneShot(soundClip, volumeScale);
     }
 
-    public void PlaySound(Sound soundType)
+    public void PlayMusic(Music musicType, float volumeScale)
     {
-        sound.PlayOneShot(GetSound(soundType));
+        AudioClip musicClip = GetMusic(musicType);
+        audioSource.PlayOneShot(musicClip, volumeScale);
     }
 
-    public void PlayMusic(Music musicType)
+    public void VolumeChange(float volumeScale)
     {
-        music.PlayOneShot(GetMusic(musicType));
+        audioSource.volume = volumeScale;
     }
 
     public AudioClip GetSound(Sound soundType)
     {
         if (!soundClips.ContainsKey(soundType))
         {
-            AudioClip clip = LoadAudioClip(soundType.ToString());
+            AudioClip clip = LoadSoundClip(soundType.ToString());
             soundClips.Add(soundType, clip);
         }
 
@@ -55,16 +60,23 @@ public class AudioManager : MonoBehaviour
     {
         if (!musicClips.ContainsKey(musicType))
         {
-            AudioClip clip = LoadAudioClip(musicType.ToString());
-            musicClips.Add(musicType, clip);
+            AudioClip clip = LoadMusicClip(musicType.ToString());
+            musicClips.Add(musicType, clip);    
         }
 
         return musicClips[musicType];
     }
 
-    private AudioClip LoadAudioClip(string clipName)
+    private AudioClip LoadMusicClip(string clipName)
     {
-        return Resources.Load<AudioClip>(string.Format(GameConstant.SOUND_PATH, clipName));
+        AudioClip clip = Resources.Load<AudioClip>(string.Format(GameConstant.MUSIC_PATH, clipName));
+        return clip;
+    }
+
+    private AudioClip LoadSoundClip(string clipName)
+    {
+        AudioClip clip = Resources.Load<AudioClip>(string.Format(GameConstant.SOUND_PATH, clipName)); ;
+        return clip;
     }
 
     private void OnDestroy()

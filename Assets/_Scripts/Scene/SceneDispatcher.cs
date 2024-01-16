@@ -15,6 +15,8 @@ public class SceneDispatcher : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void ButtonNavigateScene(Button btn, Scene sceneName)

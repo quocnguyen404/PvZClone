@@ -6,7 +6,7 @@ public class LevelConfig
 {
     public int levelIndex;
     public List<PhaseData> phases;
-    public Gift gift;
+    public GiftData gift;
 
     public LevelConfig()
     {

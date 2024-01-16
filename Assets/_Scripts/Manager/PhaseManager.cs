@@ -10,7 +10,7 @@ public class PhaseManager : MonoBehaviour
     public LevelConfig CurrentLevel => ConfigHelper.GetCurrentLevelConfig();
 
     public System.Action<string> OnZombieDispatcher = null;
-    public System.Action OnWin = null;
+    public System.Action<Vector3> OnWin = null;
 
     private int phaseIndex = 0;
 
@@ -19,6 +19,8 @@ public class PhaseManager : MonoBehaviour
 
     private int killCount = 0;
     private int batchKillCount = 0;
+
+    private Vector3 lastZombDiePos;
 
     public void StartLevel()
     {
@@ -87,9 +89,10 @@ public class PhaseManager : MonoBehaviour
         //batchsAmount = 
     }
 
-    public void ZombieDie()
+    public void ZombieDie(Vector3 lastPos)
     {
         killCount++;
+        lastZombDiePos = lastPos;
 
         if (nextBatchTween != null)
             nextBatchTween.Kill();
@@ -115,7 +118,7 @@ public class PhaseManager : MonoBehaviour
     {
         if (phaseIndex + 1 >= CurrentLevel.phases.Count)
         {
-            OnWin?.Invoke();
+            OnWin?.Invoke(lastZombDiePos);
             return;
         }
         else
