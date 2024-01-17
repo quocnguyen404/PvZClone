@@ -109,6 +109,7 @@
     <Compile Include="Assets\_Scripts\Controller\UnitAnimator.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\IExplosePlant.cs" />
     <Compile Include="Assets\_Scripts\Product\SnowPea.cs" />
+    <Compile Include="Assets\_Scripts\Item\GiftData.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\PotatoMine.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButton.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ProductObjectPool.cs" />
@@ -131,7 +132,8 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
-    <Compile Include="Assets\_Scripts\Item\GiftData.cs" />
+    <Compile Include="Assets\_Scripts\Debug\DebugManager.cs" />
+    <Compile Include="Assets\_Scripts\UI\WinPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

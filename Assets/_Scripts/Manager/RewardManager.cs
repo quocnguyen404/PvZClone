@@ -9,21 +9,22 @@ public class RewardManager : MonoBehaviour
     public float jumpForce = 0.5f;
     [SerializeField] private Gift gift = null;
 
-    //public System.Action OnGiftClick = null;
+    public System.Action<Gift> OnGiftClick = null;
 
     public void Initialize()
     {
         gift.gameObject.SetActive(false);
-        gift.Data = ConfigHelper.GetCurrentLevelConfig().gift;
+        gift.Data = GameUtilities.GetCurrentGiftData();
         gift.Initialize();
         gift.OnRewardGift = GiftClick;
     }
 
-    public void GiftClick()
+    public void GiftClick(Gift gift)
     {
-        //OnGiftClick?.Invoke();
+        OnGiftClick?.Invoke(gift);
 
         //Reward here
+        GameUtilities.GetGiftValue(gift);
     }
 
     private Tween giftTween = null;

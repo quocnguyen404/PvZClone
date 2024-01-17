@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private List<float> camPos;
+    [SerializeField] private Transform giftCenterPos = null;
 
     [Space]
     [Header("Toggle and Button")]
@@ -79,9 +80,17 @@ public class UIManager : MonoBehaviour
         MoveCamera(0.3f, null);
     }
 
-    public void WinTransition()
+    private Tween giftTween = null;
+    public void WinTransition(Gift gift)
     {
+        if (giftTween != null)
+            giftTween.Kill();
 
+        giftTween = gift.transform.DOMove(giftCenterPos.position, GameConstant.TIME_SUN_MOVE)
+            .OnComplete(() => 
+            {
+                winUIHandler.WinPanelOpen();
+            });
     }
 
     public void LoseTransition()

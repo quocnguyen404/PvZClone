@@ -328,6 +328,31 @@
 							"timeCallNext" : -1
 						}
 					]
+				}
+			],
+			"gift" : {
+				"GiftType" : 1,
+				"Value" : "Sunflower"
+			}
+		},
+		"2" : {
+			"levelIndex" : 2,
+			"phases" : [
+				{
+					"phaseIndex" : 0,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
 				},
 				{
 					"phaseIndex" : 1,
@@ -363,8 +388,350 @@
 				}
 			],
 			"gift" : {
-				"GiftType" : 0,
-				"Value" : "1000"
+				"GiftType" : 1,
+				"Value" : "CherryBomb"
+			}
+		},
+		"3" : {
+			"levelIndex" : 3,
+			"phases" : [
+				{
+					"phaseIndex" : 0,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 1,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 2,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				}
+			],
+			"gift" : {
+				"GiftType" : 1,
+				"Value" : "Wall-nut"
+			}
+		},
+		"4" : {
+			"levelIndex" : 4,
+			"phases" : [
+				{
+					"phaseIndex" : 0,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 1,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 2,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				}
+			],
+			"gift" : {
+				"GiftType" : 1,
+				"Value" : "PotatoMine"
+			}
+		},
+		"5" : {
+			"levelIndex" : 5,
+			"phases" : [
+				{
+					"phaseIndex" : 0,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 1,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 2,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				}
+			],
+			"gift" : {
+				"GiftType" : 1,
+				"Value" : "SnowPeaShooter"
+			}
+		},
+		"6" : {
+			"levelIndex" : 6,
+			"phases" : [
+				{
+					"phaseIndex" : 0,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 1,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 2,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				}
+			],
+			"gift" : {
+				"GiftType" : 1,
+				"Value" : "Chomper"
+			}
+		},
+		"7" : {
+			"levelIndex" : 7,
+			"phases" : [
+				{
+					"phaseIndex" : 0,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 1,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 2,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				}
+			],
+			"gift" : {
+				"GiftType" : 1,
+				"Value" : "Repeater"
+			}
+		},
+		"8" : {
+			"levelIndex" : 7,
+			"phases" : [
+				{
+					"phaseIndex" : 0,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 1,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				},
+				{
+					"phaseIndex" : 2,
+					"timeBetweenSpawn" : 3,
+					"batchs" : [
+						{
+							"amount" : 1,
+							"name" : "FlagZombie",
+							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						}
+					]
+				}
+			],
+			"gift" : {
+				"GiftType" : 1,
+				"Value" : "PuffShroom"
 			}
 		}
 	}

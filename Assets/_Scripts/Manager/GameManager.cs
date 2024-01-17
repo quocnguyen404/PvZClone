@@ -29,14 +29,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SunManager sunManager = null;
     [SerializeField] private CarManager carManager = null;
 
-    [SerializeField] [Range(1, 10)] int timeScale;
 
     public static bool IsEndGame { get; private set; }
     public static bool IsStartGame { get; private set; }
 
     private void Awake()
     {
-        Time.timeScale = timeScale;
         IsEndGame = false;
         IsStartGame = false;
 
@@ -92,8 +90,8 @@ public class GameManager : MonoBehaviour
 
         pickUnitManager.InitializeUnitData();
         placementManager.Initialize();
-        plantObjectPool.InitilizePool(pickUnitManager.PlantDatas());
-        productObjectPool.InitializePool(pickUnitManager.PlantDatas());
+        plantObjectPool.InitilizePool(pickUnitManager.PlantData());
+        productObjectPool.InitializePool(pickUnitManager.PlantData());
 
         uiManager.PlayButton.RemoveAllListener();
         uiManager.PlayButton.SetVisuability(false);
@@ -106,6 +104,7 @@ public class GameManager : MonoBehaviour
 
         phaseManager.OnWin = Win;
         zombieManager.OnZombieWin = Lose;
+        rewardManager.OnGiftClick = uiManager.WinTransition;
 
         ZombieStart();
     }
@@ -118,7 +117,7 @@ public class GameManager : MonoBehaviour
     private void Win(Vector3 tossPos)
     {
         rewardManager.TossGift(tossPos);
-        uiManager.WinTransition();
+        ConfigHelper.LevelUp();
         EndGame();
     }
 

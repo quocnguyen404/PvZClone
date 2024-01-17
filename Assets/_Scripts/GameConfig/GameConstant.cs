@@ -29,5 +29,7 @@ public static class GameConstant
     public const float TIME_START_MATCH = 1f;
 
     public const float TIME_BUTTON_MOVE = 0.5f;
+
+    public static readonly int[] SLOTS_AMOUNT = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 }
 

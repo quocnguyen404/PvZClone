@@ -29,7 +29,7 @@ public class ButtonUIHandler : UIHandler
 
     public void AddButtonHandlerSound(Sound buttonSound)
     {
-        btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(buttonSound, 1f); });
+        //btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(buttonSound, 1f); });
     }
 
     public void AddListener(UnityAction action)

@@ -27,17 +27,12 @@ public class PickUnitManager : MonoBehaviour
         buttonHold.OnUnitButtonClick = PickUnit;
     }
 
-    public void InitializeUnitDataLimitPlant()
-    {
-
-    }
-
     public bool PickFull()
     {
         return !buttonHold.slots.Find(s => s.unitData == null);
     }
 
-    public List<Data.UnitData> PlantDatas()
+    public List<Data.UnitData> PlantData()
     {
         return buttonHold.unitDatas;
     }

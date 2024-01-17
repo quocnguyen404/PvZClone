@@ -7,13 +7,24 @@ public class PlantButtonHold : UIHandler
 {
     public List<Slot> slots;
     public List<Data.UnitData> unitDatas;
+    public Transform contentTrans = null;
+    [SerializeField] private Slot slotPre = null;
 
     public System.Action<UnitButton> OnUnitButtonClick;
 
     public void Initialize()
     {
-        //foreach (Slot slot in slots)
-        //    slot.gameObject.SetActive(true);
+        slots = new List<Slot>();
+        Slot temp = null;
+
+        int userLevel = ConfigHelper.UserData.ownPlants.Count >= 8 ? 8 : ConfigHelper.UserData.userLevel;
+
+        for (int i = 0; i < GameConstant.SLOTS_AMOUNT[userLevel]; i++)
+        {
+            temp = Instantiate(slotPre);
+            temp.transform.SetParent(contentTrans);
+            slots.Add(temp);
+        }
     }
 
     public void AddToHoldPanel(UnitButton unitButton)
@@ -54,12 +65,5 @@ public class PlantButtonHold : UIHandler
         {
             unitDatas.Add(slot.unitData);
         }
-    }
-
-    public void Deconstructor()
-    {
-        slots.Clear();
-        unitDatas.Clear();
-        OnUnitButtonClick = null;
     }
 }

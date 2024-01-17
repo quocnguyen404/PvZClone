@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Gift : MonoBehaviour
 {
+    [SerializeField] private Animator ator = null;
     [SerializeField] private SpriteRenderer giftSR = null;
-    public System.Action OnRewardGift = null;
+    public System.Action<Gift> OnRewardGift = null;
 
     public GiftData Data;
 
@@ -25,6 +26,6 @@ public class Gift : MonoBehaviour
 
     private void OnMouseDown()
     {
-        OnRewardGift?.Invoke();
+        OnRewardGift?.Invoke(this);
     }
 }

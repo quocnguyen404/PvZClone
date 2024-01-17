@@ -22,36 +22,25 @@ public static class GameUtilities
         btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(Sound.ButtonClick, 1f); });
     }
     
-    public static void GetGiftValue(Gift gift, out Data.UnitData unitData, out int amount)
+    public static void GetGiftValue(Gift gift)
     {
         if (gift.Data.GiftType is GiftType.Currency)
+            ConfigHelper.AddGold(System.Int32.Parse(gift.Data.Value));
+        else if (gift.Data.GiftType is GiftType.Plant)
+            ConfigHelper.AddNewPlant(gift.Data.Value);
+    }
+
+    public static GiftData GetCurrentGiftData()
+    {
+        GiftData giftData = ConfigHelper.GetCurrentLevelConfig().gift;
+
+        if (giftData.GiftType is GiftType.Plant && ConfigHelper.UserData.ownPlants.ContainsKey(giftData.Value))
         {
-            try
-            {
-                amount = System.Int32.Parse(gift.Data.Value);
-                unitData = null;
-            }
-            catch
-            {
-                unitData = null;
-                amount = 0;
-                Debug.LogError("Gift value is not valid");
-            }
+            giftData.GiftType = GiftType.Currency;
+            giftData.Value = "1000";
         }
-        else
-        {
-            try
-            {
-                amount = 0;
-                unitData = ConfigHelper.GameConfig.zombies[gift.Data.Value];
-            }
-            catch
-            {
-                unitData = null;
-                amount = 0;
-                Debug.LogError("Gift value is not valid");
-            }
-        }
+
+        return giftData;
     }
 
     public static Date GetDate()
