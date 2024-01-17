@@ -33,7 +33,7 @@ public class ToggleUIHandler : UIHandler
 
     public void AddToggleSound(Sound toggleSound)
     {
-        Togg.onValueChanged.AddListener((value) => { AudioManager.Instance.PlaySound(toggleSound, 1f); });
+        Togg.onValueChanged.AddListener((value) => { AudioManager.Instance.PlaySound(toggleSound); });
     }
 
     public void AddListener(UnityAction<bool> action)

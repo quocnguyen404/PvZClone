@@ -5,24 +5,36 @@ using UnityEngine.UI;
 
 public class WinUIHandler : UIHandler
 {
+    [SerializeField] private UIHandler whitePanel = null;
     [SerializeField] private WinPanel winPanel = null;
     [SerializeField] private Button nextLevelBtn = null;
     [SerializeField] private Button menuBtn = null;
 
     private void Awake()
     {
-        SetVisuability(false);
+        winPanel.SetVisuability(false);
+        whitePanel.SetVisuability(false);
     }
 
     public void Initialize()
     {
-        //SceneDispatcher.Instance.ButtonNavigateScene(nextLevelBtn, Scene.GamePlayScene);
-        //SceneDispatcher.Instance.ButtonNavigateScene(menuBtn, Scene.MenuScene);
+        SceneDispatcher.Instance.ButtonNavigateScene(nextLevelBtn, Scene.GamePlayScene);
+        SceneDispatcher.Instance.ButtonNavigateScene(menuBtn, Scene.MenuScene);
         winPanel.Initialize();
     }
 
-    public void WinPanelOpen()
+    public void TurnOnWhitePanel()
     {
-        TurnOn();
+        whitePanel.TurnOn();
+    }
+
+    public void TurnOffWhitePanel()
+    {
+        whitePanel.TurnOff();
+    }
+
+    public void TurnOnWinPanel()
+    {
+        winPanel.TurnOn();
     }
 }

@@ -21,5 +21,6 @@ public class SunManager : ProductManager
     public void SunClick(Sun sun)
     {
         OnSunClick?.Invoke(sun);
+        AudioManager.Instance.PlaySound(Sound.PickSun);
     }
 }

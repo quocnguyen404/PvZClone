@@ -19,7 +19,7 @@ public static class GameUtilities
         if (btn == null)
             return;
 
-        btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(Sound.ButtonClick, 1f); });
+        btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(Sound.ButtonClick); });
     }
     
     public static void GetGiftValue(Gift gift)

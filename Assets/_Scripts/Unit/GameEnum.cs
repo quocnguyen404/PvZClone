@@ -47,6 +47,9 @@ public enum Music
 
 public enum Sound
 {
+    Scream,
+    PeaHit,
+    GraveButtonClick,
     ButtonClick,
     CantBuy,
     CherryBomb,

@@ -89,6 +89,7 @@
     <Compile Include="Assets\_Scripts\Unit\Attribute.cs" />
     <Compile Include="Assets\_Scripts\Common\Helper.cs" />
     <Compile Include="Assets\_Scripts\Manager\PlacementManager.cs" />
+    <Compile Include="Assets\_Scripts\Debug\DebugManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\NightPlantComposite.cs" />
     <Compile Include="Assets\_Scripts\Product\Sun.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\_Scripts\Unit\GameEnum.cs" />
     <Compile Include="Assets\_Scripts\Unit\Zombies\Zombie.cs" />
     <Compile Include="Assets\_Scripts\Manager\Unit Manager\PlantManager.cs" />
+    <Compile Include="Assets\_Scripts\UI\WinPanel.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Plant.cs" />
     <Compile Include="Assets\_Scripts\Loading\LoadingHandler.cs" />
     <Compile Include="Assets\_Scripts\Manager\RewardManager.cs" />
@@ -132,8 +134,6 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
-    <Compile Include="Assets\_Scripts\Debug\DebugManager.cs" />
-    <Compile Include="Assets\_Scripts\UI\WinPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

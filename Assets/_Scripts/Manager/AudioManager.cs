@@ -26,18 +26,19 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //play background audio
+        PlayMusic(Music.GamePlayBG);
     }
 
-    public void PlaySound(Sound soundType, float volumeScale)
+    public void PlaySound(Sound soundType)
     {
         AudioClip soundClip = GetSound(soundType);
-        audioSource.PlayOneShot(soundClip, volumeScale);
+        audioSource.PlayOneShot(soundClip, VolumeScale);
     }
 
-    public void PlayMusic(Music musicType, float volumeScale)
+    public void PlayMusic(Music musicType)
     {
         AudioClip musicClip = GetMusic(musicType);
-        audioSource.PlayOneShot(musicClip, volumeScale);
+        audioSource.PlayOneShot(musicClip, VolumeScale);
     }
 
     public void VolumeChange(float volumeScale)

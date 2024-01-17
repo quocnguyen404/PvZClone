@@ -41,7 +41,7 @@ public class PlacementManager : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer >= GameConstant.TIME_SUN_DROP)
+        if (timer >= GameConstant.TIME_SUN_DROP && !GameManager.IsEndGame)
         {
             DropSun();
             timer = 0;

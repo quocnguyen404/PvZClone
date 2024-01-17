@@ -20,6 +20,7 @@ public static class GameConstant
     public const float NODE_LENGTH = 1f;
     public const float NODE_THICKNESS = 0.1f;
 
+    public const float TIME_GIFT_MOVE = 5f;
     public const float TIME_SUN_MOVE = 2f;
     public const float TIME_SUN_DISARPEAR = 4f;
     public const float TIME_SUN_DROP = 11f;

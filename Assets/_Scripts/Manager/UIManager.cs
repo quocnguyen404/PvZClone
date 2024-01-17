@@ -86,15 +86,26 @@ public class UIManager : MonoBehaviour
         if (giftTween != null)
             giftTween.Kill();
 
-        giftTween = gift.transform.DOMove(giftCenterPos.position, GameConstant.TIME_SUN_MOVE)
+        winUIHandler.TurnOn();
+        plantButtonHold.TurnOff();
+
+        AudioManager.Instance.PlayMusic(Music.WinMusic);
+
+        DOVirtual.DelayedCall(GameConstant.TIME_GIFT_MOVE / 1.2f, () => { winUIHandler.TurnOnWhitePanel(); })
+            .SetAutoKill();
+
+        giftTween = gift.transform.DOMove(giftCenterPos.position, GameConstant.TIME_GIFT_MOVE)
             .OnComplete(() => 
             {
-                winUIHandler.WinPanelOpen();
+                winUIHandler.TurnOnWinPanel();
             });
+
     }
 
     public void LoseTransition()
     {
+        AudioManager.Instance.PlaySound(Sound.Scream);
+        AudioManager.Instance.PlayMusic(Music.LoseMusic);
         loseUIHandler.TurnOn();
     }
 

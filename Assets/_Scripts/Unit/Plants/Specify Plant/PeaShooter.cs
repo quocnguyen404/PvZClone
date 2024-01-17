@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class PeaShooter : ProjectileShooter
 {
-    
+    protected override void ShotProjectile()
+    {
+        AudioManager.Instance.PlaySound(Sound.PeaShoot);
+        base.ShotProjectile();
+    }
 }

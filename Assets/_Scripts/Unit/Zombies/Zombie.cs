@@ -323,6 +323,7 @@ public class Zombie : IUnit
     {
         agent.Stop();
         agent.OnTurnOff();
+        col.enabled = false;
 
         if (deadTween != null)
             deadTween.Kill();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : IProduct
 {
     [SerializeField] protected Rigidbody rgBody = null;
+    [SerializeField] protected Sound hitSound;
 
     protected float speed;
     protected float damage;
@@ -46,6 +47,7 @@ public class Projectile : IProduct
         if (unit != null)
         {
             unit.TakeDamage(damage);
+            AudioManager.Instance.PlaySound(hitSound);
             gameObject.SetActive(false);
         }
     }

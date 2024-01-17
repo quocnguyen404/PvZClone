@@ -26,6 +26,9 @@ public class Gift : MonoBehaviour
 
     private void OnMouseDown()
     {
+        ator.SetBool("Shining", true);
         OnRewardGift?.Invoke(this);
+
+        OnRewardGift = null;
     }
 }
