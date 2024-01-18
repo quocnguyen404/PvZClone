@@ -56,8 +56,9 @@ public class UnitButtonPanel : UIHandler
     {
         Slot slotOnPanel = unitButton.slotOnPanel;
 
-        unitButton.transform.DOKill();
+
         unitButton.transform.SetParent(slotOnPanel.transform);
+        
         unitButton.transform.DOLocalMove(Vector3.zero, GameConstant.TIME_BUTTON_MOVE / 2).SetAutoKill();
 
         unitButton.slotOnHold.EmptySlotData();
@@ -76,6 +77,7 @@ public class UnitButtonPanel : UIHandler
     private void UnitButtonClick(UnitButton unitButton)
     {
         OnUnitButtonClick?.Invoke(unitButton);
+        //Audio
     }
 
     //public void Hide()

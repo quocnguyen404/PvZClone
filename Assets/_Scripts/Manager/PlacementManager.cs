@@ -7,9 +7,9 @@ public class PlacementManager : MonoBehaviour
 {
     [Header("Component Reference")]
     [SerializeField] private InputManager inputManager = null;
-    [SerializeField] private SunInGameManager currencyManager = null;
+    [SerializeField] private SunInGameManager sunInGameManager = null;
     [SerializeField] private Transform dropSunPosition = null;
-    [SerializeField] private Button shovelButton = null;
+    [SerializeField] private ShovelToggle shovelToggle = null;
     [SerializeField] private MouseIndicator mouseIndicator = null;
 
     public System.Action<IUnit> OnPlaceUnit = null;
@@ -31,7 +31,8 @@ public class PlacementManager : MonoBehaviour
     public void Initialize()
     {
         startPlacing = true;
-        currencyManager.Initialize();
+        sunInGameManager.Initialize();
+        shovelToggle.OnPickShovel = PickUpShovel;
     }
 
     private void Update()
@@ -45,6 +46,16 @@ public class PlacementManager : MonoBehaviour
         {
             DropSun();
             timer = 0;
+        }
+
+        if (shovelToggle.IsPickShovel && Input.GetMouseButtonDown(0))
+        {
+            Node sNode = inputManager.GetSelectedNode();
+
+            if (sNode != null && sNode.HasPlant())
+                sNode.GetPlantFromNode().Dead();
+
+            shovelToggle.UnPickShovel();
         }
 
         if (inputManager.IsOverPlane() && selectedUnit != null)
@@ -81,10 +92,10 @@ public class PlacementManager : MonoBehaviour
         if (node.GridPosition.y > GameConstant.GARDEN_COLOUMN - 1)
             return;
 
-
+        AudioManager.Instance.PlaySound(Sound.Plant);
         OnPlaceUnit?.Invoke(selectedUnit);
         selectedUnit.PlaceUnitOnNode(node);
-        currencyManager.BuyPlant(selectedUnit.UnitData);
+        sunInGameManager.BuyPlant(selectedUnit.UnitData);
         selectedButton.Recharge(selectedUnit.UnitData.rechargeTime);
 
         TurnOffMouseIndicator();
@@ -96,13 +107,15 @@ public class PlacementManager : MonoBehaviour
 
     public void GetSelectedUnitData(IUnit unit, UnitButton unitButton)
     {
-        if (!currencyManager.CanBuy(unit.UnitData))
+        if (!sunInGameManager.CanBuy(unit.UnitData))
         {
+            AudioManager.Instance.PlaySound(Sound.CantBuy);
             unit.gameObject.SetActive(false);
             return;
         }
 
 
+        AudioManager.Instance.PlaySound(Sound.PickPlant);
         mouseIndicator.ChangeMouseIndicatorSprite(unitButton.GetUnitSprite());
         selectedUnit = unit;
         selectedButton = unitButton;
@@ -110,8 +123,22 @@ public class PlacementManager : MonoBehaviour
 
     public void PickUpSun(Sun sun)
     {
-        currencyManager.PickSunUp(sun.value);
-        sun.MoveToSunBar(currencyManager.GetSunBarPosition());
+        sunInGameManager.PickSunUp(sun.value);
+        sun.MoveToSunBar(sunInGameManager.GetSunBarPosition());
+    }
+
+    public void PickUpShovel(bool value)
+    {
+        if (value)
+        {
+            Sprite s = shovelToggle.GetShovelSprite();
+            mouseIndicator.ChangeMouseIndicatorSprite(s);
+        }
+        else
+        {
+            mouseIndicator.ChangeMouseIndicatorSprite(null);
+            TurnOffMouseIndicator();
+        }
     }
 
     private void DropSun()
@@ -120,14 +147,13 @@ public class PlacementManager : MonoBehaviour
 
         Vector3 target = (Vector3)OnGetPosition?.Invoke();
 
-        Vector3 initPos = new Vector3(target.x, dropSunPosition.position.y + 0.1f, target.z);
+        Vector3 initPos = new Vector3(target.x, dropSunPosition.position.y + 0.1f, 0f);
 
         sunPre.Initialize(initPos, GameConstant.SUN_DROP_COST);
-        sunPre.Fall(target);
+        sunPre.Fall();
 
         sunPre = null;
     }
-
 
     private void TurnOnMouseIndicator()
     {

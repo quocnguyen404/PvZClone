@@ -24,6 +24,7 @@ public class CherryBomb : IExplosePlant
 
         ator.SetPlantMove(UnitAnimator.PlantStateType.Ready);
 
+        AudioManager.Instance.PlaySound(Sound.CherryBomb);
         Dead();
     }
 

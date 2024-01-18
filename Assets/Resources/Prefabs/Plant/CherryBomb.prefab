@@ -66,12 +66,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7668615423304728447, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
     - {fileID: 5649815106940224623, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
+    - {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
---- !u!82 &453965356524642478 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
-  m_PrefabInstance: {fileID: 5808939488419433810}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &642415542693328497 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6374614616769968931, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
@@ -88,7 +84,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2115065635
 MonoBehaviour:
@@ -103,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ator: {fileID: 803848715787299859}
-  audioSource: {fileID: 453965356524642478}
+  audioSource: {fileID: 0}
   nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}

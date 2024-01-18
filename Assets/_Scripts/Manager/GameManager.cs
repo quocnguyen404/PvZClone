@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         uiManager.Initialize();
         uiManager.BeginMatch();
         StartPickPlant();
+
+        AudioManager.Instance.StopMusic();
     }
 
     private void StartPickPlant()
@@ -131,6 +133,7 @@ public class GameManager : MonoBehaviour
     {
         IsStartGame = false;
         IsEndGame = true;
+        AudioManager.Instance.StopMusic();
     }
 
     private void OnDestroy()

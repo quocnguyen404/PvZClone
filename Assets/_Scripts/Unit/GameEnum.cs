@@ -40,13 +40,31 @@ public enum DebuffType
 
 public enum Music
 {
+    MenuSceneBG,
     GamePlayBG,
-    LoseMusic,
-    WinMusic,
 }
 
 public enum Sound
 {
+    PotatoGrow,
+    ZombieEating,
+    LoseMusic,
+    WinMusic,
+    PlantGrow,
+    HugeWave,
+    HeadFall,
+    GrassStep,
+    Frozen,
+    EvilLaugh,
+    ChomperGulp,
+    ChomperBite,
+    CarRun,
+    Sukbir,
+    ZombieFall,
+    SnowPeaHit,
+    PickPlant,
+    ReadySetPlant,
+    PotateBoom,
     Scream,
     PeaHit,
     GraveButtonClick,

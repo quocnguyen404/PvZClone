@@ -26,8 +26,11 @@ public static class ConfigHelper
     {
         get
         {
+            ES3.DeleteKey(UserDataKey);
+
             if (!ES3.KeyExists(UserDataKey))
             {
+                //userData = GetTestUserData();
                 userData = GetDefaultUserData();
                 ES3.Save(UserDataKey, userData);
             }

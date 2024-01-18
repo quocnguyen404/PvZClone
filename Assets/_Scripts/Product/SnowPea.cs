@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SnowPea : Projectile
 {
+    private void Awake()
+    {
+        hitSound = Sound.SnowPeaHit;
+    }
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals(GameConstant.PROJECTILE_BLOCK_TAG))

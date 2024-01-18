@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [Header("Toggle and Button")]
     public ButtonUIHandler PlayButton = null;
     [SerializeField] private ToggleUIHandler viewZombieTg = null;
+    [SerializeField] private ToggleUIHandler shovelToggle = null;
 
     [Header("Panel")]
     [SerializeField] private UnitButtonPanel unitButtonPanel = null;
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
         PlayButton.SetVisuability(false);
         unitButtonPanel.SetVisuability(false);
         plantButtonHold.SetVisuability(false);
+        shovelToggle.SetVisuability(false);
 
         loseUIHandler.SetVisuability(false);
         winUIHandler.SetVisuability(false);
@@ -77,7 +79,13 @@ public class UIManager : MonoBehaviour
     {
         unitButtonPanel.TurnOff();
         viewZombieTg.SetVisuability(false);
-        MoveCamera(0.3f, null);
+        plantButtonHold.TurnOff();
+        MoveCamera(0.3f, () => 
+        {
+            shovelToggle.TurnOn();
+            plantButtonHold.TurnOn();
+            AudioManager.Instance.PlayMusic(Music.GamePlayBG); 
+        });
     }
 
     private Tween giftTween = null;
@@ -88,8 +96,9 @@ public class UIManager : MonoBehaviour
 
         winUIHandler.TurnOn();
         plantButtonHold.TurnOff();
+        shovelToggle.TurnOff();
 
-        AudioManager.Instance.PlayMusic(Music.WinMusic);
+        AudioManager.Instance.PlaySound(Sound.WinMusic);
 
         DOVirtual.DelayedCall(GameConstant.TIME_GIFT_MOVE / 1.2f, () => { winUIHandler.TurnOnWhitePanel(); })
             .SetAutoKill();
@@ -105,7 +114,7 @@ public class UIManager : MonoBehaviour
     public void LoseTransition()
     {
         AudioManager.Instance.PlaySound(Sound.Scream);
-        AudioManager.Instance.PlayMusic(Music.LoseMusic);
+        AudioManager.Instance.PlaySound(Sound.LoseMusic);
         loseUIHandler.TurnOn();
     }
 

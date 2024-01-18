@@ -44,10 +44,7 @@ public class UnitButton : MonoBehaviour
         isRecharge = true;
 
         if (rechargeTween != null)
-        {
             rechargeTween.Kill();
-            Debug.Log("Kill recharge button unit tween");
-        }
 
         rechargeTween = recharge.DOFillAmount(0f, time)
             .OnComplete(() =>
@@ -67,12 +64,4 @@ public class UnitButton : MonoBehaviour
 
         return plantSprite;
     }
-
-    //private void OnDestroy()
-    //{
-    //    unitData = null;
-    //    button.onClick.RemoveAllListeners();
-    //    icon.sprite = null;
-    //    plantSprite = null;
-    //}
 }

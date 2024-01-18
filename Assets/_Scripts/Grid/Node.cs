@@ -30,7 +30,7 @@ public class Node : MonoBehaviour
 
     public bool HasPlant()
     {
-        IUnit unit = units.Find(n => n is Plant);
+        IUnit unit = units.Find(n => n is Plant && n.IsAlive);
 
         return unit != null;
     }

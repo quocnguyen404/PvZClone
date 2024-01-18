@@ -53,9 +53,9 @@ public static class GameUtilities
 
     public static void RandomBehaviour(System.Action action)
     {
-        int ran = Random.Range(0, 10);
+        int ran = Random.Range(0, 100000000);
 
-        if (ran % 2 == 0)
+        if (ran == 0)
             action?.Invoke();
         else
             return;

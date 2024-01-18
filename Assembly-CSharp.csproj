@@ -134,6 +134,8 @@
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
+    <Compile Include="Assets\_Scripts\UI\ShovelToggle.cs" />
+    <Compile Include="Assets\_Scripts\UI\ProgressBarHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

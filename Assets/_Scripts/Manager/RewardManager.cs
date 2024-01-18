@@ -42,9 +42,10 @@ public class RewardManager : MonoBehaviour
         if (x == 0 && z == 0)
             x = 100;
 
-        Vector3 dir = new Vector3(x, GameConstant.NODE_THICKNESS * 200f, z);
+        Vector3 dir = new Vector3(x, GameConstant.NODE_THICKNESS, z);
 
         dir = dir.normalized;
+        dir.y = 0.5f;
 
         Vector3 jumpTarget = transform.position + dir * jumpForce;
 

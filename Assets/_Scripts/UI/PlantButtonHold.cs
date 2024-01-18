@@ -34,11 +34,11 @@ public class PlantButtonHold : UIHandler
         if (emptySlot == null)
             return;
 
+
         emptySlot.GetUnitButton(unitButton.unitData);
         unitButton.slotOnHold = emptySlot;
         unitButton.slotOnPanel.EmptySlotData();
 
-        unitButton.transform.DOKill();
         unitButton.transform.SetParent(emptySlot.transform);
         unitButton.transform.DOLocalMove(Vector3.zero, GameConstant.TIME_BUTTON_MOVE).SetAutoKill();
 
@@ -62,8 +62,6 @@ public class PlantButtonHold : UIHandler
         unitDatas = new List<Data.UnitData>();
 
         foreach (Slot slot in slots)
-        {
             unitDatas.Add(slot.unitData);
-        }
     }
 }

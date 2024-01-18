@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Toggle))]
 public class ToggleUIHandler : UIHandler
 {
     private Toggle togg = null;
@@ -21,7 +22,7 @@ public class ToggleUIHandler : UIHandler
 
     public Sound ToggleSound;
 
-    private void Awake()
+    public virtual void Awake()
     {
         AddToggleSound(ToggleSound);
     }

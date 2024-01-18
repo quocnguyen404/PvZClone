@@ -46,12 +46,12 @@ public class Sun : IProduct
             .SetAutoKill();
     }
 
-    public void Fall(Vector3 ground)
+    public void Fall()
     {
         if (sunTween != null)
             sunTween.Kill();
 
-        sunTween = transform.DOMoveY(ground.y, 9f)
+        sunTween = transform.DOMoveY(0.5f, 9f)
             .OnComplete(() => 
             {
                 ReturnPool(4f);

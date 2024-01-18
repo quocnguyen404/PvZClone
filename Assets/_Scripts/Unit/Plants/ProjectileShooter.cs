@@ -64,6 +64,7 @@ public class ProjectileShooter : Plant
 
     protected virtual void ShotProjectile()
     {
+        AudioManager.Instance.PlaySound(Sound.PeaShoot);
         projectTile = (Projectile)(OnGetProduct?.Invoke(UnitData));
 
         projectTile.InitProjectile(spawnPoint.position, UnitData);

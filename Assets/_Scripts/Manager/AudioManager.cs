@@ -10,8 +10,9 @@ public class AudioManager : MonoBehaviour
     public System.Action OnMusicMute = null;
     public System.Action<float> OnVolumeChange = null;
 
-    [SerializeField] private AudioSource audioSource = null;
-    public float VolumeScale => audioSource.volume;
+    [SerializeField] private AudioSource musicSource = null;
+    [SerializeField] private AudioSource soundSource = null;
+    public float VolumeScale => soundSource.volume;
 
     private Dictionary<Sound, AudioClip> soundClips = new Dictionary<Sound, AudioClip>();
     private Dictionary<Music, AudioClip> musicClips = new Dictionary<Music, AudioClip>();
@@ -25,25 +26,40 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        //play background audio
-        PlayMusic(Music.GamePlayBG);
+        //play loading audio
+        //PlayMusic(Music.GamePlayBG);
     }
 
     public void PlaySound(Sound soundType)
     {
         AudioClip soundClip = GetSound(soundType);
-        audioSource.PlayOneShot(soundClip, VolumeScale);
+        soundSource.PlayOneShot(soundClip, VolumeScale);
     }
 
     public void PlayMusic(Music musicType)
     {
         AudioClip musicClip = GetMusic(musicType);
-        audioSource.PlayOneShot(musicClip, VolumeScale);
+        SetLoop(true);
+        musicSource.clip = musicClip;
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Pause();
+        musicSource.clip = null;
+        SetLoop(false);
+    }
+
+    public void SetLoop(bool value)
+    {
+        musicSource.loop = value;
     }
 
     public void VolumeChange(float volumeScale)
     {
-        audioSource.volume = volumeScale;
+        musicSource.volume = volumeScale;
+        soundSource.volume = volumeScale;
     }
 
     public AudioClip GetSound(Sound soundType)

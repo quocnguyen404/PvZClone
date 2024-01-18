@@ -62,6 +62,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7668615423304728447, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
     - {fileID: 5649815106940224623, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
+    - {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
 --- !u!114 &1581844611384428860 stripped
 MonoBehaviour:
@@ -92,15 +93,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ator: {fileID: 1581844611384428860}
-  audioSource: {fileID: 1772378078307452289}
+  audioSource: {fileID: 0}
   nodePaths: []
   PoolPosition: {x: 0, y: 0, z: 0}
   GridPosition: {x: 0, y: 0}
---- !u!82 &1772378078307452289 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6255975585194372604, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}
-  m_PrefabInstance: {fileID: 5641164110972479613}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2974223098955552405 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7426401668095524584, guid: f2216a0d01a713f4b95fdd6864a25999, type: 3}

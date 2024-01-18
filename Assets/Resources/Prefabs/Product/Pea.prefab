@@ -80,6 +80,7 @@ MonoBehaviour:
   productName: Pea
   existTime: 20
   rgBody: {fileID: -3876338795387153078}
+  hitSound: 40
   DebuffValue: 0
   DebuffDuration: 0
   Type: 0

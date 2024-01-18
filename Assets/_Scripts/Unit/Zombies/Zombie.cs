@@ -200,12 +200,19 @@ public class Zombie : IUnit
     {
         return currentHealth > 0
             && nodePaths[currentNodeIndex].HasPlant()
-            && Vector3.Distance(transform.position, nodePaths[currentNodeIndex].WorldPosition)
-            <= (col.radius /*+ GameConstant.NODE_LENGTH/2*/);
+            && nodePaths[currentNodeIndex].GetPlantFromNode().IsAlive
+            && Vector3.Distance(transform.position, nodePaths[currentNodeIndex].WorldPosition) <= (col.radius);
     }
 
     public virtual void Attack(IUnit target)
     {
+        if (!target.IsAlive)
+        {
+            AudioManager.Instance.PlaySound(Sound.ZombieEat);
+            return;
+        }
+
+        AudioManager.Instance.PlaySound(Sound.ZombieEating);
         ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
         target.TakeDamage(UnitData.attributes[(int)Data.AttributeType.ATK].value);
 
@@ -228,6 +235,7 @@ public class Zombie : IUnit
                 if (UnitSpeed >= maxUnitSpeed + debuffValue)
                     return;
 
+                AudioManager.Instance.PlaySound(Sound.Frozen);
                 sr.color = Color.blue;
                 UpdateZombieSpeed(UnitSpeed += debuffValue);
                 break;
@@ -321,6 +329,7 @@ public class Zombie : IUnit
     private Tween deadTween = null;
     public override void Dead()
     {
+        AudioManager.Instance.PlaySound(Sound.ZombieFall);
         agent.Stop();
         agent.OnTurnOff();
         col.enabled = false;

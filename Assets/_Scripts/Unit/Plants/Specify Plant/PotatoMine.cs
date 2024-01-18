@@ -17,7 +17,6 @@ public class PotatoMine : IExplosePlant
     {
         base.PlaceUnitOnNode(node);
         CountDown();
-
     }
 
     private void CountDown()
@@ -31,7 +30,7 @@ public class PotatoMine : IExplosePlant
     private void Growth()
     {
         //do growth anim
-        Debug.Log("Growth");
+        AudioManager.Instance.PlaySound(Sound.PotatoGrow);
         ator.SetPlantMove(UnitAnimator.PlantStateType.Idle1);
         DOVirtual.DelayedCall(1f, () => { col.enabled = true; }).SetAutoKill();
     }
@@ -46,6 +45,8 @@ public class PotatoMine : IExplosePlant
             zombie.Explose(UnitData.attributes[(int)Data.AttributeType.ATK].value);
             ator.SetPlantMove(UnitAnimator.PlantStateType.Attack);
             col.enabled = false;
+
+            AudioManager.Instance.PlaySound(Sound.PotateBoom);
 
             DOVirtual.DelayedCall(1f, () => { Dead(); }).SetAutoKill();
         }

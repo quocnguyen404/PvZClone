@@ -11,6 +11,8 @@ public class MenuSceneNavigator : MonoBehaviour
 
     private void Awake()
     {
+        AudioManager.Instance.PlayMusic(Music.MenuSceneBG);
+
         playNextLevelBtn.AddListener(LoadGamePlayScene);
         returnMenuBtn.AddListener(LoadMenuScene);
         exitGameBtn.AddListener(ExitGame);
