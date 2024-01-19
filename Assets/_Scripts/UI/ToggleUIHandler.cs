@@ -22,9 +22,17 @@ public class ToggleUIHandler : UIHandler
 
     public Sound ToggleSound;
 
-    public virtual void Awake()
+    public virtual void Start()
     {
+        if (ToggleSound is Sound.None)
+            ToggleSound = Sound.ButtonClick;
+
         AddToggleSound(ToggleSound);
+    }
+
+    public void SetValue(bool value)
+    {
+        Togg.isOn = value;
     }
 
     public void SetInteracable(bool value)

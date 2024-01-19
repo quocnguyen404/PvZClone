@@ -18,8 +18,8 @@ public class WinUIHandler : UIHandler
 
     public void Initialize()
     {
-        SceneDispatcher.Instance.ButtonNavigateScene(nextLevelBtn, Scene.GamePlayScene);
-        SceneDispatcher.Instance.ButtonNavigateScene(menuBtn, Scene.MenuScene);
+        nextLevelBtn.AddListener(() => { SceneDispatcher.Instance.LoadScene(Scene.GamePlayScene); });
+        menuBtn.AddListener(() => { SceneDispatcher.Instance.LoadScene(Scene.MenuScene); });
         winPanel.Initialize();
     }
 

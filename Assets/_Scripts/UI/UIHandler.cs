@@ -18,7 +18,7 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    protected float time = 0.7f;
+    protected float fadeTime = 0.7f;
 
     public virtual void SetVisuability(bool isActive)
     {
@@ -42,7 +42,7 @@ public class UIHandler : MonoBehaviour
     {
         cvTween.Kill();
 
-        cvTween = CV.DOFade(1f, time)
+        cvTween = CV.DOFade(1f, fadeTime)
             .OnComplete(() =>
             {
                 CV.interactable = true;
@@ -57,6 +57,6 @@ public class UIHandler : MonoBehaviour
         CV.interactable = false;
         CV.blocksRaycasts = false;
 
-        cvTween = CV.DOFade(0f, time).SetAutoKill(true);
+        cvTween = CV.DOFade(0f, fadeTime).SetAutoKill(true);
     }
 }

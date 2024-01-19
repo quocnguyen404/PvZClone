@@ -26,7 +26,7 @@ public static class ConfigHelper
     {
         get
         {
-            ES3.DeleteKey(UserDataKey);
+            //ES3.DeleteKey(UserDataKey);
 
             if (!ES3.KeyExists(UserDataKey))
             {
@@ -40,7 +40,11 @@ public static class ConfigHelper
             return userData;
         }
 
-        set => ES3.Save(UserDataKey, value);
+        set
+        {
+            userData = value;
+            ES3.Save(UserDataKey, userData);
+        }
     }
 
     public static LevelConfig GetCurrentLevelConfig()

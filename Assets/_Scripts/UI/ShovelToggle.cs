@@ -11,9 +11,8 @@ public class ShovelToggle : ToggleUIHandler
 
     public bool IsPickShovel => Togg.isOn;
 
-    public override void Awake()
+    public void Awake()
     {
-        base.Awake();
         AddListener(PickShovel);
     }
 

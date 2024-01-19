@@ -6,13 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance = null;
 
-    public System.Action OnSoundMute = null;
-    public System.Action OnMusicMute = null;
-    public System.Action<float> OnVolumeChange = null;
-
     [SerializeField] private AudioSource musicSource = null;
     [SerializeField] private AudioSource soundSource = null;
-    public float VolumeScale => soundSource.volume;
+    public float SoundVolume => soundSource.volume;
 
     private Dictionary<Sound, AudioClip> soundClips = new Dictionary<Sound, AudioClip>();
     private Dictionary<Music, AudioClip> musicClips = new Dictionary<Music, AudioClip>();
@@ -26,18 +22,24 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        //play loading audio
-        //PlayMusic(Music.GamePlayBG);
+        soundSource.mute = !ConfigHelper.UserData.isSoundOn;
+        musicSource.mute = !ConfigHelper.UserData.isMusicOn;
     }
 
     public void PlaySound(Sound soundType)
     {
+        if (soundType is Sound.None)
+            return;
+
         AudioClip soundClip = GetSound(soundType);
-        soundSource.PlayOneShot(soundClip, VolumeScale);
+        soundSource.PlayOneShot(soundClip, SoundVolume);
     }
 
     public void PlayMusic(Music musicType)
     {
+        if (musicType is Music.None)
+            return;
+
         AudioClip musicClip = GetMusic(musicType);
         SetLoop(true);
         musicSource.clip = musicClip;
@@ -56,10 +58,28 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = value;
     }
 
-    public void VolumeChange(float volumeScale)
+    public void SetSoundMute(bool value)
+    {
+        soundSource.mute = !value;
+        ConfigHelper.UserData.isSoundOn = value;
+    }
+
+    public void SetMusicMute(bool value)
+    {
+        musicSource.mute = !value;
+        ConfigHelper.UserData.isMusicOn = value;
+    }
+
+    public void SoundVolumeChange(float volumeScale)
+    {
+        soundSource.volume = volumeScale;
+        ConfigHelper.UserData.soundVolume = volumeScale;
+    }
+
+    public void MusicVolumeChange(float volumeScale)
     {
         musicSource.volume = volumeScale;
-        soundSource.volume = volumeScale;
+        ConfigHelper.UserData.musicVolume = volumeScale;
     }
 
     public AudioClip GetSound(Sound soundType)

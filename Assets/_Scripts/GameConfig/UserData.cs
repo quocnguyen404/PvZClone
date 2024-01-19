@@ -8,6 +8,10 @@ public class UserData
     public Dictionary<string, Data.UnitData> ownPlants;
     public Dictionary<string, Data.UnitData> discoverZombies;
     public int gold = 0;
+    public bool isMusicOn = true;
+    public bool isSoundOn = true;
+    public float soundVolume = 1f;
+    public float musicVolume = 1f;
     public UserData()
     {
 

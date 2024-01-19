@@ -18,8 +18,8 @@ public class LoseUIHandler : UIHandler
     public void Initialize()
     {
         losePanel.SetVisuability(false);
-        SceneDispatcher.Instance.ButtonNavigateScene(playAgainBtn, Scene.GamePlayScene);
-        SceneDispatcher.Instance.ButtonNavigateScene(menuBtn, Scene.MenuScene);
+        playAgainBtn.AddListener(() => { SceneDispatcher.Instance.LoadScene(Scene.GamePlayScene); });
+        menuBtn.AddListener(() => { SceneDispatcher.Instance.LoadScene(Scene.MenuScene); });
     }
 
     private Tween panelTween = null;

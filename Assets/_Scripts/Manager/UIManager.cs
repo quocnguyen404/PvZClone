@@ -13,17 +13,22 @@ public class UIManager : MonoBehaviour
     [Space]
     [Header("Toggle and Button")]
     public ButtonUIHandler PlayButton = null;
+    [SerializeField] private ButtonUIHandler menuButton = null;
     [SerializeField] private ToggleUIHandler viewZombieTg = null;
-    [SerializeField] private ToggleUIHandler shovelToggle = null;
+    [SerializeField] private ShovelToggle shovelToggle = null;
 
+    [Space]
     [Header("Panel")]
     [SerializeField] private UnitButtonPanel unitButtonPanel = null;
     [SerializeField] private PlantButtonHold plantButtonHold = null;
 
-
+    [Space]
     [Header("UI Handler")]
     [SerializeField] private WinUIHandler winUIHandler = null;
     [SerializeField] private LoseUIHandler loseUIHandler = null;
+
+    [Space]
+    [SerializeField] private SettingPanel settingPanel = null;
 
 
     #region Event
@@ -36,17 +41,23 @@ public class UIManager : MonoBehaviour
 
     private Camera cam = null;
 
+    private void Awake()
+    {
+        menuButton.AddListener(settingPanel.TurnOn);
+    }
+
     public void Initialize()
     {
         cam = Helper.Cam;
 
         viewZombieTg.AddListener(ViewZombieCamera);
 
-        viewZombieTg.SetVisuability(false);
         PlayButton.SetVisuability(false);
+        viewZombieTg.SetVisuability(false);
         unitButtonPanel.SetVisuability(false);
         plantButtonHold.SetVisuability(false);
         shovelToggle.SetVisuability(false);
+        settingPanel.SetVisuability(false);
 
         loseUIHandler.SetVisuability(false);
         winUIHandler.SetVisuability(false);

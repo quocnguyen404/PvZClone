@@ -19,11 +19,6 @@ public class SceneDispatcher : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void ButtonNavigateScene(Button btn, Scene sceneName)
-    {
-        btn.AddListener(() => { LoadScene(sceneName); });
-    }
-
     public void LoadScene(Scene scene)
     {
         StartCoroutine(LoadGamePlaySceneAsync(scene));

@@ -61,6 +61,7 @@
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\SnowPeaShooter.cs" />
     <Compile Include="Assets\_Scripts\UI\PlantButtonHold.cs" />
     <Compile Include="Assets\_Scripts\UI\Slot.cs" />
+    <Compile Include="Assets\_Scripts\UI\ProgressBarHandler.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ZombieObjectPool.cs" />
     <Compile Include="Assets\_Scripts\Item\Car.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ObjectPoolBase.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\PeaShooter.cs" />
     <Compile Include="Assets\_Scripts\UI\LoseUIHandler.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\ConfigHelper.cs" />
+    <Compile Include="Assets\_Scripts\UI\ShovelToggle.cs" />
     <Compile Include="Assets\_Scripts\Manager\MenuUIManager.cs" />
     <Compile Include="Assets\_Scripts\Manager\CarManager.cs" />
     <Compile Include="Assets\_Scripts\UI\UnitButtonPanel.cs" />
@@ -127,15 +129,14 @@
     <Compile Include="Assets\_Scripts\Manager\GridManager.cs" />
     <Compile Include="Assets\_Scripts\GameConfig\LevelConfig.cs" />
     <Compile Include="Assets\_Scripts\Product\IProduct.cs" />
-    <Compile Include="Assets\_Scripts\Scene\MenuSceneNavigator.cs" />
     <Compile Include="Assets\_Scripts\Manager\SunInGameManager.cs" />
     <Compile Include="Assets\_Scripts\Product\Spore.cs" />
     <Compile Include="Assets\_Scripts\Manager\Unit Manager\UnitManager.cs" />
     <Compile Include="Assets\_Scripts\Debuff\IDebuff.cs" />
     <Compile Include="Assets\_Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\_Scripts\Unit\Plants\Specify Plant\CherryBomb.cs" />
-    <Compile Include="Assets\_Scripts\UI\ShovelToggle.cs" />
-    <Compile Include="Assets\_Scripts\UI\ProgressBarHandler.cs" />
+    <Compile Include="Assets\_Scripts\UI\UIPanel.cs" />
+    <Compile Include="Assets\_Scripts\UI\SettingPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

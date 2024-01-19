@@ -22,14 +22,17 @@ public class ButtonUIHandler : UIHandler
     public Sound ButtonSound;
 
 
-    private void OnEnable()
+    protected virtual void Start()
     {
-        AddButtonHandlerSound(ButtonSound);
+        if (ButtonSound is Sound.None)
+            ButtonSound = Sound.ButtonClick;
+
+        AddButtonHandlerSound();
     }
 
-    public void AddButtonHandlerSound(Sound buttonSound)
+    public void AddButtonHandlerSound()
     {
-        //btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(buttonSound, 1f); });
+        Btn.onClick.AddListener(() => { AudioManager.Instance.PlaySound(ButtonSound); });
     }
 
     public void AddListener(UnityAction action)

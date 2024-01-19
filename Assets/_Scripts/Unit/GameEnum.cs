@@ -40,12 +40,14 @@ public enum DebuffType
 
 public enum Music
 {
+    None,
     MenuSceneBG,
     GamePlayBG,
 }
 
 public enum Sound
 {
+    None,
     PotatoGrow,
     ZombieEating,
     LoseMusic,
