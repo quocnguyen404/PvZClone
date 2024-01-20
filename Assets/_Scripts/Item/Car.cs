@@ -20,7 +20,7 @@ public class Car : MonoBehaviour
         {
             if (!isTrigger)
                 isTrigger = nodePaths[0].HasZombie() &&
-                Vector3.Distance(nodePaths[0].GetZombieFromNode().transform.position, transform.position) <= radius;
+                Vector3.Distance(nodePaths[0].GetZombieFromNode().transform.position, transform.position) <= radius + GameConstant.NODE_LENGTH/2f;
 
             return isTrigger;
         }
@@ -39,10 +39,17 @@ public class Car : MonoBehaviour
         arried = false;
     }
 
+    private bool first = true;
     private void Update()
     {
         if (!IsTrigger)
             return;
+
+        if (first)
+        {
+            AudioManager.Instance.PlaySound(Sound.CarRun);
+            first = false;
+        }
 
         if (arried)
             return;

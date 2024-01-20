@@ -10,6 +10,7 @@ public class ZombieManager : UnitManager
     public GridManager gridManager = null;
 
     public System.Action OnZombieWin = null;
+    public System.Action OnZombieMoveToHouse = null;
     public System.Action<Vector3> OnZombieDie = null;
     public System.Func<Data.UnitData, Zombie> OnGetZombie = null;
     public System.Func<int, List<Node>> OnZombieGetPath = null;
@@ -39,7 +40,7 @@ public class ZombieManager : UnitManager
     private void SetUnitRandomOnArea(IUnit unit)
     {
         int row = Random.Range(0, GameConstant.ZOMBIE_ROW);
-        int column = Random.Range(GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN - 3, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN);
+        int column = Random.Range(GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN - 2, GameConstant.GARDEN_COLOUMN + GameConstant.ZOMBIE_COLUMN);
 
         Zombie zombie = ZUnitCast(unit);
         zombie.OnZombieDie = ZombieDie;
@@ -47,6 +48,7 @@ public class ZombieManager : UnitManager
         zombie.OnGetHousePosition = ZombieGetHousePosition;
         zombie.OnZombieGetInHouse = ZombieGetInHouse;
         zombie.OnGetSound = GetSound;
+        zombie.OnZombieMoveToHouse = ZombieMoveToHouse;
         zombie.Initialize(new Vector2Int(row, column));
         zombie.transform.position = gridManager.GetRow(row)[column].WorldPosition;
         zombie.transform.eulerAngles = Helper.Cam.transform.eulerAngles;
@@ -85,6 +87,11 @@ public class ZombieManager : UnitManager
     private void ZombieGetInHouse()
     {
         OnZombieWin?.Invoke();
+    }
+
+    private void ZombieMoveToHouse()
+    {
+        OnZombieMoveToHouse?.Invoke();
     }
 
     private Vector3 ZombieGetHousePosition()

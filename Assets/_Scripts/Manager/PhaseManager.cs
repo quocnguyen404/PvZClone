@@ -25,8 +25,7 @@ public class PhaseManager : MonoBehaviour
     public void StartLevel()
     {
         phaseIndex = 0;
-
-        DOVirtual.DelayedCall(GameConstant.TIME_START_MATCH, () => { StartPhase(); }).SetAutoKill();
+        StartPhase(); 
     }
 
     public void StartPhase()
@@ -73,7 +72,7 @@ public class PhaseManager : MonoBehaviour
             nextBatchTween.Kill();
 
         if (timeCallNext < 0)
-            return; ;
+            return;
 
         nextBatchTween = DOVirtual.DelayedCall(timeCallNext, () =>
         {

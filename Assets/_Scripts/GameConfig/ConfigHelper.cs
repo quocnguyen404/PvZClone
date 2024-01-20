@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 public static class ConfigHelper
 {
-    public static GameConfig gameConfig = null;
+    private static GameConfig gameConfig = null;
     public static GameConfig GameConfig
     {
         get
@@ -59,7 +59,6 @@ public static class ConfigHelper
     {
         return GameConfig.levelConfigs[level];
     }
-
     public static void LevelUp()
     {
         UserData.userLevel++;
@@ -73,6 +72,11 @@ public static class ConfigHelper
     public static void AddNewPlant(string plantName)
     {
         UserData.ownPlants.Add(plantName, GameConfig.plants[plantName]);
+    }
+
+    public static void SaveUserData()
+    {
+        ES3.Save(UserDataKey, UserData);
     }
 
     public static UserData GetDefaultUserData()

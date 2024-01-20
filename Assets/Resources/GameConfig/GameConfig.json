@@ -48,11 +48,11 @@
 				},
 				{
 					"type" : 3,
-					"value" : 24.25
+					"value" : 20
 				},
 				{
 					"type" : 4,
-					"value" : 24.25
+					"value" : 20
 				}
 			]
 		},
@@ -315,15 +315,20 @@
 			"phases" : [
 				{
 					"phaseIndex" : 0,
-					"timeBetweenSpawn" : 3,
+					"timeBetweenSpawn" : 4,
 					"batchs" : [
 						{
 							"amount" : 1,
 							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 30
 						},
 						{
-							"amount" : 2,
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 20
+						},
+						{
+							"amount" : 1,
 							"name" : "Zombie",
 							"timeCallNext" : -1
 						}
@@ -344,11 +349,16 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"name" : "Zombie",
+							"timeCallNext" : 30
 						},
 						{
-							"amount" : 2,
+							"amount" : 1,
+							"name" : "Zombie",
+							"timeCallNext" : 15
+						},
+						{
+							"amount" : 1,
 							"name" : "Zombie",
 							"timeCallNext" : -1
 						}
@@ -360,8 +370,8 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "Zombie",
-							"timeCallNext" : 1
+							"name" : "FlagZombie",
+							"timeCallNext" : 20
 						},
 						{
 							"amount" : 2,
@@ -377,7 +387,12 @@
 						{
 							"amount" : 1,
 							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 10
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
@@ -401,8 +416,8 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"name" : "Zombie",
+							"timeCallNext" : 20
 						},
 						{
 							"amount" : 2,
@@ -418,7 +433,7 @@
 						{
 							"amount" : 1,
 							"name" : "Zombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
@@ -435,6 +450,11 @@
 							"amount" : 1,
 							"name" : "FlagZombie",
 							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : 5
 						},
 						{
 							"amount" : 2,
@@ -458,11 +478,16 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"name" : "Zombie",
+							"timeCallNext" : -1
 						},
 						{
 							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : -1
+						},
+						{
+							"amount" : 3,
 							"name" : "Zombie",
 							"timeCallNext" : -1
 						}
@@ -475,7 +500,7 @@
 						{
 							"amount" : 1,
 							"name" : "Zombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 5
 						},
 						{
 							"amount" : 2,
@@ -494,7 +519,7 @@
 							"timeCallNext" : 1
 						},
 						{
-							"amount" : 2,
+							"amount" : 6,
 							"name" : "Zombie",
 							"timeCallNext" : -1
 						}
@@ -515,8 +540,8 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"name" : "Zombie",
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
@@ -532,7 +557,7 @@
 						{
 							"amount" : 1,
 							"name" : "Zombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 15
 						},
 						{
 							"amount" : 2,
@@ -572,8 +597,8 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"name" : "Zombie",
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
@@ -589,7 +614,7 @@
 						{
 							"amount" : 1,
 							"name" : "Zombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 5
 						},
 						{
 							"amount" : 2,
@@ -606,6 +631,11 @@
 							"amount" : 1,
 							"name" : "FlagZombie",
 							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : 5
 						},
 						{
 							"amount" : 2,
@@ -629,8 +659,8 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"name" : "Zombie",
+							"timeCallNext" : 15
 						},
 						{
 							"amount" : 2,
@@ -646,7 +676,7 @@
 						{
 							"amount" : 1,
 							"name" : "Zombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
@@ -663,6 +693,11 @@
 							"amount" : 1,
 							"name" : "FlagZombie",
 							"timeCallNext" : 1
+						},
+						{
+							"amount" : 2,
+							"name" : "Zombie",
+							"timeCallNext" : 5
 						},
 						{
 							"amount" : 2,
@@ -686,8 +721,8 @@
 					"batchs" : [
 						{
 							"amount" : 1,
-							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"name" : "Zombie",
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
@@ -703,7 +738,7 @@
 						{
 							"amount" : 1,
 							"name" : "Zombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
@@ -719,7 +754,7 @@
 						{
 							"amount" : 1,
 							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,

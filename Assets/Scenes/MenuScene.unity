@@ -158,7 +158,7 @@ MonoBehaviour:
   playBtn: {fileID: 1293105253}
   optionBtn: {fileID: 1282028533}
   helpBtn: {fileID: 0}
-  quitBtn: {fileID: 0}
+  quitBtn: {fileID: 415986245}
   optionPanel: {fileID: 1997928670}
   helpPanel: {fileID: 0}
 --- !u!4 &226500429
@@ -1760,6 +1760,10 @@ PrefabInstance:
       value: SettingPanel
       objectReference: {fileID: 0}
     - target: {fileID: 1175341359860997277, guid: 2609993a20b1f3847a0add1f511f12e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949600940879478282, guid: 2609993a20b1f3847a0add1f511f12e7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

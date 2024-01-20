@@ -22,6 +22,7 @@ public class Zombie : IUnit
     #region Event
     public System.Action<Zombie> OnZombieDie = null;
     public System.Action OnZombieGetInHouse = null;
+    public System.Action OnZombieMoveToHouse = null;
     public System.Func<Vector3> OnGetHousePosition = null;
     #endregion
 
@@ -72,7 +73,7 @@ public class Zombie : IUnit
         nodePaths = OnGetPath?.Invoke(row);
 
         ator.ZInitialize();
-        ator.OnAgentStop = agent.Stop;
+        ator.OnAgentStop = agent.Dead;
 
         transform.eulerAngles = Helper.Cam.transform.eulerAngles;
         UnitSpeed = maxUnitSpeed;
@@ -98,12 +99,15 @@ public class Zombie : IUnit
     {
         base.Update();
 
+        if (GameManager.IsEndGame)
+            return;
+
         if (!IsAlive)
             return;
 
-        if (currentHealth <= 0 && bleedTimer == 1f)
+        if (currentHealth <= 0 && bleedTimer >= 1f)
         {
-            Armour -= 1;
+            TakeDamage(10f);
             bleedTimer = 0f;
         }
 
@@ -161,11 +165,22 @@ public class Zombie : IUnit
         if (currentNodeIndex < 0)
         {
             Vector3 housePos = (Vector3)OnGetHousePosition?.Invoke();
+
+            if (GameManager.IsEndGame)
+                return;
+            
+            if (nodePaths[0].WorldPosition.x >= transform.position.x)
+                OnZombieMoveToHouse?.Invoke();
+
             agent.OnArried = () =>
             {
-                ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
-                OnZombieGetInHouse?.Invoke();
-                StopAllCoroutines();
+                if (!GameManager.IsEndGame)
+                {
+                    ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
+                    AudioManager.Instance.PlaySound(Sound.ZombieEating);
+                    OnZombieGetInHouse?.Invoke();
+                    StopAllCoroutines();
+                }
             };
 
             agent.SetDestination(housePos);
@@ -258,6 +273,7 @@ public class Zombie : IUnit
             ResetDebug(type);
     }
 
+    bool first = true;
     public override void TakeDamage(float damage)
     {
         if (currentHealth > 0)
@@ -265,8 +281,12 @@ public class Zombie : IUnit
         else if (currentHealth <= 0)
             Armour -= damage;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && first)
+        {
             ator.SetZombieLostHead();
+            AudioManager.Instance.PlaySound(Sound.HeadFall);
+            first = false;
+        }
 
         if (currentHealth <= 0 && Armour <= 0)
         {
@@ -331,7 +351,7 @@ public class Zombie : IUnit
     {
         AudioManager.Instance.PlaySound(Sound.ZombieFall);
         agent.Stop();
-        agent.OnTurnOff();
+        agent.TurnOff();
         col.enabled = false;
 
         if (deadTween != null)
@@ -346,7 +366,7 @@ public class Zombie : IUnit
     public virtual void InstantDead()
     {
         agent.Stop();
-        agent.OnTurnOff();
+        agent.TurnOff();
         DeadAction();
     }
 

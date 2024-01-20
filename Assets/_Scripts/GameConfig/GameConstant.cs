@@ -25,9 +25,9 @@ public static class GameConstant
     public const float TIME_SUN_DISARPEAR = 4f;
     public const float TIME_SUN_DROP = 11f;
     public const float TIME_ZOMBIE_DIE = 1f;
-    public const int SUN_START_COST = 10000;
+    public const int SUN_START_COST = 50;
     public const int SUN_DROP_COST = 25;
-    public const float TIME_START_MATCH = 1f;
+    public const float TIME_START_MATCH = 35f;
 
     public const float TIME_BUTTON_MOVE = 0.5f;
 

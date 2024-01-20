@@ -24,12 +24,13 @@ public class RewardManager : MonoBehaviour
         OnGiftClick?.Invoke(gift);
 
         //Reward here
-        GameUtilities.GetGiftValue(gift);
     }
 
     private Tween giftTween = null;
     public void TossGift(Vector3 initPos)
     {
+        GameUtilities.GetGiftValue(gift);
+
         gift.transform.position = initPos;
         gift.gameObject.SetActive(true);
 

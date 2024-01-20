@@ -7,8 +7,8 @@ public class WinUIHandler : UIHandler
 {
     [SerializeField] private UIHandler whitePanel = null;
     [SerializeField] private WinPanel winPanel = null;
-    [SerializeField] private Button nextLevelBtn = null;
-    [SerializeField] private Button menuBtn = null;
+    [SerializeField] private ButtonUIHandler nextLevelBtn = null;
+    [SerializeField] private ButtonUIHandler menuBtn = null;
 
     private void Awake()
     {

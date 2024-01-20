@@ -55,6 +55,8 @@ public class UnitAnimator : MonoBehaviour
         OnAgentStop = null;
     }
 
+    public ZombieStateType GetZombieState() => zCurrentState;
+
     public void SetZombieMove(ZombieStateType movement)
     {
         if (movement == zCurrentState)
@@ -84,10 +86,10 @@ public class UnitAnimator : MonoBehaviour
 
     public void SetZombieLostHead()
     {
+
         switch (zCurrentState)
         {
             case ZombieStateType.Walk:
-
                 SetZombieMove(ZombieStateType.LostHeadWalkState);
                 break;
 

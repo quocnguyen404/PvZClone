@@ -11,8 +11,8 @@ public class SettingPanel : UIPanel
     [Space]
     [SerializeField] protected Button rayBlock = null;
 
-    [SerializeField] private Slider soundSlider = null;
-    [SerializeField] private Slider musicSlider = null;
+    [SerializeField] protected Slider soundSlider = null;
+    [SerializeField] protected Slider musicSlider = null;
 
 
     protected override void Awake()
@@ -35,6 +35,13 @@ public class SettingPanel : UIPanel
     {
         base.TurnOn();
         UpdateToggleValue();
+        OnTurnOn?.Invoke();
+    }
+
+    public override void TurnOff()
+    {
+        base.TurnOff();
+        OnTurnOff?.Invoke();
     }
 
     protected void UpdateToggleValue()
@@ -43,5 +50,7 @@ public class SettingPanel : UIPanel
         musicSlider.value = ConfigHelper.UserData.musicVolume;
         soundTogg.SetValue(ConfigHelper.UserData.isSoundOn);
         musicTogg.SetValue(ConfigHelper.UserData.isMusicOn);
+        AudioManager.Instance.SoundVolumeChange(ConfigHelper.UserData.soundVolume);
+        AudioManager.Instance.MusicVolumeChange(ConfigHelper.UserData.musicVolume);
     }
 }

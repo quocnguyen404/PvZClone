@@ -13,10 +13,11 @@ public class ShovelToggle : ToggleUIHandler
 
     public void Awake()
     {
+        ToggleSound = Sound.ShovelButton;
         AddListener(PickShovel);
     }
 
-    private void PickShovel(bool isOn)
+    public void PickShovel(bool isOn)
     {
         shovelIcon.gameObject.SetActive(!isOn);
         OnPickShovel?.Invoke(isOn);
@@ -24,7 +25,6 @@ public class ShovelToggle : ToggleUIHandler
 
     public void UnPickShovel()
     {
-        shovelIcon.gameObject.SetActive(true);
         Togg.isOn = false;
     }
 

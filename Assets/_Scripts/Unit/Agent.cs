@@ -12,6 +12,8 @@ public class Agent : MonoBehaviour
     public System.Action OnArried = null;
     public System.Action OnMoveAnimation = null;
 
+    public bool isDead = false;
+
 
     public void Initialize(float speed, float radius)
     {
@@ -25,7 +27,7 @@ public class Agent : MonoBehaviour
         speed = newSpeed;
     }
 
-    public void OnTurnOff()
+    public void TurnOff()
     {
         speed = 0;
         radius = 0;
@@ -37,6 +39,9 @@ public class Agent : MonoBehaviour
 
     public void SetDestination(Vector3 destination)
     {
+        if (isDead)
+            return;
+
         isStop = false;
 
         MoveToDestination(destination);
@@ -66,11 +71,13 @@ public class Agent : MonoBehaviour
         moveTween.Kill();
     }
 
+    public void Dead()
+    {
+        isDead = true;
+    }
+
     public void Stop()
     {
-        //if (isStop)
-        //    return;
-
         OnArried?.Invoke();
         moveTween.Kill();
         isStop = true;

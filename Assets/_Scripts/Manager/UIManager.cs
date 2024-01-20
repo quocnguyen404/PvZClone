@@ -44,6 +44,19 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         menuButton.AddListener(settingPanel.TurnOn);
+
+        settingPanel.OnTurnOn = () => 
+        { 
+            Time.timeScale = 0f;
+            AudioManager.Instance.PauseMusic();
+        };
+
+
+        settingPanel.OnTurnOff = () => 
+        { 
+            Time.timeScale = 1f;
+            AudioManager.Instance.ContinueMusic();
+        };
     }
 
     public void Initialize()
@@ -53,6 +66,7 @@ public class UIManager : MonoBehaviour
         viewZombieTg.AddListener(ViewZombieCamera);
 
         PlayButton.SetVisuability(false);
+        menuButton.SetVisuability(false);
         viewZombieTg.SetVisuability(false);
         unitButtonPanel.SetVisuability(false);
         plantButtonHold.SetVisuability(false);
@@ -79,6 +93,7 @@ public class UIManager : MonoBehaviour
             {
                 viewZombieTg.SetVisuability(true);
                 PlayButton.SetVisuability(true);
+                menuButton.SetVisuability(true);
                 unitButtonPanel.TurnOn();
                 plantButtonHold.TurnOn();
             });
@@ -91,11 +106,17 @@ public class UIManager : MonoBehaviour
         unitButtonPanel.TurnOff();
         viewZombieTg.SetVisuability(false);
         plantButtonHold.TurnOff();
+        menuButton.TurnOff();
         MoveCamera(0.3f, () => 
         {
-            shovelToggle.TurnOn();
-            plantButtonHold.TurnOn();
-            AudioManager.Instance.PlayMusic(Music.GamePlayBG); 
+            AudioManager.Instance.PlaySound(Sound.ReadySetPlant);
+            DOVirtual.DelayedCall(AudioManager.Instance.GetSound(Sound.ReadySetPlant).length - 3f, () =>
+            {
+                shovelToggle.TurnOn();
+                plantButtonHold.TurnOn();
+                menuButton.TurnOn();
+                AudioManager.Instance.PlayMusic(Music.GamePlayBG);
+            }).SetAutoKill();
         });
     }
 
@@ -108,6 +129,7 @@ public class UIManager : MonoBehaviour
         winUIHandler.TurnOn();
         plantButtonHold.TurnOff();
         shovelToggle.TurnOff();
+        menuButton.TurnOff();
 
         AudioManager.Instance.PlaySound(Sound.WinMusic);
 
@@ -122,10 +144,18 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void ZombieMoveToHouseTransition()
+    {
+        MoveCamera(-3f, null);
+        GameManager.SetEndGame();
+        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlaySound(Sound.LoseMusic);
+        plantButtonHold.TurnOff();
+    }
+
     public void LoseTransition()
     {
         AudioManager.Instance.PlaySound(Sound.Scream);
-        AudioManager.Instance.PlaySound(Sound.LoseMusic);
         loseUIHandler.TurnOn();
     }
 
@@ -136,7 +166,7 @@ public class UIManager : MonoBehaviour
             unitButtonPanel.TurnOff();
             plantButtonHold.TurnOff();
             PlayButton.TurnOff();
-
+            menuButton.TurnOff();
             MoveCamera(6f, null);
         }
         else
@@ -146,6 +176,7 @@ public class UIManager : MonoBehaviour
                 unitButtonPanel.TurnOn();
                 plantButtonHold.TurnOn();
                 PlayButton.TurnOn();
+                menuButton.TurnOn();
             });
         }
     }

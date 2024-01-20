@@ -53,9 +53,10 @@ public class PlacementManager : MonoBehaviour
             Node sNode = inputManager.GetSelectedNode();
 
             if (sNode != null && sNode.HasPlant())
+            {
                 sNode.GetPlantFromNode().Dead();
-
-            shovelToggle.UnPickShovel();
+                shovelToggle.UnPickShovel();
+            }
         }
 
         if (inputManager.IsOverPlane() && selectedUnit != null)
@@ -129,16 +130,16 @@ public class PlacementManager : MonoBehaviour
 
     public void PickUpShovel(bool value)
     {
-        if (value)
-        {
-            Sprite s = shovelToggle.GetShovelSprite();
-            mouseIndicator.ChangeMouseIndicatorSprite(s);
-        }
-        else
-        {
-            mouseIndicator.ChangeMouseIndicatorSprite(null);
-            TurnOffMouseIndicator();
-        }
+        //if (value)
+        //{
+        //    Sprite s = shovelToggle.GetShovelSprite();
+        //    mouseIndicator.ChangeMouseIndicatorSprite(s);
+        //}
+        //else
+        //{
+        //    mouseIndicator.ChangeMouseIndicatorSprite(null);
+        //    TurnOffMouseIndicator();
+        //}
     }
 
     private void DropSun()

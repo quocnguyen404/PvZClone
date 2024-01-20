@@ -35,6 +35,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //Config camera field of view by ratio
+
+        if (Screen.width <= 2300)
+            Helper.Cam.fieldOfView = 53;
+
+        if (Screen.width > 2300)
+            Helper.Cam.fieldOfView = 38;
+
+
         IsEndGame = false;
         IsStartGame = false;
 
@@ -57,7 +66,7 @@ public class GameManager : MonoBehaviour
         zombieObjectPool.OnSpawnUnit = zombieManager.AddUnit;
         productObjectPool.OnSpawnProduct = sunManager.AddProduct;
         zombieManager.OnGetZombie = zombieObjectPool.GetZombie;
-
+        zombieManager.OnZombieMoveToHouse = uiManager.ZombieMoveToHouseTransition;
         zombieManager.OnZombieGetPath = gridManager.GetRow;
         plantManager.PoolTransform = plantObjectPool.transform;
         plantManager.OnPlantGetNode = gridManager.GetNode;
@@ -113,7 +122,7 @@ public class GameManager : MonoBehaviour
 
     private void ZombieStart()
     {
-        phaseManager.StartLevel();
+        DOVirtual.DelayedCall(GameConstant.TIME_START_MATCH, () => { phaseManager.StartLevel(); }).SetAutoKill();
     }
 
     private void Win(Vector3 tossPos)
@@ -134,6 +143,12 @@ public class GameManager : MonoBehaviour
         IsStartGame = false;
         IsEndGame = true;
         AudioManager.Instance.StopMusic();
+        ConfigHelper.SaveUserData();
+    }
+
+    public static void SetEndGame()
+    {
+        IsEndGame = true;
     }
 
     private void OnDestroy()

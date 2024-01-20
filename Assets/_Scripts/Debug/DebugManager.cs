@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class DebugManager : MonoBehaviour
 {
-    public Button DeleteUserDataBtn = null;
     [SerializeField] [Range(1, 10)] int timeScale;
-
+    public bool ResetUserData = false;
     private void Awake()
     {
-        DeleteUserDataBtn.onClick.AddListener(() => 
-        { 
+        if (ResetUserData)
             ES3.DeleteKey("UserData123");
-        });
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class LoseUIHandler : UIHandler
 {
     [SerializeField] UIHandler losePanel = null;
-    [SerializeField] Button playAgainBtn = null;
-    [SerializeField] Button menuBtn = null;
+    [SerializeField] ButtonUIHandler playAgainBtn = null;
+    [SerializeField] ButtonUIHandler menuBtn = null;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class LoseUIHandler : UIHandler
         if (panelTween != null)
             panelTween.Kill();
 
-        panelTween = DOVirtual.DelayedCall(1f, () => { losePanel.TurnOn(); });
+        panelTween = DOVirtual.DelayedCall(2f, () => { losePanel.TurnOn(); });
     }
 
     public override void TurnOff()
