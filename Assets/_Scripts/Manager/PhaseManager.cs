@@ -134,7 +134,7 @@ public class PhaseManager : MonoBehaviour
         }
         catch
         {
-            Debug.LogError("Null");
+
         }
     }
 
@@ -143,5 +143,10 @@ public class PhaseManager : MonoBehaviour
         action?.Invoke();
 
         yield return Helper.GetWait(time);
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
