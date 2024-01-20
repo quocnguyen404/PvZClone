@@ -479,12 +479,12 @@
 						{
 							"amount" : 1,
 							"name" : "Zombie",
-							"timeCallNext" : -1
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 2,
 							"name" : "Zombie",
-							"timeCallNext" : -1
+							"timeCallNext" : 10
 						},
 						{
 							"amount" : 3,
@@ -516,7 +516,7 @@
 						{
 							"amount" : 1,
 							"name" : "FlagZombie",
-							"timeCallNext" : 1
+							"timeCallNext" : 5
 						},
 						{
 							"amount" : 6,

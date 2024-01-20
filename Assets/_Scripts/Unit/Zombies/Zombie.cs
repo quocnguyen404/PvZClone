@@ -174,13 +174,10 @@ public class Zombie : IUnit
 
             agent.OnArried = () =>
             {
-                if (!GameManager.IsEndGame)
-                {
-                    ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
-                    AudioManager.Instance.PlaySound(Sound.ZombieEating);
-                    OnZombieGetInHouse?.Invoke();
-                    StopAllCoroutines();
-                }
+                ator.SetZombieMove(UnitAnimator.ZombieStateType.Attack);
+                AudioManager.Instance.PlaySound(Sound.ZombieEating);
+                OnZombieGetInHouse?.Invoke();
+                StopAllCoroutines();
             };
 
             agent.SetDestination(housePos);
@@ -276,6 +273,10 @@ public class Zombie : IUnit
     bool first = true;
     public override void TakeDamage(float damage)
     {
+
+        if (!IsAlive)
+            return;
+
         if (currentHealth > 0)
             currentHealth -= damage;
         else if (currentHealth <= 0)
@@ -291,6 +292,7 @@ public class Zombie : IUnit
         if (currentHealth <= 0 && Armour <= 0)
         {
             ator.SetZombieMove(UnitAnimator.ZombieStateType.Die);
+            AudioManager.Instance.PlaySound(Sound.ZombieFall);
             Dead();
         }
     }
@@ -349,7 +351,6 @@ public class Zombie : IUnit
     private Tween deadTween = null;
     public override void Dead()
     {
-        AudioManager.Instance.PlaySound(Sound.ZombieFall);
         agent.Stop();
         agent.TurnOff();
         col.enabled = false;
@@ -381,6 +382,7 @@ public class Zombie : IUnit
         OnZombieDie?.Invoke(this);
 
         ator.OnTurnOff();
+        agent.TurnOff();
         col.enabled = false;
         transform.position = PoolPosition;
         arried = true;

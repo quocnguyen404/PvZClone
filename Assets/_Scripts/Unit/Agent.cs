@@ -20,6 +20,7 @@ public class Agent : MonoBehaviour
         this.speed = speed;
         this.radius = radius;
         isStop = true;
+        isDead = false;
     }
 
     public void ChangeSpeed(float newSpeed)
@@ -40,7 +41,10 @@ public class Agent : MonoBehaviour
     public void SetDestination(Vector3 destination)
     {
         if (isDead)
+        {
+            moveTween.Kill();
             return;
+        }
 
         isStop = false;
 
@@ -52,7 +56,12 @@ public class Agent : MonoBehaviour
     {
         isStop = false;
 
-        transform.DOKill();
+        if (moveTween != null)
+            moveTween.Kill();
+
+        if (speed <= 0)
+            return;
+
         OnMoveAnimation?.Invoke();
         moveTween = transform.DOMove(destination, GameUtilities.TimeToDestination(transform.position, destination, speed))
             .SetEase(Ease.Linear)

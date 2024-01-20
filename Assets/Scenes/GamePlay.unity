@@ -1761,11 +1761,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2853672157353307756, guid: aa92aa633cf65774fb25501299b441b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2853672158656099372, guid: aa92aa633cf65774fb25501299b441b0, type: 3}
       propertyPath: m_Name
       value: SettingPanelInGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853672158656099372, guid: aa92aa633cf65774fb25501299b441b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2853672158656099373, guid: aa92aa633cf65774fb25501299b441b0, type: 3}
       propertyPath: m_Pivot.x
@@ -1853,7 +1857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8315160986678906107, guid: aa92aa633cf65774fb25501299b441b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa92aa633cf65774fb25501299b441b0, type: 3}
@@ -6399,7 +6403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next level
+  m_text: Play Agian
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e6afa87bb0512c459d9fdc40d007458, type: 2}
   m_sharedMaterial: {fileID: 1883691883841256685, guid: 3e6afa87bb0512c459d9fdc40d007458, type: 2}

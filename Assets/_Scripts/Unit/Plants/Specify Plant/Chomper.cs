@@ -20,7 +20,6 @@ public class Chomper : Plant
         attackTimer -= Time.deltaTime;
 
 
-
         if (DetectEnemy() && !IsChewing)
         {
             Attack();
@@ -61,6 +60,7 @@ public class Chomper : Plant
             if (zombie == null)
                 return;
 
+            AudioManager.Instance.PlaySound(Sound.ChomperBite);
             ator.SetPlantMove(UnitAnimator.PlantStateType.Attack, () =>
             {
                 zombie.GetBite(UnitData.attributes[(int)Data.AttributeType.ATK].value);
